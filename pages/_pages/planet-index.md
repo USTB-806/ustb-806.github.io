@@ -1,11 +1,11 @@
 ---
-title: "806 Planet"
-tagline: "A planet where ideas sparkle"
-permalink: /planet/
+title: "806 Blogs"
+tagline: "A blogs where ideas sparkle"
+permalink: /blogs/
 layout: home
 pagination:
   enabled: true
-  collection: planet
+  collection: blogs
 header:
-  overlay_image: "/static/splash/galaxy-1.jpg"
+  overlay_image: "/static/806_1.jpg"
 ---

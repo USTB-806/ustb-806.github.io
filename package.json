@@ -1,20 +1,20 @@
 {
-  "name": "website",
+  "name": "806.github.io",
   "version": "0.0.1",
-  "description": "Prettier package.json for lug website",
+  "description": "Prettier package.json for 806 website",
   "scripts": {
     "check": "prettier . --check",
     "fix": "prettier . --write"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ustclug/website.git"
+    "url": "git+https://github.com/ustb-806/ustb-806.github.io.git"
   },
   "license": "CC BY-NC-SA 4.0",
   "bugs": {
-    "url": "https://github.com/ustclug/website/issues"
+    "url": "https://github.com/ustb-806/ustb-806.github.io/issues"
   },
-  "homepage": "https://lug.ustc.edu.cn",
+  "homepage": "https://ustb-806.github.io",
   "devDependencies": {
     "prettier": "^2.7.1"
   }

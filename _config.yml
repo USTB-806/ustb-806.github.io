@@ -18,7 +18,7 @@ title                    : "806 @ USTC"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "USTB-806"
-description              : "北京科技大学“勤敏轩”本科生创新实验室"
+description              : "北京科技大学“勤敏轩”学生创新实验室"
 url                      : "https://ustb-806.github.io"
 static_url               : "/static"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -89,8 +89,8 @@ analytics:
 # Site Author, this is the default
 author:
   name             : "USTB-806"
-  avatar           : "/static/lug-penguin.png"
-  bio              : "北京科技大学“勤敏轩”本科生创新实验室"
+  avatar           : "/static/806-penguin.png"
+  bio              : "北京科技大学“勤敏轩”学生创新实验室"
   location         : "USTB"
   links:
     - label: "Email"
@@ -217,7 +217,7 @@ collections:
   news:
     output: true
     permalink: /:collection/:year/:month/:title/
-  planet:
+  blogs:
     output: true
     permalink: /:collection/:year/:month/:title/
 
@@ -233,7 +233,7 @@ footer_scripts: [/assets/js/main.min.js]
 
 
 feed:
-  collections: [news, planet]
+  collections: [news, blogs]
 
 
 # Archives
@@ -296,7 +296,7 @@ defaults:
       classes: ["news"]
   - scope:
       path: ""
-      type: planet
+      type: blogs
     values:
       author_profile: true
       show_date: true
