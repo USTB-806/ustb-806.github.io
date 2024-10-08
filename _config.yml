@@ -14,17 +14,17 @@ theme                    : "minimal-mistakes-jekyll"
 
 # Site Settings
 locale                   : "zh-CN"
-title                    : "806 @ USTC"
+title                    : "806 @ USTB"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "USTB-806"
-description              : "北京科技大学“勤敏轩”学生创新实验室"
+description              : "北京科技大学「勤敏轩」学生创新实验室"
 url                      : "https://ustb-806.github.io"
 static_url               : "/static"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ustb-806/ustb-806.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/static/lug-penguin.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : "/static/806-logo.jpg" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 350
@@ -90,7 +90,7 @@ analytics:
 author:
   name             : "USTB-806"
   avatar           : "/static/806-penguin.png"
-  bio              : "北京科技大学“勤敏轩”学生创新实验室"
+  bio              : "北京科技大学「勤敏轩」学生创新实验室"
   location         : "USTB"
   links:
     - label: "Email"

@@ -10,9 +10,6 @@ _site
 .jekyll-metadata
 .sass-cache
 
-# Our static content
-/static/
-
 # Node.js stuff
 package-lock.json
 node_modules/

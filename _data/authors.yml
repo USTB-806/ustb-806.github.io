@@ -3,7 +3,7 @@
 admin: &ustb-806
   name: USTB-806
   avatar: "https://secure.gravatar.com/avatar/94c03bc620ea2cf7dc239ac0535cad8e?s=256&d=identicon&r=g"
-  bio: "北京科技大学“勤敏轩”学生创新实验室"
+  bio: "北京科技大学「勤敏轩」学生创新实验室"
   location: "USTB"
   links:
     - label: Website

@@ -1,11 +1,11 @@
 ---
-title: "806 Blogs"
-tagline: "A blogs where ideas sparkle"
+title: "806 博客"
+tagline: ""
 permalink: /blogs/
 layout: home
 pagination:
   enabled: true
   collection: blogs
 header:
-  overlay_image: "/static/806_1.jpg"
+  overlay_image: "/static/blogs-banner.jpg"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "RSS 订阅"
-excerpt: "北京科技大学“勤敏轩”学生创新实验室"
-tagline: "北京科技大学“勤敏轩”学生创新实验室"
+excerpt: "北京科技大学「勤敏轩」学生创新实验室"
+tagline: "北京科技大学「勤敏轩」学生创新实验室"
 permalink: /feed/
 layout: single
 toc: false
