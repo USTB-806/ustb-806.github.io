@@ -1,0 +1,57 @@
+# Documentation: https://mmistakes.github.io/minimal-mistakes/docs/authors/
+
+admin: &ustclug
+  name: USTCLUG
+  avatar: "https://secure.gravatar.com/avatar/94c03bc620ea2cf7dc239ac0535cad8e?s=256&d=identicon&r=g"
+  bio: "中国科学技术大学 Linux 用户协会"
+  location: "USTC"
+  links:
+    - label: Website
+      icon: far fa-fw fa-globe
+      url: https://lug.ustc.edu.cn/
+    - label: GitHub
+      icon: fab fa-fw fa-github
+      url: https://github.com/ustclug
+
+ustclug:
+  <<: *ustclug
+
+mk:
+  name: Kai Ma
+  avatar: "https://secure.gravatar.com/avatar/31f43a534603ab8cbb4ee043fe6b2d5f?s=256&d=identicon&r=g"
+
+sirius:
+  name: sirius
+  avatar: "https://secure.gravatar.com/avatar/782354af8f9b412af36a2f9fc2a3c890?s=256&d=identicon&r=g"
+
+taoky:
+  name: taoky
+  avatar: "https://secure.gravatar.com/avatar/6e349261285ec9c4a9b049d14793227f?s=256&d=identicon&r=g"
+
+xenon:
+  name: Xenon
+  avatar: "https://secure.gravatar.com/avatar/20700df7e498eee4c023090a0c2f3c04?s=256&d=identicon&r=g"
+
+elsagranger:
+  name: Elsa Granger
+  avatar: "https://secure.gravatar.com/avatar/07c7d0b3c95a811de5ac8c86c86e09d8?s=256&d=identicon&r=g"
+
+gloit:
+  name: gloit
+  avatar: "https://secure.gravatar.com/avatar/c8743e2d4d6fd22a9fc8ce8a8138848d?s=256&d=identicon&r=g"
+
+petergu:
+  name: petergu
+  avatar: "https://secure.gravatar.com/avatar/2bb42aa969cb70fc7fc76eb6b82f86ed?s=256&d=identicon&r=g"
+  links:
+    - label: GitHub
+      icon: fab fa-fw fa-github
+      url: https://github.com/ustcpetergu
+
+tiankaima:
+  name: tiankaima
+  avatar: "https://avatars.githubusercontent.com/u/91816094?v=4"
+  links:
+    - label: GitHub
+      icon: fab fa-fw fa-github
+      url: https://github.com/tiankaima

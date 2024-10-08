@@ -1,0 +1,28 @@
+---
+title: "806 @ USTB"
+excerpt: "北科科技大学“勤敏轩”本科生创新实验室"
+tagline: "北京科技大学“勤敏轩”本科生创新实验室"
+permalink: /
+layout: splash
+header:
+  overlay_image: "/static/splash/autumn-1.jpg"
+  overlay_filter: 0.25
+  actions:
+    - label: 了解更多
+      url: /wiki/intro/
+---
+
+{% include banner.html %}
+
+<div class="archive-group">
+  <div class="archive-group__item">
+    <h3 class="archive__subtitle">
+      <a href="{{ "/news/" | relative_url }}">最新文章</a>
+    </h3>
+    {%- comment %} Combined news and planet {% endcomment -%}
+    {% assign posts = site.news | concat: site.planet | sort: 'date' | reverse %}
+    {% for post in posts limit: 5 %}
+      {% include archive-single.html %}
+    {% endfor %}
+  </div>
+</div>
