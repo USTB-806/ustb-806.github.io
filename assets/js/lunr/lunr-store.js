@@ -29,8 +29,14 @@ var store = [{
 "url": "/wiki/806/links/",
 "teaser": null
 },{
+"title": "806 活跃成员",
+"excerpt":"2023 届                  组别       姓名       联系方式                       系统组       王诺贤       个人网站, GitHub                         陈宽宽       个人网站, GitHub                         王雨辰       GitHub                         丁正枫       GitHub                         周奔成       GitHub                 AI 组       祁珏瑜       GitHub                         陈铎友       GitHub                         崔永亮       GitHub                         张灿       GitHub                 开发组       廖玮珑       个人网站, GitHub                 游戏组       敖立鑫       GitHub                         刁明轩       GitHub          ","categories": [],
+"tags": [],
+"url": "/wiki/806/members/",
+"teaser": null
+},{
 "title": "806 负责人",
-"excerpt":"2023 届                  身份       姓名       联系方式                       指导老师       崔晓龙       cuixla@ustb.edu.cn                 系统组负责人       王诺贤       个人网站, GitHub                 AI 组负责人       祁珏瑜       GitHub                 开发组负责人       廖玮珑       个人网站, GitHub                 游戏组负责人       敖立鑫       GitHub          ","categories": [],
+"excerpt":"2023 届                  身份       姓名       联系方式                       指导老师       崔晓龙       cuixl@ustb.edu.cn                 系统组负责人       王诺贤       个人网站, GitHub                 AI 组负责人       祁珏瑜       GitHub                 开发组负责人       廖玮珑       个人网站, GitHub                 游戏组负责人       敖立鑫       GitHub          ","categories": [],
 "tags": [],
 "url": "/wiki/806/person-in-charge/",
 "teaser": null
