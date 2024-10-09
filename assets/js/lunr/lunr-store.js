@@ -6,7 +6,7 @@ var store = [{
 "teaser": null
 },{
 "title": "加入 806",
-"excerpt":" ","categories": [],
+"excerpt":"806 会在每学年的秋季学期进行较大规模的招新，具体情况请关注806 新闻以及校内的各个渠道。   对于能力较强的同学，通过 806 学长学姐的邀请，经过负责人认可后，也可以随时加入 806。   对于加入 806 后却不活跃的同学，806 有权利随时进行清退。  ","categories": [],
 "tags": [],
 "url": "/wiki/806/contribute/",
 "teaser": null
@@ -21,6 +21,12 @@ var store = [{
 "excerpt":" ","categories": [],
 "tags": [],
 "url": "/wiki/806/person-in-charge/",
+"teaser": null
+},{
+"title": "添加文章",
+"excerpt":"若需要在 806 官网上添加文章（新闻、博客、……)，请严格遵循以下步骤：           告知所在部门的负责人并经过其同意            fork 本仓库，配置环境并按照格式编写文章（请注意不同类型的文章的编写要求）                       添加新闻请在 /pages/_news 目录下按照年份分类添加                        添加博客请在 /pages/_blogs 目录下添加                        格式化代码（否则将无法通过代码审查）            在本网站的 GitHub 仓库提交一个 pull request            待负责人审查通过后合并进 main 分支，完成更新      ","categories": [],
+"tags": [],
+"url": "/wiki/doc/add-new-post/",
 "teaser": null
 },{
 "title": "提问的智慧",
