@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/news.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-09T22:54:30+08:00</updated><id>https://ustb-806.github.io/feed/news.xml</id><title type="html">806 @ USTB | News</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-09T22:52:45+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/news.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-09T23:15:25+08:00</updated><id>https://ustb-806.github.io/feed/news.xml</id><title type="html">806 @ USTB | News</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-09T23:13:38+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
       <h2 id="报名方式">报名方式</h2>
       <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
       <ul>
-        <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；
+        <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；（报名人工智能部仅需填写<code class="language-plaintext highlighter-rouge">人工智能部</code>）
           <ul>
             <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
             <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
@@ -21,6 +21,7 @@
       <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
       <p>我们希望你：</p>
       <ul>
+        <li>基础扎实：对 C/C++、Rust 或是 Verilog 语言有扎实的基础；</li>
         <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
         <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
         <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
@@ -121,7 +122,7 @@
         <li>设计过一个或多个项目。</li>
       </ul>
       <p>拟招 5 人左右。</p>
-      ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-09T22:52:45+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
+      ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-09T22:52:45+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
     <p>全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起、由全国高校计算机教育研究会主办、面向高校大学生的全国性大赛。目标是以学科竞赛推动专业建设和计算机领域创新人才培养体系改革，培育我国高端芯片、关键基础软件的后备人才。大赛服务国家人才培养战略，以赛促学、以赛促教，鼓励学生设计、实现综合性的计算机系统，培养学生系统级的设计、分析、优化与应用能力，提升学生的技术创新、工程实践、团队协作能力，并为高水平计算机人才成长搭建交流、展示、合作的开放平台。</p>
     <p>本届大赛吸引了全国百余所高校的 589 支参赛队报名，209 支赛队入围全国总决赛。经过激烈的初赛和决赛现场赛、答辩，全国总决赛内核实现赛最终评选出一等奖 6 项，二等奖 9 项，三等奖 12 项。</p>
     <p>来自北京科技大学计通学院的“chaos”队从来自清华大学、北京大学、上海交通大学、哈尔滨工业大学、北京航空航天大学、华中科技大学等全国百余所高校 209 支入围总决赛的队伍中脱颖而出，获得了“操作系统设计”赛内核实现赛道（基于 RISCV 硬件）全国总决赛全国二等奖，<strong>这是我校连续第三年在大赛内核赛道获奖</strong>。</p>
