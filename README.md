@@ -2,6 +2,8 @@
 
 北京科技大学「勤敏轩」学生创新实验室官方网站。
 
+如有任何问题，请联系[王诺贤](https://bosswnx.xyz)，邮箱：[bosswnx@outlook.com](mailtp:bosswnx@outlook.com)
+
 **本网站基于[中国科学技术大学 LUG](https://lug.ustc.edu.cn)的官方网站修改而来，非常感谢！**
 
 本仓库为源代码，所有推送到 main 分支的修改会使用 GitHub Actions 自动编译和部署。
