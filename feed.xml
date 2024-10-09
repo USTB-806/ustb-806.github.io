@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-10T00:31:24+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-09T23:13:38+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-10T00:47:43+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-10T00:45:47+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
       <h2 id="报名方式">报名方式</h2>
       <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
       <ul>
@@ -29,7 +29,7 @@
       </ul>
       <p>拟招 5 人左右。</p>
       <h3 id="人工智能部">人工智能部</h3>
-      <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法就竞赛，开发构建好玩的 AIGC 应用。</p>
+      <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法竞赛，开发构建好玩的 AIGC 应用。</p>
       <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
       <h4 id="算法组">算法组</h4>
       <p>算法组的目标是：</p>
@@ -46,7 +46,7 @@
       </ul>
       <p>加分项：</p>
       <ul>
-        <li>熟悉 python 编程；</li>
+        <li>熟悉 Python 编程；</li>
         <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
         <li>有深度学习相关的项目开发经验；</li>
         <li>有输出技术博客的习惯。</li>
@@ -68,7 +68,7 @@
       </ul>
       <p>加分项：</p>
       <ul>
-        <li>熟悉 python 编程；</li>
+        <li>熟悉 Python 编程；</li>
         <li>有 AI 应用插件的开发经验；</li>
         <li>有 AI 应用相关的项目和比赛经验；</li>
       </ul>
@@ -90,7 +90,7 @@
         <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
       </blockquote>
       <p>你能学到什么：Unity，C#。</p>
-      <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 demo</strong>。</p>
+      <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 DEMO</strong>。</p>
       <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
       <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
       <p>加分项：</p>
@@ -101,17 +101,17 @@
       </ul>
       <p>拟招 5 人左右。</p>
       <h3 id="开发部">开发部</h3>
-      <p>806 开发部欢迎对 Android、IOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
+      <p>806 开发部欢迎对 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
       <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
       <p>开发部的目标是：</p>
       <ul>
         <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
-        <li>参与一些热门 github 项目的开发和维护；</li>
+        <li>参与一些热门 GitHub 项目的开发和维护；</li>
       </ul>
       <p>我们希望你：</p>
       <ul>
         <li>对上述领域任一项或多项感兴趣；</li>
-        <li>有 python/java/golang/js 或其他语言中的一个或多个的开发经验。</li>
+        <li>有 Python/Java/GoLang/JS 或其他语言中的一个或多个的开发经验。</li>
       </ul>
       <p>加分项：</p>
       <ul>
