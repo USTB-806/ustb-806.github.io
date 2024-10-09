@@ -43,8 +43,10 @@
       document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
       window.enable_copy_code_button = true;
     </script>
+    <!-- 不蒜子页面统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- For all browsers -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=cd1f3e4">
+    <link rel="stylesheet" href="/assets/css/main.css?v=e0f0345">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
     <!-- start custom head snippets -->
@@ -128,15 +130,15 @@
               </aside>
               <dl>
                 <dt>Build time</dt>
-                <dd><time id="build-time" datetime="2024-10-09 23:15:25">2024-10-09 23:15:25</time></dd>
+                <dd><time id="build-time" datetime="2024-10-10 00:31:24">2024-10-10 00:31:24</time></dd>
                 <dt>Current time</dt>
                 <dd id="current-time">Loading...</dd>
                 <dt>Source Git revision</dt>
                 <dd>
-                  <a href="/commit/cd1f3e44971066b83e0c72f1052d9fe56fc55cb8">
-                    <code class="git-sha">cd1f3e4</code>
+                  <a href="/commit/e0f0345726546b699f1e7695aefa56caa0e113ba">
+                    <code class="git-sha">e0f0345</code>
                     <span class="git-author">Nelson Boss</span>:
-                    <span class="git-message">post: 更新 2024 招新</span>
+                    <span class="git-message">feat: 添加阅读量</span>
                   </a>
                 </dd>
                 <dt>
@@ -145,10 +147,10 @@
                   <!--a href="https://circleci.com/gh/ustb-806/ustb-806.github.io"><img src="https://circleci.com/gh/ustb-806/ustb-806.github.io.svg?style=shield" alt="CircleCI" /></a-->
                   <a href="https://github.com/ustb-806/ustb-806.github.io/actions"><img src="https://github.com/ustb-806/ustb-806.github.io/workflows/build/badge.svg" alt="GitHub Actions" /></a>
                 </dt>
-                <dd>This site is deployed from <a href="https://github.com/ustb-806/ustb-806.github.io/actions/runs/11257924700">GitHub Actions build 23</a></dd>
+                <dd>This site is deployed from <a href="https://github.com/ustb-806/ustb-806.github.io/actions/runs/11259171033">GitHub Actions build 24</a></dd>
               </dl>
               <script>
-                document.getElementById("build-time").innerText = new Date("2024-10-09T23:15:25+08:00");
+                document.getElementById("build-time").innerText = new Date("2024-10-10T00:31:24+08:00");
                 function zeropad(n) {
                   return n > 9 ? String(n) : "0" + String(n);
                 }
@@ -166,7 +168,13 @@
               </style>
             </section>
             <footer class="page__meta">
-              <p class="page__date"><strong><i class="fad fa-fw fa-calendar-alt" aria-hidden="true"></i> 更新时间:</strong> <time datetime="2024-10-08">2024 年 10 月 8 日</time></p>
+              <p class="page__date">
+                <strong><i class="fad fa-fw fa-calendar-alt" aria-hidden="true"></i> 更新时间:</strong> <time datetime="2024-10-08">2024 年 10 月 8 日</time>
+                <strong>
+                  <i class="fas fa-fw fa-eye"></i>
+                  <span id="busuanzi_container_page_pv">阅读量：<span id="busuanzi_value_page_pv"></span></span>
+                </strong>
+              </p>
             </footer>
           </div>
         </article>

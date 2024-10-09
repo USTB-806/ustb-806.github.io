@@ -46,8 +46,10 @@
       document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
       window.enable_copy_code_button = true;
     </script>
+    <!-- 不蒜子页面统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- For all browsers -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=cd1f3e4">
+    <link rel="stylesheet" href="/assets/css/main.css?v=e0f0345">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
     <!-- start custom head snippets -->
@@ -171,7 +173,13 @@
               <p><strong>无特殊情况时，请不要单独联系负责人。</strong></p>
             </section>
             <footer class="page__meta">
-              <p class="page__date"><strong><i class="fad fa-fw fa-calendar-alt" aria-hidden="true"></i> 更新时间:</strong> <time datetime="2024-10-09">2024 年 10 月 9 日</time></p>
+              <p class="page__date">
+                <strong><i class="fad fa-fw fa-calendar-alt" aria-hidden="true"></i> 更新时间:</strong> <time datetime="2024-10-09">2024 年 10 月 9 日</time>
+                <strong>
+                  <i class="fas fa-fw fa-eye"></i>
+                  <span id="busuanzi_container_page_pv">阅读量：<span id="busuanzi_value_page_pv"></span></span>
+                </strong>
+              </p>
             </footer>
             <nav class="pagination">
               <a href="#" class="pagination--pager disabled">上一页</a>
