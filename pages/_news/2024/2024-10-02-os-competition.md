@@ -3,7 +3,7 @@ title: "祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统
 author: ""
 header:
     overlay_image: /images/2024-10-02-os-competition-header.jpg
-categories: []
+categories: ["获奖", "系统部"]
 tags: []
 ---
 
@@ -30,3 +30,5 @@ ChaOS 的 [GitHub 仓库](https://github.com/chaos-kernel/chaos)
 获奖证书：
 
 ![](/images/2024-10-02-os-competition-certificate.jpg)
+全国二等奖
+{: .text-center}
