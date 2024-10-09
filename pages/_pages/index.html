@@ -17,7 +17,7 @@ header:
 <div class="archive-group">
   <div class="archive-group__item">
     <h3 class="archive__subtitle">
-      <a href="{{ "/news/" | relative_url }}">新闻</a>
+      <a href="{{ "/news/" | relative_url }}">最新文章</a>
     </h3>
     {%- comment %} Combined news and blogs {% endcomment -%}
     {% assign posts = site.news | concat: site.blogs | sort: 'date' | reverse %}
