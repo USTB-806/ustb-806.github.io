@@ -1,31 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-09T19:55:44+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-09T17:17:35+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
-      <p>第八届全国大学生计算机系统能力培养大赛（龙芯杯）分为团体赛和个人赛两项赛事。团队赛共 110 支队伍报名，个人赛共 782 人报名。经过初赛的激烈角逐，全国共有 28 支代表队和 40 位个人进入决赛。</p>
-      <p class="text-center"><img src="/images/2024-10-02-lxb-01.jpg" alt="" />
-        决赛合影</p>
-      <p>在个人赛方面，刁明轩同学设计了基于 MIPS 指令集的 32 位单发射五级流水线 CPU。初赛中，该作品可以通过三级功能测试和性能测试，时钟频率可以稳定运行在 58MHz。现场决赛阶段，刁明轩同学顺利完成了现场汇编代码的编写，最终获得龙芯杯个人赛三等奖。</p>
-      <p class="text-center"><img src="/images/2024-10-02-lxb-02.jpg" alt="" />
-        个人赛颁奖（左五：刁明轩）</p>
-      <p>在团队赛方面，北科队伍 tesserae of tantalus（成员：丁正枫、王雨辰、赖烁喆、张卓立）实现了一个六级流水顺序双发射的处理器软核，同时实现了分支预测，指令数据缓存，TLB 等模块，可以顺利启动经典的 bootloader 并完成指定功能。</p>
-      <p class="text-center"><img src="/images/2024-10-02-lxb-03.jpg" alt="" />
-        团队赛决赛现场（从左到右：王雨辰、赖烁喆、丁正枫）</p>
-      <p>现场决赛阶段，经过团队指令集答题，汇编代码编写，团队答辩等环节的重重考验，最终获得全国二等奖，实现了我校在该项赛事成绩的新突破。</p>
-      <p class="text-center"><img src="/images/2024-10-02-lxb-04.jpg" alt="" />
-        团队赛颁奖</p>
-      <p>获奖证书：</p>
-      <p class="text-center"><img src="/images/2024-10-02-lxb-certificate1.jpg" alt="" />
-        个人赛三等奖</p>
-      <p class="text-center"><img src="/images/2024-10-02-lxb-certificate2.jpg" alt="" />
-        团队赛二等奖</p>
-      ]]></content><author><name>USTB-806</name></author><summary type="html"><![CDATA[全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-09T19:54:00+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
-    <p>全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起、由全国高校计算机教育研究会主办、面向高校大学生的全国性大赛。目标是以学科竞赛推动专业建设和计算机领域创新人才培养体系改革，培育我国高端芯片、关键基础软件的后备人才。大赛服务国家人才培养战略，以赛促学、以赛促教，鼓励学生设计、实现综合性的计算机系统，培养学生系统级的设计、分析、优化与应用能力，提升学生的技术创新、工程实践、团队协作能力，并为高水平计算机人才成长搭建交流、展示、合作的开放平台。</p>
-    <p>本届大赛吸引了全国百余所高校的 589 支参赛队报名，209 支赛队入围全国总决赛。经过激烈的初赛和决赛现场赛、答辩，全国总决赛内核实现赛最终评选出一等奖 6 项，二等奖 9 项，三等奖 12 项。</p>
-    <p>来自北京科技大学计通学院的“chaos”队从来自清华大学、北京大学、上海交通大学、哈尔滨工业大学、北京航空航天大学、华中科技大学等全国百余所高校 209 支入围总决赛的队伍中脱颖而出，获得了“操作系统设计”赛内核实现赛道（基于 RISCV 硬件）全国总决赛全国二等奖，<strong>这是我校连续第三年在大赛内核赛道获奖</strong>。</p>
-    <p class="text-center"><img src="/images/2024-10-02-os-competition-1.jpg" alt="" />
-      颁奖现场（右数第二、三分别为陈宽宽、王诺贤）</p>
-    <p><img src="/images/2024-10-02-os-competition-2.jpg" alt="" /></p>
-    <p>该队基于清华大学“rCore”类 UNIX 内核设计和开发的 ChaOS 操作系统内核使用 Rust 语言编写，可在基于 RISCV 架构的 visionfive2 开发板及其虚拟机上稳定运行。内核在页表架构与文件系统上相较 rCore 进行了大幅的重构，支持几十个 POSIX 标准系统调用和 FAT32/EXT4 文件系统。</p>
-    <p class="text-center"><img src="/images/2024-10-02-os-competition-3.jpg" alt="" />
-      ChaOS 的 <a href="https://github.com/chaos-kernel/chaos">GitHub 仓库</a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-09T22:54:30+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-09T22:52:45+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
+      <h2 id="报名方式">报名方式</h2>
+      <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
+      <ul>
+        <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；
+          <ul>
+            <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
+            <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
+          </ul>
+        </li>
+        <li>正文：空；</li>
+        <li>附件：个人简历（必须，格式任意），其他能够证明个人能力的内容（可选）。</li>
+      </ul>
+      <p>我们会不定期查看邮件。若我们成功收到了你的邮件，并且你通过了简历筛选，我们会回复一封邮件以告知面试地点和时间。</p>
+      <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
+      <p>若对本次招新有任何疑问，请邮件询问 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>。</p>
+      <h2 id="各部门招新介绍">各部门招新介绍</h2>
+      <h3 id="系统部">系统部</h3>
+      <p>系统部是 806 实验室历史最为悠久的部门，专注于计算机系统能力的培养，鼓励督促成员参加高水平系统能力竞赛，如龙芯杯、系统能力大赛等，部内多届成员均参与竞赛，超过一半人在系统能力大赛中获得国家级奖项。</p>
+      <p>系统部的成果丰富，曾多次在操作系统赛、编译系统赛、ICPC 等计算机顶级赛事获国家级奖项，今年还首次在龙芯杯获得国二，为我校实现了从零到一的突破。毕业学长学姐均前往北京大学、北京航空航天大学、南京大学、中科院计算所、中科院软件所等顶级高校深造，或是前往百度、腾讯等大厂工作。</p>
+      <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
+      <p>我们希望你：</p>
+      <ul>
+        <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
+        <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
+        <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
+        <li>不卷加权：加权成绩固然重要，但是对于第一名和第二名的固执没有意义。</li>
+      </ul>
+      <p>拟招 5 人左右。</p>
+      <h3 id="人工智能部">人工智能部</h3>
+      <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法就竞赛，开发构建好玩的 AIGC 应用。</p>
+      <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
+      <h4 id="算法组">算法组</h4>
+      <p>算法组的目标是：</p>
+      <ul>
+        <li>一起交流和探索 AI 算法竞赛，如 Kaggle 奖金池 $60000 的竞赛；</li>
+        <li>一起提升算法设计能力，推荐加入本外校的实习项目组；</li>
+        <li>论文产出。</li>
+      </ul>
+      <p>我们希望你：</p>
+      <ul>
+        <li>有较好的编程基础和逻辑能力；</li>
+        <li>对 AI 算法的探究有浓厚的兴趣；</li>
+        <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
+      </ul>
+      <p>加分项：</p>
+      <ul>
+        <li>熟悉 python 编程；</li>
+        <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
+        <li>有深度学习相关的项目开发经验；</li>
+        <li>有输出技术博客的习惯。</li>
+      </ul>
+      <p>拟招 4 人左右。</p>
+      <h4 id="aigc-组">AIGC 组</h4>
+      <p>AIGC 组的目标是：</p>
+      <ul>
+        <li>学习开发和维护 AI 应用的传统项目，并产出和维护工程文档，申请软著等；</li>
+        <li>了解最新 AI 行业动态，学习大模型、Stable Diffusion、Midjourney 等成熟的 AIGC 项目的迁移和开发；</li>
+        <li>参与一些热门 github 项目的开发和维护。</li>
+      </ul>
+      <p>我们希望你：</p>
+      <ul>
+        <li>对 AIGC 应用有了解；</li>
+        <li>使用过常见的 AIGC 应用，例如各类生成式模型软件，图片生成、音视频生成等；</li>
+        <li>对 AIGC 应用部署和开发有浓厚的兴趣；</li>
+        <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
+      </ul>
+      <p>加分项：</p>
+      <ul>
+        <li>熟悉 python 编程；</li>
+        <li>有 AI 应用插件的开发经验；</li>
+        <li>有 AI 应用相关的项目和比赛经验；</li>
+      </ul>
+      <p>拟招 3 人左右。</p>
+      <h4 id="网络组">网络组</h4>
+      <p>网络组的目标是：针对新一代网络架构（如软件定义网络 SDN、知识定义网络 KDN 等），通过图神经网络（GNN）、深度强化学习（DRL）、迁移学习（Transfer Learning）等方法，预测网络性能指标、改进网络路由算法、对网络传输进行建模。</p>
+      <p>要求：</p>
+      <ul>
+        <li>大一或大二同学，时间能够保证，能按要求完成实验任务；</li>
+        <li>熟练掌握 Python、C++ 编程语言，能够阅读并修改代码；</li>
+        <li>有 Linux 基础，完成各种环境搭建；</li>
+        <li>对网络仿真有一定了解；</li>
+        <li>有一定的英文阅读能力，能阅读全英论文；</li>
+        <li>有责任心，愿意参与科研项目，对网络研究方向有极大的兴趣。</li>
+      </ul>
+      <p>拟招 5 人左右。</p>
+      <h3 id="游戏部">游戏部</h3>
+      <blockquote>
+        <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
+      </blockquote>
+      <p>你能学到什么：Unity，C#。</p>
+      <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 demo</strong>。</p>
+      <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
+      <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
+      <p>加分项：</p>
+      <ul>
+        <li>具有游戏开发相关经验，如使用过 Unity，UE，Godot 或其它游戏引擎；</li>
+        <li>了解游戏设计，如知悉各类游戏的基本特征、游戏机制及如何实现等；</li>
+        <li>具有电子绘画能力，如绘制角色帧动画、立绘，游戏内场景、UI 的能力；</li>
+      </ul>
+      <p>拟招 5 人左右。</p>
+      <h3 id="开发部">开发部</h3>
+      <p>806 开发部欢迎对 Android、IOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
+      <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
+      <p>开发部的目标是：</p>
+      <ul>
+        <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
+        <li>参与一些热门 github 项目的开发和维护；</li>
+      </ul>
+      <p>我们希望你：</p>
+      <ul>
+        <li>对上述领域任一项或多项感兴趣；</li>
+        <li>有 python/java/golang/js 或其他语言中的一个或多个的开发经验。</li>
+      </ul>
+      <p>加分项：</p>
+      <ul>
+        <li>有开源项目，对开源感兴趣；</li>
+        <li>接触过一个或多个常见的前后端框架，如 Gin、Flask、FastAPI、SpringBoot、Vue、React；</li>
+        <li>有嵌入式开发经验，如 Arduino、树莓派、ESP32 等；</li>
+        <li>有技术博客输出的习惯；</li>
+        <li>设计过一个或多个项目。</li>
+      </ul>
+      <p>拟招 5 人左右。</p>
+      ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-09T22:52:45+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
+    <p>第八届全国大学生计算机系统能力培养大赛（龙芯杯）分为团体赛和个人赛两项赛事。团队赛共 110 支队伍报名，个人赛共 782 人报名。经过初赛的激烈角逐，全国共有 28 支代表队和 40 位个人进入决赛。</p>
+    <p class="text-center"><img src="/images/2024-10-02-lxb-01.jpg" alt="" />
+      决赛合影</p>
+    <p>在个人赛方面，刁明轩同学设计了基于 MIPS 指令集的 32 位单发射五级流水线 CPU。初赛中，该作品可以通过三级功能测试和性能测试，时钟频率可以稳定运行在 58MHz。现场决赛阶段，刁明轩同学顺利完成了现场汇编代码的编写，最终获得龙芯杯个人赛三等奖。</p>
+    <p class="text-center"><img src="/images/2024-10-02-lxb-02.jpg" alt="" />
+      个人赛颁奖（左五：刁明轩）</p>
+    <p>在团队赛方面，北科队伍 tesserae of tantalus（成员：丁正枫、王雨辰、赖烁喆、张卓立）实现了一个六级流水顺序双发射的处理器软核，同时实现了分支预测，指令数据缓存，TLB 等模块，可以顺利启动经典的 bootloader 并完成指定功能。</p>
+    <p class="text-center"><img src="/images/2024-10-02-lxb-03.jpg" alt="" />
+      团队赛决赛现场（从左到右：王雨辰、赖烁喆、丁正枫）</p>
+    <p>现场决赛阶段，经过团队指令集答题，汇编代码编写，团队答辩等环节的重重考验，最终获得全国二等奖，实现了我校在该项赛事成绩的新突破。</p>
+    <p class="text-center"><img src="/images/2024-10-02-lxb-04.jpg" alt="" />
+      团队赛颁奖</p>
     <p>获奖证书：</p>
-    <p><img src="/images/2024-10-02-os-competition-certificate.jpg" alt="" /></p>
-    ]]></content><author><name>USTB-806</name></author><summary type="html"><![CDATA[近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。]]></summary></entry></feed>
+    <p class="text-center"><img src="/images/2024-10-02-lxb-certificate1.jpg" alt="" />
+      个人赛三等奖</p>
+    <p class="text-center"><img src="/images/2024-10-02-lxb-certificate2.jpg" alt="" />
+      团队赛二等奖</p>
+    ]]></content><author><name>USTB-806</name></author><category term="获奖" /><category term="系统部" /><summary type="html"><![CDATA[全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-09T22:52:45+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
+  <p>全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起、由全国高校计算机教育研究会主办、面向高校大学生的全国性大赛。目标是以学科竞赛推动专业建设和计算机领域创新人才培养体系改革，培育我国高端芯片、关键基础软件的后备人才。大赛服务国家人才培养战略，以赛促学、以赛促教，鼓励学生设计、实现综合性的计算机系统，培养学生系统级的设计、分析、优化与应用能力，提升学生的技术创新、工程实践、团队协作能力，并为高水平计算机人才成长搭建交流、展示、合作的开放平台。</p>
+  <p>本届大赛吸引了全国百余所高校的 589 支参赛队报名，209 支赛队入围全国总决赛。经过激烈的初赛和决赛现场赛、答辩，全国总决赛内核实现赛最终评选出一等奖 6 项，二等奖 9 项，三等奖 12 项。</p>
+  <p>来自北京科技大学计通学院的“chaos”队从来自清华大学、北京大学、上海交通大学、哈尔滨工业大学、北京航空航天大学、华中科技大学等全国百余所高校 209 支入围总决赛的队伍中脱颖而出，获得了“操作系统设计”赛内核实现赛道（基于 RISCV 硬件）全国总决赛全国二等奖，<strong>这是我校连续第三年在大赛内核赛道获奖</strong>。</p>
+  <p class="text-center"><img src="/images/2024-10-02-os-competition-1.jpg" alt="" />
+    颁奖现场（右数第二、三分别为陈宽宽、王诺贤）</p>
+  <p><img src="/images/2024-10-02-os-competition-2.jpg" alt="" /></p>
+  <p>该队基于清华大学“rCore”类 UNIX 内核设计和开发的 ChaOS 操作系统内核使用 Rust 语言编写，可在基于 RISCV 架构的 visionfive2 开发板及其虚拟机上稳定运行。内核在页表架构与文件系统上相较 rCore 进行了大幅的重构，支持几十个 POSIX 标准系统调用和 FAT32/EXT4 文件系统。</p>
+  <p class="text-center"><img src="/images/2024-10-02-os-competition-3.jpg" alt="" />
+    ChaOS 的 <a href="https://github.com/chaos-kernel/chaos">GitHub 仓库</a></p>
+  <p>获奖证书：</p>
+  <p class="text-center"><img src="/images/2024-10-02-os-competition-certificate.jpg" alt="" />
+    全国二等奖</p>
+  ]]></content><author><name>USTB-806</name></author><category term="获奖" /><category term="系统部" /><summary type="html"><![CDATA[近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。]]></summary></entry></feed>
