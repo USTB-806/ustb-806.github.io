@@ -12,4 +12,4 @@ header:
 
 - 订阅全部内容：<{{ "/feed.xml" | absolute_url }}>
 - 订阅 806 新闻：<{{ "/feed/news.xml" | absolute_url }}>
-- 订阅 806 Blogs：<{{ "/feed/blogs.xml" | absolute_url }}>
+- 订阅 806 博客：<{{ "/feed/blogs.xml" | absolute_url }}>
