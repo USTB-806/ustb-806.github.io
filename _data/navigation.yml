@@ -25,6 +25,8 @@ wiki:
         url: /wiki/806/person-in-charge/
       - title: '<i class="fas fa-lg fa-fw fa-user-friends"></i> 806 成员'
         url: /wiki/806/members/
+      - title: '<i class="fas fa-lg fa-fw fa-link"></i> 友情链接'
+        url: /wiki/806/links
   - title: 文档
     children:
       - title: '<i class="fas fa-lg fa-fw fa-universal-access"></i> 提问指南'
