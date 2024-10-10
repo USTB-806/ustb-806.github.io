@@ -79,10 +79,6 @@ jobs:
             echo "No changes detected. Continuing the workflow."
           fi
 
-      - name: "Replace url"
-        run: |
-          make url
-
       - name: Prepare build
         if: github.ref == 'refs/heads/main'
         run: |
