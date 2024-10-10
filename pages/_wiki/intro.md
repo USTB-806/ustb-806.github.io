@@ -15,11 +15,11 @@
 
 ### LOGO
 
-![logo](/static/806-logo-with-name.jpg)
+![logo](/static/web/806-logo-with-name.jpg)
 
 ### 牌匾
 
-![banner](/static/806-banner.jpg)
+![banner](/static/web/806-banner.jpg)
 
 ## 更多信息
 

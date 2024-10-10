@@ -9,7 +9,7 @@ _site
 .sass-cache
 
 # Our static content
-/static/
+/static/web/
 
 # We now ignore *.html, as prettier cannot parse when they are Jekyll templates.
 *.html

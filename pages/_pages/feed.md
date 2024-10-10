@@ -6,7 +6,7 @@ permalink: /feed/
 layout: single
 toc: false
 header:
-  overlay_image: "/static/806_1.jpg"
+  overlay_image: "/static/web/806_1.jpg"
   overlay_filter: 0.25
 ---
 

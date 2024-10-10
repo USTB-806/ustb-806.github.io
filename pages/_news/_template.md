@@ -2,7 +2,7 @@
 title: "请注意查看标题格式"
 author: "Your Name?（可以为空）"
 header:
-    overlay_image: /images/news-header.jpg
+    overlay_image: /static/post/news-header.jpg
 categories: []
 tags: []
 ---

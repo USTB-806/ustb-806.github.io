@@ -6,6 +6,6 @@ pagination:
   enabled: true
   collection: news
 header:
-  overlay_image: "/static/news-banner.jpg"
+  overlay_image: "/static/web/news-banner.jpg"
   overlay_filter: 0.2
 ---
