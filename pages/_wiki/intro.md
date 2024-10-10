@@ -15,11 +15,11 @@
 
 ### LOGO
 
-![logo](/static/web/806-logo-with-name.jpg)
+![logo](https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/web/806-logo-with-name.jpg)
 
 ### 牌匾
 
-![banner](/static/web/806-banner.jpg)
+![banner](https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/web/806-banner.jpg)
 
 ## 更多信息
 

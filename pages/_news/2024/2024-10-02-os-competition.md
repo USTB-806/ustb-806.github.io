@@ -2,7 +2,7 @@
 title: "祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩"
 author: ""
 header:
-    overlay_image: /static/post/2024-10-02-os-competition-header.jpg
+    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/post/2024-10-02-os-competition-header.jpg
 categories: ["获奖", "系统部"]
 tags: []
 ---
@@ -15,20 +15,20 @@ tags: []
 
 来自北京科技大学计通学院的“chaos”队从来自清华大学、北京大学、上海交通大学、哈尔滨工业大学、北京航空航天大学、华中科技大学等全国百余所高校 209 支入围总决赛的队伍中脱颖而出，获得了“操作系统设计”赛内核实现赛道（基于 RISCV 硬件）全国总决赛全国二等奖，**这是我校连续第三年在大赛内核赛道获奖**。
 
-![](/static/post/2024-10-02-os-competition-1.jpg)
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/post/2024-10-02-os-competition-1.jpg)
 颁奖现场（右数第二、三分别为陈宽宽、王诺贤）
 {: .text-center}
 
-![](/static/post/2024-10-02-os-competition-2.jpg)
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/post/2024-10-02-os-competition-2.jpg)
 
 该队基于清华大学“rCore”类 UNIX 内核设计和开发的 ChaOS 操作系统内核使用 Rust 语言编写，可在基于 RISCV 架构的 visionfive2 开发板及其虚拟机上稳定运行。内核在页表架构与文件系统上相较 rCore 进行了大幅的重构，支持几十个 POSIX 标准系统调用和 FAT32/EXT4 文件系统。
 
-![](/static/post/2024-10-02-os-competition-3.jpg)
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/post/2024-10-02-os-competition-3.jpg)
 ChaOS 的 [GitHub 仓库](https://github.com/chaos-kernel/chaos)
 {: .text-center}
 
 获奖证书：
 
-![](/static/post/2024-10-02-os-competition-certificate.jpg)
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/post/2024-10-02-os-competition-certificate.jpg)
 全国二等奖
 {: .text-center}
