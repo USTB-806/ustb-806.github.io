@@ -48,7 +48,7 @@ var store = [{
 "teaser": null
 },{
 "title": "友情链接",
-"excerpt":"   北京科技大学   中国科学技术大学   中国科学技术大学 Linux 用户协会  ","categories": [],
+"excerpt":"   北京科技大学   北京科技大学计算机与通信工程学院   中国科学技术大学   中国科学技术大学 Linux 用户协会  ","categories": [],
 "tags": [],
 "url": "/wiki/806/links/",
 "teaser": null
