@@ -18,6 +18,6 @@ format:
 # /static -> $(STORAGE_URL)/static
 # 仅替换 .md, .html, .yml 文件
 url:
-	@find . -type f \( -name "*.md" -o -name "*.html" -o -name "*.yml" \) -exec perl -pi -e 's|/static|$(STORAGE_URL)/static|g' {} +
+	@find . -type f \( -name "*.md" -o -name "*.html" -o -name "*.yml" \) -exec perl -pi -e 's|/static|$(STORAGE_URL)|g' {} +
 
 .PHONY: env serve format url
