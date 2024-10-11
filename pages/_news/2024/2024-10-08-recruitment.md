@@ -2,7 +2,7 @@
 title: "806 实验室 2024 届招新"
 author: ""
 header:
-    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/web/news-banner.jpg
+    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/news-banner.jpg
 categories: ["其他"]
 tags: []
 ---

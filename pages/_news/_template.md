@@ -2,7 +2,7 @@
 title: "请注意查看标题格式"
 author: "Your Name?（可以为空）"
 header:
-    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/static/post/news-header.jpg
+    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/news-header.jpg
 categories: []
 tags: []
 ---
