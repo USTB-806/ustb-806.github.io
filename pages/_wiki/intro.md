@@ -21,6 +21,20 @@
 
 ![banner](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-banner.jpg)
 
+### 铭牌
+
+![plaque](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-plaque.jpg)
+
+## 实验室照片
+
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_1.jpg)
+
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_2.jpg)
+
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_3.jpg)
+
+![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_4.jpg)
+
 ## 更多信息
 
 - [联系方式](806/contact.md)
