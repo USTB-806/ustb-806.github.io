@@ -54,7 +54,7 @@ var store = [{
 "teaser": null
 },{
 "title": "806 成员",
-"excerpt":"不在下列名单内的皆不为 806 正式成员。 2024 届 部门 姓名 联系方式 系统部 王诺贤 个人网站, GitHub   陈宽宽 个人网站, GitHub   王雨辰 个人网站, GitHub   丁正枫 GitHub   刁明轩 GitHub   周奔成 GitHub 人工智能部 祁珏瑜 GitHub   陈铎友 个人网站, GitHub   崔永亮 GitHub   张灿 GitHub   王苏晴 个人网站, GitHub 开发部 廖玮珑 个人网站, GitHub...","categories": [],
+"excerpt":"不在下列名单内的皆不为 806 正式成员。 2024 届 部门 姓名 联系方式 系统部 王诺贤 个人网站, GitHub   陈宽宽 个人网站, GitHub   王雨辰 个人网站, GitHub   丁正枫 GitHub   刁明轩 GitHub   周奔成 GitHub 人工智能部 陈铎友 个人网站, GitHub   祁珏瑜 GitHub   崔永亮 GitHub   张灿 GitHub   王苏晴 个人网站, GitHub 开发部 廖玮珑 个人网站, GitHub...","categories": [],
 "tags": [],
 "url": "/wiki/806/members/",
 "teaser": null
