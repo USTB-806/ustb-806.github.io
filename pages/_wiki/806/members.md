@@ -16,7 +16,7 @@
 |            | 刁明轩 | [GitHub](https://github.com/dmx20070206)                                                                     |
 |            | 周奔成 | [GitHub](https://github.com/ZhouBencheng)                                                                    |
 | 人工智能部 | 祁珏瑜 | [GitHub](https://github.com/QodiCat)                                                                         |
-|            | 陈铎友 | [GitHub](https://github.com/Chandery)                                                                        |
+|            | 陈铎友 | [个人网站](https://chandery.chat), [GitHub](https://github.com/Chandery)                                     |
 |            | 崔永亮 | [GitHub](https://github.com/Fridemn)                                                                         |
 |            | 张灿   | [GitHub](https://github.com/volcano-can)                                                                     |
 |            | 王苏晴 | [个人网站](https://blog.csdn.net/i_want_money111?utm_source=mtoolbar), [GitHub](https://github.com/wsq53777) |
@@ -35,7 +35,7 @@
 |        | 丁正枫 | [GitHub](https://github.com/SoloMaple)                                                                       |
 |        | 周奔成 | [GitHub](https://github.com/ZhouBencheng)                                                                    |
 | AI 组  | 祁珏瑜 | [GitHub](https://github.com/QodiCat)                                                                         |
-|        | 陈铎友 | [GitHub](https://github.com/Chandery)                                                                        |
+|        | 陈铎友 | [个人网站](https://chandery.chat), [GitHub](https://github.com/Chandery)                                     |
 |        | 崔永亮 | [GitHub](https://github.com/Fridemn)                                                                         |
 |        | 张灿   | [GitHub](https://github.com/volcano-can)                                                                     |
 |        | 王苏晴 | [个人网站](https://blog.csdn.net/i_want_money111?utm_source=mtoolbar), [GitHub](https://github.com/wsq53777) |
