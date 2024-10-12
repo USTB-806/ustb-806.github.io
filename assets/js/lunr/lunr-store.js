@@ -71,10 +71,22 @@ var store = [{
 "url": "/wiki/doc/add-new-post/",
 "teaser": null
 },{
+"title": "学习资源推荐",
+"excerpt":"如果你是初入 CS 领域的小白，可以先看一下这篇文章：一个仅供参考的 CS 学习规划。      计算机科学速成课：计算机领域的科普向视频，能让你对计算机科学有个全貌性的感知，墙裂推荐。   CS 自学指南：北大信科学长收集的自学课程资源网站，涵盖了计算机所有领域的国内外优秀课程。   计算机教育中缺失的一课：MIT 开设的计算机领域必学工具的课程。  ","categories": [],
+"tags": [],
+"url": "/wiki/doc/learning-resources/",
+"teaser": null
+},{
 "title": "提问的智慧",
 "excerpt":"How To Ask Questions The Smart Way Copyright © 2001,2006,2014 Eric S. Raymond, Rick Moen 本指南英文版版权为 Eric S. Raymond, Rick Moen 所有。 原文网址：http://www.catb.org/~esr/faqs/smart-questions.html 中文翻译仓库网址：https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way。以下内容来自简体中文版。 Copyleft 2001 by D.H.Grand(nOBODY/Ginux), 2010 by Gasolin, 2015 by Ryan Wu 本中文指南是基于原文 3.10 版以及 2010 年由 Gasolin 所翻译版本的最新翻译； 协助指出翻译问题，请发 issue，或直接发 pull request 给我。 本文另有繁體中文版。 原文版本历史 声明...","categories": [],
 "tags": [],
 "url": "/wiki/doc/smart-questions/",
+"teaser": null
+},{
+"title": "好用的工具推荐",
+"excerpt":"前端开发      FontAwesome：本网站所使用的图标库。   系统相关      Compiler Explorer：汇编代码翻译工具。  ","categories": [],
+"tags": [],
+"url": "/wiki/doc/tools/",
 "teaser": null
 },{
 "title": "北京科技大学「勤敏轩」学生创新实验室",
