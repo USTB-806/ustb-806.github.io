@@ -29,6 +29,10 @@ wiki:
         url: /wiki/806/links
   - title: 文档
     children:
+      - title: '<i class="fas fa-lg fa-fw fa-book"></i> 学习资源'
+        url: /wiki/doc/learning-resources/
+      - title: '<i class="fas fa-lg fa-fw fa-tools"></i> 实用工具'
+        url: /wiki/doc/tools/
       - title: '<i class="fas fa-lg fa-fw fa-universal-access"></i> 提问指南'
         url: /wiki/doc/smart-questions/
       - title: '<i class="fas fa-lg fa-fw fa-pencil-alt"></i> 添加文章'
