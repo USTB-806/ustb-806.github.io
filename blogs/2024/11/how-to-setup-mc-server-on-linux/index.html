@@ -1,0 +1,547 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="zh-CN" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- begin _includes/seo.html -->
+    <title>如何在 Linux 上部署一个 MC 纯净/整合包服务器 - 806 @ USTB</title>
+    <meta name="description" content="作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨">
+    <meta name="author" content="Nelson Boss">
+    <meta property="article:author" content="Nelson Boss">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:site_name" content="806 @ USTB">
+    <meta property="og:title" content="如何在 Linux 上部署一个 MC 纯净/整合包服务器">
+    <meta property="og:url" content="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/">
+    <meta property="og:description" content="作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨">
+    <meta property="og:image" content="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png">
+    <meta property="article:published_time" content="2024-11-20T00:00:00+08:00">
+    <meta property="article:modified_time" content="2024-11-21T20:37:10+08:00">
+    <link rel="canonical" href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/">
+    <!-- end _includes/seo.html -->
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="806 @ USTB Feed">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#f3f6f6">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#f3f6f6">
+    <script type="text/javascript">
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+      window.enable_copy_code_button = true;
+    </script>
+    <!-- 不蒜子页面统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="/assets/css/main.css?v=92f1a71">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
+    <!-- start custom head snippets -->
+    <!-- insert favicons. use https://realfavicongenerator.net/ -->
+    <!-- end custom head snippets -->
+  </head>
+  <body class="layout--single">
+    <nav class="skip-links">
+      <ul>
+        <li><a href="#site-nav" class="screen-reader-shortcut">转到主导航栏</a></li>
+        <li><a href="#main" class="screen-reader-shortcut">转到内容</a></li>
+        <li><a href="#footer" class="screen-reader-shortcut">转到底部</a></li>
+      </ul>
+    </nav>
+    <div class="masthead">
+      <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+          <nav id="site-nav" class="greedy-nav">
+            <a class="site-logo" href="/"><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-logo.jpg" alt="806 @ USTB"></a>
+            <a class="site-title" href="/">
+              806 @ USTB
+            </a>
+            <ul class="visible-links">
+              <li class="masthead__menu-item">
+                <a
+                href="/wiki/"
+                
+                
+              ><i class="fad fa-lg fa-fw fa-star-shooting"></i> Wiki</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                href="/news/"
+                
+                
+              ><i class="fad fa-lg fa-fw fa-newspaper"></i> News</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                href="/blogs/"
+                
+                
+              ><i class="fad fa-lg fa-fw fa-blog"></i> Blogs</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                href="https://github.com/ustb-806"
+                
+                
+              ><i class="fab fa-lg fa-fw fa-github"></i> GitHub</a>
+              </li>
+            </ul>
+            <button class="greedy-nav__toggle hidden" type="button">
+              <span class="visually-hidden">切换菜单</span>
+              <div class="navicon"></div>
+            </button>
+            <ul class="hidden-links hidden"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="initial-content">
+      <div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png');"
+>
+        <div class="wrapper">
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            如何在 Linux 上部署一个 MC 纯净/整合包服务器
+          </h1>
+          <p class="page__meta">
+            <span class="page__meta-date">
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              <time datetime="2024-11-20T00:00:00+08:00">2024 年 11 月 20 日</time>
+            </span>
+            <span class="page__meta-sep"></span>
+            <span class="page__meta-readtime">
+              <i class="far fa-clock" aria-hidden="true"></i>
+              8 分钟阅读
+            </span>
+          </p>
+        </div>
+      </div>
+      <div id="main" role="main">
+        <div class="sidebar sticky">
+          <div itemscope itemtype="https://schema.org/Person" class="h-card">
+            <div class="author__avatar">
+              <a href="https://ustb-806.github.io/">
+                <img src="https://secure.gravatar.com/avatar/c3991bf30d5d7f54983c6d89b4a04b92?s=256&d=identicon&r=g" alt="Nelson Boss" itemprop="image" class="u-photo">
+              </a>
+            </div>
+            <div class="author__content">
+              <h3 class="author__name p-name" itemprop="name">
+                <a class="u-url" rel="me" href="https://ustb-806.github.io/" itemprop="url">Nelson Boss</a>
+              </h3>
+              <div class="author__bio p-note" itemprop="description">
+                <p>一直游到海水变蓝</p>
+              </div>
+            </div>
+            <div class="author__urls-wrapper">
+              <button class="btn btn--inverse">关注</button>
+              <ul class="author__urls social-icons">
+                <li><a href="https://bosswnx.xyz/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="far fa-fw fa-globe" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://github.com/bosswnx" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+          <meta itemprop="headline" content="如何在 Linux 上部署一个 MC 纯净/整合包服务器">
+          <meta itemprop="description" content="  作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨">
+          <meta itemprop="datePublished" content="2024-11-20T00:00:00+08:00">
+          <meta itemprop="dateModified" content="2024-11-21T20:37:10+08:00">
+          <div class="page__inner-wrap">
+            <section class="page__content" itemprop="text">
+              <aside class="sidebar__right sticky">
+                <nav class="toc">
+                  <header>
+                    <h4 class="nav__title"><i class="fas fa-file-alt"></i> 目录</h4>
+                  </header>
+                  <ul class="toc__menu">
+                    <li><a href="#配置-java-环境">配置 Java 环境</a></li>
+                    <li><a href="#配置服务端">配置服务端</a>
+                      <ul>
+                        <li><a href="#原版vanilla">原版（Vanilla）</a></li>
+                        <li><a href="#forge">Forge</a></li>
+                        <li><a href="#fabric">Fabric</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#更多的配置可选">更多的配置（可选）</a>
+                      <ul>
+                        <li><a href="#screen">Screen</a></li>
+                        <li><a href="#serverproperties">server.properties</a></li>
+                        <li><a href="#启动参数">启动参数</a></li>
+                        <li><a href="#开放防火墙端口">开放防火墙端口</a></li>
+                        <li><a href="#记分板">记分板</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#配置-mcdreforged可选">配置 MCDReforged（可选）</a></li>
+                    <li><a href="#本文完">本文完</a></li>
+                  </ul>
+                </nav>
+              </aside>
+              <blockquote>
+                <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨</p>
+              </blockquote>
+              <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
+              <p>本文的环境是：</p>
+              <ul>
+                <li>Ubuntu 24.04 LTS</li>
+                <li><a href="https://www.mcmod.cn/modpack/273.html">冬季救援整合包</a>（1.16.5 Forge）</li>
+              </ul>
+              <p>一些背景知识：</p>
+              <ul>
+                <li>连接服务器使用 SSH，这里推荐一个很好用的 SSH 客户端 <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a>，其能直接通过自带的 sftp 工具传输文件。</li>
+                <li>在服务器上下载文件可以使用 <code class="language-plaintext highlighter-rouge">wget</code>，复制想要下载的文件的链接，直接在终端输入 <code class="language-plaintext highlighter-rouge">wget &lt;下载链接&gt;</code> 回车即可。</li>
+              </ul>
+              <h2 id="配置-java-环境">配置 Java 环境</h2>
+              <p>MC 是用 Java 写的，所以配置 Java 环境也很合理。</p>
+              <p>安装 Java 运行环境之前，首先需要知道想要运行的 MC 版本对应的 Java 版本是多少，这里搬运 <a href="https://zh.minecraft.wiki/w/Tutorial:%E6%9B%B4%E6%96%B0Java?variant=zh-cn">MC 官方 Wiki</a> 里关于 Java 版本的说明：</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Minecraft 开发版本</th>
+                    <th>Minecraft 正式版本</th>
+                    <th>最低要求 Java 版本</th>
+                    <th>官启绑定 Java 版本</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://zh.minecraft.wiki/w/24w14a">24w14a</a>及以上</td>
+                    <td><a href="https://zh.minecraft.wiki/w/Java版1.20.5">1.20.5</a>及以上</td>
+                    <td>Java 21</td>
+                    <td>21.0.3</td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://zh.minecraft.wiki/w/22w18a">22w18a</a>至<a href="https://zh.minecraft.wiki/w/24w13a">24w13a</a></td>
+                    <td><a href="https://zh.minecraft.wiki/w/Java版1.19">1.19</a>至<a href="https://zh.minecraft.wiki/w/Java版1.20.4">1.20.4</a></td>
+                    <td>Java 17</td>
+                    <td>17.0.8</td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://zh.minecraft.wiki/w/Java版1.18-pre2">1.18-pre2</a>至<a href="https://zh.minecraft.wiki/w/22w17a">22w17a</a></td>
+                    <td><a href="https://zh.minecraft.wiki/w/Java版1.18">1.18</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18.2">1.18.2</a></td>
+                    <td>Java 17</td>
+                    <td>17.0.1</td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://zh.minecraft.wiki/w/21w19a">21w19a</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18-pre1">1.18-pre1</a></td>
+                    <td><a href="https://zh.minecraft.wiki/w/Java版1.17">1.17</a>至<a href="https://zh.minecraft.wiki/w/Java版1.17.1">1.17.1</a></td>
+                    <td>Java 16</td>
+                    <td>16.0.1</td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://zh.minecraft.wiki/w/21w18a">21w18a</a>及以下</td>
+                    <td><a href="https://zh.minecraft.wiki/w/Java版1.16.5">1.16.5</a>及以下</td>
+                    <td>Java 8</td>
+                    <td>1.8.0_51</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>由于我需要运行的版本是 1.16.5，因此这里需要安装 Java 8。</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openjdk-8-jdk
+</code></pre>
+                </div>
+              </div>
+              <p>对于其他的 Java 版本，一般来说将上面指令中的 <code class="language-plaintext highlighter-rouge">8</code> 替换成对应的版本号就可以了。</p>
+              <p>安装完成后可以使用 <code class="language-plaintext highlighter-rouge">java --version</code> 来查看版本是否正确。</p>
+              <p>如果服务器同时安装了多个版本的 Java，可以使用下面的指令来切换默认的 Java 版本：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--config</span> java
+</code></pre>
+                </div>
+              </div>
+              <h2 id="配置服务端">配置服务端</h2>
+              <p>对于原版、Forge 和 Fabric，初始化服务端的方式各不相同。</p>
+              <p>国内的 MCSL 维护了一套服务端文件的镜像（<a href="https://sync.mcsl.com.cn/">这里</a>），后文讲到的文件可以先在这里尝试下载。</p>
+              <h3 id="原版vanilla">原版（Vanilla）</h3>
+              <p>MC 原版的服务端文件可以直接在 Minecraft 官网上下载。直接 Bing/Google 搜索 <code class="language-plaintext highlighter-rouge">minecraft server &lt;版本号&gt; 下载</code>，找到官方网站对应的下载链接即可。下载下来的服务端一般是一个名为 <code class="language-plaintext highlighter-rouge">server.jar</code>的 jar 文件。</p>
+              <p>需要注意两点：</p>
+              <ul>
+                <li>不要用百度，百度只会把你导航到网易（MC 的国内代理，但是依托**）。</li>
+                <li>进入官网后，如果你没有挂梯子的话，那么同样会弹窗让你跳转到网易，注意点击下方的 <code class="language-plaintext highlighter-rouge">Stay on Minecraft.net</code>留在国际版官网。</li>
+              </ul>
+              <p>当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Vanilla">MCSL 镜像源</a>下载。</p>
+              <p>接下来找到一个合适的目录，初始化服务端：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>java <span class="nt">-jar</span> server.jar nogui
+</code></pre>
+                </div>
+              </div>
+              <p>第一次运行服务端，会创建一个 <code class="language-plaintext highlighter-rouge">eula.txt</code>然后报错退出，这个文件的作用是同意许可。使用 vim 或 nano 或其他方式打开，将里面的 <code class="language-plaintext highlighter-rouge">false</code> 改成 <code class="language-plaintext highlighter-rouge">true</code>，保存退出，重新启动即可。</p>
+              <p>等到终端出现 <code class="language-plaintext highlighter-rouge">Done!</code> 等文字的时候，说明服务器已经成功启动，此时已经可以直接开始玩了。不过后面会配置一些很好用的工具，请继续阅读下文。</p>
+              <h3 id="forge">Forge</h3>
+              <p>Forge 端可以在 <a href="https://files.minecraftforge.net/net/minecraftforge/forge/">Forge 官网</a>上下载（可能需要挂梯子）。当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Forge">MCSL 镜像源</a>下载。</p>
+              <p><strong>注意</strong>：Forge 的小版本之间也会出现不兼容的情况，所以如果是配置整合包的话，一定要下载和整合包的 Forge 版本完全一致的服务端。</p>
+              <p>下载下来后会得到一个名为 <code class="language-plaintext highlighter-rouge">forge-&lt;游戏版本&gt;-&lt;Forge版本&gt;-installer.jar</code>的文件。这里我下载的文件名为 <code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.34-installer.jar</code>。</p>
+              <p>找到一个合适的目录，启动：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.34-installer.jar <span class="nt">--installServer</span>  <span class="c"># 注意要把文件替换为自己下载的</span>
+</code></pre>
+                </div>
+              </div>
+              <p>接下来 Forge Installer 会下载一系列文件，包括服务端原始文件，然后自动进行配置。这个阶段需要保持服务器有良好的网络。该过程有可能需要翻墙。</p>
+              <p>配置完成之后，会留下一些文件，其中最重要的是三个（注意替换成自己的版本号）：</p>
+              <ul>
+                <li><code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.39.jar</code>：Forge 的主体文件，也是 Forge 端运行的入口；</li>
+                <li><code class="language-plaintext highlighter-rouge">libraries</code>：资源文件；</li>
+                <li><code class="language-plaintext highlighter-rouge">minecraft_server.1.16.5.jar</code>：Forge 运行的服务端文件。</li>
+              </ul>
+              <p>接下来就可以启动服务器了：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.39.jar nogui  <span class="c"># 注意把文件替换为自己的</span>
+</code></pre>
+                </div>
+              </div>
+              <p>和原版服务器一样，第一次启动会创建 <code class="language-plaintext highlighter-rouge">eula.txt</code> 文件并报错退出，需要将该文件里面的 <code class="language-plaintext highlighter-rouge">false</code> 修改为 <code class="language-plaintext highlighter-rouge">true</code> 保存退出，重新启动即可。</p>
+              <p>接下来只需要将想要添加的 mod 放入 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹，重新启动，即可加载 mod。</p>
+              <p>不过如果是想配置整合包的话，还需要做接下来的工作。</p>
+              <p>整合包一般分为两种发布方法，一种是直接把整个游戏打成压缩包，而另一种是采用配置文件压缩包的形式（压缩包内部有一个 <code class="language-plaintext highlighter-rouge">overrides</code> 文件夹，需要从启动器的<code class="language-plaintext highlighter-rouge">导入整合包</code>来进行导入）：</p>
+              <ul>
+                <li>对于第一种方法，需要将压缩包内的 <code class="language-plaintext highlighter-rouge">mods</code>文件夹和所有的与「配置」相关的文件夹都复制到服务器目录下（包括但不限于 <code class="language-plaintext highlighter-rouge">config</code>、<code class="language-plaintext highlighter-rouge">kubejs</code>、<code class="language-plaintext highlighter-rouge">scripts</code>）。<strong>这一部很重要，如果漏掉了任何一个配置文件都可能会导致整合包运行不正确，所以务必仔细检查。</strong></li>
+                <li>而对于第二种方法，首先在本地客户端导入整合包，在本地安装完之后，进入游戏版本根目录，将 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹复制到服务器目录下。然后，将配置文件压缩包里 <code class="language-plaintext highlighter-rouge">overrides</code>文件夹下的所有文件复制到服务器目录下即可。</li>
+              </ul>
+              <p>完成上述操作后，将刚刚启动生成的 <code class="language-plaintext highlighter-rouge">world</code> 文件夹删除（如果没有就不用管了，这一步是因为整合包可能会对地图生成进行改动，需要将原版生成的地图删除了重新生成），重新启动服务端即可。</p>
+              <h3 id="fabric">Fabric</h3>
+              <p>Fabric 和 Forge 的安装步骤除了下载文件以外基本上相同。</p>
+              <p>相比于 Forge 完全不提供中文安装教程，Fabric 提供了一个非常友好的<a href="https://wiki.fabricmc.net/zh_cn:player:tutorials:install_server">官方中文安装教程</a>，请参考这个教程进行安装，然后跳转到 <a href="#forge">Forge 章节</a>的整合包配置部分。</p>
+              <h2 id="更多的配置可选">更多的配置（可选）</h2>
+              <p>进行完上述的步骤后，服务器文件夹下大致会有以下文件：</p>
+              <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux.png" alt="" /></p>
+              <p>我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。</p>
+              <p>其中和整合包 mod 配置相关的文件有：<code class="language-plaintext highlighter-rouge">config</code>，<code class="language-plaintext highlighter-rouge">kubejs</code>，<code class="language-plaintext highlighter-rouge">defaultconfigs</code>，<code class="language-plaintext highlighter-rouge">worldshape</code>；</p>
+              <p>此时，其实就可以启动服务器开始玩了！但是我们还可以再进一步配置一些东西更方便我们运维。</p>
+              <h3 id="screen">Screen</h3>
+              <p>启动服务器的时候可以使用 screen、tmux 等工具将其挂在后台，这样就可以切断 SSH 连接而不会导致服务器关闭。接下来简单介绍 screen。</p>
+              <p>首先安装 screen：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>screen
+</code></pre>
+                </div>
+              </div>
+              <p>可以通过指令 <code class="language-plaintext highlighter-rouge">screen</code>启动一个新的 screen 会话。可以发现，screen 会话和普通的终端没有什么不同，因为其直接沿用了当前终端的配置。不过，screen 会话可以通过快捷键 <code class="language-plaintext highlighter-rouge">&lt;Ctrl-A&gt; + z</code> 来挂起当前会话，通过指令 <code class="language-plaintext highlighter-rouge">screen -r</code> 来重新连接挂起的会话。</p>
+              <p>这样每次使用 screen 启动服务器之后，就可以直接关闭终端，让服务器在后台继续运行，下次需要运维的时候重新连接回来即可。</p>
+              <h3 id="serverproperties">server.properties</h3>
+              <p><code class="language-plaintext highlighter-rouge">server.properties</code>文件是 MC 服务器的配置文件。我们可以更改里面的一些内容来实现更好的效果：</p>
+              <ul>
+                <li><code class="language-plaintext highlighter-rouge">allow-flight</code>：建议改为 <code class="language-plaintext highlighter-rouge">true</code>，因为很多整合包提供了飞行的能力，如果不开启的话会被服务器误认为是在作弊而直接踢出；</li>
+                <li><code class="language-plaintext highlighter-rouge">difficulty</code>：服务器的难度，有 <code class="language-plaintext highlighter-rouge">peaceful</code>、<code class="language-plaintext highlighter-rouge">easy</code>、<code class="language-plaintext highlighter-rouge">normal</code>和 <code class="language-plaintext highlighter-rouge">hard</code> 四个选项；</li>
+                <li><code class="language-plaintext highlighter-rouge">motd</code>：服务器显示在游戏内的说明文字；</li>
+                <li><code class="language-plaintext highlighter-rouge">pvp</code>：玩家之间是否相互可以攻击；</li>
+                <li><code class="language-plaintext highlighter-rouge">server-port</code>：服务器的端口，如果一台机子上需要运行多个服务器的话，需要分别设置不同的端口才能运行，否则会冲突。</li>
+                <li><code class="language-plaintext highlighter-rouge">online-mode</code>：正版验证，开启了的话需要服务器联网才能加入，好处是能有皮肤。</li>
+                <li><code class="language-plaintext highlighter-rouge">view-distance</code>：服务器渲染的视距，依照服务器的性能进行调整，如果卡了就调低一点；</li>
+              </ul>
+              <h3 id="启动参数">启动参数</h3>
+              <p>启动服务器的时候可以在 java 指令后添加一些参数来优化性能，这里我只设置了服务器的内存：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>java <span class="nt">-jar</span> <span class="nt">-Xmx16G</span> <span class="nt">-Xms16G</span> server.jar nogui
+</code></pre>
+                </div>
+              </div>
+              <p>其中：</p>
+              <ul>
+                <li><code class="language-plaintext highlighter-rouge">-Xmx</code>：设置最大内存；</li>
+                <li><code class="language-plaintext highlighter-rouge">-Xms</code>：设置最小内存；</li>
+                <li><code class="language-plaintext highlighter-rouge">nogui</code>：以命令行模式启动，必须要添加，否在在命令行里会报错。</li>
+              </ul>
+              <h3 id="开放防火墙端口">开放防火墙端口</h3>
+              <p>由于 Ubunut 默认开启了防火墙 ufw，所以需要在防火墙开放 MC 服务器默认的端口 <code class="language-plaintext highlighter-rouge">25565</code> 才能链接到服务器。</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">sudo </span>ufw allow 25565  <span class="c"># 开放 25565 端口</span>
+</code></pre>
+                </div>
+              </div>
+              <p>如果服务器使用了其他的端口的话，需要改成开放对应的其他端口。</p>
+              <h3 id="记分板">记分板</h3>
+              <p>你可能在看别的人玩服务器的时候发现，可以在 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 键的玩家列表里看到所有玩家的血量，在显示屏右边有一个榜单显示当前死亡数等……这些都是通过原版的记分板实现的。</p>
+              <p>启用 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 显示血量：</p>
+              <div class="language-text highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>scoreboard objectives add health health "血量"
+scoreboard objectives setdisplay list health
+</code></pre>
+                </div>
+              </div>
+              <p>启用侧边栏死亡计数：</p>
+              <div class="language-text highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>scoreboard objectives add deathCount deathCount "死亡数"
+scoreboard objectives setdisplay sidebar deathCount
+</code></pre>
+                </div>
+              </div>
+              <h2 id="配置-mcdreforged可选">配置 MCDReforged（可选）</h2>
+              <p>接下来我们会配置一个非常好用的 MC 服务端管理工具 <a href="https://mcdreforged.com/zh-CN">MCDReforged</a>。这个工具是 TIS 服务器开发的，能够在不修改原版任何东西的基础上，给服务端添加很多很好用的功能，比如：自动备份、自动启停、显示玩家位置等。</p>
+              <p>MCDReforged 的安装请参考<a href="https://docs.mcdreforged.com/zh-cn/latest/quick_start/index.html">官方手册</a>。注意，安装方式最好选择 pipx，实测在 Ubuntu 24.04 LTS 下只能使用 pipx 安装方式。</p>
+              <p>配置好后，每次启动服务器就是在 MCDReforged 的目录下使用指令 <code class="language-plaintext highlighter-rouge">mcdreforged</code> 启动。</p>
+              <p>除了接管 MC 那难用的控制台以外，MCDReforged 最好用的功能就是丰富的插件生态。可以查看<a href="https://mcdreforged.com/zh-CN/plugins">官方插件仓库</a>来查找自己喜欢的插件。这里我列举我每次都会安装的几个插件：</p>
+              <ul>
+                <li><a href="https://mcdreforged.com/zh-CN/plugin/info">Info</a>：能够获取当前服务器的各种信息，例如 CPU 利用率、内存使用率、存档大小等。</li>
+                <li><a href="https://mcdreforged.com/zh-CN/plugin/where2go">Where2go</a>：一个功能强大的位置插件，包含共享坐标点、查询玩家位置等功能。</li>
+                <li><a href="https://mcdreforged.com/zh-CN/plugin/prime_backup">Prime Backup</a>：一个强大的 MCDR 备份插件，一套先进的 Minecraft 存档备份解决方案。</li>
+                <li><a href="https://mcdreforged.com/zh-CN/plugin/hibernate_r/readme">HibernateR</a>：在服务器没有人的时候让服务器休眠，有人连接时开启。</li>
+                <li><a href="https://mcdreforged.com/zh-CN/plugin/simple_op">Simple OP</a>：<code class="language-plaintext highlighter-rouge">!!op</code> 以获取 op, <code class="language-plaintext highlighter-rouge">!!restart</code> 以重启服务器</li>
+              </ul>
+              <h2 id="本文完">本文完</h2>
+              <p>最后是夹带私货时间！</p>
+              <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png" alt="" /></p>
+            </section>
+            <footer class="page__meta">
+              <p class="page__date">
+                <strong><i class="fad fa-fw fa-calendar-alt" aria-hidden="true"></i> 更新时间:</strong> <time datetime="2024-11-21">2024 年 11 月 21 日</time>
+                <strong>
+                  <i class="fas fa-fw fa-eye"></i>
+                  <span id="busuanzi_container_page_pv">阅读量：<span id="busuanzi_value_page_pv"></span></span>
+                </strong>
+              </p>
+            </footer>
+          </div>
+        </article>
+        <div class="page__related">
+          <h2 class="page__related-title">猜您还喜欢</h2>
+          <div class="grid__wrapper">
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/news/2024/10/recruitment-iterview-schedule/" rel="permalink">806 实验室 2024 届招新面试安排
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-10-22T00:00:00+08:00">2024 年 10 月 22 日</time>
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">面试地点为「机电楼 806 室」，时间安排如下：
+                </p>
+              </article>
+            </div>
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/news/2024/10/recruitment/" rel="permalink">806 实验室 2024 届招新
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-10-08T00:00:00+08:00">2024 年 10 月 8 日</time>
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。
+                </p>
+              </article>
+            </div>
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/news/2024/10/os-competition/" rel="permalink">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-10-02T00:00:00+08:00">2024 年 10 月 2 日</time>
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。
+                </p>
+              </article>
+            </div>
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/news/2024/10/lxb/" rel="permalink">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-10-02T00:00:00+08:00">2024 年 10 月 2 日</time>
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+        <!-- end custom footer snippets -->
+        <div class="footer-row">
+          <div class="footer-block footer__about">
+            <p>北京科技大学「勤敏轩」学生创新实验室是<a href="https://www.ustb.edu.cn">北京科技大学</a><a href="https://scce.ustb.edu.cn/">计算机与通信工程学院</a>下属的本科生实验室，位于机电信息楼 806 室，简称「806 实验室」。</p>
+            <br/>
+            <p>本网站基于「<a href="https://lug.ustc.edu.cn">中科大 LUG 网站</a>」修改而来，以 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 许可协议</a>开源。</p>
+          </div>
+          <div class="footer-block footer__extras">
+            <div class="footer__contact">
+              <ul>
+                <li>
+                  <a href="/wiki/intro/"><i class="fad fa-fw fa-address-card"></i> 关于我们</a>
+                </li>
+                <li>
+                  <a href="/wiki/806/contact/"><i class="fas fa-fw fa-phone-alt"></i> 联系我们</a>
+                </li>
+                <li>
+                  <a href="/wiki/806/contribute/"><i class="fad fa-fw fa-users-medical"></i> 加入我们</a>
+                </li>
+                <li>
+                  <a href="/feed/"><i class="fad fa-fw fa-rss" style="--fa-secondary-opacity: 0.6;"></i> RSS 订阅</a>
+                </li>
+                <li>
+                  <a href="https://github.com/ustb-806/ustb-806.github.io"><i class="fab fa-fw fa-github"></i> 本站仓库</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer__logo">
+              <div class="footer__logo-image">
+                <img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-logo-white-with-name.svg" style="width: 7rem; height: auto"/>
+              </div>
+              <div class="footer__logo-text">
+                <!-- a href="http://www.beian.miit.gov.cn" target="_blank">皖 ICP 备 05002528 号</a -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="/assets/js/main.min.js"></script>
+    <img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/USTB-logo.svg" style="position: fixed; bottom: -10rem; right: -10rem; opacity: 0.1; z-index: -100; width: 40rem; height:auto" />
+  </body>
+</html>

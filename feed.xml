@@ -1,336 +1,552 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-10-25T23:28:41+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-10-25T23:26:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-21T20:38:55+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-21T20:37:10+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+        <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨</p>
+      </blockquote>
+      <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
+      <p>本文的环境是：</p>
+      <ul>
+        <li>Ubuntu 24.04 LTS</li>
+        <li><a href="https://www.mcmod.cn/modpack/273.html">冬季救援整合包</a>（1.16.5 Forge）</li>
+      </ul>
+      <p>一些背景知识：</p>
+      <ul>
+        <li>连接服务器使用 SSH，这里推荐一个很好用的 SSH 客户端 <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a>，其能直接通过自带的 sftp 工具传输文件。</li>
+        <li>在服务器上下载文件可以使用 <code class="language-plaintext highlighter-rouge">wget</code>，复制想要下载的文件的链接，直接在终端输入 <code class="language-plaintext highlighter-rouge">wget &lt;下载链接&gt;</code> 回车即可。</li>
+      </ul>
+      <h2 id="配置-java-环境">配置 Java 环境</h2>
+      <p>MC 是用 Java 写的，所以配置 Java 环境也很合理。</p>
+      <p>安装 Java 运行环境之前，首先需要知道想要运行的 MC 版本对应的 Java 版本是多少，这里搬运 <a href="https://zh.minecraft.wiki/w/Tutorial:%E6%9B%B4%E6%96%B0Java?variant=zh-cn">MC 官方 Wiki</a> 里关于 Java 版本的说明：</p>
       <table>
         <thead>
           <tr>
-            <th>部门</th>
-            <th>学号</th>
-            <th>日期</th>
-            <th>时间</th>
+            <th>Minecraft 开发版本</th>
+            <th>Minecraft 正式版本</th>
+            <th>最低要求 Java 版本</th>
+            <th>官启绑定 Java 版本</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>系统部</td>
-            <td>U202442544</td>
-            <td>10/26 Sat.</td>
-            <td>19:00</td>
+            <td><a href="https://zh.minecraft.wiki/w/24w14a">24w14a</a>及以上</td>
+            <td><a href="https://zh.minecraft.wiki/w/Java版1.20.5">1.20.5</a>及以上</td>
+            <td>Java 21</td>
+            <td>21.0.3</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202341236</td>
-            <td> </td>
-            <td>19:10</td>
+            <td><a href="https://zh.minecraft.wiki/w/22w18a">22w18a</a>至<a href="https://zh.minecraft.wiki/w/24w13a">24w13a</a></td>
+            <td><a href="https://zh.minecraft.wiki/w/Java版1.19">1.19</a>至<a href="https://zh.minecraft.wiki/w/Java版1.20.4">1.20.4</a></td>
+            <td>Java 17</td>
+            <td>17.0.8</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202241800</td>
-            <td> </td>
-            <td>19:30</td>
+            <td><a href="https://zh.minecraft.wiki/w/Java版1.18-pre2">1.18-pre2</a>至<a href="https://zh.minecraft.wiki/w/22w17a">22w17a</a></td>
+            <td><a href="https://zh.minecraft.wiki/w/Java版1.18">1.18</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18.2">1.18.2</a></td>
+            <td>Java 17</td>
+            <td>17.0.1</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202442610</td>
-            <td> </td>
-            <td>19:40</td>
+            <td><a href="https://zh.minecraft.wiki/w/21w19a">21w19a</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18-pre1">1.18-pre1</a></td>
+            <td><a href="https://zh.minecraft.wiki/w/Java版1.17">1.17</a>至<a href="https://zh.minecraft.wiki/w/Java版1.17.1">1.17.1</a></td>
+            <td>Java 16</td>
+            <td>16.0.1</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202341615</td>
-            <td> </td>
-            <td>19:50</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342599</td>
-            <td> </td>
-            <td>20:00</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202340562</td>
-            <td> </td>
-            <td>20:10</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202340533</td>
-            <td> </td>
-            <td>20:20</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342109</td>
-            <td> </td>
-            <td>20:30</td>
-          </tr>
-          <tr>
-            <td>人工智能部</td>
-            <td>U202342602</td>
-            <td> </td>
-            <td>20:40</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342494</td>
-            <td> </td>
-            <td>20:50</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342147</td>
-            <td> </td>
-            <td>21:00</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202442591</td>
-            <td> </td>
-            <td>21:10</td>
-          </tr>
-          <tr>
-            <td>开发部</td>
-            <td>U202342473</td>
-            <td> </td>
-            <td>21:20</td>
-          </tr>
-          <tr>
-            <td>人工智能部</td>
-            <td>U202241805</td>
-            <td>10/27 Sun.</td>
-            <td>19:00</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202243298</td>
-            <td> </td>
-            <td>19:10</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202341609</td>
-            <td> </td>
-            <td>19:20</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202341621</td>
-            <td> </td>
-            <td>19:30</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342459</td>
-            <td> </td>
-            <td>19:40</td>
-          </tr>
-          <tr>
-            <td>开发部</td>
-            <td>U202342409</td>
-            <td> </td>
-            <td>19:50</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342490</td>
-            <td> </td>
-            <td>20:00</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342623</td>
-            <td> </td>
-            <td>20:10</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202340683</td>
-            <td> </td>
-            <td>20:20</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342665</td>
-            <td> </td>
-            <td>20:30</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202343406</td>
-            <td> </td>
-            <td>20:40</td>
-          </tr>
-          <tr>
-            <td>游戏部</td>
-            <td>U202342449</td>
-            <td> </td>
-            <td>20:50</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342472</td>
-            <td> </td>
-            <td>21:00</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342892</td>
-            <td> </td>
-            <td>21:10</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202340122</td>
-            <td> </td>
-            <td>21:20</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202442567</td>
-            <td> </td>
-            <td>21:30</td>
-          </tr>
-          <tr>
-            <td> </td>
-            <td>U202342439</td>
-            <td> </td>
-            <td>21:40</td>
-          </tr>
-          <tr>
-            <td>人工智能部</td>
-            <td>U202342615</td>
-            <td> </td>
-            <td>21:50</td>
+            <td><a href="https://zh.minecraft.wiki/w/21w18a">21w18a</a>及以下</td>
+            <td><a href="https://zh.minecraft.wiki/w/Java版1.16.5">1.16.5</a>及以下</td>
+            <td>Java 8</td>
+            <td>1.8.0_51</td>
           </tr>
         </tbody>
       </table>
-      <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
-      <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-      <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
-      ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
-    <h2 id="报名方式">报名方式</h2>
-    <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
-    <ul>
-      <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；（报名人工智能部仅需填写<code class="language-plaintext highlighter-rouge">人工智能部</code>）
-        <ul>
-          <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
-          <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
-        </ul>
-      </li>
-      <li>正文：若报名人工智能部，请在此告知报名的小组；</li>
-      <li>附件：个人简历（必须，<strong>pdf 格式</strong>，内容任意），其他能够证明个人能力的内容（可选）。</li>
-    </ul>
-    <p>我们会不定期查看邮件。若我们成功收到了你的邮件，并且你通过了简历筛选，我们会回复一封邮件以告知面试地点和时间。</p>
+      <p>由于我需要运行的版本是 1.16.5，因此这里需要安装 Java 8。</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openjdk-8-jdk
+</code></pre>
+        </div>
+      </div>
+      <p>对于其他的 Java 版本，一般来说将上面指令中的 <code class="language-plaintext highlighter-rouge">8</code> 替换成对应的版本号就可以了。</p>
+      <p>安装完成后可以使用 <code class="language-plaintext highlighter-rouge">java --version</code> 来查看版本是否正确。</p>
+      <p>如果服务器同时安装了多个版本的 Java，可以使用下面的指令来切换默认的 Java 版本：</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--config</span> java
+</code></pre>
+        </div>
+      </div>
+      <h2 id="配置服务端">配置服务端</h2>
+      <p>对于原版、Forge 和 Fabric，初始化服务端的方式各不相同。</p>
+      <p>国内的 MCSL 维护了一套服务端文件的镜像（<a href="https://sync.mcsl.com.cn/">这里</a>），后文讲到的文件可以先在这里尝试下载。</p>
+      <h3 id="原版vanilla">原版（Vanilla）</h3>
+      <p>MC 原版的服务端文件可以直接在 Minecraft 官网上下载。直接 Bing/Google 搜索 <code class="language-plaintext highlighter-rouge">minecraft server &lt;版本号&gt; 下载</code>，找到官方网站对应的下载链接即可。下载下来的服务端一般是一个名为 <code class="language-plaintext highlighter-rouge">server.jar</code>的 jar 文件。</p>
+      <p>需要注意两点：</p>
+      <ul>
+        <li>不要用百度，百度只会把你导航到网易（MC 的国内代理，但是依托**）。</li>
+        <li>进入官网后，如果你没有挂梯子的话，那么同样会弹窗让你跳转到网易，注意点击下方的 <code class="language-plaintext highlighter-rouge">Stay on Minecraft.net</code>留在国际版官网。</li>
+      </ul>
+      <p>当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Vanilla">MCSL 镜像源</a>下载。</p>
+      <p>接下来找到一个合适的目录，初始化服务端：</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>java <span class="nt">-jar</span> server.jar nogui
+</code></pre>
+        </div>
+      </div>
+      <p>第一次运行服务端，会创建一个 <code class="language-plaintext highlighter-rouge">eula.txt</code>然后报错退出，这个文件的作用是同意许可。使用 vim 或 nano 或其他方式打开，将里面的 <code class="language-plaintext highlighter-rouge">false</code> 改成 <code class="language-plaintext highlighter-rouge">true</code>，保存退出，重新启动即可。</p>
+      <p>等到终端出现 <code class="language-plaintext highlighter-rouge">Done!</code> 等文字的时候，说明服务器已经成功启动，此时已经可以直接开始玩了。不过后面会配置一些很好用的工具，请继续阅读下文。</p>
+      <h3 id="forge">Forge</h3>
+      <p>Forge 端可以在 <a href="https://files.minecraftforge.net/net/minecraftforge/forge/">Forge 官网</a>上下载（可能需要挂梯子）。当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Forge">MCSL 镜像源</a>下载。</p>
+      <p><strong>注意</strong>：Forge 的小版本之间也会出现不兼容的情况，所以如果是配置整合包的话，一定要下载和整合包的 Forge 版本完全一致的服务端。</p>
+      <p>下载下来后会得到一个名为 <code class="language-plaintext highlighter-rouge">forge-&lt;游戏版本&gt;-&lt;Forge版本&gt;-installer.jar</code>的文件。这里我下载的文件名为 <code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.34-installer.jar</code>。</p>
+      <p>找到一个合适的目录，启动：</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.34-installer.jar <span class="nt">--installServer</span>  <span class="c"># 注意要把文件替换为自己下载的</span>
+</code></pre>
+        </div>
+      </div>
+      <p>接下来 Forge Installer 会下载一系列文件，包括服务端原始文件，然后自动进行配置。这个阶段需要保持服务器有良好的网络。该过程有可能需要翻墙。</p>
+      <p>配置完成之后，会留下一些文件，其中最重要的是三个（注意替换成自己的版本号）：</p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.39.jar</code>：Forge 的主体文件，也是 Forge 端运行的入口；</li>
+        <li><code class="language-plaintext highlighter-rouge">libraries</code>：资源文件；</li>
+        <li><code class="language-plaintext highlighter-rouge">minecraft_server.1.16.5.jar</code>：Forge 运行的服务端文件。</li>
+      </ul>
+      <p>接下来就可以启动服务器了：</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.39.jar nogui  <span class="c"># 注意把文件替换为自己的</span>
+</code></pre>
+        </div>
+      </div>
+      <p>和原版服务器一样，第一次启动会创建 <code class="language-plaintext highlighter-rouge">eula.txt</code> 文件并报错退出，需要将该文件里面的 <code class="language-plaintext highlighter-rouge">false</code> 修改为 <code class="language-plaintext highlighter-rouge">true</code> 保存退出，重新启动即可。</p>
+      <p>接下来只需要将想要添加的 mod 放入 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹，重新启动，即可加载 mod。</p>
+      <p>不过如果是想配置整合包的话，还需要做接下来的工作。</p>
+      <p>整合包一般分为两种发布方法，一种是直接把整个游戏打成压缩包，而另一种是采用配置文件压缩包的形式（压缩包内部有一个 <code class="language-plaintext highlighter-rouge">overrides</code> 文件夹，需要从启动器的<code class="language-plaintext highlighter-rouge">导入整合包</code>来进行导入）：</p>
+      <ul>
+        <li>对于第一种方法，需要将压缩包内的 <code class="language-plaintext highlighter-rouge">mods</code>文件夹和所有的与「配置」相关的文件夹都复制到服务器目录下（包括但不限于 <code class="language-plaintext highlighter-rouge">config</code>、<code class="language-plaintext highlighter-rouge">kubejs</code>、<code class="language-plaintext highlighter-rouge">scripts</code>）。<strong>这一部很重要，如果漏掉了任何一个配置文件都可能会导致整合包运行不正确，所以务必仔细检查。</strong></li>
+        <li>而对于第二种方法，首先在本地客户端导入整合包，在本地安装完之后，进入游戏版本根目录，将 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹复制到服务器目录下。然后，将配置文件压缩包里 <code class="language-plaintext highlighter-rouge">overrides</code>文件夹下的所有文件复制到服务器目录下即可。</li>
+      </ul>
+      <p>完成上述操作后，将刚刚启动生成的 <code class="language-plaintext highlighter-rouge">world</code> 文件夹删除（如果没有就不用管了，这一步是因为整合包可能会对地图生成进行改动，需要将原版生成的地图删除了重新生成），重新启动服务端即可。</p>
+      <h3 id="fabric">Fabric</h3>
+      <p>Fabric 和 Forge 的安装步骤除了下载文件以外基本上相同。</p>
+      <p>相比于 Forge 完全不提供中文安装教程，Fabric 提供了一个非常友好的<a href="https://wiki.fabricmc.net/zh_cn:player:tutorials:install_server">官方中文安装教程</a>，请参考这个教程进行安装，然后跳转到 <a href="#forge">Forge 章节</a>的整合包配置部分。</p>
+      <h2 id="更多的配置可选">更多的配置（可选）</h2>
+      <p>进行完上述的步骤后，服务器文件夹下大致会有以下文件：</p>
+      <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux.png" alt="" /></p>
+      <p>我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。</p>
+      <p>其中和整合包 mod 配置相关的文件有：<code class="language-plaintext highlighter-rouge">config</code>，<code class="language-plaintext highlighter-rouge">kubejs</code>，<code class="language-plaintext highlighter-rouge">defaultconfigs</code>，<code class="language-plaintext highlighter-rouge">worldshape</code>；</p>
+      <p>此时，其实就可以启动服务器开始玩了！但是我们还可以再进一步配置一些东西更方便我们运维。</p>
+      <h3 id="screen">Screen</h3>
+      <p>启动服务器的时候可以使用 screen、tmux 等工具将其挂在后台，这样就可以切断 SSH 连接而不会导致服务器关闭。接下来简单介绍 screen。</p>
+      <p>首先安装 screen：</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>screen
+</code></pre>
+        </div>
+      </div>
+      <p>可以通过指令 <code class="language-plaintext highlighter-rouge">screen</code>启动一个新的 screen 会话。可以发现，screen 会话和普通的终端没有什么不同，因为其直接沿用了当前终端的配置。不过，screen 会话可以通过快捷键 <code class="language-plaintext highlighter-rouge">&lt;Ctrl-A&gt; + z</code> 来挂起当前会话，通过指令 <code class="language-plaintext highlighter-rouge">screen -r</code> 来重新连接挂起的会话。</p>
+      <p>这样每次使用 screen 启动服务器之后，就可以直接关闭终端，让服务器在后台继续运行，下次需要运维的时候重新连接回来即可。</p>
+      <h3 id="serverproperties">server.properties</h3>
+      <p><code class="language-plaintext highlighter-rouge">server.properties</code>文件是 MC 服务器的配置文件。我们可以更改里面的一些内容来实现更好的效果：</p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">allow-flight</code>：建议改为 <code class="language-plaintext highlighter-rouge">true</code>，因为很多整合包提供了飞行的能力，如果不开启的话会被服务器误认为是在作弊而直接踢出；</li>
+        <li><code class="language-plaintext highlighter-rouge">difficulty</code>：服务器的难度，有 <code class="language-plaintext highlighter-rouge">peaceful</code>、<code class="language-plaintext highlighter-rouge">easy</code>、<code class="language-plaintext highlighter-rouge">normal</code>和 <code class="language-plaintext highlighter-rouge">hard</code> 四个选项；</li>
+        <li><code class="language-plaintext highlighter-rouge">motd</code>：服务器显示在游戏内的说明文字；</li>
+        <li><code class="language-plaintext highlighter-rouge">pvp</code>：玩家之间是否相互可以攻击；</li>
+        <li><code class="language-plaintext highlighter-rouge">server-port</code>：服务器的端口，如果一台机子上需要运行多个服务器的话，需要分别设置不同的端口才能运行，否则会冲突。</li>
+        <li><code class="language-plaintext highlighter-rouge">online-mode</code>：正版验证，开启了的话需要服务器联网才能加入，好处是能有皮肤。</li>
+        <li><code class="language-plaintext highlighter-rouge">view-distance</code>：服务器渲染的视距，依照服务器的性能进行调整，如果卡了就调低一点；</li>
+      </ul>
+      <h3 id="启动参数">启动参数</h3>
+      <p>启动服务器的时候可以在 java 指令后添加一些参数来优化性能，这里我只设置了服务器的内存：</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>java <span class="nt">-jar</span> <span class="nt">-Xmx16G</span> <span class="nt">-Xms16G</span> server.jar nogui
+</code></pre>
+        </div>
+      </div>
+      <p>其中：</p>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">-Xmx</code>：设置最大内存；</li>
+        <li><code class="language-plaintext highlighter-rouge">-Xms</code>：设置最小内存；</li>
+        <li><code class="language-plaintext highlighter-rouge">nogui</code>：以命令行模式启动，必须要添加，否在在命令行里会报错。</li>
+      </ul>
+      <h3 id="开放防火墙端口">开放防火墙端口</h3>
+      <p>由于 Ubunut 默认开启了防火墙 ufw，所以需要在防火墙开放 MC 服务器默认的端口 <code class="language-plaintext highlighter-rouge">25565</code> 才能链接到服务器。</p>
+      <div class="language-bash highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="nb">sudo </span>ufw allow 25565  <span class="c"># 开放 25565 端口</span>
+</code></pre>
+        </div>
+      </div>
+      <p>如果服务器使用了其他的端口的话，需要改成开放对应的其他端口。</p>
+      <h3 id="记分板">记分板</h3>
+      <p>你可能在看别的人玩服务器的时候发现，可以在 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 键的玩家列表里看到所有玩家的血量，在显示屏右边有一个榜单显示当前死亡数等……这些都是通过原版的记分板实现的。</p>
+      <p>启用 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 显示血量：</p>
+      <div class="language-text highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>scoreboard objectives add health health "血量"
+scoreboard objectives setdisplay list health
+</code></pre>
+        </div>
+      </div>
+      <p>启用侧边栏死亡计数：</p>
+      <div class="language-text highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>scoreboard objectives add deathCount deathCount "死亡数"
+scoreboard objectives setdisplay sidebar deathCount
+</code></pre>
+        </div>
+      </div>
+      <h2 id="配置-mcdreforged可选">配置 MCDReforged（可选）</h2>
+      <p>接下来我们会配置一个非常好用的 MC 服务端管理工具 <a href="https://mcdreforged.com/zh-CN">MCDReforged</a>。这个工具是 TIS 服务器开发的，能够在不修改原版任何东西的基础上，给服务端添加很多很好用的功能，比如：自动备份、自动启停、显示玩家位置等。</p>
+      <p>MCDReforged 的安装请参考<a href="https://docs.mcdreforged.com/zh-cn/latest/quick_start/index.html">官方手册</a>。注意，安装方式最好选择 pipx，实测在 Ubuntu 24.04 LTS 下只能使用 pipx 安装方式。</p>
+      <p>配置好后，每次启动服务器就是在 MCDReforged 的目录下使用指令 <code class="language-plaintext highlighter-rouge">mcdreforged</code> 启动。</p>
+      <p>除了接管 MC 那难用的控制台以外，MCDReforged 最好用的功能就是丰富的插件生态。可以查看<a href="https://mcdreforged.com/zh-CN/plugins">官方插件仓库</a>来查找自己喜欢的插件。这里我列举我每次都会安装的几个插件：</p>
+      <ul>
+        <li><a href="https://mcdreforged.com/zh-CN/plugin/info">Info</a>：能够获取当前服务器的各种信息，例如 CPU 利用率、内存使用率、存档大小等。</li>
+        <li><a href="https://mcdreforged.com/zh-CN/plugin/where2go">Where2go</a>：一个功能强大的位置插件，包含共享坐标点、查询玩家位置等功能。</li>
+        <li><a href="https://mcdreforged.com/zh-CN/plugin/prime_backup">Prime Backup</a>：一个强大的 MCDR 备份插件，一套先进的 Minecraft 存档备份解决方案。</li>
+        <li><a href="https://mcdreforged.com/zh-CN/plugin/hibernate_r/readme">HibernateR</a>：在服务器没有人的时候让服务器休眠，有人连接时开启。</li>
+        <li><a href="https://mcdreforged.com/zh-CN/plugin/simple_op">Simple OP</a>：<code class="language-plaintext highlighter-rouge">!!op</code> 以获取 op, <code class="language-plaintext highlighter-rouge">!!restart</code> 以重启服务器</li>
+      </ul>
+      <h2 id="本文完">本文完</h2>
+      <p>最后是夹带私货时间！</p>
+      <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png" alt="" /></p>
+      ]]></content><author><name>Nelson Boss</name></author><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨]]></summary></entry><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-10-25T23:26:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
+    <table>
+      <thead>
+        <tr>
+          <th>部门</th>
+          <th>学号</th>
+          <th>日期</th>
+          <th>时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>系统部</td>
+          <td>U202442544</td>
+          <td>10/26 Sat.</td>
+          <td>19:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341236</td>
+          <td> </td>
+          <td>19:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202241800</td>
+          <td> </td>
+          <td>19:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202442610</td>
+          <td> </td>
+          <td>19:40</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341615</td>
+          <td> </td>
+          <td>19:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342599</td>
+          <td> </td>
+          <td>20:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340562</td>
+          <td> </td>
+          <td>20:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340533</td>
+          <td> </td>
+          <td>20:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342109</td>
+          <td> </td>
+          <td>20:30</td>
+        </tr>
+        <tr>
+          <td>人工智能部</td>
+          <td>U202342602</td>
+          <td> </td>
+          <td>20:40</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342494</td>
+          <td> </td>
+          <td>20:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342147</td>
+          <td> </td>
+          <td>21:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202442591</td>
+          <td> </td>
+          <td>21:10</td>
+        </tr>
+        <tr>
+          <td>开发部</td>
+          <td>U202342473</td>
+          <td> </td>
+          <td>21:20</td>
+        </tr>
+        <tr>
+          <td>人工智能部</td>
+          <td>U202241805</td>
+          <td>10/27 Sun.</td>
+          <td>19:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202243298</td>
+          <td> </td>
+          <td>19:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341609</td>
+          <td> </td>
+          <td>19:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341621</td>
+          <td> </td>
+          <td>19:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342459</td>
+          <td> </td>
+          <td>19:40</td>
+        </tr>
+        <tr>
+          <td>开发部</td>
+          <td>U202342409</td>
+          <td> </td>
+          <td>19:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342490</td>
+          <td> </td>
+          <td>20:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342623</td>
+          <td> </td>
+          <td>20:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340683</td>
+          <td> </td>
+          <td>20:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342665</td>
+          <td> </td>
+          <td>20:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202343406</td>
+          <td> </td>
+          <td>20:40</td>
+        </tr>
+        <tr>
+          <td>游戏部</td>
+          <td>U202342449</td>
+          <td> </td>
+          <td>20:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342472</td>
+          <td> </td>
+          <td>21:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342892</td>
+          <td> </td>
+          <td>21:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340122</td>
+          <td> </td>
+          <td>21:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202442567</td>
+          <td> </td>
+          <td>21:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342439</td>
+          <td> </td>
+          <td>21:40</td>
+        </tr>
+        <tr>
+          <td>人工智能部</td>
+          <td>U202342615</td>
+          <td> </td>
+          <td>21:50</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
     <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-    <p>若对本次招新有任何疑问，请邮件询问 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>。</p>
-    <h2 id="各部门招新介绍">各部门招新介绍</h2>
-    <h3 id="系统部">系统部</h3>
-    <p>系统部是 806 实验室历史最为悠久的部门，专注于计算机系统能力的培养，鼓励督促成员参加高水平系统能力竞赛，如龙芯杯、系统能力大赛等，部内多届成员均参与竞赛，超过一半人在系统能力大赛中获得国家级奖项。</p>
-    <p>系统部的成果丰富，曾多次在操作系统赛、编译系统赛、ICPC 等计算机顶级赛事获国家级奖项，今年还首次在龙芯杯获得国二，为我校实现了从零到一的突破。毕业学长学姐均前往北京大学、北京航空航天大学、南京大学、中科院计算所、中科院软件所等顶级高校深造，或是前往百度、腾讯等大厂工作。</p>
-    <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
-    <p>我们希望你：</p>
-    <ul>
-      <li>基础扎实：对 C/C++、Rust 或是 Verilog 语言有扎实的基础；</li>
-      <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
-      <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
-      <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
-      <li>不卷加权：加权成绩固然重要，但是对于第一名和第二名的固执没有意义。</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    <h3 id="人工智能部">人工智能部</h3>
-    <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法竞赛，开发构建好玩的 AIGC 应用。</p>
-    <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
-    <h4 id="算法组">算法组</h4>
-    <p>算法组的目标是：</p>
-    <ul>
-      <li>一起交流和探索 AI 算法竞赛，如 Kaggle 奖金池 $60000 的竞赛；</li>
-      <li>一起提升算法设计能力，推荐加入本外校的实习项目组；</li>
-      <li>论文产出。</li>
-    </ul>
-    <p>我们希望你：</p>
-    <ul>
-      <li>有较好的编程基础和逻辑能力；</li>
-      <li>对 AI 算法的探究有浓厚的兴趣；</li>
-      <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
-    </ul>
-    <p>加分项：</p>
-    <ul>
-      <li>熟悉 Python 编程；</li>
-      <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
-      <li>有深度学习相关的项目开发经验；</li>
-      <li>有输出技术博客的习惯。</li>
-    </ul>
-    <p>拟招 4 人左右。</p>
-    <h4 id="aigc-组">AIGC 组</h4>
-    <p>AIGC 组的目标是：</p>
-    <ul>
-      <li>学习开发和维护 AI 应用的传统项目，并产出和维护工程文档，申请软著等；</li>
-      <li>了解最新 AI 行业动态，学习大模型、Stable Diffusion、Midjourney 等成熟的 AIGC 项目的迁移和开发；</li>
-      <li>参与一些热门 github 项目的开发和维护。</li>
-    </ul>
-    <p>我们希望你：</p>
-    <ul>
-      <li>对 AIGC 应用有了解；</li>
-      <li>使用过常见的 AIGC 应用，例如各类生成式模型软件，图片生成、音视频生成等；</li>
-      <li>对 AIGC 应用部署和开发有浓厚的兴趣；</li>
-      <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
-    </ul>
-    <p>加分项：</p>
-    <ul>
-      <li>熟悉 Python 编程；</li>
-      <li>有 AI 应用插件的开发经验；</li>
-      <li>有 AI 应用相关的项目和比赛经验；</li>
-    </ul>
-    <p>拟招 3 人左右。</p>
-    <h4 id="网络组">网络组</h4>
-    <p>网络组的目标是：针对新一代网络架构（如软件定义网络 SDN、知识定义网络 KDN 等），通过图神经网络（GNN）、深度强化学习（DRL）、迁移学习（Transfer Learning）等方法，预测网络性能指标、改进网络路由算法、对网络传输进行建模。</p>
-    <p>要求：</p>
-    <ul>
-      <li>大一或大二同学，时间能够保证，能按要求完成实验任务；</li>
-      <li>熟练掌握 Python、C++ 编程语言，能够阅读并修改代码；</li>
-      <li>有 Linux 基础，完成各种环境搭建；</li>
-      <li>对网络仿真有一定了解；</li>
-      <li>有一定的英文阅读能力，能阅读全英论文；</li>
-      <li>有责任心，愿意参与科研项目，对网络研究方向有极大的兴趣。</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    <h3 id="游戏部">游戏部</h3>
-    <blockquote>
-      <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
-    </blockquote>
-    <p>你能学到什么：Unity，C#。</p>
-    <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 DEMO</strong>。</p>
-    <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
-    <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
-    <p>加分项：</p>
-    <ul>
-      <li>具有游戏开发相关经验，如使用过 Unity，UE，Godot 或其它游戏引擎；</li>
-      <li>了解游戏设计，如知悉各类游戏的基本特征、游戏机制及如何实现等；</li>
-      <li>具有电子绘画能力，如绘制角色帧动画、立绘，游戏内场景、UI 的能力；</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    <h3 id="开发部">开发部</h3>
-    <p>806 开发部欢迎对 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
-    <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
-    <p>开发部的目标是：</p>
-    <ul>
-      <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
-      <li>参与一些热门 GitHub 项目的开发和维护；</li>
-    </ul>
-    <p>我们希望你：</p>
-    <ul>
-      <li>对上述领域任一项或多项感兴趣；</li>
-      <li>有 Python/Java/GoLang/JS 或其他语言中的一个或多个的开发经验。</li>
-    </ul>
-    <p>加分项：</p>
-    <ul>
-      <li>有开源项目，对开源感兴趣；</li>
-      <li>接触过一个或多个常见的前后端框架，如 Gin、Flask、FastAPI、SpringBoot、Vue、React；</li>
-      <li>有嵌入式开发经验，如 Arduino、树莓派、ESP32 等；</li>
-      <li>有技术博客输出的习惯；</li>
-      <li>设计过一个或多个项目。</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
+    <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
+    ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
+  <h2 id="报名方式">报名方式</h2>
+  <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
+  <ul>
+    <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；（报名人工智能部仅需填写<code class="language-plaintext highlighter-rouge">人工智能部</code>）
+      <ul>
+        <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
+        <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
+      </ul>
+    </li>
+    <li>正文：若报名人工智能部，请在此告知报名的小组；</li>
+    <li>附件：个人简历（必须，<strong>pdf 格式</strong>，内容任意），其他能够证明个人能力的内容（可选）。</li>
+  </ul>
+  <p>我们会不定期查看邮件。若我们成功收到了你的邮件，并且你通过了简历筛选，我们会回复一封邮件以告知面试地点和时间。</p>
+  <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
+  <p>若对本次招新有任何疑问，请邮件询问 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>。</p>
+  <h2 id="各部门招新介绍">各部门招新介绍</h2>
+  <h3 id="系统部">系统部</h3>
+  <p>系统部是 806 实验室历史最为悠久的部门，专注于计算机系统能力的培养，鼓励督促成员参加高水平系统能力竞赛，如龙芯杯、系统能力大赛等，部内多届成员均参与竞赛，超过一半人在系统能力大赛中获得国家级奖项。</p>
+  <p>系统部的成果丰富，曾多次在操作系统赛、编译系统赛、ICPC 等计算机顶级赛事获国家级奖项，今年还首次在龙芯杯获得国二，为我校实现了从零到一的突破。毕业学长学姐均前往北京大学、北京航空航天大学、南京大学、中科院计算所、中科院软件所等顶级高校深造，或是前往百度、腾讯等大厂工作。</p>
+  <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
+  <p>我们希望你：</p>
+  <ul>
+    <li>基础扎实：对 C/C++、Rust 或是 Verilog 语言有扎实的基础；</li>
+    <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
+    <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
+    <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
+    <li>不卷加权：加权成绩固然重要，但是对于第一名和第二名的固执没有意义。</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  <h3 id="人工智能部">人工智能部</h3>
+  <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法竞赛，开发构建好玩的 AIGC 应用。</p>
+  <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
+  <h4 id="算法组">算法组</h4>
+  <p>算法组的目标是：</p>
+  <ul>
+    <li>一起交流和探索 AI 算法竞赛，如 Kaggle 奖金池 $60000 的竞赛；</li>
+    <li>一起提升算法设计能力，推荐加入本外校的实习项目组；</li>
+    <li>论文产出。</li>
+  </ul>
+  <p>我们希望你：</p>
+  <ul>
+    <li>有较好的编程基础和逻辑能力；</li>
+    <li>对 AI 算法的探究有浓厚的兴趣；</li>
+    <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
+  </ul>
+  <p>加分项：</p>
+  <ul>
+    <li>熟悉 Python 编程；</li>
+    <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
+    <li>有深度学习相关的项目开发经验；</li>
+    <li>有输出技术博客的习惯。</li>
+  </ul>
+  <p>拟招 4 人左右。</p>
+  <h4 id="aigc-组">AIGC 组</h4>
+  <p>AIGC 组的目标是：</p>
+  <ul>
+    <li>学习开发和维护 AI 应用的传统项目，并产出和维护工程文档，申请软著等；</li>
+    <li>了解最新 AI 行业动态，学习大模型、Stable Diffusion、Midjourney 等成熟的 AIGC 项目的迁移和开发；</li>
+    <li>参与一些热门 github 项目的开发和维护。</li>
+  </ul>
+  <p>我们希望你：</p>
+  <ul>
+    <li>对 AIGC 应用有了解；</li>
+    <li>使用过常见的 AIGC 应用，例如各类生成式模型软件，图片生成、音视频生成等；</li>
+    <li>对 AIGC 应用部署和开发有浓厚的兴趣；</li>
+    <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
+  </ul>
+  <p>加分项：</p>
+  <ul>
+    <li>熟悉 Python 编程；</li>
+    <li>有 AI 应用插件的开发经验；</li>
+    <li>有 AI 应用相关的项目和比赛经验；</li>
+  </ul>
+  <p>拟招 3 人左右。</p>
+  <h4 id="网络组">网络组</h4>
+  <p>网络组的目标是：针对新一代网络架构（如软件定义网络 SDN、知识定义网络 KDN 等），通过图神经网络（GNN）、深度强化学习（DRL）、迁移学习（Transfer Learning）等方法，预测网络性能指标、改进网络路由算法、对网络传输进行建模。</p>
+  <p>要求：</p>
+  <ul>
+    <li>大一或大二同学，时间能够保证，能按要求完成实验任务；</li>
+    <li>熟练掌握 Python、C++ 编程语言，能够阅读并修改代码；</li>
+    <li>有 Linux 基础，完成各种环境搭建；</li>
+    <li>对网络仿真有一定了解；</li>
+    <li>有一定的英文阅读能力，能阅读全英论文；</li>
+    <li>有责任心，愿意参与科研项目，对网络研究方向有极大的兴趣。</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  <h3 id="游戏部">游戏部</h3>
+  <blockquote>
+    <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
+  </blockquote>
+  <p>你能学到什么：Unity，C#。</p>
+  <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 DEMO</strong>。</p>
+  <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
+  <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
+  <p>加分项：</p>
+  <ul>
+    <li>具有游戏开发相关经验，如使用过 Unity，UE，Godot 或其它游戏引擎；</li>
+    <li>了解游戏设计，如知悉各类游戏的基本特征、游戏机制及如何实现等；</li>
+    <li>具有电子绘画能力，如绘制角色帧动画、立绘，游戏内场景、UI 的能力；</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  <h3 id="开发部">开发部</h3>
+  <p>806 开发部欢迎对 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
+  <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
+  <p>开发部的目标是：</p>
+  <ul>
+    <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
+    <li>参与一些热门 GitHub 项目的开发和维护；</li>
+  </ul>
+  <p>我们希望你：</p>
+  <ul>
+    <li>对上述领域任一项或多项感兴趣；</li>
+    <li>有 Python/Java/GoLang/JS 或其他语言中的一个或多个的开发经验。</li>
+  </ul>
+  <p>加分项：</p>
+  <ul>
+    <li>有开源项目，对开源感兴趣；</li>
+    <li>接触过一个或多个常见的前后端框架，如 Gin、Flask、FastAPI、SpringBoot、Vue、React；</li>
+    <li>有嵌入式开发经验，如 Arduino、树莓派、ESP32 等；</li>
+    <li>有技术博客输出的习惯；</li>
+    <li>设计过一个或多个项目。</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
   <p>第八届全国大学生计算机系统能力培养大赛（龙芯杯）分为团体赛和个人赛两项赛事。团队赛共 110 支队伍报名，个人赛共 782 人报名。经过初赛的激烈角逐，全国共有 28 支代表队和 40 位个人进入决赛。</p>
   <p class="text-center"><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-10-02-lxb-01.jpg" alt="" />
     决赛合影</p>
