@@ -1,6 +1,8 @@
 ---
 title: "806 网站 Blogs 文章模板"
 author: "Your Name?"
+header:
+    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/blogs-banner.jpg
 categories: []
 tags: []
 ---

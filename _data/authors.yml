@@ -2,7 +2,7 @@
 
 admin: &ustb-806
   name: USTB-806
-  avatar: "https://secure.gravatar.com/avatar/94c03bc620ea2cf7dc239ac0535cad8e?s=256&d=identicon&r=g"
+  avatar: "https://avatars.githubusercontent.com/u/177814444?s=200&v=4"
   bio: "北京科技大学「勤敏轩」学生创新实验室"
   location: "USTB"
   links:
@@ -21,10 +21,14 @@ ustb-806:
 # https://secure.gravatar.com/avatar/<id>?s=256&d=identicon&r=g
 
 nelson:
-  name: Nelson
+  name: Nelson Boss
   avatar: "https://secure.gravatar.com/avatar/c3991bf30d5d7f54983c6d89b4a04b92?s=256&d=identicon&r=g"
+  bio: "一直游到海水变蓝"
   links:
-    - lable: GitHub
+    - label: Website
+      icon: far fa-fw fa-globe
+      url: https://bosswnx.xyz/
+    - label: GitHub
       icon: fab fa-fw fa-github
       url: https://github.com/bosswnx
 
