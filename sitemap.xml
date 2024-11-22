@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/</loc>
-      <lastmod>2024-11-22T10:32:49+08:00</lastmod>
+      <loc>https://ustb-806.github.io/blogs/2024/11/oceanbase/</loc>
+      <lastmod>2024-11-22T10:38:46+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/</loc>
@@ -41,8 +41,8 @@
       <lastmod>2024-10-25T23:26:50+08:00</lastmod>
     </url>
     <url>
-      <loc>https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/</loc>
-      <lastmod>2024-11-22T10:32:49+08:00</lastmod>
+      <loc>https://ustb-806.github.io/blogs/2024/11/oceanbase/</loc>
+      <lastmod>2024-11-22T10:38:46+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/</loc>
@@ -123,9 +123,6 @@
     </url>
     <url>
       <loc>https://ustb-806.github.io/tags/oceanbase/</loc>
-    </url>
-    <url>
-      <loc>https://ustb-806.github.io/tags/miniob/</loc>
     </url>
     <url>
       <loc>https://ustb-806.github.io/tags/minecraft/</loc>

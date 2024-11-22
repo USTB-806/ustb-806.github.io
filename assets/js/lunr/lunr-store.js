@@ -1,8 +1,8 @@
 var store = [{
-"title": "OceanBase & MiniOB 2024 比赛资源汇总",
+"title": "OceanBase 2024 比赛资源汇总",
 "excerpt":"全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。 初赛（MiniOB） 资源信息： 比赛链接：MiniOB 训练营 数据库大赛英雄榜 MiniOB 辅助开发手册 MiniOB 官方手册 MiniOB 官方教学视频： 1-1 数据库系统概述… 从 0 到 1 数据库内核实战教程 实用工具： MySQL 语法：SQL 语法 - 菜鸟教程 在线运行 MySQL：MySQL - OneCompiler 赛后总结： 队伍 &amp; GitHub 仓库 成员 总结 我真的参加了系统内核赛 王诺贤 OceanBase 2024 初赛 MiniOB 开发记录   廖玮珑 OceanBase 数据库内核实现赛...","categories": ["竞赛"],
-"tags": ["计算机系统能力大赛","OceanBase","MiniOB"],
-"url": "/blogs/2024/11/oceanbase-blogs/",
+"tags": ["计算机系统能力大赛","OceanBase"],
+"url": "/blogs/2024/11/oceanbase/",
 "teaser": null
 },{
 "title": "如何在 Linux 上部署一个 MC 纯净/整合包服务器",
@@ -59,10 +59,10 @@ var store = [{
 "url": "/news/2024/10/recruitment-iterview-schedule/",
 "teaser": null
 },{
-"title": "OceanBase & MiniOB 2024 比赛资源汇总",
+"title": "OceanBase 2024 比赛资源汇总",
 "excerpt":"全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。 初赛（MiniOB） 资源信息： 比赛链接：MiniOB 训练营 数据库大赛英雄榜 MiniOB 辅助开发手册 MiniOB 官方手册 MiniOB 官方教学视频： 1-1 数据库系统概述… 从 0 到 1 数据库内核实战教程 实用工具： MySQL 语法：SQL 语法 - 菜鸟教程 在线运行 MySQL：MySQL - OneCompiler 赛后总结： 队伍 &amp; GitHub 仓库 成员 总结 我真的参加了系统内核赛 王诺贤 OceanBase 2024 初赛 MiniOB 开发记录   廖玮珑 OceanBase 数据库内核实现赛...","categories": ["竞赛"],
-"tags": ["计算机系统能力大赛","OceanBase","MiniOB"],
-"url": "/blogs/2024/11/oceanbase-blogs/",
+"tags": ["计算机系统能力大赛","OceanBase"],
+"url": "/blogs/2024/11/oceanbase/",
 "teaser": null
 },{
 "title": "如何在 Linux 上部署一个 MC 纯净/整合包服务器",
