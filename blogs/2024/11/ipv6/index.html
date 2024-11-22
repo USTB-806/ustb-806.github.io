@@ -1,0 +1,485 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.2 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="zh-CN" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <!-- begin _includes/seo.html -->
+    <title>配置校园网 IPv6 免流 - 806 @ USTB</title>
+    <meta name="description" content="本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。">
+    <meta name="author" content="Fridemn">
+    <meta property="article:author" content="Fridemn">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:site_name" content="806 @ USTB">
+    <meta property="og:title" content="配置校园网 IPv6 免流">
+    <meta property="og:url" content="https://ustb-806.github.io/blogs/2024/11/ipv6/">
+    <meta property="og:description" content="本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。">
+    <meta property="og:image" content="https://s3.806.group/website/static/blogs-banner.jpg">
+    <meta property="article:published_time" content="2024-11-21T00:00:00+08:00">
+    <meta property="article:modified_time" content="2024-11-22T21:50:33+08:00">
+    <link rel="canonical" href="https://ustb-806.github.io/blogs/2024/11/ipv6/">
+    <!-- end _includes/seo.html -->
+    <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="806 @ USTB Feed">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://s3.806.group/website/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://s3.806.group/website/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://s3.806.group/website/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://s3.806.group/website/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://s3.806.group/website/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://s3.806.group/website/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://s3.806.group/website/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://s3.806.group/website/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://s3.806.group/website/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://s3.806.group/website/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://s3.806.group/website/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://s3.806.group/website/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://s3.806.group/website/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://s3.806.group/website/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#f3f6f6">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#f3f6f6">
+    <script type="text/javascript">
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+      window.enable_copy_code_button = true;
+    </script>
+    <!-- 不蒜子页面统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="/assets/css/main.css?v=2805f6a">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
+    <!-- start custom head snippets -->
+    <!-- insert favicons. use https://realfavicongenerator.net/ -->
+    <!-- end custom head snippets -->
+  </head>
+  <body class="layout--single">
+    <nav class="skip-links">
+      <ul>
+        <li><a href="#site-nav" class="screen-reader-shortcut">转到主导航栏</a></li>
+        <li><a href="#main" class="screen-reader-shortcut">转到内容</a></li>
+        <li><a href="#footer" class="screen-reader-shortcut">转到底部</a></li>
+      </ul>
+    </nav>
+    <div class="masthead">
+      <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+          <nav id="site-nav" class="greedy-nav">
+            <a class="site-logo" href="/"><img src="https://s3.806.group/website/static/806-logo.jpg" alt="806 @ USTB"></a>
+            <a class="site-title" href="/">
+              806 @ USTB
+            </a>
+            <ul class="visible-links">
+              <li class="masthead__menu-item">
+                <a
+                href="/wiki/"
+                
+                
+              ><i class="fad fa-lg fa-fw fa-star-shooting"></i> Wiki</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                href="/news/"
+                
+                
+              ><i class="fad fa-lg fa-fw fa-newspaper"></i> News</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                href="/blogs/"
+                
+                
+              ><i class="fad fa-lg fa-fw fa-blog"></i> Blogs</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a
+                href="https://github.com/ustb-806"
+                
+                
+              ><i class="fab fa-lg fa-fw fa-github"></i> GitHub</a>
+              </li>
+            </ul>
+            <button class="greedy-nav__toggle hidden" type="button">
+              <span class="visually-hidden">切换菜单</span>
+              <div class="navicon"></div>
+            </button>
+            <ul class="hidden-links hidden"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="initial-content">
+      <div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://s3.806.group/website/static/blogs-banner.jpg');"
+>
+        <div class="wrapper">
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            配置校园网 IPv6 免流
+          </h1>
+          <p class="page__meta">
+            <span class="page__meta-date">
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              <time datetime="2024-11-21T00:00:00+08:00">2024 年 11 月 21 日</time>
+            </span>
+            <span class="page__meta-sep"></span>
+            <span class="page__meta-readtime">
+              <i class="far fa-clock" aria-hidden="true"></i>
+              3 分钟阅读
+            </span>
+          </p>
+        </div>
+      </div>
+      <div id="main" role="main">
+        <div class="sidebar sticky">
+          <div itemscope itemtype="https://schema.org/Person" class="h-card">
+            <div class="author__avatar">
+              <a href="https://ustb-806.github.io/">
+                <img src="https://avatars.githubusercontent.com/u/150212937?v=4" alt="Fridemn" itemprop="image" class="u-photo">
+              </a>
+            </div>
+            <div class="author__content">
+              <h3 class="author__name p-name" itemprop="name">
+                <a class="u-url" rel="me" href="https://ustb-806.github.io/" itemprop="url">Fridemn</a>
+              </h3>
+            </div>
+            <div class="author__urls-wrapper">
+              <button class="btn btn--inverse">关注</button>
+              <ul class="author__urls social-icons">
+                <li><a href="https://fridemn.best" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="far fa-fw fa-globe" aria-hidden="true"></i><span class="label">Website</span></a></li>
+                <li><a href="https://github.com/Fridemn" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+                <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+          <meta itemprop="headline" content="配置校园网 IPv6 免流">
+          <meta itemprop="description" content="本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。">
+          <meta itemprop="datePublished" content="2024-11-21T00:00:00+08:00">
+          <meta itemprop="dateModified" content="2024-11-22T21:50:33+08:00">
+          <div class="page__inner-wrap">
+            <section class="page__content" itemprop="text">
+              <aside class="sidebar__right sticky">
+                <nav class="toc">
+                  <header>
+                    <h4 class="nav__title"><i class="fas fa-file-alt"></i> 目录</h4>
+                  </header>
+                  <ul class="toc__menu">
+                    <li><a href="#前提">前提</a></li>
+                    <li><a href="#原理">原理</a></li>
+                    <li><a href="#租服务器">租服务器</a></li>
+                    <li><a href="#vps-设定">VPS 设定</a>
+                      <ul>
+                        <li><a href="#安装-x-ui">安装 X-UI</a></li>
+                        <li><a href="#开放-ufw-防火墙端口">开放 ufw 防火墙端口</a></li>
+                        <li><a href="#开启-bbr-加速">开启 BBR 加速</a></li>
+                        <li><a href="#配置-x-ui">配置 X-UI</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#配置客户端">配置客户端</a>
+                      <ul>
+                        <li><a href="#v2ray-配置">V2ray 配置</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#全文完">全文完</a></li>
+                  </ul>
+                </nav>
+              </aside>
+              <p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
+              <h2 id="前提">前提</h2>
+              <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
+              <h2 id="原理">原理</h2>
+              <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
+              <h2 id="租服务器">租服务器</h2>
+              <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
+              <blockquote>
+                <p>虚拟专用服务器（Virtual Private Server，简称 VPS）技术，是将一台服务器分割成多个虚拟专享服务器的优质服务。实现 VPS 的技术分为容器技术，和虚拟化技术。在容器或虚拟机中，每个 VPS 都可选配独立公网 IP 地址、独立操作系统、实现不同 VPS 间磁盘空间、内存、CPU 资源、进程和系统配置的隔离，为用户和应用程序模拟出“独占”使用计算资源的体验。——百度百科</p>
+              </blockquote>
+              <p>那么该租用一个什么样的 VPS 以及在哪里租比较合适呢？</p>
+              <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
+              <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
+              <p>注册好账号之后，订购新服务：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
+              <p>选择第一个：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
+              <p>进入之后选择详细的服务：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
+              <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
+              <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
+              <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>ssh root@&lt;你的IPv4地址&gt;
+</code></pre>
+                </div>
+              </div>
+              <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
+              <p>成功进入 VPS。</p>
+              <h2 id="vps-设定">VPS 设定</h2>
+              <p>首先，更新 Ubuntu。终端输入：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>curl
+<span class="nb">sudo </span>apt <span class="nb">install </span>socat
+<span class="nb">sudo </span>apt <span class="nb">install </span>ufw
+</code></pre>
+                </div>
+              </div>
+              <h3 id="安装-x-ui">安装 X-UI</h3>
+              <p>终端输入：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
+</code></pre>
+                </div>
+              </div>
+              <p>依次设置账号密码和端口：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
+              <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
+              <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">sudo </span>ufw status   <span class="c"># 查看本地端口开启情况</span>
+<span class="nb">sudo </span>ufw <span class="nb">enable</span>   <span class="c"># 开启防火墙，允许访问特定端口</span>
+<span class="nb">sudo </span>ufw allow 20
+<span class="nb">sudo </span>ufw allow 21
+<span class="nb">sudo </span>ufw allow 22
+<span class="nb">sudo </span>ufw allow 54321/tcp  <span class="c"># 给 X-UI 面板开放端口</span>
+<span class="nb">sudo </span>ufw allow 12345/tcp  <span class="c"># 给后续的 v2ray 开放端口</span>
+                          <span class="c"># 如果多人使用根据自己需求再开启几个</span>
+<span class="nb">sudo </span>ufw status  <span class="c"># 重新检查端口开放情况</span>
+</code></pre>
+                </div>
+              </div>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
+              <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
+              <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code><span class="nb">echo </span>net.core.default_qdisc<span class="o">=</span>fq <span class="o">&gt;&gt;</span> /etc/sysctl.conf
+<span class="nb">echo </span>net.ipv4.tcp_congestion_control<span class="o">=</span>bbr <span class="o">&gt;&gt;</span> /etc/sysctl.conf   <span class="c"># 修改系统变量</span>
+sysctl <span class="nt">-p</span>   <span class="c"># 保存</span>
+</code></pre>
+                </div>
+              </div>
+              <p>接下来检查是否开启成功。</p>
+              <p>分别输入：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+lsmod | <span class="nb">grep </span>bbr
+</code></pre>
+                </div>
+              </div>
+              <p>如果第一个输出：</p>
+              <div class="language-bash highlighter-rouge">
+                <div class="highlight">
+                  <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+net.ipv4.tcp_available_congestion_control <span class="o">=</span> bbr cubic reno
+</code></pre>
+                </div>
+              </div>
+              <p>第二个有输出结果（如果失败不会有输出结果）就说明 BBR 开启成功了。</p>
+              <h3 id="配置-x-ui">配置 X-UI</h3>
+              <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
+              <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
+              <p>在入站列表中配置：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
+              <p>在操作中点击「二维码」，然后复制：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
+              <h2 id="配置客户端">配置客户端</h2>
+              <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
+              <h3 id="v2ray-配置">V2ray 配置</h3>
+              <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
+              <p>下载后解压，双击「v2rayN」运行。</p>
+              <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
+              <p>导入成功如下：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
+              <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
+              <p>如下：</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
+              <p>点击确定进行保存。</p>
+              <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
+              <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
+              <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
+              <h2 id="全文完">全文完</h2>
+              <blockquote>
+                <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
+              </blockquote>
+            </section>
+            <footer class="page__meta">
+              <p class="page__taxonomy">
+                <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 标签: </strong>
+                <span itemprop="keywords">
+                  <a href="/tags/ipv6" class="page__taxonomy-item p-category" rel="tag">IPv6</a><span class="sep">, </span>
+                  <a href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91" class="page__taxonomy-item p-category" rel="tag">校园网</a>
+                </span>
+              </p>
+              <p class="page__taxonomy">
+                <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 分类: </strong>
+                <span itemprop="keywords">
+                  <a href="/categories/%E6%95%99%E7%A8%8B" class="page__taxonomy-item p-category" rel="tag">教程</a>
+                </span>
+              </p>
+              <p class="page__date">
+                <strong><i class="fad fa-fw fa-calendar-alt" aria-hidden="true"></i> 更新时间:</strong> <time datetime="2024-11-22">2024 年 11 月 22 日</time>
+                <strong>
+                  <i class="fas fa-fw fa-eye"></i>
+                  <span id="busuanzi_container_page_pv">阅读量：<span id="busuanzi_value_page_pv"></span></span>
+                </strong>
+              </p>
+            </footer>
+            <nav class="pagination">
+              <a href="/blogs/2024/11/how-to-setup-mc-server-on-linux/" class="pagination--pager" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器
+">上一页</a>
+              <a href="#" class="pagination--pager disabled">下一页</a>
+            </nav>
+          </div>
+        </article>
+        <div class="page__related">
+          <h2 class="page__related-title">猜您还喜欢</h2>
+          <div class="grid__wrapper">
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="permalink">如何在 Linux 上部署一个 MC 纯净/整合包服务器
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-11-20T00:00:00+08:00">2024 年 11 月 20 日</time>
+                  </span>
+                  <span class="page__meta-sep"></span>
+                  <span class="page__meta-readtime">
+                    <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+                    9 分钟阅读
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">
+                  作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统
+                </p>
+              </article>
+            </div>
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/blogs/2024/11/oceanbase/" rel="permalink">OceanBase 2024 比赛资源汇总
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-11-12T00:00:00+08:00">2024 年 11 月 12 日</time>
+                  </span>
+                  <span class="page__meta-sep"></span>
+                  <span class="page__meta-readtime">
+                    <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+                    少于 1 分钟阅读
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。
+                </p>
+              </article>
+            </div>
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/news/2024/10/recruitment-iterview-schedule/" rel="permalink">806 实验室 2024 届招新面试安排
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-10-22T00:00:00+08:00">2024 年 10 月 22 日</time>
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">面试地点为「机电楼 806 室」，时间安排如下：
+                </p>
+              </article>
+            </div>
+            <div class="grid__item">
+              <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+                <h2 class="archive__item-title no_toc" itemprop="headline">
+                  <a href="/news/2024/10/recruitment/" rel="permalink">806 实验室 2024 届招新
+                  </a>
+                </h2>
+                <p class="page__meta">
+                  <span class="page__meta-date">
+                    <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <time datetime="2024-10-08T00:00:00+08:00">2024 年 10 月 8 日</time>
+                  </span>
+                </p>
+                <p class="archive__item-excerpt" itemprop="description">806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+        <!-- end custom footer snippets -->
+        <div class="footer-row">
+          <div class="footer-block footer__about">
+            <p>北京科技大学「勤敏轩」学生创新实验室是<a href="https://www.ustb.edu.cn">北京科技大学</a><a href="https://scce.ustb.edu.cn/">计算机与通信工程学院</a>下属的本科生实验室，位于机电信息楼 806 室，简称「806 实验室」。</p>
+            <br/>
+            <p>本网站基于「<a href="https://lug.ustc.edu.cn">中科大 LUG 网站</a>」修改而来，以 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 许可协议</a>开源。</p>
+          </div>
+          <div class="footer-block footer__extras">
+            <div class="footer__contact">
+              <ul>
+                <li>
+                  <a href="/wiki/intro/"><i class="fad fa-fw fa-address-card"></i> 关于我们</a>
+                </li>
+                <li>
+                  <a href="/wiki/806/contact/"><i class="fas fa-fw fa-phone-alt"></i> 联系我们</a>
+                </li>
+                <li>
+                  <a href="/wiki/806/contribute/"><i class="fad fa-fw fa-users-medical"></i> 加入我们</a>
+                </li>
+                <li>
+                  <a href="/feed/"><i class="fad fa-fw fa-rss" style="--fa-secondary-opacity: 0.6;"></i> RSS 订阅</a>
+                </li>
+                <li>
+                  <a href="https://github.com/ustb-806/ustb-806.github.io"><i class="fab fa-fw fa-github"></i> 本站仓库</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer__logo">
+              <div class="footer__logo-image">
+                <img src="https://s3.806.group/website/static/806-logo-white-with-name.svg" style="width: 7rem; height: auto"/>
+              </div>
+              <div class="footer__logo-text">
+                <!-- a href="http://www.beian.miit.gov.cn" target="_blank">皖 ICP 备 05002528 号</a -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="/assets/js/main.min.js"></script>
+    <img src="https://s3.806.group/website/static/USTB-logo.svg" style="position: fixed; bottom: -10rem; right: -10rem; opacity: 0.1; z-index: -100; width: 40rem; height:auto" />
+  </body>
+</html>

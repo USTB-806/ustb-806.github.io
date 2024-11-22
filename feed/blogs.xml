@@ -1,284 +1,414 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-22T20:17:35+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T20:16:06+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
-        <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-22T21:51:56+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-11-22T21:50:33+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
+      <h2 id="前提">前提</h2>
+      <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
+      <h2 id="原理">原理</h2>
+      <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
+      <h2 id="租服务器">租服务器</h2>
+      <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
+      <blockquote>
+        <p>虚拟专用服务器（Virtual Private Server，简称 VPS）技术，是将一台服务器分割成多个虚拟专享服务器的优质服务。实现 VPS 的技术分为容器技术，和虚拟化技术。在容器或虚拟机中，每个 VPS 都可选配独立公网 IP 地址、独立操作系统、实现不同 VPS 间磁盘空间、内存、CPU 资源、进程和系统配置的隔离，为用户和应用程序模拟出“独占”使用计算资源的体验。——百度百科</p>
       </blockquote>
-      <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
-      <p>本文的环境是：</p>
-      <ul>
-        <li>Ubuntu 24.04 LTS</li>
-        <li><a href="https://www.mcmod.cn/modpack/273.html">冬季救援整合包</a>（1.16.5 Forge）</li>
-      </ul>
-      <p>一些背景知识：</p>
-      <ul>
-        <li>连接服务器使用 SSH，这里推荐一个很好用的 SSH 客户端 <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a>，其能直接通过自带的 sftp 工具传输文件。</li>
-        <li>在服务器上下载文件可以使用 <code class="language-plaintext highlighter-rouge">wget</code>，复制想要下载的文件的链接，直接在终端输入 <code class="language-plaintext highlighter-rouge">wget &lt;下载链接&gt;</code> 回车即可。</li>
-        <li>启动游戏推荐使用第三方客户端，这里推荐 <a href="https://afdian.com/p/0164034c016c11ebafcb52540025c377">PCL</a> 和 <a href="https://hmcl.huangyuhui.net/">HMCL</a>，尽量不要用官方启动器，功能贫乏。</li>
-      </ul>
-      <h2 id="配置-java-环境">配置 Java 环境</h2>
-      <p>MC 是用 Java 写的，所以配置 Java 环境也很合理。</p>
-      <p>安装 Java 运行环境之前，首先需要知道想要运行的 MC 版本对应的 Java 版本是多少，这里搬运 <a href="https://zh.minecraft.wiki/w/Tutorial:%E6%9B%B4%E6%96%B0Java?variant=zh-cn">MC 官方 Wiki</a> 里关于 Java 版本的说明：</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Minecraft 开发版本</th>
-            <th>Minecraft 正式版本</th>
-            <th>最低要求 Java 版本</th>
-            <th>官启绑定 Java 版本</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a href="https://zh.minecraft.wiki/w/24w14a">24w14a</a>及以上</td>
-            <td><a href="https://zh.minecraft.wiki/w/Java版1.20.5">1.20.5</a>及以上</td>
-            <td>Java 21</td>
-            <td>21.0.3</td>
-          </tr>
-          <tr>
-            <td><a href="https://zh.minecraft.wiki/w/22w18a">22w18a</a>至<a href="https://zh.minecraft.wiki/w/24w13a">24w13a</a></td>
-            <td><a href="https://zh.minecraft.wiki/w/Java版1.19">1.19</a>至<a href="https://zh.minecraft.wiki/w/Java版1.20.4">1.20.4</a></td>
-            <td>Java 17</td>
-            <td>17.0.8</td>
-          </tr>
-          <tr>
-            <td><a href="https://zh.minecraft.wiki/w/Java版1.18-pre2">1.18-pre2</a>至<a href="https://zh.minecraft.wiki/w/22w17a">22w17a</a></td>
-            <td><a href="https://zh.minecraft.wiki/w/Java版1.18">1.18</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18.2">1.18.2</a></td>
-            <td>Java 17</td>
-            <td>17.0.1</td>
-          </tr>
-          <tr>
-            <td><a href="https://zh.minecraft.wiki/w/21w19a">21w19a</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18-pre1">1.18-pre1</a></td>
-            <td><a href="https://zh.minecraft.wiki/w/Java版1.17">1.17</a>至<a href="https://zh.minecraft.wiki/w/Java版1.17.1">1.17.1</a></td>
-            <td>Java 16</td>
-            <td>16.0.1</td>
-          </tr>
-          <tr>
-            <td><a href="https://zh.minecraft.wiki/w/21w18a">21w18a</a>及以下</td>
-            <td><a href="https://zh.minecraft.wiki/w/Java版1.16.5">1.16.5</a>及以下</td>
-            <td>Java 8</td>
-            <td>1.8.0_51</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>由于我需要运行的版本是 1.16.5，因此这里需要安装 Java 8。</p>
+      <p>那么该租用一个什么样的 VPS 以及在哪里租比较合适呢？</p>
+      <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
+      <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
+      <p>注册好账号之后，订购新服务：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
+      <p>选择第一个：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
+      <p>进入之后选择详细的服务：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
+      <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
+      <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
+      <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openjdk-8-jdk
+          <pre class="highlight"><code>ssh root@&lt;你的IPv4地址&gt;
 </code></pre>
         </div>
       </div>
-      <p>对于其他的 Java 版本，一般来说将上面指令中的 <code class="language-plaintext highlighter-rouge">8</code> 替换成对应的版本号就可以了。</p>
-      <p>安装完成后可以使用 <code class="language-plaintext highlighter-rouge">java --version</code> 来查看版本是否正确。</p>
-      <p>如果服务器同时安装了多个版本的 Java，可以使用下面的指令来切换默认的 Java 版本：</p>
+      <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
+      <p>成功进入 VPS。</p>
+      <h2 id="vps-设定">VPS 设定</h2>
+      <p>首先，更新 Ubuntu。终端输入：</p>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--config</span> java
+          <pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>curl
+<span class="nb">sudo </span>apt <span class="nb">install </span>socat
+<span class="nb">sudo </span>apt <span class="nb">install </span>ufw
 </code></pre>
         </div>
       </div>
-      <h2 id="配置服务端">配置服务端</h2>
-      <p>对于原版、Forge 和 Fabric，初始化服务端的方式各不相同。</p>
-      <p>国内的 MCSL 维护了一套服务端文件的镜像（<a href="https://sync.mcsl.com.cn/">这里</a>），后文讲到的文件可以先在这里尝试下载。</p>
-      <h3 id="原版vanilla">原版（Vanilla）</h3>
-      <p>MC 原版的服务端文件可以直接在 Minecraft 官网上下载。直接 Bing/Google 搜索 <code class="language-plaintext highlighter-rouge">minecraft server &lt;版本号&gt; 下载</code>，找到官方网站对应的下载链接即可。下载下来的服务端一般是一个名为 <code class="language-plaintext highlighter-rouge">server.jar</code>的 jar 文件。</p>
-      <p>需要注意两点：</p>
-      <ul>
-        <li>不要用百度，百度只会把你导航到网易（MC 的国内代理，但是依托**）。</li>
-        <li>进入官网后，如果你没有挂梯子的话，那么同样会弹窗让你跳转到网易，注意点击下方的 <code class="language-plaintext highlighter-rouge">Stay on Minecraft.net</code> 留在国际版官网。</li>
-      </ul>
-      <p>当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Vanilla">MCSL 镜像源</a>下载。</p>
-      <p>接下来找到一个合适的目录，初始化服务端：</p>
+      <h3 id="安装-x-ui">安装 X-UI</h3>
+      <p>终端输入：</p>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code>java <span class="nt">-jar</span> server.jar nogui
+          <pre class="highlight"><code>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
 </code></pre>
         </div>
       </div>
-      <p>第一次运行服务端，会创建一个 <code class="language-plaintext highlighter-rouge">eula.txt</code>然后报错退出，这个文件的作用是同意许可。使用 vim 或 nano 或其他方式打开，将里面的 <code class="language-plaintext highlighter-rouge">false</code> 改成 <code class="language-plaintext highlighter-rouge">true</code>，保存退出，重新启动即可。</p>
-      <p>等到终端出现 <code class="language-plaintext highlighter-rouge">Done!</code> 等文字的时候，说明服务器已经成功启动，此时已经可以直接开始玩了。不过后面会配置一些优化体验的东西，请继续阅读下文。</p>
-      <h3 id="forge">Forge</h3>
-      <p>Forge 端可以在 <a href="https://files.minecraftforge.net/net/minecraftforge/forge/">Forge 官网</a>上下载（可能需要挂梯子）。当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Forge">MCSL 镜像源</a>下载。</p>
-      <p><strong>注意</strong>：Forge 的小版本之间也会出现不兼容的情况，所以如果是配置整合包的话，一定要下载和整合包的 Forge 版本完全一致的服务端。</p>
-      <p>下载下来后会得到一个名为 <code class="language-plaintext highlighter-rouge">forge-&lt;游戏版本&gt;-&lt;Forge版本&gt;-installer.jar</code> 的文件。这里我下载的文件名为 <code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.34-installer.jar</code>。</p>
-      <p>找到一个合适的目录，启动：</p>
+      <p>依次设置账号密码和端口：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
+      <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
+      <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.34-installer.jar <span class="nt">--installServer</span>  <span class="c"># 注意要把文件替换为自己下载的</span>
+          <pre class="highlight"><code><span class="nb">sudo </span>ufw status   <span class="c"># 查看本地端口开启情况</span>
+<span class="nb">sudo </span>ufw <span class="nb">enable</span>   <span class="c"># 开启防火墙，允许访问特定端口</span>
+<span class="nb">sudo </span>ufw allow 20
+<span class="nb">sudo </span>ufw allow 21
+<span class="nb">sudo </span>ufw allow 22
+<span class="nb">sudo </span>ufw allow 54321/tcp  <span class="c"># 给 X-UI 面板开放端口</span>
+<span class="nb">sudo </span>ufw allow 12345/tcp  <span class="c"># 给后续的 v2ray 开放端口</span>
+                          <span class="c"># 如果多人使用根据自己需求再开启几个</span>
+<span class="nb">sudo </span>ufw status  <span class="c"># 重新检查端口开放情况</span>
 </code></pre>
         </div>
       </div>
-      <p>接下来 Forge Installer 会下载一系列文件，包括服务端原始文件，然后自动进行配置。这个阶段需要保持服务器有良好的网络。该过程有可能需要翻墙。</p>
-      <p>配置完成之后，会留下一些文件，其中最重要的是三个（注意替换成自己的版本号）：</p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.34.jar</code>：Forge 的主体文件，也是 Forge 端运行的入口；</li>
-        <li><code class="language-plaintext highlighter-rouge">libraries</code>：资源文件；</li>
-        <li><code class="language-plaintext highlighter-rouge">minecraft_server.1.16.5.jar</code>：Forge 运行的服务端文件。</li>
-      </ul>
-      <p>接下来就可以启动服务器了：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
+      <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
+      <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.34.jar nogui  <span class="c"># 注意把文件替换为自己的</span>
+          <pre class="highlight"><code><span class="nb">echo </span>net.core.default_qdisc<span class="o">=</span>fq <span class="o">&gt;&gt;</span> /etc/sysctl.conf
+<span class="nb">echo </span>net.ipv4.tcp_congestion_control<span class="o">=</span>bbr <span class="o">&gt;&gt;</span> /etc/sysctl.conf   <span class="c"># 修改系统变量</span>
+sysctl <span class="nt">-p</span>   <span class="c"># 保存</span>
 </code></pre>
         </div>
       </div>
-      <p>和原版服务器一样，第一次启动会创建 <code class="language-plaintext highlighter-rouge">eula.txt</code> 文件并报错退出，需要将该文件里面的 <code class="language-plaintext highlighter-rouge">false</code> 修改为 <code class="language-plaintext highlighter-rouge">true</code> 保存退出，重新启动即可。</p>
-      <p>重新启动服务器后，服务器会生成一系列游戏文件，包括存档文件夹 <code class="language-plaintext highlighter-rouge">world</code> 和放置 mod 的文件夹 <code class="language-plaintext highlighter-rouge">mods</code>。只需要将想要添加的 mod 放入 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹，重新启动，即可加载 mod。</p>
-      <p>不过如果是想配置整合包的话，还需要做接下来的工作。</p>
-      <p>整合包一般分为两种发布方法，一种是直接把整个游戏打成压缩包，而另一种是采用配置文件压缩包的形式（压缩包内部有一个 <code class="language-plaintext highlighter-rouge">overrides</code> 文件夹，需要从 PCL 等第三方启动器的 <code class="language-plaintext highlighter-rouge">导入整合包</code> 来进行导入）：</p>
-      <ul>
-        <li>对于第一种方法，需要将压缩包内的 <code class="language-plaintext highlighter-rouge">mods</code>文件夹和所有的与「配置」相关的文件夹都复制到服务器目录下（包括但不限于 <code class="language-plaintext highlighter-rouge">config</code>、<code class="language-plaintext highlighter-rouge">kubejs</code>、<code class="language-plaintext highlighter-rouge">scripts</code>）。<strong>这一步很重要，如果漏掉了任何一个配置文件都可能会导致整合包运行不正确，所以务必仔细检查。</strong></li>
-        <li>而对于第二种方法，首先在本地客户端导入整合包，在本地安装完之后，进入游戏版本根目录，将 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹复制到服务器目录下。然后，将配置文件压缩包里 <code class="language-plaintext highlighter-rouge">overrides</code>文件夹下的所有文件复制到服务器目录下即可。</li>
-      </ul>
-      <p>完成上述操作后，将刚刚启动生成的 <code class="language-plaintext highlighter-rouge">world</code> 文件夹删除（如果没有就不用管了，这一步是因为整合包可能会对地图生成进行改动，需要将原版生成的地图删除了重新生成），重新启动服务端即可。</p>
-      <h3 id="fabric">Fabric</h3>
-      <p>Fabric 和 Forge 的安装步骤除了下载文件以外基本上相同。</p>
-      <p>相比于 Forge 完全不提供中文安装教程，Fabric 提供了一个非常友好的<a href="https://wiki.fabricmc.net/zh_cn:player:tutorials:install_server">官方中文安装教程</a>，请参考这个教程进行安装，然后跳转到 <a href="#forge">Forge 章节</a>的整合包配置部分。</p>
-      <h2 id="更多的配置可选">更多的配置（可选）</h2>
-      <p>进行完上述的步骤后，服务器文件夹下大致会有以下文件：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/1.png" alt="" /></p>
-      <p>我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。</p>
-      <p>其中和整合包 mod 配置相关的文件有：<code class="language-plaintext highlighter-rouge">config</code>，<code class="language-plaintext highlighter-rouge">kubejs</code>，<code class="language-plaintext highlighter-rouge">defaultconfigs</code>，<code class="language-plaintext highlighter-rouge">worldshape</code>；</p>
-      <p>此时，其实就可以启动服务器开始玩了！但是我们还可以再进一步配置一些东西更方便我们运维。</p>
-      <h3 id="screen">Screen</h3>
-      <p>启动服务器的时候可以使用 screen、tmux 等工具将其挂在后台，这样就可以切断 SSH 连接而不会导致服务器关闭。接下来简单介绍 screen。</p>
-      <p>首先安装 screen：</p>
+      <p>接下来检查是否开启成功。</p>
+      <p>分别输入：</p>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>screen
+          <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+lsmod | <span class="nb">grep </span>bbr
 </code></pre>
         </div>
       </div>
-      <p>可以通过指令 <code class="language-plaintext highlighter-rouge">screen</code> 启动一个新的 screen 会话。可以发现，screen 会话和普通的终端没有什么不同，因为其直接沿用了当前终端的配置。不过，screen 会话可以通过快捷键 <code class="language-plaintext highlighter-rouge">&lt;Ctrl-A&gt; + z</code> 来挂起当前会话，通过指令 <code class="language-plaintext highlighter-rouge">screen -r</code> 来重新连接挂起的会话。</p>
-      <p>这样每次使用 screen 启动服务器之后，就可以直接关闭终端，让服务器在后台继续运行，下次需要运维的时候重新连接回来即可。</p>
-      <h3 id="serverproperties">server.properties</h3>
-      <p><code class="language-plaintext highlighter-rouge">server.properties</code> 文件是 MC 服务器的配置文件。我们可以更改里面的一些内容来实现更好的效果：</p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">allow-flight</code>：建议改为 <code class="language-plaintext highlighter-rouge">true</code>，因为很多整合包提供了飞行的能力，如果不开启的话会被服务器误认为是在作弊而直接踢出；</li>
-        <li><code class="language-plaintext highlighter-rouge">difficulty</code>：服务器的难度，有 <code class="language-plaintext highlighter-rouge">peaceful</code>、<code class="language-plaintext highlighter-rouge">easy</code>、<code class="language-plaintext highlighter-rouge">normal</code>和 <code class="language-plaintext highlighter-rouge">hard</code> 四个选项；</li>
-        <li><code class="language-plaintext highlighter-rouge">motd</code>：服务器显示在游戏内的说明文字；</li>
-        <li><code class="language-plaintext highlighter-rouge">pvp</code>：玩家之间是否相互可以攻击；</li>
-        <li><code class="language-plaintext highlighter-rouge">server-port</code>：服务器的端口，如果一台机子上需要运行多个服务器的话，需要分别设置不同的端口才能运行，否则会冲突。</li>
-        <li><code class="language-plaintext highlighter-rouge">online-mode</code>：正版验证，开启了的话需要服务器联网才能加入，好处是能有皮肤。</li>
-        <li><code class="language-plaintext highlighter-rouge">view-distance</code>：服务器渲染的视距，依照服务器的性能进行调整，如果卡了就调低一点；</li>
-      </ul>
-      <h3 id="启动参数">启动参数</h3>
-      <p>启动服务器的时候可以在 java 指令后添加一些参数来优化性能，这里我只设置了服务器的内存：</p>
+      <p>如果第一个输出：</p>
       <div class="language-bash highlighter-rouge">
         <div class="highlight">
-          <pre class="highlight"><code>java <span class="nt">-jar</span> <span class="nt">-Xmx16G</span> <span class="nt">-Xms16G</span> server.jar nogui
+          <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+net.ipv4.tcp_available_congestion_control <span class="o">=</span> bbr cubic reno
 </code></pre>
         </div>
       </div>
-      <p>其中：</p>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">-Xmx</code>：设置最大内存；</li>
-        <li><code class="language-plaintext highlighter-rouge">-Xms</code>：设置最小内存；</li>
-        <li><code class="language-plaintext highlighter-rouge">nogui</code>：以命令行模式启动，必须要添加，否在在命令行里会报错。</li>
-      </ul>
-      <h3 id="开放防火墙端口">开放防火墙端口</h3>
-      <p>由于 Ubuntu 默认开启了防火墙 ufw，所以需要在防火墙开放 MC 服务器默认的端口 <code class="language-plaintext highlighter-rouge">25565</code> 才能链接到服务器。</p>
-      <div class="language-bash highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="nb">sudo </span>ufw allow 25565  <span class="c"># 开放 25565 端口</span>
-</code></pre>
-        </div>
-      </div>
-      <p>如果服务器使用了其他的端口的话，需要改成开放对应的其他端口。</p>
-      <h3 id="记分板">记分板</h3>
-      <p>你可能在看别的人玩服务器的时候发现，可以在 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 键的玩家列表里看到所有玩家的血量，在显示屏右边有一个榜单显示当前死亡数等……这些都是通过原版的记分板实现的。</p>
-      <p>在 MC 服务端的控制台输入以下指令：</p>
-      <ul>
-        <li>
-          <p>启用 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 显示血量：</p>
-          <div class="language-text highlighter-rouge">
-            <div class="highlight">
-              <pre class="highlight"><code>scoreboard objectives add health health "血量"
-scoreboard objectives setdisplay list health
-</code></pre>
-            </div>
-    </div>
-        </li>
-        <li>
-          <p>启用侧边栏死亡计数：</p>
-          <div class="language-text highlighter-rouge">
-            <div class="highlight">
-              <pre class="highlight"><code>scoreboard objectives add deathCount deathCount "死亡数"
-scoreboard objectives setdisplay sidebar deathCount
-</code></pre>
-            </div>
-    </div>
-        </li>
-      </ul>
-      <h2 id="配置-mcdreforged可选">配置 MCDReforged（可选）</h2>
-      <p>接下来我们会配置一个非常好用的 MC 服务端管理工具 <a href="https://mcdreforged.com/zh-CN">MCDReforged</a>。这个工具是 TIS 服务器开发的，能够在不修改原版任何东西的基础上，给服务端添加很多很好用的功能，比如：自动备份、自动启停、显示玩家位置等。</p>
-      <p>MCDReforged 的安装请参考<a href="https://docs.mcdreforged.com/zh-cn/latest/quick_start/index.html">官方手册</a>。注意，安装方式最好选择 pipx，实测在 Ubuntu 24.04 LTS 下只能使用 pipx 安装方式。</p>
-      <p>配置好后，每次启动服务器就是在 MCDReforged 的目录下使用指令 <code class="language-plaintext highlighter-rouge">mcdreforged</code> 启动。</p>
-      <p>除了接管 MC 那难用的控制台以外，MCDReforged 最好用的功能就是丰富的插件生态。可以查看<a href="https://mcdreforged.com/zh-CN/plugins">官方插件仓库</a>来查找自己喜欢的插件。这里我列举我每次都会安装的几个插件：</p>
-      <ul>
-        <li><a href="https://mcdreforged.com/zh-CN/plugin/info">Info</a>：能够获取当前服务器的各种信息，例如 CPU 利用率、内存使用率、存档大小等。</li>
-        <li><a href="https://mcdreforged.com/zh-CN/plugin/where2go">Where2go</a>：一个功能强大的位置插件，包含共享坐标点、查询玩家位置等功能。</li>
-        <li><a href="https://mcdreforged.com/zh-CN/plugin/prime_backup">Prime Backup</a>：一个强大的 MCDR 备份插件，一套先进的 Minecraft 存档备份解决方案。</li>
-        <li><a href="https://mcdreforged.com/zh-CN/plugin/hibernate_r/readme">HibernateR</a>：在服务器没有人的时候让服务器休眠，有人连接时开启。</li>
-        <li><a href="https://mcdreforged.com/zh-CN/plugin/simple_op">Simple OP</a>：<code class="language-plaintext highlighter-rouge">!!op</code> 以获取 op, <code class="language-plaintext highlighter-rouge">!!restart</code> 以重启服务器。</li>
-      </ul>
-      <h2 id="本文完">本文完</h2>
-      <p>最后是夹带私货时间！</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png" alt="" /></p>
-      ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Minecraft" /><category term="Linux" /><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">OceanBase 2024 比赛资源汇总</title><link href="https://ustb-806.github.io/blogs/2024/11/oceanbase/" rel="alternate" type="text/html" title="OceanBase 2024 比赛资源汇总" /><published>2024-11-12T00:00:00+08:00</published><updated>2024-11-22T20:16:06+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/oceanbase</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/oceanbase/"><![CDATA[<p>全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。</p>
-    <h2 id="初赛miniob">初赛（MiniOB）</h2>
-    <p>资源信息：</p>
+      <p>第二个有输出结果（如果失败不会有输出结果）就说明 BBR 开启成功了。</p>
+      <h3 id="配置-x-ui">配置 X-UI</h3>
+      <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
+      <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
+      <p>在入站列表中配置：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
+      <p>在操作中点击「二维码」，然后复制：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
+      <h2 id="配置客户端">配置客户端</h2>
+      <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
+      <h3 id="v2ray-配置">V2ray 配置</h3>
+      <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
+      <p>下载后解压，双击「v2rayN」运行。</p>
+      <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
+      <p>导入成功如下：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
+      <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
+      <p>如下：</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
+      <p>点击确定进行保存。</p>
+      <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
+      <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
+      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
+      <h2 id="全文完">全文完</h2>
+      <blockquote>
+        <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
+      </blockquote>
+      ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T20:16:06+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+      <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
+    </blockquote>
+    <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
+    <p>本文的环境是：</p>
     <ul>
-      <li>比赛链接：<a href="https://open.oceanbase.com/train?questionId=600010">MiniOB 训练营</a></li>
-      <li><a href="https://open.oceanbase.com/competition/armory">数据库大赛英雄榜</a></li>
-      <li><a href="https://oceanbase.github.io/miniob/">MiniOB 辅助开发手册</a></li>
-      <li><a href="https://www.oceanbase.com/docs/-developer-quickstart-10000000000627360">MiniOB 官方手册</a></li>
-      <li>MiniOB 官方教学视频：
-        <ul>
-          <li><a href="https://www.oceanbase.com/video/9000654">1-1 数据库系统概述…</a></li>
-          <li><a href="https://open.oceanbase.com/activities/4921877?id=4921946">从 0 到 1 数据库内核实战教程</a></li>
-        </ul>
-      </li>
+      <li>Ubuntu 24.04 LTS</li>
+      <li><a href="https://www.mcmod.cn/modpack/273.html">冬季救援整合包</a>（1.16.5 Forge）</li>
     </ul>
-    <p>实用工具：</p>
+    <p>一些背景知识：</p>
     <ul>
-      <li>MySQL 语法：<a href="https://www.runoob.com/sql/sql-syntax.html">SQL 语法 - 菜鸟教程</a></li>
-      <li>在线运行 MySQL：<a href="https://onecompiler.com/mysql/">MySQL - OneCompiler</a></li>
+      <li>连接服务器使用 SSH，这里推荐一个很好用的 SSH 客户端 <a href="https://mobaxterm.mobatek.net/">MobaXTerm</a>，其能直接通过自带的 sftp 工具传输文件。</li>
+      <li>在服务器上下载文件可以使用 <code class="language-plaintext highlighter-rouge">wget</code>，复制想要下载的文件的链接，直接在终端输入 <code class="language-plaintext highlighter-rouge">wget &lt;下载链接&gt;</code> 回车即可。</li>
+      <li>启动游戏推荐使用第三方客户端，这里推荐 <a href="https://afdian.com/p/0164034c016c11ebafcb52540025c377">PCL</a> 和 <a href="https://hmcl.huangyuhui.net/">HMCL</a>，尽量不要用官方启动器，功能贫乏。</li>
     </ul>
-    <p>赛后总结：</p>
+    <h2 id="配置-java-环境">配置 Java 环境</h2>
+    <p>MC 是用 Java 写的，所以配置 Java 环境也很合理。</p>
+    <p>安装 Java 运行环境之前，首先需要知道想要运行的 MC 版本对应的 Java 版本是多少，这里搬运 <a href="https://zh.minecraft.wiki/w/Tutorial:%E6%9B%B4%E6%96%B0Java?variant=zh-cn">MC 官方 Wiki</a> 里关于 Java 版本的说明：</p>
     <table>
       <thead>
         <tr>
-          <th>队伍 &amp; GitHub 仓库</th>
-          <th>成员</th>
-          <th>总结</th>
+          <th>Minecraft 开发版本</th>
+          <th>Minecraft 正式版本</th>
+          <th>最低要求 Java 版本</th>
+          <th>官启绑定 Java 版本</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><a href="https://github.com/bosswnx/miniob-2024">我真的参加了系统内核赛</a></td>
-          <td>王诺贤</td>
-          <td><a href="https://zhuanlan.zhihu.com/p/5953505884">OceanBase 2024 初赛 MiniOB 开发记录</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/24w14a">24w14a</a>及以上</td>
+          <td><a href="https://zh.minecraft.wiki/w/Java版1.20.5">1.20.5</a>及以上</td>
+          <td>Java 21</td>
+          <td>21.0.3</td>
         </tr>
         <tr>
-          <td> </td>
-          <td>廖玮珑</td>
-          <td><a href="https://blog.soulter.top/posts/2024-oceanbase-database.html">OceanBase 数据库内核实现赛 / 自己实现一个数据库</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/22w18a">22w18a</a>至<a href="https://zh.minecraft.wiki/w/24w13a">24w13a</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/Java版1.19">1.19</a>至<a href="https://zh.minecraft.wiki/w/Java版1.20.4">1.20.4</a></td>
+          <td>Java 17</td>
+          <td>17.0.8</td>
         </tr>
         <tr>
-          <td> </td>
-          <td>陈渠</td>
-          <td><a href="https://blog.virtualfuture.top/posts/miniob/">OceanBase 数据库大赛初赛结束之后</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/Java版1.18-pre2">1.18-pre2</a>至<a href="https://zh.minecraft.wiki/w/22w17a">22w17a</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/Java版1.18">1.18</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18.2">1.18.2</a></td>
+          <td>Java 17</td>
+          <td>17.0.1</td>
         </tr>
         <tr>
-          <td><a href="https://github.com/SaZiKK/miniob-2024">我一定要参加编译系统实现赛</a></td>
-          <td>陈宽宽</td>
-          <td><a href="https://sazikk.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97-OceanBase%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">【开发日志】OceanBase 数据库系统能力大赛开发日志</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/21w19a">21w19a</a>至<a href="https://zh.minecraft.wiki/w/Java版1.18-pre1">1.18-pre1</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/Java版1.17">1.17</a>至<a href="https://zh.minecraft.wiki/w/Java版1.17.1">1.17.1</a></td>
+          <td>Java 16</td>
+          <td>16.0.1</td>
         </tr>
         <tr>
-          <td> </td>
-          <td>刁明轩</td>
-          <td><a href="https://dmx20070206.github.io/2024/11/11/miniob/">miniob 初赛参赛总结</a></td>
+          <td><a href="https://zh.minecraft.wiki/w/21w18a">21w18a</a>及以下</td>
+          <td><a href="https://zh.minecraft.wiki/w/Java版1.16.5">1.16.5</a>及以下</td>
+          <td>Java 8</td>
+          <td>1.8.0_51</td>
         </tr>
       </tbody>
     </table>
-    <h2 id="决赛oceanbase">决赛（OceanBase）</h2>
-    <p>信息汇总中……</p>
-    ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="计算机系统能力大赛" /><category term="OceanBase" /><summary type="html"><![CDATA[全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。]]></summary></entry></feed>
+    <p>由于我需要运行的版本是 1.16.5，因此这里需要安装 Java 8。</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openjdk-8-jdk
+</code></pre>
+      </div>
+    </div>
+    <p>对于其他的 Java 版本，一般来说将上面指令中的 <code class="language-plaintext highlighter-rouge">8</code> 替换成对应的版本号就可以了。</p>
+    <p>安装完成后可以使用 <code class="language-plaintext highlighter-rouge">java --version</code> 来查看版本是否正确。</p>
+    <p>如果服务器同时安装了多个版本的 Java，可以使用下面的指令来切换默认的 Java 版本：</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--config</span> java
+</code></pre>
+      </div>
+    </div>
+    <h2 id="配置服务端">配置服务端</h2>
+    <p>对于原版、Forge 和 Fabric，初始化服务端的方式各不相同。</p>
+    <p>国内的 MCSL 维护了一套服务端文件的镜像（<a href="https://sync.mcsl.com.cn/">这里</a>），后文讲到的文件可以先在这里尝试下载。</p>
+    <h3 id="原版vanilla">原版（Vanilla）</h3>
+    <p>MC 原版的服务端文件可以直接在 Minecraft 官网上下载。直接 Bing/Google 搜索 <code class="language-plaintext highlighter-rouge">minecraft server &lt;版本号&gt; 下载</code>，找到官方网站对应的下载链接即可。下载下来的服务端一般是一个名为 <code class="language-plaintext highlighter-rouge">server.jar</code>的 jar 文件。</p>
+    <p>需要注意两点：</p>
+    <ul>
+      <li>不要用百度，百度只会把你导航到网易（MC 的国内代理，但是依托**）。</li>
+      <li>进入官网后，如果你没有挂梯子的话，那么同样会弹窗让你跳转到网易，注意点击下方的 <code class="language-plaintext highlighter-rouge">Stay on Minecraft.net</code> 留在国际版官网。</li>
+    </ul>
+    <p>当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Vanilla">MCSL 镜像源</a>下载。</p>
+    <p>接下来找到一个合适的目录，初始化服务端：</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>java <span class="nt">-jar</span> server.jar nogui
+</code></pre>
+      </div>
+    </div>
+    <p>第一次运行服务端，会创建一个 <code class="language-plaintext highlighter-rouge">eula.txt</code>然后报错退出，这个文件的作用是同意许可。使用 vim 或 nano 或其他方式打开，将里面的 <code class="language-plaintext highlighter-rouge">false</code> 改成 <code class="language-plaintext highlighter-rouge">true</code>，保存退出，重新启动即可。</p>
+    <p>等到终端出现 <code class="language-plaintext highlighter-rouge">Done!</code> 等文字的时候，说明服务器已经成功启动，此时已经可以直接开始玩了。不过后面会配置一些优化体验的东西，请继续阅读下文。</p>
+    <h3 id="forge">Forge</h3>
+    <p>Forge 端可以在 <a href="https://files.minecraftforge.net/net/minecraftforge/forge/">Forge 官网</a>上下载（可能需要挂梯子）。当然，也可以使用上面提到的 <a href="https://sync.mcsl.com.cn/core/Forge">MCSL 镜像源</a>下载。</p>
+    <p><strong>注意</strong>：Forge 的小版本之间也会出现不兼容的情况，所以如果是配置整合包的话，一定要下载和整合包的 Forge 版本完全一致的服务端。</p>
+    <p>下载下来后会得到一个名为 <code class="language-plaintext highlighter-rouge">forge-&lt;游戏版本&gt;-&lt;Forge版本&gt;-installer.jar</code> 的文件。这里我下载的文件名为 <code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.34-installer.jar</code>。</p>
+    <p>找到一个合适的目录，启动：</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.34-installer.jar <span class="nt">--installServer</span>  <span class="c"># 注意要把文件替换为自己下载的</span>
+</code></pre>
+      </div>
+    </div>
+    <p>接下来 Forge Installer 会下载一系列文件，包括服务端原始文件，然后自动进行配置。这个阶段需要保持服务器有良好的网络。该过程有可能需要翻墙。</p>
+    <p>配置完成之后，会留下一些文件，其中最重要的是三个（注意替换成自己的版本号）：</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">forge-1.16.5-36.2.34.jar</code>：Forge 的主体文件，也是 Forge 端运行的入口；</li>
+      <li><code class="language-plaintext highlighter-rouge">libraries</code>：资源文件；</li>
+      <li><code class="language-plaintext highlighter-rouge">minecraft_server.1.16.5.jar</code>：Forge 运行的服务端文件。</li>
+    </ul>
+    <p>接下来就可以启动服务器了：</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>java <span class="nt">-jar</span> forge-1.16.5-36.2.34.jar nogui  <span class="c"># 注意把文件替换为自己的</span>
+</code></pre>
+      </div>
+    </div>
+    <p>和原版服务器一样，第一次启动会创建 <code class="language-plaintext highlighter-rouge">eula.txt</code> 文件并报错退出，需要将该文件里面的 <code class="language-plaintext highlighter-rouge">false</code> 修改为 <code class="language-plaintext highlighter-rouge">true</code> 保存退出，重新启动即可。</p>
+    <p>重新启动服务器后，服务器会生成一系列游戏文件，包括存档文件夹 <code class="language-plaintext highlighter-rouge">world</code> 和放置 mod 的文件夹 <code class="language-plaintext highlighter-rouge">mods</code>。只需要将想要添加的 mod 放入 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹，重新启动，即可加载 mod。</p>
+    <p>不过如果是想配置整合包的话，还需要做接下来的工作。</p>
+    <p>整合包一般分为两种发布方法，一种是直接把整个游戏打成压缩包，而另一种是采用配置文件压缩包的形式（压缩包内部有一个 <code class="language-plaintext highlighter-rouge">overrides</code> 文件夹，需要从 PCL 等第三方启动器的 <code class="language-plaintext highlighter-rouge">导入整合包</code> 来进行导入）：</p>
+    <ul>
+      <li>对于第一种方法，需要将压缩包内的 <code class="language-plaintext highlighter-rouge">mods</code>文件夹和所有的与「配置」相关的文件夹都复制到服务器目录下（包括但不限于 <code class="language-plaintext highlighter-rouge">config</code>、<code class="language-plaintext highlighter-rouge">kubejs</code>、<code class="language-plaintext highlighter-rouge">scripts</code>）。<strong>这一步很重要，如果漏掉了任何一个配置文件都可能会导致整合包运行不正确，所以务必仔细检查。</strong></li>
+      <li>而对于第二种方法，首先在本地客户端导入整合包，在本地安装完之后，进入游戏版本根目录，将 <code class="language-plaintext highlighter-rouge">mods</code> 文件夹复制到服务器目录下。然后，将配置文件压缩包里 <code class="language-plaintext highlighter-rouge">overrides</code>文件夹下的所有文件复制到服务器目录下即可。</li>
+    </ul>
+    <p>完成上述操作后，将刚刚启动生成的 <code class="language-plaintext highlighter-rouge">world</code> 文件夹删除（如果没有就不用管了，这一步是因为整合包可能会对地图生成进行改动，需要将原版生成的地图删除了重新生成），重新启动服务端即可。</p>
+    <h3 id="fabric">Fabric</h3>
+    <p>Fabric 和 Forge 的安装步骤除了下载文件以外基本上相同。</p>
+    <p>相比于 Forge 完全不提供中文安装教程，Fabric 提供了一个非常友好的<a href="https://wiki.fabricmc.net/zh_cn:player:tutorials:install_server">官方中文安装教程</a>，请参考这个教程进行安装，然后跳转到 <a href="#forge">Forge 章节</a>的整合包配置部分。</p>
+    <h2 id="更多的配置可选">更多的配置（可选）</h2>
+    <p>进行完上述的步骤后，服务器文件夹下大致会有以下文件：</p>
+    <p><img src="https://s3.806.group/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/1.png" alt="" /></p>
+    <p>我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。</p>
+    <p>其中和整合包 mod 配置相关的文件有：<code class="language-plaintext highlighter-rouge">config</code>，<code class="language-plaintext highlighter-rouge">kubejs</code>，<code class="language-plaintext highlighter-rouge">defaultconfigs</code>，<code class="language-plaintext highlighter-rouge">worldshape</code>；</p>
+    <p>此时，其实就可以启动服务器开始玩了！但是我们还可以再进一步配置一些东西更方便我们运维。</p>
+    <h3 id="screen">Screen</h3>
+    <p>启动服务器的时候可以使用 screen、tmux 等工具将其挂在后台，这样就可以切断 SSH 连接而不会导致服务器关闭。接下来简单介绍 screen。</p>
+    <p>首先安装 screen：</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>screen
+</code></pre>
+      </div>
+    </div>
+    <p>可以通过指令 <code class="language-plaintext highlighter-rouge">screen</code> 启动一个新的 screen 会话。可以发现，screen 会话和普通的终端没有什么不同，因为其直接沿用了当前终端的配置。不过，screen 会话可以通过快捷键 <code class="language-plaintext highlighter-rouge">&lt;Ctrl-A&gt; + z</code> 来挂起当前会话，通过指令 <code class="language-plaintext highlighter-rouge">screen -r</code> 来重新连接挂起的会话。</p>
+    <p>这样每次使用 screen 启动服务器之后，就可以直接关闭终端，让服务器在后台继续运行，下次需要运维的时候重新连接回来即可。</p>
+    <h3 id="serverproperties">server.properties</h3>
+    <p><code class="language-plaintext highlighter-rouge">server.properties</code> 文件是 MC 服务器的配置文件。我们可以更改里面的一些内容来实现更好的效果：</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">allow-flight</code>：建议改为 <code class="language-plaintext highlighter-rouge">true</code>，因为很多整合包提供了飞行的能力，如果不开启的话会被服务器误认为是在作弊而直接踢出；</li>
+      <li><code class="language-plaintext highlighter-rouge">difficulty</code>：服务器的难度，有 <code class="language-plaintext highlighter-rouge">peaceful</code>、<code class="language-plaintext highlighter-rouge">easy</code>、<code class="language-plaintext highlighter-rouge">normal</code>和 <code class="language-plaintext highlighter-rouge">hard</code> 四个选项；</li>
+      <li><code class="language-plaintext highlighter-rouge">motd</code>：服务器显示在游戏内的说明文字；</li>
+      <li><code class="language-plaintext highlighter-rouge">pvp</code>：玩家之间是否相互可以攻击；</li>
+      <li><code class="language-plaintext highlighter-rouge">server-port</code>：服务器的端口，如果一台机子上需要运行多个服务器的话，需要分别设置不同的端口才能运行，否则会冲突。</li>
+      <li><code class="language-plaintext highlighter-rouge">online-mode</code>：正版验证，开启了的话需要服务器联网才能加入，好处是能有皮肤。</li>
+      <li><code class="language-plaintext highlighter-rouge">view-distance</code>：服务器渲染的视距，依照服务器的性能进行调整，如果卡了就调低一点；</li>
+    </ul>
+    <h3 id="启动参数">启动参数</h3>
+    <p>启动服务器的时候可以在 java 指令后添加一些参数来优化性能，这里我只设置了服务器的内存：</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>java <span class="nt">-jar</span> <span class="nt">-Xmx16G</span> <span class="nt">-Xms16G</span> server.jar nogui
+</code></pre>
+      </div>
+    </div>
+    <p>其中：</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">-Xmx</code>：设置最大内存；</li>
+      <li><code class="language-plaintext highlighter-rouge">-Xms</code>：设置最小内存；</li>
+      <li><code class="language-plaintext highlighter-rouge">nogui</code>：以命令行模式启动，必须要添加，否在在命令行里会报错。</li>
+    </ul>
+    <h3 id="开放防火墙端口">开放防火墙端口</h3>
+    <p>由于 Ubuntu 默认开启了防火墙 ufw，所以需要在防火墙开放 MC 服务器默认的端口 <code class="language-plaintext highlighter-rouge">25565</code> 才能链接到服务器。</p>
+    <div class="language-bash highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="nb">sudo </span>ufw allow 25565  <span class="c"># 开放 25565 端口</span>
+</code></pre>
+      </div>
+    </div>
+    <p>如果服务器使用了其他的端口的话，需要改成开放对应的其他端口。</p>
+    <h3 id="记分板">记分板</h3>
+    <p>你可能在看别的人玩服务器的时候发现，可以在 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 键的玩家列表里看到所有玩家的血量，在显示屏右边有一个榜单显示当前死亡数等……这些都是通过原版的记分板实现的。</p>
+    <p>在 MC 服务端的控制台输入以下指令：</p>
+    <ul>
+      <li>
+        <p>启用 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 显示血量：</p>
+        <div class="language-text highlighter-rouge">
+          <div class="highlight">
+            <pre class="highlight"><code>scoreboard objectives add health health "血量"
+scoreboard objectives setdisplay list health
+</code></pre>
+          </div>
+    </div>
+      </li>
+      <li>
+        <p>启用侧边栏死亡计数：</p>
+        <div class="language-text highlighter-rouge">
+          <div class="highlight">
+            <pre class="highlight"><code>scoreboard objectives add deathCount deathCount "死亡数"
+scoreboard objectives setdisplay sidebar deathCount
+</code></pre>
+          </div>
+    </div>
+      </li>
+    </ul>
+    <h2 id="配置-mcdreforged可选">配置 MCDReforged（可选）</h2>
+    <p>接下来我们会配置一个非常好用的 MC 服务端管理工具 <a href="https://mcdreforged.com/zh-CN">MCDReforged</a>。这个工具是 TIS 服务器开发的，能够在不修改原版任何东西的基础上，给服务端添加很多很好用的功能，比如：自动备份、自动启停、显示玩家位置等。</p>
+    <p>MCDReforged 的安装请参考<a href="https://docs.mcdreforged.com/zh-cn/latest/quick_start/index.html">官方手册</a>。注意，安装方式最好选择 pipx，实测在 Ubuntu 24.04 LTS 下只能使用 pipx 安装方式。</p>
+    <p>配置好后，每次启动服务器就是在 MCDReforged 的目录下使用指令 <code class="language-plaintext highlighter-rouge">mcdreforged</code> 启动。</p>
+    <p>除了接管 MC 那难用的控制台以外，MCDReforged 最好用的功能就是丰富的插件生态。可以查看<a href="https://mcdreforged.com/zh-CN/plugins">官方插件仓库</a>来查找自己喜欢的插件。这里我列举我每次都会安装的几个插件：</p>
+    <ul>
+      <li><a href="https://mcdreforged.com/zh-CN/plugin/info">Info</a>：能够获取当前服务器的各种信息，例如 CPU 利用率、内存使用率、存档大小等。</li>
+      <li><a href="https://mcdreforged.com/zh-CN/plugin/where2go">Where2go</a>：一个功能强大的位置插件，包含共享坐标点、查询玩家位置等功能。</li>
+      <li><a href="https://mcdreforged.com/zh-CN/plugin/prime_backup">Prime Backup</a>：一个强大的 MCDR 备份插件，一套先进的 Minecraft 存档备份解决方案。</li>
+      <li><a href="https://mcdreforged.com/zh-CN/plugin/hibernate_r/readme">HibernateR</a>：在服务器没有人的时候让服务器休眠，有人连接时开启。</li>
+      <li><a href="https://mcdreforged.com/zh-CN/plugin/simple_op">Simple OP</a>：<code class="language-plaintext highlighter-rouge">!!op</code> 以获取 op, <code class="language-plaintext highlighter-rouge">!!restart</code> 以重启服务器。</li>
+    </ul>
+    <h2 id="本文完">本文完</h2>
+    <p>最后是夹带私货时间！</p>
+    <p><img src="https://s3.806.group/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png" alt="" /></p>
+    ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Minecraft" /><category term="Linux" /><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">OceanBase 2024 比赛资源汇总</title><link href="https://ustb-806.github.io/blogs/2024/11/oceanbase/" rel="alternate" type="text/html" title="OceanBase 2024 比赛资源汇总" /><published>2024-11-12T00:00:00+08:00</published><updated>2024-11-22T20:16:06+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/oceanbase</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/oceanbase/"><![CDATA[<p>全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。</p>
+  <h2 id="初赛miniob">初赛（MiniOB）</h2>
+  <p>资源信息：</p>
+  <ul>
+    <li>比赛链接：<a href="https://open.oceanbase.com/train?questionId=600010">MiniOB 训练营</a></li>
+    <li><a href="https://open.oceanbase.com/competition/armory">数据库大赛英雄榜</a></li>
+    <li><a href="https://oceanbase.github.io/miniob/">MiniOB 辅助开发手册</a></li>
+    <li><a href="https://www.oceanbase.com/docs/-developer-quickstart-10000000000627360">MiniOB 官方手册</a></li>
+    <li>MiniOB 官方教学视频：
+      <ul>
+        <li><a href="https://www.oceanbase.com/video/9000654">1-1 数据库系统概述…</a></li>
+        <li><a href="https://open.oceanbase.com/activities/4921877?id=4921946">从 0 到 1 数据库内核实战教程</a></li>
+      </ul>
+    </li>
+  </ul>
+  <p>实用工具：</p>
+  <ul>
+    <li>MySQL 语法：<a href="https://www.runoob.com/sql/sql-syntax.html">SQL 语法 - 菜鸟教程</a></li>
+    <li>在线运行 MySQL：<a href="https://onecompiler.com/mysql/">MySQL - OneCompiler</a></li>
+  </ul>
+  <p>赛后总结：</p>
+  <table>
+    <thead>
+      <tr>
+        <th>队伍 &amp; GitHub 仓库</th>
+        <th>成员</th>
+        <th>总结</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/bosswnx/miniob-2024">我真的参加了系统内核赛</a></td>
+        <td>王诺贤</td>
+        <td><a href="https://zhuanlan.zhihu.com/p/5953505884">OceanBase 2024 初赛 MiniOB 开发记录</a></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>廖玮珑</td>
+        <td><a href="https://blog.soulter.top/posts/2024-oceanbase-database.html">OceanBase 数据库内核实现赛 / 自己实现一个数据库</a></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>陈渠</td>
+        <td><a href="https://blog.virtualfuture.top/posts/miniob/">OceanBase 数据库大赛初赛结束之后</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/SaZiKK/miniob-2024">我一定要参加编译系统实现赛</a></td>
+        <td>陈宽宽</td>
+        <td><a href="https://sazikk.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97-OceanBase%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">【开发日志】OceanBase 数据库系统能力大赛开发日志</a></td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>刁明轩</td>
+        <td><a href="https://dmx20070206.github.io/2024/11/11/miniob/">miniob 初赛参赛总结</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 id="决赛oceanbase">决赛（OceanBase）</h2>
+  <p>信息汇总中……</p>
+  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="计算机系统能力大赛" /><category term="OceanBase" /><summary type="html"><![CDATA[全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。]]></summary></entry></feed>

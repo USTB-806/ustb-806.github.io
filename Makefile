@@ -1,8 +1,8 @@
 
-STORAGE_URL ?= https://s3.806.group/website/
+STORAGE_URL ?= https://s3.806.group/website
 
 # 启动本地服务
-serve:
+serve: format
 	@bundle exec jekyll serve
 
 # 安装依赖
@@ -18,6 +18,6 @@ format:
 # /static -> $(STORAGE_URL)/static
 # 仅替换 .md, .html, .yml 文件
 url:
-	@find . -type f \( -name "*.md" -o -name "*.html" -o -name "*.yml" \) -exec perl -pi -e 's|/static|$(STORAGE_URL)|g' {} +
+	@find . -type f \( -name "*.md" -o -name "*.html" -o -name "*.yml" \) -exec perl -pi -e 's|/image/|$(STORAGE_URL)/|g' {} +
 
 .PHONY: env serve format url
