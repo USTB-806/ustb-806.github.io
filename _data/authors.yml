@@ -22,7 +22,7 @@ ustb-806:
 
 bosswnx:
   name: Nelson Boss
-  avatar: "https://blog.bosswnx.xyz/images/profile.jpg"
+  avatar: "https://blog.bosswnx.xyzhttps://s3.806.group/website/s/profile.jpg"
   bio: "一直游到海水变蓝"
   links:
     - label: Website
@@ -32,3 +32,13 @@ bosswnx:
       icon: fab fa-fw fa-github
       url: https://github.com/bosswnx
 
+fridemn:
+  name: Fridemn
+  avatar: "https://avatars.githubusercontent.com/u/150212937?v=4"
+  links:
+    - label: Website
+      icon: far fa-fw fa-globe
+      url: https://fridemn.best
+    - label: GitHub
+      icon: fab fa-fw fa-github
+      url: https://github.com/Fridemn
