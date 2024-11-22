@@ -3,8 +3,8 @@ title: "祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统
 author: ""
 header:
     overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-10-02-os-competition-header.jpg
-categories: ["获奖", "系统部"]
-tags: []
+categories: ["竞赛", "系统部"]
+tags: ["操作系统赛", "计算机系统能力大赛"]
 ---
 
 近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。
