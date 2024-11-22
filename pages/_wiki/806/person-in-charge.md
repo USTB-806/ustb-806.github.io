@@ -11,7 +11,7 @@
 | 系统部负责人     | 王诺贤         | [个人网站](https://bosswnx.xyz), [GitHub](https://github.com/bosswnx)   |
 | 人工智能部负责人 | 陈铎友         | [个人网站](https://chandery.chat), [GitHub](https://github.com/QodiCat) |
 | 开发部负责人     | 崔永亮（代理） | [GitHub](https://github.com/Fridemn)                                    |
-| 游戏组负责人     | 黄昊           |                                                                         |
+| 游戏部负责人     | 黄昊           | [GitHub](https://github.com/CharserHH)                                  |
 
 ## 2023 届
 
