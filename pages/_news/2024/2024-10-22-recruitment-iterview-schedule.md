@@ -2,7 +2,7 @@
 title: "806 实验室 2024 届招新面试安排"
 author: ""
 header:
-    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/news-banner.jpg
+    overlay_image: http://140.143.188.19:9000/website/static/news-banner.jpg
 categories: ["其他"]
 tags: []
 ---

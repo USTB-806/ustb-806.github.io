@@ -2,7 +2,7 @@
 title: "如何在 Linux 上部署一个 MC 纯净/整合包服务器"
 author: "bosswnx"
 header:
-    overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png
+    overlay_image: http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png
 categories: ["教程"]
 tags: ["Minecraft", "Linux"]
 ---
@@ -130,7 +130,7 @@ Fabric 和 Forge 的安装步骤除了下载文件以外基本上相同。
 
 进行完上述的步骤后，服务器文件夹下大致会有以下文件：
 
-![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux.png)
+![](http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/1.png)
 
 我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。
 
@@ -228,4 +228,4 @@ MCDReforged 的安装请参考[官方手册](https://docs.mcdreforged.com/zh-cn/
 
 最后是夹带私货时间！
 
-![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png)
+![](http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png)

@@ -7,5 +7,5 @@ pagination:
   enabled: true
   collection: blogs
 header:
-  overlay_image: "https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/blogs-banner.jpg"
+  overlay_image: "http://140.143.188.19:9000/website/static/blogs-banner.jpg"
 ---

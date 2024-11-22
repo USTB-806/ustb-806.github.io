@@ -15,25 +15,25 @@
 
 ### LOGO
 
-![logo](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-logo-with-name.jpg)
+![logo](http://140.143.188.19:9000/website/static/806-logo-with-name.jpg)
 
 ### 牌匾
 
-![banner](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-banner.jpg)
+![banner](http://140.143.188.19:9000/website/static/806-banner.jpg)
 
 ### 铭牌
 
-![plaque](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-plaque.jpg)
+![plaque](http://140.143.188.19:9000/website/static/806-plaque.jpg)
 
 ## 实验室照片
 
-![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_1.jpg)
+![](http://140.143.188.19:9000/website/static/806_1.jpg)
 
-![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_2.jpg)
+![](http://140.143.188.19:9000/website/static/806_2.jpg)
 
-![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_3.jpg)
+![](http://140.143.188.19:9000/website/static/806_3.jpg)
 
-![](https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806_4.jpg)
+![](http://140.143.188.19:9000/website/static/806_4.jpg)
 
 ## 更多信息
 
