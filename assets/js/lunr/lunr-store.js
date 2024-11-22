@@ -90,13 +90,13 @@ var store = [{
 "teaser": null
 },{
 "title": "806 成员",
-"excerpt":"不在下列名单内的皆不为 806 正式成员。 2024 届 部门 姓名 联系方式 系统部 王诺贤 个人网站, GitHub   陈宽宽 个人网站, GitHub   王雨辰 个人网站, GitHub   丁正枫 GitHub   刁明轩 GitHub   周奔成 GitHub 人工智能部 陈铎友 个人网站, GitHub   祁珏瑜 GitHub   崔永亮 GitHub   张灿 GitHub   王苏晴 个人网站, GitHub 开发部 廖玮珑 个人网站, GitHub...","categories": [],
+"excerpt":"不在下列名单内的皆不为 806 正式成员。 2024 届 部门 姓名 联系方式 系统部 王诺贤 个人网站, GitHub   陈宽宽 个人网站, GitHub   王雨辰 个人网站, GitHub   丁正枫 GitHub   刁明轩 个人网站, GitHub   周奔成 GitHub 人工智能部 陈铎友 个人网站, GitHub   祁珏瑜 GitHub   崔永亮 GitHub   张灿 GitHub   王苏晴 个人网站, GitHub 开发部 廖玮珑 个人网站,...","categories": [],
 "tags": [],
 "url": "/wiki/806/members/",
 "teaser": null
 },{
 "title": "806 负责人",
-"excerpt":"2024 届                  身份       姓名       联系方式                       指导老师       崔晓龙       cuixl@ustb.edu.cn                 系统部负责人       王诺贤       个人网站, GitHub                 人工智能部负责人       陈铎友       个人网站, GitHub                 开发部负责人       崔永亮（代理）       GitHub                 游戏组负责人       黄昊                   2023 届                  身份       姓名       联系方式                       指导老师       崔晓龙       cuixl@ustb.edu.cn                 系统组负责人       王诺贤       个人网站, GitHub                 AI 组负责人       祁珏瑜       GitHub                 开发组负责人       廖玮珑       个人网站, GitHub                 游戏组负责人       敖立鑫       GitHub          ","categories": [],
+"excerpt":"2024 届                  身份       姓名       联系方式                       指导老师       崔晓龙       cuixl@ustb.edu.cn                 系统部负责人       王诺贤       个人网站, GitHub                 人工智能部负责人       陈铎友       个人网站, GitHub                 开发部负责人       崔永亮（代理）       GitHub                 游戏部负责人       黄昊       GitHub           2023 届                  身份       姓名       联系方式                       指导老师       崔晓龙       cuixl@ustb.edu.cn                 系统组负责人       王诺贤       个人网站, GitHub                 AI 组负责人       祁珏瑜       GitHub                 开发组负责人       廖玮珑       个人网站, GitHub                 游戏组负责人       敖立鑫       GitHub          ","categories": [],
 "tags": [],
 "url": "/wiki/806/person-in-charge/",
 "teaser": null
