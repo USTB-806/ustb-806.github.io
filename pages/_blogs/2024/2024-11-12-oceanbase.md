@@ -1,10 +1,10 @@
 ---
-title: "OceanBase & MiniOB 2024 比赛资源汇总"
+title: "OceanBase 2024 比赛资源汇总"
 author: "ustb-806"
 header:
     overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/blogs-banner.jpg
 categories: ["竞赛"]
-tags: ["计算机系统能力大赛", "OceanBase", "MiniOB"]
+tags: ["计算机系统能力大赛", "OceanBase"]
 ---
 
 全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。
