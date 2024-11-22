@@ -20,9 +20,9 @@ ustb-806:
 # 将 gravatar 链接中的 id 替换下面的链接中的 <id>
 # https://secure.gravatar.com/avatar/<id>?s=256&d=identicon&r=g
 
-nelson:
+bosswnx:
   name: Nelson Boss
-  avatar: "https://secure.gravatar.com/avatar/c3991bf30d5d7f54983c6d89b4a04b92?s=256&d=identicon&r=g"
+  avatar: "https://blog.bosswnx.xyz/images/profile.jpg"
   bio: "一直游到海水变蓝"
   links:
     - label: Website

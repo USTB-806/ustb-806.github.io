@@ -1,13 +1,13 @@
 ---
 title: "如何在 Linux 上部署一个 MC 纯净/整合包服务器"
-author: "nelson"
+author: "bosswnx"
 header:
     overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png
 categories: []
 tags: []
 ---
 
-> 作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部宗旨
+> 作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统
 
 要想和好基友们开黑 MC，一般会采用单人游戏+对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。
 
@@ -20,6 +20,7 @@ tags: []
 
 - 连接服务器使用 SSH，这里推荐一个很好用的 SSH 客户端 [MobaXTerm](https://mobaxterm.mobatek.net/)，其能直接通过自带的 sftp 工具传输文件。
 - 在服务器上下载文件可以使用 `wget`，复制想要下载的文件的链接，直接在终端输入 `wget <下载链接>` 回车即可。
+- 启动游戏推荐使用第三方客户端，这里推荐 [PCL](https://afdian.com/p/0164034c016c11ebafcb52540025c377) 和 [HMCL](https://hmcl.huangyuhui.net/)，尽量不要用官方启动器，功能贫乏。
 
 ## 配置 Java 环境
 
@@ -63,8 +64,8 @@ MC 原版的服务端文件可以直接在 Minecraft 官网上下载。直接 Bi
 
 需要注意两点：
 
-- 不要用百度，百度只会把你导航到网易（MC 的国内代理，但是依托**）。
-- 进入官网后，如果你没有挂梯子的话，那么同样会弹窗让你跳转到网易，注意点击下方的 `Stay on Minecraft.net`留在国际版官网。
+- 不要用百度，百度只会把你导航到网易（MC 的国内代理，但是依托\*\*）。
+- 进入官网后，如果你没有挂梯子的话，那么同样会弹窗让你跳转到网易，注意点击下方的 `Stay on Minecraft.net` 留在国际版官网。
 
 当然，也可以使用上面提到的 [MCSL 镜像源](https://sync.mcsl.com.cn/core/Vanilla)下载。
 
@@ -76,7 +77,7 @@ java -jar server.jar nogui
 
 第一次运行服务端，会创建一个 `eula.txt`然后报错退出，这个文件的作用是同意许可。使用 vim 或 nano 或其他方式打开 ，将里面的 `false` 改成 `true`，保存退出，重新启动即可。
 
-等到终端出现 `Done!` 等文字的时候，说明服务器已经成功启动，此时已经可以直接开始玩了。不过后面会配置一些很好用的工具，请继续阅读下文。
+等到终端出现 `Done!` 等文字的时候，说明服务器已经成功启动，此时已经可以直接开始玩了。不过后面会配置一些优化体验的东西，请继续阅读下文。
 
 ### Forge
 
@@ -84,7 +85,7 @@ Forge 端可以在 [Forge 官网](https://files.minecraftforge.net/net/minecraft
 
 **注意**：Forge 的小版本之间也会出现不兼容的情况，所以如果是配置整合包的话，一定要下载和整合包的 Forge 版本完全一致的服务端。
 
-下载下来后会得到一个名为 `forge-<游戏版本>-<Forge版本>-installer.jar`的文件。这里我下载的文件名为 `forge-1.16.5-36.2.34-installer.jar`。
+下载下来后会得到一个名为 `forge-<游戏版本>-<Forge版本>-installer.jar` 的文件。这里我下载的文件名为 `forge-1.16.5-36.2.34-installer.jar`。
 
 找到一个合适的目录，启动：
 
@@ -96,25 +97,25 @@ java -jar forge-1.16.5-36.2.34-installer.jar --installServer  # 注意要把文�
 
 配置完成之后，会留下一些文件，其中最重要的是三个（注意替换成自己的版本号）：
 
-- `forge-1.16.5-36.2.39.jar`：Forge 的主体文件，也是 Forge 端运行的入口；
+- `forge-1.16.5-36.2.34.jar`：Forge 的主体文件，也是 Forge 端运行的入口；
 - `libraries`：资源文件；
 - `minecraft_server.1.16.5.jar`：Forge 运行的服务端文件。
 
 接下来就可以启动服务器了：
 
 ```bash
-java -jar forge-1.16.5-36.2.39.jar nogui  # 注意把文件替换为自己的
+java -jar forge-1.16.5-36.2.34.jar nogui  # 注意把文件替换为自己的
 ```
 
 和原版服务器一样，第一次启动会创建 `eula.txt` 文件并报错退出，需要将该文件里面的 `false` 修改为 `true` 保存退出，重新启动即可。
 
-接下来只需要将想要添加的 mod 放入 `mods` 文件夹，重新启动，即可加载 mod。
+重新启动服务器后，服务器会生成一系列游戏文件，包括存档文件夹 `world` 和放置 mod 的文件夹 `mods`。只需要将想要添加的 mod 放入 `mods` 文件夹，重新启动，即可加载 mod。
 
 不过如果是想配置整合包的话，还需要做接下来的工作。
 
-整合包一般分为两种发布方法，一种是直接把整个游戏打成压缩包，而另一种是采用配置文件压缩包的形式（压缩包内部有一个 `overrides` 文件夹，需要从启动器的`导入整合包`来进行导入）：
+整合包一般分为两种发布方法，一种是直接把整个游戏打成压缩包，而另一种是采用配置文件压缩包的形式（压缩包内部有一个 `overrides` 文件夹，需要从 PCL 等第三方启动器的 `导入整合包` 来进行导入）：
 
-- 对于第一种方法，需要将压缩包内的 `mods`文件夹和所有的与「配置」相关的文件夹都复制到服务器目录下（包括但不限于 `config`、`kubejs`、`scripts`）。**这一部很重要，如果漏掉了任何一个配置文件都可能会导致整合包运行不正确，所以务必仔细检查。**
+- 对于第一种方法，需要将压缩包内的 `mods`文件夹和所有的与「配置」相关的文件夹都复制到服务器目录下（包括但不限于 `config`、`kubejs`、`scripts`）。**这一步很重要，如果漏掉了任何一个配置文件都可能会导致整合包运行不正确，所以务必仔细检查。**
 - 而对于第二种方法，首先在本地客户端导入整合包，在本地安装完之后，进入游戏版本根目录，将 `mods` 文件夹复制到服务器目录下。然后，将配置文件压缩包里 `overrides`文件夹下的所有文件复制到服务器目录下即可。
 
 完成上述操作后，将刚刚启动生成的 `world` 文件夹删除（如果没有就不用管了，这一步是因为整合包可能会对地图生成进行改动，需要将原版生成的地图删除了重新生成），重新启动服务端即可。
@@ -147,13 +148,13 @@ Fabric 和 Forge 的安装步骤除了下载文件以外基本上相同。
 sudo apt install screen
 ```
 
-可以通过指令 `screen`启动一个新的 screen 会话。可以发现，screen 会话和普通的终端没有什么不同，因为其直接沿用了当前终端的配置。不过，screen 会话可以通过快捷键 `<Ctrl-A> + z` 来挂起当前会话，通过指令 `screen -r` 来重新连接挂起的会话。
+可以通过指令 `screen` 启动一个新的 screen 会话。可以发现，screen 会话和普通的终端没有什么不同，因为其直接沿用了当前终端的配置。不过，screen 会话可以通过快捷键 `<Ctrl-A> + z` 来挂起当前会话，通过指令 `screen -r` 来重新连接挂起的会话。
 
 这样每次使用 screen 启动服务器之后，就可以直接关闭终端，让服务器在后台继续运行，下次需要运维的时候重新连接回来即可。
 
 ### server.properties
 
-`server.properties`文件是 MC 服务器的配置文件。我们可以更改里面的一些内容来实现更好的效果：
+`server.properties` 文件是 MC 服务器的配置文件。我们可以更改里面的一些内容来实现更好的效果：
 
 - `allow-flight`：建议改为 `true`，因为很多整合包提供了飞行的能力，如果不开启的话会被服务器误认为是在作弊而直接踢出；
 - `difficulty`：服务器的难度，有 `peaceful`、`easy`、`normal`和 `hard` 四个选项；
@@ -179,7 +180,7 @@ java -jar -Xmx16G -Xms16G server.jar nogui
 
 ### 开放防火墙端口
 
-由于 Ubunut 默认开启了防火墙 ufw，所以需要在防火墙开放 MC 服务器默认的端口 `25565` 才能链接到服务器。
+由于 Ubuntu 默认开启了防火墙 ufw，所以需要在防火墙开放 MC 服务器默认的端口 `25565` 才能链接到服务器。
 
 ```bash
 sudo ufw allow 25565  # 开放 25565 端口
@@ -191,19 +192,21 @@ sudo ufw allow 25565  # 开放 25565 端口
 
 你可能在看别的人玩服务器的时候发现，可以在 `<Tab>` 键的玩家列表里看到所有玩家的血量，在显示屏右边有一个榜单显示当前死亡数等……这些都是通过原版的记分板实现的。
 
-启用 `<Tab>` 显示血量：
+在 MC 服务端的控制台输入以下指令：
 
-```text
-scoreboard objectives add health health "血量"
-scoreboard objectives setdisplay list health
-```
+- 启用 `<Tab>` 显示血量：
 
-启用侧边栏死亡计数：
+  ```text
+  scoreboard objectives add health health "血量"
+  scoreboard objectives setdisplay list health
+  ```
 
-```text
-scoreboard objectives add deathCount deathCount "死亡数"
-scoreboard objectives setdisplay sidebar deathCount
-```
+- 启用侧边栏死亡计数：
+
+  ```text
+  scoreboard objectives add deathCount deathCount "死亡数"
+  scoreboard objectives setdisplay sidebar deathCount
+  ```
 
 ## 配置 MCDReforged（可选）
 
@@ -219,7 +222,7 @@ MCDReforged 的安装请参考[官方手册](https://docs.mcdreforged.com/zh-cn/
 - [Where2go](https://mcdreforged.com/zh-CN/plugin/where2go)：一个功能强大的位置插件，包含共享坐标点、查询玩家位置等功能。
 - [Prime Backup](https://mcdreforged.com/zh-CN/plugin/prime_backup)：一个强大的 MCDR 备份插件，一套先进的 Minecraft 存档备份解决方案。
 - [HibernateR](https://mcdreforged.com/zh-CN/plugin/hibernate_r/readme)：在服务器没有人的时候让服务器休眠，有人连接时开启。
-- [Simple OP](https://mcdreforged.com/zh-CN/plugin/simple_op)：`!!op` 以获取 op, `!!restart` 以重启服务器
+- [Simple OP](https://mcdreforged.com/zh-CN/plugin/simple_op)：`!!op` 以获取 op, `!!restart` 以重启服务器。
 
 ## 本文完
 
