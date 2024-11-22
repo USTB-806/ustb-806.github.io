@@ -2,7 +2,7 @@
 title: "806 网站 Blogs 文章模板"
 author: "Your Name?"
 header:
-    overlay_image: http://140.143.188.19:9000/website/static/blogs-banner.jpg
+    overlay_image: https://s3.806.group/website/static/blogs-banner.jpg
 categories: []
 tags: []
 ---

@@ -1,5 +1,5 @@
 
-STORAGE_URL ?= http://140.143.188.19:9000/website/
+STORAGE_URL ?= https://s3.806.group/website/
 
 # 启动本地服务
 serve:

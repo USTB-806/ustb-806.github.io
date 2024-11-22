@@ -2,7 +2,7 @@
 title: "806 实验室 2024 届招新"
 author: ""
 header:
-    overlay_image: http://140.143.188.19:9000/website/static/news-banner.jpg
+    overlay_image: https://s3.806.group/website/static/news-banner.jpg
 categories: ["其他"]
 tags: []
 ---

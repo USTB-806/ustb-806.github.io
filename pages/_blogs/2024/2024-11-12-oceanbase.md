@@ -2,7 +2,7 @@
 title: "OceanBase 2024 比赛资源汇总"
 author: "ustb-806"
 header:
-    overlay_image: http://140.143.188.19:9000/website/static/blogs-banner.jpg
+    overlay_image: https://s3.806.group/website/static/blogs-banner.jpg
 categories: ["竞赛"]
 tags: ["计算机系统能力大赛", "OceanBase"]
 ---
