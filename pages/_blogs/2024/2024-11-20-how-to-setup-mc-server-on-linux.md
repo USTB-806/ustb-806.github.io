@@ -3,8 +3,8 @@ title: "如何在 Linux 上部署一个 MC 纯净/整合包服务器"
 author: "bosswnx"
 header:
     overlay_image: https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png
-categories: []
-tags: []
+categories: ["教程"]
+tags: ["Minecraft", "Linux"]
 ---
 
 > 作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统
