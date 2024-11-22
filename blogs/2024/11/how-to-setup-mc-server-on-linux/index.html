@@ -19,27 +19,27 @@
     <meta property="og:title" content="如何在 Linux 上部署一个 MC 纯净/整合包服务器">
     <meta property="og:url" content="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/">
     <meta property="og:description" content="作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统">
-    <meta property="og:image" content="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png">
+    <meta property="og:image" content="http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png">
     <meta property="article:published_time" content="2024-11-20T00:00:00+08:00">
-    <meta property="article:modified_time" content="2024-11-22T09:41:13+08:00">
+    <meta property="article:modified_time" content="2024-11-22T19:17:07+08:00">
     <link rel="canonical" href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/">
     <!-- end _includes/seo.html -->
     <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="806 @ USTB Feed">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/favicon-16x16.png">
-    <link rel="manifest" href="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/favicon/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://140.143.188.19:9000/website/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://140.143.188.19:9000/website/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://140.143.188.19:9000/website/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://140.143.188.19:9000/website/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://140.143.188.19:9000/website/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://140.143.188.19:9000/website/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://140.143.188.19:9000/website/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://140.143.188.19:9000/website/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://140.143.188.19:9000/website/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="http://140.143.188.19:9000/website/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://140.143.188.19:9000/website/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://140.143.188.19:9000/website/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://140.143.188.19:9000/website/favicon/favicon-16x16.png">
+    <link rel="manifest" href="http://140.143.188.19:9000/website/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#f3f6f6">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#f3f6f6">
@@ -50,7 +50,7 @@
     <!-- 不蒜子页面统计 -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- For all browsers -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=4af8afc">
+    <link rel="stylesheet" href="/assets/css/main.css?v=2a1ceff">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
     <!-- start custom head snippets -->
@@ -69,7 +69,7 @@
       <div class="masthead__inner-wrap">
         <div class="masthead__menu">
           <nav id="site-nav" class="greedy-nav">
-            <a class="site-logo" href="/"><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-logo.jpg" alt="806 @ USTB"></a>
+            <a class="site-logo" href="/"><img src="http://140.143.188.19:9000/website/static/806-logo.jpg" alt="806 @ USTB"></a>
             <a class="site-title" href="/">
               806 @ USTB
             </a>
@@ -114,7 +114,7 @@
     </div>
     <div class="initial-content">
       <div class="page__hero--overlay"
-  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png');"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png');"
 >
         <div class="wrapper">
           <h1 id="page-title" class="page__title" itemprop="headline">
@@ -169,7 +169,7 @@
           <meta itemprop="headline" content="如何在 Linux 上部署一个 MC 纯净/整合包服务器">
           <meta itemprop="description" content="  作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统">
           <meta itemprop="datePublished" content="2024-11-20T00:00:00+08:00">
-          <meta itemprop="dateModified" content="2024-11-22T09:41:13+08:00">
+          <meta itemprop="dateModified" content="2024-11-22T19:17:07+08:00">
           <div class="page__inner-wrap">
             <section class="page__content" itemprop="text">
               <aside class="sidebar__right sticky">
@@ -335,7 +335,7 @@
               <p>相比于 Forge 完全不提供中文安装教程，Fabric 提供了一个非常友好的<a href="https://wiki.fabricmc.net/zh_cn:player:tutorials:install_server">官方中文安装教程</a>，请参考这个教程进行安装，然后跳转到 <a href="#forge">Forge 章节</a>的整合包配置部分。</p>
               <h2 id="更多的配置可选">更多的配置（可选）</h2>
               <p>进行完上述的步骤后，服务器文件夹下大致会有以下文件：</p>
-              <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux.png" alt="" /></p>
+              <p><img src="http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/1.png" alt="" /></p>
               <p>我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。</p>
               <p>其中和整合包 mod 配置相关的文件有：<code class="language-plaintext highlighter-rouge">config</code>，<code class="language-plaintext highlighter-rouge">kubejs</code>，<code class="language-plaintext highlighter-rouge">defaultconfigs</code>，<code class="language-plaintext highlighter-rouge">worldshape</code>；</p>
               <p>此时，其实就可以启动服务器开始玩了！但是我们还可以再进一步配置一些东西更方便我们运维。</p>
@@ -423,7 +423,7 @@ scoreboard objectives setdisplay sidebar deathCount
               </ul>
               <h2 id="本文完">本文完</h2>
               <p>最后是夹带私货时间！</p>
-              <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png" alt="" /></p>
+              <p><img src="http://140.143.188.19:9000/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png" alt="" /></p>
             </section>
             <footer class="page__meta">
               <p class="page__taxonomy">
@@ -562,7 +562,7 @@ scoreboard objectives setdisplay sidebar deathCount
             </div>
             <div class="footer__logo">
               <div class="footer__logo-image">
-                <img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/806-logo-white-with-name.svg" style="width: 7rem; height: auto"/>
+                <img src="http://140.143.188.19:9000/website/static/806-logo-white-with-name.svg" style="width: 7rem; height: auto"/>
               </div>
               <div class="footer__logo-text">
                 <!-- a href="http://www.beian.miit.gov.cn" target="_blank">皖 ICP 备 05002528 号</a -->
@@ -573,6 +573,6 @@ scoreboard objectives setdisplay sidebar deathCount
       </footer>
     </div>
     <script src="/assets/js/main.min.js"></script>
-    <img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/web/USTB-logo.svg" style="position: fixed; bottom: -10rem; right: -10rem; opacity: 0.1; z-index: -100; width: 40rem; height:auto" />
+    <img src="http://140.143.188.19:9000/website/static/USTB-logo.svg" style="position: fixed; bottom: -10rem; right: -10rem; opacity: 0.1; z-index: -100; width: 40rem; height:auto" />
   </body>
 </html>

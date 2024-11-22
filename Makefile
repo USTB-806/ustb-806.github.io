@@ -1,5 +1,5 @@
 
-STORAGE_URL ?= https://806web-1301745723.cos.ap-beijing.myqcloud.com
+STORAGE_URL ?= http://140.143.188.19:9000/website/
 
 # 启动本地服务
 serve:
