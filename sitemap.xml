@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+      <loc>https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/</loc>
+      <lastmod>2024-11-22T10:26:16+08:00</lastmod>
+    </url>
+    <url>
       <loc>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/</loc>
-      <lastmod>2024-11-22T09:38:25+08:00</lastmod>
+      <lastmod>2024-11-22T09:41:13+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/news/2024/10/lxb/</loc>
-      <lastmod>2024-10-11T18:52:50+08:00</lastmod>
+      <lastmod>2024-11-22T10:28:35+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/news/2024/10/os-competition/</loc>
-      <lastmod>2024-10-11T18:52:50+08:00</lastmod>
+      <lastmod>2024-11-22T10:28:35+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/news/2024/10/recruitment/</loc>
@@ -22,11 +26,11 @@
     </url>
     <url>
       <loc>https://ustb-806.github.io/news/2024/10/lxb/</loc>
-      <lastmod>2024-10-11T18:52:50+08:00</lastmod>
+      <lastmod>2024-11-22T10:28:35+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/news/2024/10/os-competition/</loc>
-      <lastmod>2024-10-11T18:52:50+08:00</lastmod>
+      <lastmod>2024-11-22T10:28:35+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/news/2024/10/recruitment/</loc>
@@ -37,8 +41,12 @@
       <lastmod>2024-10-25T23:26:50+08:00</lastmod>
     </url>
     <url>
+      <loc>https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/</loc>
+      <lastmod>2024-11-22T10:26:16+08:00</lastmod>
+    </url>
+    <url>
       <loc>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/</loc>
-      <lastmod>2024-11-22T09:38:25+08:00</lastmod>
+      <lastmod>2024-11-22T09:41:13+08:00</lastmod>
     </url>
     <url>
       <loc>https://ustb-806.github.io/wiki/806/contact/</loc>
@@ -105,13 +113,37 @@
       <lastmod>2024-10-08T16:39:14+08:00</lastmod>
     </url>
     <url>
-      <loc>https://ustb-806.github.io/categories/%E8%8E%B7%E5%A5%96/</loc>
+      <loc>https://ustb-806.github.io/tags/%E9%BE%99%E8%8A%AF%E6%9D%AF/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%B5%9B/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/tags/oceanbase/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/tags/miniob/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/tags/minecraft/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/tags/linux/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/categories/%E7%AB%9E%E8%B5%9B/</loc>
     </url>
     <url>
       <loc>https://ustb-806.github.io/categories/%E7%B3%BB%E7%BB%9F%E9%83%A8/</loc>
     </url>
     <url>
       <loc>https://ustb-806.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+    </url>
+    <url>
+      <loc>https://ustb-806.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
     </url>
     <url>
       <loc>https://ustb-806.github.io/blogs/</loc>

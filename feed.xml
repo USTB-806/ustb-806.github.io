@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-22T09:39:46+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T09:38:25+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-22T10:30:04+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T09:41:13+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
         <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
       </blockquote>
       <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
@@ -222,215 +222,274 @@ scoreboard objectives setdisplay sidebar deathCount
       <h2 id="本文完">本文完</h2>
       <p>最后是夹带私货时间！</p>
       <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png" alt="" /></p>
-      ]]></content><author><name>Nelson Boss</name></author><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-10-25T23:26:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
+      ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Minecraft" /><category term="Linux" /><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">OceanBase &amp;amp; MiniOB 2024 比赛资源汇总</title><link href="https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/" rel="alternate" type="text/html" title="OceanBase &amp;amp; MiniOB 2024 比赛资源汇总" /><published>2024-11-12T00:00:00+08:00</published><updated>2024-11-22T10:26:16+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/"><![CDATA[<p>全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。</p>
+    <h2 id="初赛miniob">初赛（MiniOB）</h2>
+    <p>资源信息：</p>
+    <ul>
+      <li>比赛链接：<a href="https://open.oceanbase.com/train?questionId=600010">MiniOB 训练营</a></li>
+      <li><a href="https://open.oceanbase.com/competition/armory">数据库大赛英雄榜</a></li>
+      <li><a href="https://oceanbase.github.io/miniob/">MiniOB 辅助开发手册</a></li>
+      <li><a href="https://www.oceanbase.com/docs/-developer-quickstart-10000000000627360">MiniOB 官方手册</a></li>
+      <li>MiniOB 官方教学视频：
+        <ul>
+          <li><a href="https://www.oceanbase.com/video/9000654">1-1 数据库系统概述…</a></li>
+          <li><a href="https://open.oceanbase.com/activities/4921877?id=4921946">从 0 到 1 数据库内核实战教程</a></li>
+        </ul>
+      </li>
+    </ul>
+    <p>实用工具：</p>
+    <ul>
+      <li>MySQL 语法：<a href="https://www.runoob.com/sql/sql-syntax.html">SQL 语法 - 菜鸟教程</a></li>
+      <li>在线运行 MySQL：<a href="https://onecompiler.com/mysql/">MySQL - OneCompiler</a></li>
+    </ul>
+    <p>赛后总结：</p>
     <table>
       <thead>
         <tr>
-          <th>部门</th>
-          <th>学号</th>
-          <th>日期</th>
-          <th>时间</th>
+          <th>队伍 &amp; GitHub 仓库</th>
+          <th>成员</th>
+          <th>总结</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>系统部</td>
-          <td>U202442544</td>
-          <td>10/26 Sat.</td>
-          <td>19:00</td>
+          <td><a href="https://github.com/bosswnx/miniob-2024">我真的参加了系统内核赛</a></td>
+          <td>王诺贤</td>
+          <td><a href="https://zhuanlan.zhihu.com/p/5953505884">OceanBase 2024 初赛 MiniOB 开发记录</a></td>
         </tr>
         <tr>
           <td> </td>
-          <td>U202341236</td>
-          <td> </td>
-          <td>19:10</td>
+          <td>廖玮珑</td>
+          <td><a href="https://blog.soulter.top/posts/2024-oceanbase-database.html">OceanBase 数据库内核实现赛 / 自己实现一个数据库</a></td>
         </tr>
         <tr>
           <td> </td>
-          <td>U202241800</td>
-          <td> </td>
-          <td>19:30</td>
+          <td>陈渠</td>
+          <td><a href="https://blog.virtualfuture.top/posts/miniob/">OceanBase 数据库大赛初赛结束之后</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/SaZiKK/miniob-2024">我一定要参加编译系统实现赛</a></td>
+          <td>陈宽宽</td>
+          <td><a href="https://sazikk.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97-OceanBase%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">【开发日志】OceanBase 数据库系统能力大赛开发日志</a></td>
         </tr>
         <tr>
           <td> </td>
-          <td>U202442610</td>
-          <td> </td>
-          <td>19:40</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202341615</td>
-          <td> </td>
-          <td>19:50</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342599</td>
-          <td> </td>
-          <td>20:00</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202340562</td>
-          <td> </td>
-          <td>20:10</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202340533</td>
-          <td> </td>
-          <td>20:20</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342109</td>
-          <td> </td>
-          <td>20:30</td>
-        </tr>
-        <tr>
-          <td>人工智能部</td>
-          <td>U202342602</td>
-          <td> </td>
-          <td>20:40</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342494</td>
-          <td> </td>
-          <td>20:50</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342147</td>
-          <td> </td>
-          <td>21:00</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202442591</td>
-          <td> </td>
-          <td>21:10</td>
-        </tr>
-        <tr>
-          <td>开发部</td>
-          <td>U202342473</td>
-          <td> </td>
-          <td>21:20</td>
-        </tr>
-        <tr>
-          <td>人工智能部</td>
-          <td>U202241805</td>
-          <td>10/27 Sun.</td>
-          <td>19:00</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202243298</td>
-          <td> </td>
-          <td>19:10</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202341609</td>
-          <td> </td>
-          <td>19:20</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202341621</td>
-          <td> </td>
-          <td>19:30</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342459</td>
-          <td> </td>
-          <td>19:40</td>
-        </tr>
-        <tr>
-          <td>开发部</td>
-          <td>U202342409</td>
-          <td> </td>
-          <td>19:50</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342490</td>
-          <td> </td>
-          <td>20:00</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342623</td>
-          <td> </td>
-          <td>20:10</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202340683</td>
-          <td> </td>
-          <td>20:20</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342665</td>
-          <td> </td>
-          <td>20:30</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202343406</td>
-          <td> </td>
-          <td>20:40</td>
-        </tr>
-        <tr>
-          <td>游戏部</td>
-          <td>U202342449</td>
-          <td> </td>
-          <td>20:50</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342472</td>
-          <td> </td>
-          <td>21:00</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342892</td>
-          <td> </td>
-          <td>21:10</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202340122</td>
-          <td> </td>
-          <td>21:20</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202442567</td>
-          <td> </td>
-          <td>21:30</td>
-        </tr>
-        <tr>
-          <td> </td>
-          <td>U202342439</td>
-          <td> </td>
-          <td>21:40</td>
-        </tr>
-        <tr>
-          <td>人工智能部</td>
-          <td>U202342615</td>
-          <td> </td>
-          <td>21:50</td>
+          <td>刁明轩</td>
+          <td><a href="https://dmx20070206.github.io/2024/11/11/miniob/">miniob 初赛参赛总结</a></td>
         </tr>
       </tbody>
     </table>
-    <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
-    <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-    <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
-    ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
+    <h2 id="决赛oceanbase">决赛（OceanBase）</h2>
+    <p>信息汇总中……</p>
+    ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="计算机系统能力大赛" /><category term="OceanBase" /><category term="MiniOB" /><summary type="html"><![CDATA[全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。]]></summary></entry><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-10-25T23:26:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
+  <table>
+    <thead>
+      <tr>
+        <th>部门</th>
+        <th>学号</th>
+        <th>日期</th>
+        <th>时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>系统部</td>
+        <td>U202442544</td>
+        <td>10/26 Sat.</td>
+        <td>19:00</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202341236</td>
+        <td> </td>
+        <td>19:10</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202241800</td>
+        <td> </td>
+        <td>19:30</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202442610</td>
+        <td> </td>
+        <td>19:40</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202341615</td>
+        <td> </td>
+        <td>19:50</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342599</td>
+        <td> </td>
+        <td>20:00</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202340562</td>
+        <td> </td>
+        <td>20:10</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202340533</td>
+        <td> </td>
+        <td>20:20</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342109</td>
+        <td> </td>
+        <td>20:30</td>
+      </tr>
+      <tr>
+        <td>人工智能部</td>
+        <td>U202342602</td>
+        <td> </td>
+        <td>20:40</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342494</td>
+        <td> </td>
+        <td>20:50</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342147</td>
+        <td> </td>
+        <td>21:00</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202442591</td>
+        <td> </td>
+        <td>21:10</td>
+      </tr>
+      <tr>
+        <td>开发部</td>
+        <td>U202342473</td>
+        <td> </td>
+        <td>21:20</td>
+      </tr>
+      <tr>
+        <td>人工智能部</td>
+        <td>U202241805</td>
+        <td>10/27 Sun.</td>
+        <td>19:00</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202243298</td>
+        <td> </td>
+        <td>19:10</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202341609</td>
+        <td> </td>
+        <td>19:20</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202341621</td>
+        <td> </td>
+        <td>19:30</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342459</td>
+        <td> </td>
+        <td>19:40</td>
+      </tr>
+      <tr>
+        <td>开发部</td>
+        <td>U202342409</td>
+        <td> </td>
+        <td>19:50</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342490</td>
+        <td> </td>
+        <td>20:00</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342623</td>
+        <td> </td>
+        <td>20:10</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202340683</td>
+        <td> </td>
+        <td>20:20</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342665</td>
+        <td> </td>
+        <td>20:30</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202343406</td>
+        <td> </td>
+        <td>20:40</td>
+      </tr>
+      <tr>
+        <td>游戏部</td>
+        <td>U202342449</td>
+        <td> </td>
+        <td>20:50</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342472</td>
+        <td> </td>
+        <td>21:00</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342892</td>
+        <td> </td>
+        <td>21:10</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202340122</td>
+        <td> </td>
+        <td>21:20</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202442567</td>
+        <td> </td>
+        <td>21:30</td>
+      </tr>
+      <tr>
+        <td> </td>
+        <td>U202342439</td>
+        <td> </td>
+        <td>21:40</td>
+      </tr>
+      <tr>
+        <td>人工智能部</td>
+        <td>U202342615</td>
+        <td> </td>
+        <td>21:50</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
+  <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
+  <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
+  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
   <h2 id="报名方式">报名方式</h2>
   <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
   <ul>
@@ -554,7 +613,7 @@ scoreboard objectives setdisplay sidebar deathCount
     <li>设计过一个或多个项目。</li>
   </ul>
   <p>拟招 5 人左右。</p>
-  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
+  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-11-22T10:28:35+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
   <p>第八届全国大学生计算机系统能力培养大赛（龙芯杯）分为团体赛和个人赛两项赛事。团队赛共 110 支队伍报名，个人赛共 782 人报名。经过初赛的激烈角逐，全国共有 28 支代表队和 40 位个人进入决赛。</p>
   <p class="text-center"><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-10-02-lxb-01.jpg" alt="" />
     决赛合影</p>
@@ -572,7 +631,7 @@ scoreboard objectives setdisplay sidebar deathCount
     个人赛三等奖</p>
   <p class="text-center"><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-10-02-lxb-certificate2.jpg" alt="" />
     团队赛二等奖</p>
-  ]]></content><author><name>USTB-806</name></author><category term="获奖" /><category term="系统部" /><summary type="html"><![CDATA[全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-10-11T18:52:50+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
+  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="龙芯杯" /><category term="计算机系统能力大赛" /><summary type="html"><![CDATA[全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-11-22T10:28:35+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
   <p>全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起、由全国高校计算机教育研究会主办、面向高校大学生的全国性大赛。目标是以学科竞赛推动专业建设和计算机领域创新人才培养体系改革，培育我国高端芯片、关键基础软件的后备人才。大赛服务国家人才培养战略，以赛促学、以赛促教，鼓励学生设计、实现综合性的计算机系统，培养学生系统级的设计、分析、优化与应用能力，提升学生的技术创新、工程实践、团队协作能力，并为高水平计算机人才成长搭建交流、展示、合作的开放平台。</p>
   <p>本届大赛吸引了全国百余所高校的 589 支参赛队报名，209 支赛队入围全国总决赛。经过激烈的初赛和决赛现场赛、答辩，全国总决赛内核实现赛最终评选出一等奖 6 项，二等奖 9 项，三等奖 12 项。</p>
   <p>来自北京科技大学计通学院的“chaos”队从来自清华大学、北京大学、上海交通大学、哈尔滨工业大学、北京航空航天大学、华中科技大学等全国百余所高校 209 支入围总决赛的队伍中脱颖而出，获得了“操作系统设计”赛内核实现赛道（基于 RISCV 硬件）全国总决赛全国二等奖，<strong>这是我校连续第三年在大赛内核赛道获奖</strong>。</p>
@@ -585,4 +644,4 @@ scoreboard objectives setdisplay sidebar deathCount
   <p>获奖证书：</p>
   <p class="text-center"><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-10-02-os-competition-certificate.jpg" alt="" />
     全国二等奖</p>
-  ]]></content><author><name>USTB-806</name></author><category term="获奖" /><category term="系统部" /><summary type="html"><![CDATA[近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。]]></summary></entry></feed>
+  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="操作系统赛" /><category term="计算机系统能力大赛" /><summary type="html"><![CDATA[近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。]]></summary></entry></feed>

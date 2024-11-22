@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-22T09:39:46+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T09:38:25+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-22T10:30:04+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T09:41:13+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
         <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
       </blockquote>
       <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
@@ -222,4 +222,63 @@ scoreboard objectives setdisplay sidebar deathCount
       <h2 id="本文完">本文完</h2>
       <p>最后是夹带私货时间！</p>
       <p><img src="https://806web-1301745723.cos.ap-beijing.myqcloud.com/post/2024-11-20-how-to-setup-mc-server-on-linux-banner.png" alt="" /></p>
-      ]]></content><author><name>Nelson Boss</name></author><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry></feed>
+      ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Minecraft" /><category term="Linux" /><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">OceanBase &amp;amp; MiniOB 2024 比赛资源汇总</title><link href="https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/" rel="alternate" type="text/html" title="OceanBase &amp;amp; MiniOB 2024 比赛资源汇总" /><published>2024-11-12T00:00:00+08:00</published><updated>2024-11-22T10:26:16+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/oceanbase-blogs/"><![CDATA[<p>全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。</p>
+    <h2 id="初赛miniob">初赛（MiniOB）</h2>
+    <p>资源信息：</p>
+    <ul>
+      <li>比赛链接：<a href="https://open.oceanbase.com/train?questionId=600010">MiniOB 训练营</a></li>
+      <li><a href="https://open.oceanbase.com/competition/armory">数据库大赛英雄榜</a></li>
+      <li><a href="https://oceanbase.github.io/miniob/">MiniOB 辅助开发手册</a></li>
+      <li><a href="https://www.oceanbase.com/docs/-developer-quickstart-10000000000627360">MiniOB 官方手册</a></li>
+      <li>MiniOB 官方教学视频：
+        <ul>
+          <li><a href="https://www.oceanbase.com/video/9000654">1-1 数据库系统概述…</a></li>
+          <li><a href="https://open.oceanbase.com/activities/4921877?id=4921946">从 0 到 1 数据库内核实战教程</a></li>
+        </ul>
+      </li>
+    </ul>
+    <p>实用工具：</p>
+    <ul>
+      <li>MySQL 语法：<a href="https://www.runoob.com/sql/sql-syntax.html">SQL 语法 - 菜鸟教程</a></li>
+      <li>在线运行 MySQL：<a href="https://onecompiler.com/mysql/">MySQL - OneCompiler</a></li>
+    </ul>
+    <p>赛后总结：</p>
+    <table>
+      <thead>
+        <tr>
+          <th>队伍 &amp; GitHub 仓库</th>
+          <th>成员</th>
+          <th>总结</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://github.com/bosswnx/miniob-2024">我真的参加了系统内核赛</a></td>
+          <td>王诺贤</td>
+          <td><a href="https://zhuanlan.zhihu.com/p/5953505884">OceanBase 2024 初赛 MiniOB 开发记录</a></td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>廖玮珑</td>
+          <td><a href="https://blog.soulter.top/posts/2024-oceanbase-database.html">OceanBase 数据库内核实现赛 / 自己实现一个数据库</a></td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>陈渠</td>
+          <td><a href="https://blog.virtualfuture.top/posts/miniob/">OceanBase 数据库大赛初赛结束之后</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/SaZiKK/miniob-2024">我一定要参加编译系统实现赛</a></td>
+          <td>陈宽宽</td>
+          <td><a href="https://sazikk.github.io/posts/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97-OceanBase%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">【开发日志】OceanBase 数据库系统能力大赛开发日志</a></td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>刁明轩</td>
+          <td><a href="https://dmx20070206.github.io/2024/11/11/miniob/">miniob 初赛参赛总结</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="决赛oceanbase">决赛（OceanBase）</h2>
+    <p>信息汇总中……</p>
+    ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="计算机系统能力大赛" /><category term="OceanBase" /><category term="MiniOB" /><summary type="html"><![CDATA[全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。]]></summary></entry></feed>
