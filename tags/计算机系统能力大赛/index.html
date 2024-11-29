@@ -46,7 +46,7 @@
     <!-- 不蒜子页面统计 -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- For all browsers -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=85fccc5">
+    <link rel="stylesheet" href="/assets/css/main.css?v=2e8ec49">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
     <!-- start custom head snippets -->
@@ -208,6 +208,25 @@
             </div>
           </div>
         </div>
+        <script async>
+          function tickstats(src) {
+              fetch("https://tickstats.soulter.top/api/metric/65bc82a0", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  metrics_data: {
+                      tick: 1,
+                      os_name: window.navigator.platform,
+                      browser_name: window.navigator.userAgent,
+                      post: window.location.href,
+                  }
+              }),
+              });
+          }
+          tickstats();
+        </script>
       </footer>
     </div>
     <script src="/assets/js/main.min.js"></script>
