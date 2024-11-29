@@ -36,3 +36,23 @@
     </div>
   </div>
 </div>
+
+<script async>
+    function tickstats(src) {
+        fetch("https://tickstats.soulter.top/api/metric/65bc82a0", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            metrics_data: {
+                tick: 1,
+                os_name: window.navigator.platform,
+                browser_name: window.navigator.userAgent,
+                post: window.location.href,
+            }
+        }),
+        });
+    }
+    tickstats();
+</script>
