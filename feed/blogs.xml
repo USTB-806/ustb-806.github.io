@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-11-30T00:21:17+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-11-22T21:50:33+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-12-10T00:06:11+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
       <h2 id="前提">前提</h2>
       <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
       <h2 id="原理">原理</h2>
       <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
       <h2 id="租服务器">租服务器</h2>
       <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
       <blockquote>
@@ -13,11 +13,11 @@
       <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
       <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
       <p>注册好账号之后，订购新服务：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
       <p>选择第一个：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
       <p>进入之后选择详细的服务：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
       <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
       <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
       <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
@@ -28,7 +28,7 @@
         </div>
       </div>
       <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
       <p>成功进入 VPS。</p>
       <h2 id="vps-设定">VPS 设定</h2>
       <p>首先，更新 Ubuntu。终端输入：</p>
@@ -50,7 +50,7 @@
         </div>
       </div>
       <p>依次设置账号密码和端口：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
       <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
       <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
       <div class="language-bash highlighter-rouge">
@@ -67,7 +67,7 @@
 </code></pre>
         </div>
       </div>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
       <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
       <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
       <div class="language-bash highlighter-rouge">
@@ -99,36 +99,36 @@ net.ipv4.tcp_available_congestion_control <span class="o">=</span> bbr cubic ren
       <h3 id="配置-x-ui">配置 X-UI</h3>
       <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
       <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
       <p>在入站列表中配置：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
       <p>在操作中点击「二维码」，然后复制：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
       <h2 id="配置客户端">配置客户端</h2>
       <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
       <h3 id="v2ray-配置">V2ray 配置</h3>
       <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
       <p>下载后解压，双击「v2rayN」运行。</p>
       <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
       <p>导入成功如下：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
       <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
       <p>如下：</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
       <p>点击确定进行保存。</p>
       <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
       <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
-      <p><img src="https://s3.806.group/website/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
       <h2 id="全文完">全文完</h2>
       <blockquote>
         <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
       </blockquote>
-      ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-11-22T20:16:06+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+      ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
       <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
     </blockquote>
     <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
@@ -263,7 +263,7 @@ net.ipv4.tcp_available_congestion_control <span class="o">=</span> bbr cubic ren
     <p>相比于 Forge 完全不提供中文安装教程，Fabric 提供了一个非常友好的<a href="https://wiki.fabricmc.net/zh_cn:player:tutorials:install_server">官方中文安装教程</a>，请参考这个教程进行安装，然后跳转到 <a href="#forge">Forge 章节</a>的整合包配置部分。</p>
     <h2 id="更多的配置可选">更多的配置（可选）</h2>
     <p>进行完上述的步骤后，服务器文件夹下大致会有以下文件：</p>
-    <p><img src="https://s3.806.group/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/1.png" alt="" /></p>
+    <p><img src="https://blog-s3.806.group/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/1.png" alt="" /></p>
     <p>我配置的是 Forge 整合包服务器，所以文件会多出许多，但大致的内容都差不多，多一些少一些差别不大。</p>
     <p>其中和整合包 mod 配置相关的文件有：<code class="language-plaintext highlighter-rouge">config</code>，<code class="language-plaintext highlighter-rouge">kubejs</code>，<code class="language-plaintext highlighter-rouge">defaultconfigs</code>，<code class="language-plaintext highlighter-rouge">worldshape</code>；</p>
     <p>此时，其实就可以启动服务器开始玩了！但是我们还可以再进一步配置一些东西更方便我们运维。</p>
@@ -351,8 +351,8 @@ scoreboard objectives setdisplay sidebar deathCount
     </ul>
     <h2 id="本文完">本文完</h2>
     <p>最后是夹带私货时间！</p>
-    <p><img src="https://s3.806.group/website/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png" alt="" /></p>
-    ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Minecraft" /><category term="Linux" /><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">OceanBase 2024 比赛资源汇总</title><link href="https://ustb-806.github.io/blogs/2024/11/oceanbase/" rel="alternate" type="text/html" title="OceanBase 2024 比赛资源汇总" /><published>2024-11-12T00:00:00+08:00</published><updated>2024-11-22T20:16:06+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/oceanbase</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/oceanbase/"><![CDATA[<p>全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。</p>
+    <p><img src="https://blog-s3.806.group/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png" alt="" /></p>
+    ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Minecraft" /><category term="Linux" /><summary type="html"><![CDATA[作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统]]></summary></entry><entry><title type="html">OceanBase 2024 比赛资源汇总</title><link href="https://ustb-806.github.io/blogs/2024/11/oceanbase/" rel="alternate" type="text/html" title="OceanBase 2024 比赛资源汇总" /><published>2024-11-12T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/oceanbase</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/oceanbase/"><![CDATA[<p>全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。</p>
   <h2 id="初赛miniob">初赛（MiniOB）</h2>
   <p>资源信息：</p>
   <ul>

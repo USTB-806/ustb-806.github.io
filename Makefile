@@ -1,5 +1,5 @@
 
-STORAGE_URL ?= https://s3.806.group/website
+STORAGE_URL ?= https://blog-s3.806.group
 
 # 启动本地服务
 serve: format
