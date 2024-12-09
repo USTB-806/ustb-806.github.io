@@ -15,25 +15,25 @@
 
 ### LOGO
 
-![logo](https://s3.806.group/website/static/806-logo-with-name.jpg)
+![logo](https://blog-s3.806.group/static/806-logo-with-name.jpg)
 
 ### 牌匾
 
-![banner](https://s3.806.group/website/static/806-banner.jpg)
+![banner](https://blog-s3.806.group/static/806-banner.jpg)
 
 ### 铭牌
 
-![plaque](https://s3.806.group/website/static/806-plaque.jpg)
+![plaque](https://blog-s3.806.group/static/806-plaque.jpg)
 
 ## 实验室照片
 
-![](https://s3.806.group/website/static/806_1.jpg)
+![](https://blog-s3.806.group/static/806_1.jpg)
 
-![](https://s3.806.group/website/static/806_2.jpg)
+![](https://blog-s3.806.group/static/806_2.jpg)
 
-![](https://s3.806.group/website/static/806_3.jpg)
+![](https://blog-s3.806.group/static/806_3.jpg)
 
-![](https://s3.806.group/website/static/806_4.jpg)
+![](https://blog-s3.806.group/static/806_4.jpg)
 
 ## 更多信息
 

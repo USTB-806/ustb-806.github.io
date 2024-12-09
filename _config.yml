@@ -20,11 +20,11 @@ subtitle                 : # site tagline that appears below site title in masth
 name                     : "USTB-806"
 description              : "北京科技大学「勤敏轩」学生创新实验室"
 url                      : "https://ustb-806.github.io"
-static_url               : "https://s3.806.group/website"
+static_url               : "https://blog-s3.806.group"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ustb-806/ustb-806.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # path of fallback teaser image, e.g. "/assetshttps://s3.806.group/website/post/500x300.png"
-logo                     : "https://s3.806.group/website/static/806-logo.jpg" # path of logo image to display in the masthead, e.g. "/assetshttps://s3.806.group/website/post/88x88.png"
+teaser                   : # path of fallback teaser image, e.g. "/assetshttps://blog-s3.806.group/post/500x300.png"
+logo                     : "https://blog-s3.806.group/static/806-logo.jpg" # path of logo image to display in the masthead, e.g. "/assetshttps://blog-s3.806.group/post/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 350
@@ -89,7 +89,7 @@ analytics:
 # Site Author, this is the default
 author:
   name             : "USTB-806"
-  avatar           : "https://s3.806.group/website/static/806-penguin.png"
+  avatar           : "https://blog-s3.806.group/static/806-penguin.png"
   bio              : "北京科技大学「勤敏轩」学生创新实验室"
   location         : "USTB"
   links:
@@ -291,7 +291,7 @@ defaults:
     values:
       show_date: true
       header:
-        overlay_image: "https://s3.806.group/website/static/splash/autumn-1.jpg"
+        overlay_image: "https://blog-s3.806.group/static/splash/autumn-1.jpg"
         overlay_filter: 0.2
       classes: ["news"]
   - scope:
@@ -302,5 +302,5 @@ defaults:
       show_date: true
       read_time: true
       header:
-        overlay_image: "https://s3.806.group/website/static/splash/galaxy-1.jpg"
+        overlay_image: "https://blog-s3.806.group/static/splash/galaxy-1.jpg"
         overlay_filter: 0.2

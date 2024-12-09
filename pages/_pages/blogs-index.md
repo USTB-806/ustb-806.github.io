@@ -7,5 +7,5 @@ pagination:
   enabled: true
   collection: blogs
 header:
-  overlay_image: "https://s3.806.group/website/static/blogs-banner.jpg"
+  overlay_image: "https://blog-s3.806.group/static/blogs-banner.jpg"
 ---
