@@ -1,336 +1,540 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/news.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-12-10T00:15:00+08:00</updated><id>https://ustb-806.github.io/feed/news.xml</id><title type="html">806 @ USTB | News</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/news.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-12-10T14:39:32+08:00</updated><id>https://ustb-806.github.io/feed/news.xml</id><title type="html">806 @ USTB | News</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">一、勤敏启航，创新飞扬</title><link href="https://ustb-806.github.io/news/2024/12/annual-review/" rel="alternate" type="text/html" title="一、勤敏启航，创新飞扬" /><published>2024-12-10T00:00:00+08:00</published><updated>2024-12-10T14:36:20+08:00</updated><id>https://ustb-806.github.io/news/2024/12/annual-review</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/12/annual-review/"><![CDATA[<p>​ 在充满挑战与机遇的 2024 年，勤敏轩学生创新实验室（简称 806 实验室）秉持着对技术的执着追求和创新的无限热情，走过了充实而辉煌的一年。806 实验室汇聚了众多在校本科生，他们共同致力于计算机专业学科竞赛以及创新创业竞赛的深耕细作。实验室下设系统部、人工智能部、游戏部和开发部四个部门，每个部门都承载着不同的使命与梦想。在秋季，我们进行了大规模的招新活动，为实验室注入了新的活力。同时，实验室积极维护自己的官方网站（ustb-806.github.io），为成员们提供了一个展示与交流的平台。
+        <img src="https://blog-s3.806.group/static/806_2.jpg" alt="" /></p>
+      <h2 id="二群英荟萃成就斐然">二、<strong>群英荟萃，成就斐然</strong></h2>
+      <h3 id="1-系统部系统耕耘荣耀绽放">1. <strong>系统部：系统耕耘，荣耀绽放</strong></h3>
+      <p>​ 系统部专注于计算机系统能力的培养，在过去的一年里，系统部成员在各类高水平系统能力竞赛中屡获佳绩，如刁明轩同学获得“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”个人赛全国三等奖，丁正枫、王雨辰等同学则荣获团体赛全国二等奖，此外，陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）内核实现赛道（基于 RISCV 硬件）”中也获得了全国二等奖。这些荣誉的取得，充分展现了系统部成员扎实的专业技能和团队协作精神。</p>
+      <h3 id="2-人工智能部ai-探索智慧引领">2. <strong>人工智能部：AI 探索，智慧引领</strong></h3>
+      <p>​ 人工智能部致力于打造优质的 AI 技术学习和开发社群。部内成员不仅深入学习了深度学习、CNN、RNN、transformer 等传统模型，还积极参与各类算法竞赛，如计算机设计大赛等，取得了市级二、三等奖的优异成绩。此外，祁珏瑜、王苏晴等多名成员还在本校、中科院课题组参与项目实习，发表论文，展现了实验室在 AI 领域的深厚底蕴。</p>
+      <h3 id="3-开发部开发实践创新无限">3. <strong>开发部：开发实践，创新无限</strong></h3>
+      <p>​ 开发部涉猎 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域。在过去的一年里，开发部成员在 github 上开源了多个项目，如廖玮珑的 AstrBot、hugging-chat-api 等，获得了广泛好评。同时，他们还开发了 WordEase 英语学习软件，为学校或开源社区做出了宝贵贡献。此外，祁珏瑜、崔永亮等成员还开发了 stable-diffusion 插件，进一步丰富了实验室的技术储备。</p>
+      <h3 id="4-游戏部游戏创想乐趣无限">4. <strong>游戏部：游戏创想，乐趣无限</strong></h3>
+      <p>​ 游戏部是实验室中充满活力和创意的部门。他们专注于游戏开发与设计，旨在培养成员的游戏制作能力和团队合作精神。在过去的一年里，游戏部成员不仅参加了计算机设计大赛并荣获国家三等奖的成绩，还积极实习并担任 Unity 开发的岗位。未来，他们计划以月为单位稳定产出游戏作品，并参加各类线上或线下 gamejam 比赛，为实验室的游戏事业贡献力量。</p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/02.jpg" alt="" />
+        <img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/03.jpg" alt="" />
+        <img src="https://blog-s3.806.group/post/2024/2024-10-02-os-competition/2.jpg" alt="" /></p>
+      <h2 id="三荣誉满载成果斐然">三、<strong>荣誉满载，成果斐然</strong></h2>
+      <p>​ 在全体成员的共同努力下，806 实验室在 2024 年取得了丰硕的成果。实验室一共获得<strong>国奖 18 项、省（市）奖 19 项、校奖 2 项、软著 2 项以及论文 2 篇</strong>。这些荣誉的取得不仅是对实验室成员努力的肯定，更是对实验室整体实力的彰显。</p>
       <table>
         <thead>
           <tr>
-            <th>部门</th>
-            <th>学号</th>
-            <th>日期</th>
-            <th>时间</th>
+            <th>奖项名称</th>
+            <th>获奖者</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>系统部</td>
-            <td>U202442544</td>
-            <td>10/26 Sat.</td>
-            <td>19:00</td>
+            <td>CCPC 中国大学生程序设计竞赛（区域赛）铜奖</td>
+            <td>王诺贤</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202341236</td>
-            <td> </td>
-            <td>19:10</td>
+            <td>ICPC 国际大学生程序设计竞赛（区域赛）铜奖</td>
+            <td>陈宽宽</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202241800</td>
-            <td> </td>
-            <td>19:30</td>
+            <td>计算机博弈一等奖</td>
+            <td>丁正枫</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202442610</td>
-            <td> </td>
-            <td>19:40</td>
+            <td>智能汽车竞赛二等奖</td>
+            <td>丁正枫</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202341615</td>
-            <td> </td>
-            <td>19:50</td>
+            <td>操作系统设计赛（全国）二等奖</td>
+            <td>陈宽宽，王诺贤</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342599</td>
-            <td> </td>
-            <td>20:00</td>
+            <td>大学生创新创业大赛二等奖</td>
+            <td>张灿</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202340562</td>
-            <td> </td>
-            <td>20:10</td>
+            <td>计算机设计大赛北京市二等奖</td>
+            <td>李睿琦</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202340533</td>
-            <td> </td>
-            <td>20:20</td>
+            <td>数据库管理系统设计赛优胜奖</td>
+            <td>廖玮珑，王诺贤</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342109</td>
-            <td> </td>
-            <td>20:30</td>
+            <td>计算机设计大赛北京市三等奖</td>
+            <td>朱博林</td>
           </tr>
           <tr>
-            <td>人工智能部</td>
-            <td>U202342602</td>
-            <td> </td>
-            <td>20:40</td>
+            <td>全国计算机博弈大赛二等奖</td>
+            <td>廖玮珑</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342494</td>
-            <td> </td>
-            <td>20:50</td>
+            <td>挑战杯全国二等奖</td>
+            <td>陈宽宽</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342147</td>
-            <td> </td>
-            <td>21:00</td>
+            <td>ICPC 国际大学生程序设计竞赛（区域赛）铜奖</td>
+            <td>王诺贤</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202442591</td>
-            <td> </td>
-            <td>21:10</td>
+            <td>机器人先进视觉赛二等奖</td>
+            <td>王诺贤</td>
           </tr>
           <tr>
-            <td>开发部</td>
-            <td>U202342473</td>
-            <td> </td>
-            <td>21:20</td>
+            <td>集成电路设计大赛一等奖</td>
+            <td>丁正枫</td>
           </tr>
           <tr>
-            <td>人工智能部</td>
-            <td>U202241805</td>
-            <td>10/27 Sun.</td>
-            <td>19:00</td>
+            <td>龙芯杯团体赛二等奖</td>
+            <td>王雨辰，丁正枫</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202243298</td>
-            <td> </td>
-            <td>19:10</td>
+            <td>计算机设计大赛北京市三等奖</td>
+            <td>崔永亮，张灿，祁珏瑜，陈铎友</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202341609</td>
-            <td> </td>
-            <td>19:20</td>
+            <td>全国青年科普创新实验大赛二等奖</td>
+            <td>张灿</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202341621</td>
-            <td> </td>
-            <td>19:30</td>
+            <td>网络技术挑战赛三等奖</td>
+            <td>唐学彬</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342459</td>
-            <td> </td>
-            <td>19:40</td>
+            <td>计算机设计大赛北京市三等奖</td>
+            <td>周奔成</td>
           </tr>
           <tr>
-            <td>开发部</td>
-            <td>U202342409</td>
-            <td> </td>
-            <td>19:50</td>
+            <td>计算机系统能力大赛 OceanBase 数据库赛道北京市一等奖</td>
+            <td>王诺贤、廖玮珑</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342490</td>
-            <td> </td>
-            <td>20:00</td>
+            <td>蓝桥杯程序设计大赛 C++A 组国家三等奖</td>
+            <td>王诺贤</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342623</td>
-            <td> </td>
-            <td>20:10</td>
+            <td>集成电路设计大赛一等奖</td>
+            <td>王雨辰</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202340683</td>
-            <td> </td>
-            <td>20:20</td>
+            <td>数学建模国赛北京市二等奖</td>
+            <td>刘彦甫</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342665</td>
-            <td> </td>
-            <td>20:30</td>
+            <td>互联网 + 北京市级三等奖</td>
+            <td>张灿</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202343406</td>
-            <td> </td>
-            <td>20:40</td>
+            <td>京彩大创“百强创业团队”</td>
+            <td>张灿</td>
           </tr>
           <tr>
-            <td>游戏部</td>
-            <td>U202342449</td>
-            <td> </td>
-            <td>20:50</td>
+            <td>全国大学生计算机博弈大赛冠军</td>
+            <td>张灿</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342472</td>
-            <td> </td>
-            <td>21:00</td>
+            <td>挑战杯揭榜挂帅“虚拟环境中核工程设备运动属性转换与交互技术研究“全国二等奖</td>
+            <td>黄昊</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342892</td>
-            <td> </td>
-            <td>21:10</td>
+            <td>LoongArch32R 自主指令集下单周期处理器教学设计与应用</td>
+            <td>崔晓龙，王雨辰，张磊，刘欣，林耀虎</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202340122</td>
-            <td> </td>
-            <td>21:20</td>
+            <td>Fast Adaptation Mechanism for Intelligent Routing in Dynamic Networks Based on Transfer Learning</td>
+            <td>Xiaolong Cui , Yuchen Wang ,Xinyi Xu,Wei Huangfu,Jiahao Huo</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202442567</td>
-            <td> </td>
-            <td>21:30</td>
+            <td>全国大学生电子设计大赛北京市二等奖</td>
+            <td>吴祥楠</td>
           </tr>
           <tr>
-            <td> </td>
-            <td>U202342439</td>
-            <td> </td>
-            <td>21:40</td>
+            <td>全国大学生数学建模大赛北京市二等奖</td>
+            <td>吴祥楠</td>
           </tr>
           <tr>
-            <td>人工智能部</td>
-            <td>U202342615</td>
+            <td>蓝桥杯程序设计大赛 Python 组北京赛区二等奖</td>
+            <td>廖玮珑</td>
+          </tr>
+          <tr>
+            <td>中国大学生计算机设计大赛国家二等奖</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>材料基因智能计算集成系统软著</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>心血管病智能辅诊系统</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>计算机设计大赛全国三等奖</td>
+            <td>刁明轩，张溪延，黄昊，韩连伟</td>
+          </tr>
+          <tr>
+            <td>计算机系统能力大赛 OceanBase 数据库赛道北京市三等奖</td>
+            <td>陈宽宽、刁明轩</td>
+          </tr>
+          <tr>
+            <td>龙芯杯个人赛三等奖</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>Intelligent art factory: achieving creative automation through parallel art agents</td>
+            <td>Chao GUO1, Xingyuan DAI1, Weilong LIAO2, Jueyu QI2, Yue LU3, Qinghua NI4, Lin WANG5, Fei</td>
+          </tr>
+          <tr>
+            <td>大唐杯”全国大学生新一代信息通信技术大赛国家二等奖</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>大学生数学竞赛省级一等奖</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>蓝桥杯 C/C++ 程序设计大学 A 组省级二等奖</td>
+            <td>刁明轩</td>
+          </tr>
+          <tr>
+            <td>华北五省计算机大赛省级三等奖 - 刁明轩</td>
             <td> </td>
-            <td>21:50</td>
           </tr>
         </tbody>
       </table>
-      <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
-      <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-      <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
-      ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
-    <h2 id="报名方式">报名方式</h2>
-    <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
-    <ul>
-      <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；（报名人工智能部仅需填写<code class="language-plaintext highlighter-rouge">人工智能部</code>）
-        <ul>
-          <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
-          <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
-        </ul>
-      </li>
-      <li>正文：若报名人工智能部，请在此告知报名的小组；</li>
-      <li>附件：个人简历（必须，<strong>pdf 格式</strong>，内容任意），其他能够证明个人能力的内容（可选）。</li>
-    </ul>
-    <p>我们会不定期查看邮件。若我们成功收到了你的邮件，并且你通过了简历筛选，我们会回复一封邮件以告知面试地点和时间。</p>
+      <p><img src="https://blog-s3.806.group/post/2024/2024-12-10-annual-review/competition1.jpg" alt="" />
+        <img src="https://blog-s3.806.group/post/2024/2024-12-10-annual-review/competition2.jpg" alt="" /></p>
+      <h2 id="四硕果累累保研名校">四、<strong>硕果累累，保研名校</strong></h2>
+      <p>​ 值得一提的是，806 实验室的大四学生在学业上也取得了令人瞩目的成绩，<strong>大四同学全部保研</strong>。他们凭借扎实的专业技能和出色的综合素质，成功保研至<strong>北大、南大、北航、国科大、北科、北邮</strong>等顶尖院校。这一成绩的取得不仅为实验室增添了光彩，更为成员们的未来发展奠定了坚实的基础。</p>
+      <h2 id="五智领未来续写辉煌">五、<strong>智领未来，续写辉煌</strong></h2>
+      <p>​ 展望未来，806 实验室将继续秉承“勤于思，敏于行”的实验室精神，不断探索新技术、新领域，为培养更多优秀的计算机人才贡献力量。我们坚信，在全体成员的共同努力下，806 实验室必将迎来更加辉煌的明天！</p>
+      ]]></content><author><name>cxl</name></author><category term="汇报" /><category term="annual_review" /><summary type="html"><![CDATA[一、勤敏启航，创新飞扬]]></summary></entry><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
+    <table>
+      <thead>
+        <tr>
+          <th>部门</th>
+          <th>学号</th>
+          <th>日期</th>
+          <th>时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>系统部</td>
+          <td>U202442544</td>
+          <td>10/26 Sat.</td>
+          <td>19:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341236</td>
+          <td> </td>
+          <td>19:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202241800</td>
+          <td> </td>
+          <td>19:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202442610</td>
+          <td> </td>
+          <td>19:40</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341615</td>
+          <td> </td>
+          <td>19:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342599</td>
+          <td> </td>
+          <td>20:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340562</td>
+          <td> </td>
+          <td>20:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340533</td>
+          <td> </td>
+          <td>20:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342109</td>
+          <td> </td>
+          <td>20:30</td>
+        </tr>
+        <tr>
+          <td>人工智能部</td>
+          <td>U202342602</td>
+          <td> </td>
+          <td>20:40</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342494</td>
+          <td> </td>
+          <td>20:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342147</td>
+          <td> </td>
+          <td>21:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202442591</td>
+          <td> </td>
+          <td>21:10</td>
+        </tr>
+        <tr>
+          <td>开发部</td>
+          <td>U202342473</td>
+          <td> </td>
+          <td>21:20</td>
+        </tr>
+        <tr>
+          <td>人工智能部</td>
+          <td>U202241805</td>
+          <td>10/27 Sun.</td>
+          <td>19:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202243298</td>
+          <td> </td>
+          <td>19:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341609</td>
+          <td> </td>
+          <td>19:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202341621</td>
+          <td> </td>
+          <td>19:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342459</td>
+          <td> </td>
+          <td>19:40</td>
+        </tr>
+        <tr>
+          <td>开发部</td>
+          <td>U202342409</td>
+          <td> </td>
+          <td>19:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342490</td>
+          <td> </td>
+          <td>20:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342623</td>
+          <td> </td>
+          <td>20:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340683</td>
+          <td> </td>
+          <td>20:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342665</td>
+          <td> </td>
+          <td>20:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202343406</td>
+          <td> </td>
+          <td>20:40</td>
+        </tr>
+        <tr>
+          <td>游戏部</td>
+          <td>U202342449</td>
+          <td> </td>
+          <td>20:50</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342472</td>
+          <td> </td>
+          <td>21:00</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342892</td>
+          <td> </td>
+          <td>21:10</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202340122</td>
+          <td> </td>
+          <td>21:20</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202442567</td>
+          <td> </td>
+          <td>21:30</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>U202342439</td>
+          <td> </td>
+          <td>21:40</td>
+        </tr>
+        <tr>
+          <td>人工智能部</td>
+          <td>U202342615</td>
+          <td> </td>
+          <td>21:50</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
     <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-    <p>若对本次招新有任何疑问，请邮件询问 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>。</p>
-    <h2 id="各部门招新介绍">各部门招新介绍</h2>
-    <h3 id="系统部">系统部</h3>
-    <p>系统部是 806 实验室历史最为悠久的部门，专注于计算机系统能力的培养，鼓励督促成员参加高水平系统能力竞赛，如龙芯杯、系统能力大赛等，部内多届成员均参与竞赛，超过一半人在系统能力大赛中获得国家级奖项。</p>
-    <p>系统部的成果丰富，曾多次在操作系统赛、编译系统赛、ICPC 等计算机顶级赛事获国家级奖项，今年还首次在龙芯杯获得国二，为我校实现了从零到一的突破。毕业学长学姐均前往北京大学、北京航空航天大学、南京大学、中科院计算所、中科院软件所等顶级高校深造，或是前往百度、腾讯等大厂工作。</p>
-    <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
-    <p>我们希望你：</p>
-    <ul>
-      <li>基础扎实：对 C/C++、Rust 或是 Verilog 语言有扎实的基础；</li>
-      <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
-      <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
-      <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
-      <li>不卷加权：加权成绩固然重要，但是对于第一名和第二名的固执没有意义。</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    <h3 id="人工智能部">人工智能部</h3>
-    <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法竞赛，开发构建好玩的 AIGC 应用。</p>
-    <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
-    <h4 id="算法组">算法组</h4>
-    <p>算法组的目标是：</p>
-    <ul>
-      <li>一起交流和探索 AI 算法竞赛，如 Kaggle 奖金池 $60000 的竞赛；</li>
-      <li>一起提升算法设计能力，推荐加入本外校的实习项目组；</li>
-      <li>论文产出。</li>
-    </ul>
-    <p>我们希望你：</p>
-    <ul>
-      <li>有较好的编程基础和逻辑能力；</li>
-      <li>对 AI 算法的探究有浓厚的兴趣；</li>
-      <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
-    </ul>
-    <p>加分项：</p>
-    <ul>
-      <li>熟悉 Python 编程；</li>
-      <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
-      <li>有深度学习相关的项目开发经验；</li>
-      <li>有输出技术博客的习惯。</li>
-    </ul>
-    <p>拟招 4 人左右。</p>
-    <h4 id="aigc-组">AIGC 组</h4>
-    <p>AIGC 组的目标是：</p>
-    <ul>
-      <li>学习开发和维护 AI 应用的传统项目，并产出和维护工程文档，申请软著等；</li>
-      <li>了解最新 AI 行业动态，学习大模型、Stable Diffusion、Midjourney 等成熟的 AIGC 项目的迁移和开发；</li>
-      <li>参与一些热门 github 项目的开发和维护。</li>
-    </ul>
-    <p>我们希望你：</p>
-    <ul>
-      <li>对 AIGC 应用有了解；</li>
-      <li>使用过常见的 AIGC 应用，例如各类生成式模型软件，图片生成、音视频生成等；</li>
-      <li>对 AIGC 应用部署和开发有浓厚的兴趣；</li>
-      <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
-    </ul>
-    <p>加分项：</p>
-    <ul>
-      <li>熟悉 Python 编程；</li>
-      <li>有 AI 应用插件的开发经验；</li>
-      <li>有 AI 应用相关的项目和比赛经验；</li>
-    </ul>
-    <p>拟招 3 人左右。</p>
-    <h4 id="网络组">网络组</h4>
-    <p>网络组的目标是：针对新一代网络架构（如软件定义网络 SDN、知识定义网络 KDN 等），通过图神经网络（GNN）、深度强化学习（DRL）、迁移学习（Transfer Learning）等方法，预测网络性能指标、改进网络路由算法、对网络传输进行建模。</p>
-    <p>要求：</p>
-    <ul>
-      <li>大一或大二同学，时间能够保证，能按要求完成实验任务；</li>
-      <li>熟练掌握 Python、C++ 编程语言，能够阅读并修改代码；</li>
-      <li>有 Linux 基础，完成各种环境搭建；</li>
-      <li>对网络仿真有一定了解；</li>
-      <li>有一定的英文阅读能力，能阅读全英论文；</li>
-      <li>有责任心，愿意参与科研项目，对网络研究方向有极大的兴趣。</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    <h3 id="游戏部">游戏部</h3>
-    <blockquote>
-      <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
-    </blockquote>
-    <p>你能学到什么：Unity，C#。</p>
-    <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 DEMO</strong>。</p>
-    <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
-    <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
-    <p>加分项：</p>
-    <ul>
-      <li>具有游戏开发相关经验，如使用过 Unity，UE，Godot 或其它游戏引擎；</li>
-      <li>了解游戏设计，如知悉各类游戏的基本特征、游戏机制及如何实现等；</li>
-      <li>具有电子绘画能力，如绘制角色帧动画、立绘，游戏内场景、UI 的能力；</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    <h3 id="开发部">开发部</h3>
-    <p>806 开发部欢迎对 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
-    <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
-    <p>开发部的目标是：</p>
-    <ul>
-      <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
-      <li>参与一些热门 GitHub 项目的开发和维护；</li>
-    </ul>
-    <p>我们希望你：</p>
-    <ul>
-      <li>对上述领域任一项或多项感兴趣；</li>
-      <li>有 Python/Java/GoLang/JS 或其他语言中的一个或多个的开发经验。</li>
-    </ul>
-    <p>加分项：</p>
-    <ul>
-      <li>有开源项目，对开源感兴趣；</li>
-      <li>接触过一个或多个常见的前后端框架，如 Gin、Flask、FastAPI、SpringBoot、Vue、React；</li>
-      <li>有嵌入式开发经验，如 Arduino、树莓派、ESP32 等；</li>
-      <li>有技术博客输出的习惯；</li>
-      <li>设计过一个或多个项目。</li>
-    </ul>
-    <p>拟招 5 人左右。</p>
-    ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
+    <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
+    ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
+  <h2 id="报名方式">报名方式</h2>
+  <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
+  <ul>
+    <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；（报名人工智能部仅需填写<code class="language-plaintext highlighter-rouge">人工智能部</code>）
+      <ul>
+        <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
+        <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
+      </ul>
+    </li>
+    <li>正文：若报名人工智能部，请在此告知报名的小组；</li>
+    <li>附件：个人简历（必须，<strong>pdf 格式</strong>，内容任意），其他能够证明个人能力的内容（可选）。</li>
+  </ul>
+  <p>我们会不定期查看邮件。若我们成功收到了你的邮件，并且你通过了简历筛选，我们会回复一封邮件以告知面试地点和时间。</p>
+  <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
+  <p>若对本次招新有任何疑问，请邮件询问 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>。</p>
+  <h2 id="各部门招新介绍">各部门招新介绍</h2>
+  <h3 id="系统部">系统部</h3>
+  <p>系统部是 806 实验室历史最为悠久的部门，专注于计算机系统能力的培养，鼓励督促成员参加高水平系统能力竞赛，如龙芯杯、系统能力大赛等，部内多届成员均参与竞赛，超过一半人在系统能力大赛中获得国家级奖项。</p>
+  <p>系统部的成果丰富，曾多次在操作系统赛、编译系统赛、ICPC 等计算机顶级赛事获国家级奖项，今年还首次在龙芯杯获得国二，为我校实现了从零到一的突破。毕业学长学姐均前往北京大学、北京航空航天大学、南京大学、中科院计算所、中科院软件所等顶级高校深造，或是前往百度、腾讯等大厂工作。</p>
+  <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
+  <p>我们希望你：</p>
+  <ul>
+    <li>基础扎实：对 C/C++、Rust 或是 Verilog 语言有扎实的基础；</li>
+    <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
+    <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
+    <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
+    <li>不卷加权：加权成绩固然重要，但是对于第一名和第二名的固执没有意义。</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  <h3 id="人工智能部">人工智能部</h3>
+  <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法竞赛，开发构建好玩的 AIGC 应用。</p>
+  <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
+  <h4 id="算法组">算法组</h4>
+  <p>算法组的目标是：</p>
+  <ul>
+    <li>一起交流和探索 AI 算法竞赛，如 Kaggle 奖金池 $60000 的竞赛；</li>
+    <li>一起提升算法设计能力，推荐加入本外校的实习项目组；</li>
+    <li>论文产出。</li>
+  </ul>
+  <p>我们希望你：</p>
+  <ul>
+    <li>有较好的编程基础和逻辑能力；</li>
+    <li>对 AI 算法的探究有浓厚的兴趣；</li>
+    <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
+  </ul>
+  <p>加分项：</p>
+  <ul>
+    <li>熟悉 Python 编程；</li>
+    <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
+    <li>有深度学习相关的项目开发经验；</li>
+    <li>有输出技术博客的习惯。</li>
+  </ul>
+  <p>拟招 4 人左右。</p>
+  <h4 id="aigc-组">AIGC 组</h4>
+  <p>AIGC 组的目标是：</p>
+  <ul>
+    <li>学习开发和维护 AI 应用的传统项目，并产出和维护工程文档，申请软著等；</li>
+    <li>了解最新 AI 行业动态，学习大模型、Stable Diffusion、Midjourney 等成熟的 AIGC 项目的迁移和开发；</li>
+    <li>参与一些热门 github 项目的开发和维护。</li>
+  </ul>
+  <p>我们希望你：</p>
+  <ul>
+    <li>对 AIGC 应用有了解；</li>
+    <li>使用过常见的 AIGC 应用，例如各类生成式模型软件，图片生成、音视频生成等；</li>
+    <li>对 AIGC 应用部署和开发有浓厚的兴趣；</li>
+    <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
+  </ul>
+  <p>加分项：</p>
+  <ul>
+    <li>熟悉 Python 编程；</li>
+    <li>有 AI 应用插件的开发经验；</li>
+    <li>有 AI 应用相关的项目和比赛经验；</li>
+  </ul>
+  <p>拟招 3 人左右。</p>
+  <h4 id="网络组">网络组</h4>
+  <p>网络组的目标是：针对新一代网络架构（如软件定义网络 SDN、知识定义网络 KDN 等），通过图神经网络（GNN）、深度强化学习（DRL）、迁移学习（Transfer Learning）等方法，预测网络性能指标、改进网络路由算法、对网络传输进行建模。</p>
+  <p>要求：</p>
+  <ul>
+    <li>大一或大二同学，时间能够保证，能按要求完成实验任务；</li>
+    <li>熟练掌握 Python、C++ 编程语言，能够阅读并修改代码；</li>
+    <li>有 Linux 基础，完成各种环境搭建；</li>
+    <li>对网络仿真有一定了解；</li>
+    <li>有一定的英文阅读能力，能阅读全英论文；</li>
+    <li>有责任心，愿意参与科研项目，对网络研究方向有极大的兴趣。</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  <h3 id="游戏部">游戏部</h3>
+  <blockquote>
+    <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
+  </blockquote>
+  <p>你能学到什么：Unity，C#。</p>
+  <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 DEMO</strong>。</p>
+  <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
+  <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
+  <p>加分项：</p>
+  <ul>
+    <li>具有游戏开发相关经验，如使用过 Unity，UE，Godot 或其它游戏引擎；</li>
+    <li>了解游戏设计，如知悉各类游戏的基本特征、游戏机制及如何实现等；</li>
+    <li>具有电子绘画能力，如绘制角色帧动画、立绘，游戏内场景、UI 的能力；</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  <h3 id="开发部">开发部</h3>
+  <p>806 开发部欢迎对 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
+  <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
+  <p>开发部的目标是：</p>
+  <ul>
+    <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
+    <li>参与一些热门 GitHub 项目的开发和维护；</li>
+  </ul>
+  <p>我们希望你：</p>
+  <ul>
+    <li>对上述领域任一项或多项感兴趣；</li>
+    <li>有 Python/Java/GoLang/JS 或其他语言中的一个或多个的开发经验。</li>
+  </ul>
+  <p>加分项：</p>
+  <ul>
+    <li>有开源项目，对开源感兴趣；</li>
+    <li>接触过一个或多个常见的前后端框架，如 Gin、Flask、FastAPI、SpringBoot、Vue、React；</li>
+    <li>有嵌入式开发经验，如 Arduino、树莓派、ESP32 等；</li>
+    <li>有技术博客输出的习惯；</li>
+    <li>设计过一个或多个项目。</li>
+  </ul>
+  <p>拟招 5 人左右。</p>
+  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/os-competition/" rel="alternate" type="text/html" title="祝贺陈宽宽、王诺贤在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/os-competition</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/os-competition/"><![CDATA[<p>近日，第四届全国大学生计算机系统能力大赛“操作系统设计”赛在杭州电子科技大学落下帷幕。</p>
   <p>全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起、由全国高校计算机教育研究会主办、面向高校大学生的全国性大赛。目标是以学科竞赛推动专业建设和计算机领域创新人才培养体系改革，培育我国高端芯片、关键基础软件的后备人才。大赛服务国家人才培养战略，以赛促学、以赛促教，鼓励学生设计、实现综合性的计算机系统，培养学生系统级的设计、分析、优化与应用能力，提升学生的技术创新、工程实践、团队协作能力，并为高水平计算机人才成长搭建交流、展示、合作的开放平台。</p>
   <p>本届大赛吸引了全国百余所高校的 589 支参赛队报名，209 支赛队入围全国总决赛。经过激烈的初赛和决赛现场赛、答辩，全国总决赛内核实现赛最终评选出一等奖 6 项，二等奖 9 项，三等奖 12 项。</p>
   <p>来自北京科技大学计通学院的“chaos”队从来自清华大学、北京大学、上海交通大学、哈尔滨工业大学、北京航空航天大学、华中科技大学等全国百余所高校 209 支入围总决赛的队伍中脱颖而出，获得了“操作系统设计”赛内核实现赛道（基于 RISCV 硬件）全国总决赛全国二等奖，<strong>这是我校连续第三年在大赛内核赛道获奖</strong>。</p>
