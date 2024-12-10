@@ -2,7 +2,7 @@
 title: "**勤敏轩2024**：智潮涌动，硕果盈枝"
 author: "cxl"
 header:
-    overlay_image: https://blog-s3.806.group/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png
+    overlay_image: https://blog-s3.806.group/post/2024/2024-10-02-os-competition/header.jpg
 categories: ["汇报"]
 
 tags: ["annual_review"]
