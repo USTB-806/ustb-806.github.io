@@ -7,8 +7,6 @@ categories: ["教程"]
 tags: ["音频编码", "ArchLinux"]
 ---
 
-# 背景
-
 最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 `ncmpcpp` 这个音乐播放器了。
 
 ![ncmpcpp 的可视化音频效果](https://blog.soulter.top/images/visualize-music/ncmpcpp_demo.gif)
