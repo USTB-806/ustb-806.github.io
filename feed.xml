@@ -1,294 +1,941 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-12-10T15:55:19+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">**勤敏轩 2024**：智潮涌动，硕果盈枝</title><link href="https://ustb-806.github.io/news/2024/12/annual-review/" rel="alternate" type="text/html" title="**勤敏轩 2024**：智潮涌动，硕果盈枝" /><published>2024-12-10T00:00:00+08:00</published><updated>2024-12-10T15:53:40+08:00</updated><id>https://ustb-806.github.io/news/2024/12/annual-review</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/12/annual-review/"><![CDATA[<blockquote>
-        <p><strong>勤敏轩 2024</strong>：智潮涌动，硕果盈枝。</p>
-      </blockquote>
-      <h2 id="勤敏启航创新飞扬">勤敏启航，创新飞扬</h2>
-      <p>在充满挑战与机遇的 2024 年，勤敏轩学生创新实验室（简称 806 实验室）秉持着对技术的执着追求和创新的无限热情，走过了充实而辉煌的一年。806 实验室汇聚了众多在校本科生，他们共同致力于计算机专业学科竞赛以及创新创业竞赛的深耕细作。</p>
-      <p>实验室下设系统部、人工智能部、游戏部和开发部四个部门，每个部门都承载着不同的使命与梦想。在秋季，我们进行了大规模的招新活动，为实验室注入了新的活力。同时，实验室积极维护自己的官方网站 <a href="https://ustb-806.github.io">https://ustb-806.github.io</a>，为成员们提供了一个展示与交流的平台。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/static/806_2.jpg" alt="alt" />
-        勤敏轩实验室</p>
-      <h2 id="群英荟萃成就斐然">群英荟萃，成就斐然</h2>
-      <h3 id="系统部系统耕耘荣耀绽放">系统部：系统耕耘，荣耀绽放</h3>
-      <p>系统部专注于计算机系统能力的培养，在过去的一年里，系统部成员在各类高水平系统能力竞赛中屡获佳绩：</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2024-12-14T14:11:05+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何从零开始可视化一首音乐？</title><link href="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/" rel="alternate" type="text/html" title="如何从零开始可视化一首音乐？" /><published>2024-12-14T00:00:00+08:00</published><updated>2024-12-14T14:08:51+08:00</updated><id>https://ustb-806.github.io/blogs/2024/12/visualize-spectumn</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/"><![CDATA[<p>最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 这个音乐播放器了。</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/ncmpcpp_demo.gif" alt="ncmpcpp 的可视化音频效果" /></p>
+      <p>日常办公时把它放在屏幕角落，就会感觉工作环境变得更有趣了。这也让我对它的实现产生了巨大的好奇心，于是我决定探索一下它是如何实现的。</p>
+      <p>本文将深入底层，从音频编码开始讲起，探究 <code class="language-plaintext highlighter-rouge">wav</code> 格式的音频文件是如何被解析的，然后再讲解如何通过傅立叶变换将音频信号转换为频谱图，最后再着手实现。</p>
+      <h1 id="音频编码">音频编码</h1>
+      <h2 id="声波">声波</h2>
+      <p>中学物理教过我们，声音是一种机械波，由物体振动产生，通过介质传播。当波通过介质传递到耳朵时，耳膜会随之振动，我们才能听到声音。</p>
+      <p>声波会引起麦克风（注：这里以动圈式麦克风为例）传感器中的振膜振动，振膜与被磁铁包围着住的线圈相连，根据法拉第定律和楞次定律，振膜振动会使磁场中线圈移动而产生感应电流。此时，只需要监测线圈两极的电压即可得到声音的波形图。机械振动就被转换为了电压信号。</p>
+      <p>我们现在得到的是连续的模拟信号，还需要将其转换成计算机可识别的离散的数字信号。</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/image.png#full" alt="连续的模拟信号。图片来源@cjting" /></p>
+      <p>这时候，我们需要对信号进行模数转换（ADC）。AD 芯片每隔一段时间（几微秒）对波形图打点采样，得到每一个点的电压值，然后量化为二进制数，最后再进行编码，我们就得到了音频波形数据。</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/image-1.png#full" alt="采样。图片来源@cjting" /></p>
+      <h2 id="wav-格式">WAV 格式</h2>
+      <p>和图像、视频一样，音频编码格式也主要分为两大类：有损压缩和无损压缩格式。</p>
+      <p><code class="language-plaintext highlighter-rouge">wav</code> 就是一种典型的无损压缩格式，它是由微软和 IBM 共同开发的一种音频文件格式。它被称为“波形文件”，它也是相对好理解的一个音频格式。</p>
+      <p>一个完整的 <code class="language-plaintext highlighter-rouge">wav</code> 文件必须包含两个区块：<code class="language-plaintext highlighter-rouge">Format Chunk</code> 和 <code class="language-plaintext highlighter-rouge">Data Chunk</code></p>
+      <p>下面是一个包含了以上两个 Chunk 的 WAV 文件的例子：</p>
+      <pre><code class="language-plain"> __________________________
+| RIFF WAVE Chunk	   |
+|   groupID  = 'RIFF'      |
+|   riffType = 'WAVE'      |
+|    __________________    |
+|   | Format Chunk     |   |
+|   |	ckID = 'fmt '  |   |
+|   |__________________|   |
+|    __________________    |
+|   | Sound Data Chunk |   |
+|   |	ckID = 'data'  |   |
+|   |__________________|   |
+|__________________________|
+</code></pre>
+      <p><code class="language-plaintext highlighter-rouge">Format Chunk</code> 包含了重要的描述波形的参数：</p>
       <ul>
-        <li>
-          <p>刁明轩同学获得“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”个人赛全国三等奖；</p>
-        </li>
-        <li>
-          <p>丁正枫、王雨辰等同学则荣获“龙芯杯”团体赛全国二等奖；</p>
-        </li>
-        <li>
-          <p>陈宽宽、王诺贤同学在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）内核实现赛道（基于 RISCV 硬件）”中获得了全国二等奖。</p>
-        </li>
+        <li>采样率（Sample Rate）：每秒采样模拟信号的次数</li>
+        <li>采样宽度（Sample Width）：每个采样点的位数</li>
+        <li>声道数量（Audio Channels）</li>
+        <li>采样帧总数（Sample Frame）</li>
+        <li>压缩方式（Compression Type）</li>
       </ul>
-      <p>这些荣誉的取得，充分展现了系统部成员扎实的专业技能和团队协作精神。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/02.jpg" alt="alt" />
-        “龙芯杯”颁奖典礼，刁明轩（左五）</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/03.jpg" alt="alt" />
-        “龙芯杯”团队赛复赛现场</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-os-competition/2.jpg" alt="alt" />
-        操作系统设计赛</p>
-      <h3 id="人工智能部ai-探索智慧引领">人工智能部：AI 探索，智慧引领</h3>
-      <p>人工智能部致力于打造优质的 AI 技术学习和开发社群。</p>
-      <p>部内成员不仅深入学习了深度学习、CNN、RNN、transformer 等传统模型，还积极参与各类算法竞赛，如计算机设计大赛等，取得了市级二、三等奖的优异成绩。</p>
-      <p>祁珏瑜、王苏晴等多名成员还在本校、中科院课题组参与项目实习，发表论文，展现了实验室在 AI 领域的深厚底蕴。</p>
-      <h3 id="开发部开发实践创新无限">开发部：开发实践，创新无限</h3>
-      <p>开发部涉猎 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域。</p>
-      <p>在过去的一年里，开发部成员在 github 上开源了多个项目，如廖玮珑的 <a href="https://github.com/Soulter/AstrBot">AstrBot</a>、<a href="https://github.com/Soulter/hugging-chat-api">hugging-chat-api</a> 等，获得了广泛好评。同时，他们还开发了 WordEase 英语学习软件，为学校和开源社区做出了宝贵贡献。</p>
-      <p>此外，祁珏瑜、崔永亮等成员还开发了 stable-diffusion 插件，进一步丰富了实验室的技术储备。</p>
-      <h3 id="游戏部游戏创想乐趣无限">游戏部：游戏创想，乐趣无限</h3>
-      <p>游戏部是实验室中充满活力和创意的部门。他们专注于游戏开发与设计，旨在培养成员的游戏制作能力和团队合作精神。</p>
-      <p>在过去的一年里，游戏部成员不仅参加了计算机设计大赛并荣获国家三等奖的成绩，还积极实习并担任 Unity 开发的岗位。</p>
-      <p>未来，他们计划以月为单位稳定产出游戏作品，并参加各类线上或线下 gamejam 比赛，为实验室的游戏事业贡献力量。</p>
-      <h2 id="荣誉满载成果斐然">荣誉满载，成果斐然</h2>
-      <p>在全体成员的共同努力下，806 实验室在 2024 年取得了丰硕的成果。实验室一共获得 <strong>国奖 18 项、省（市）奖 19 项、校奖 2 项、软著 2 项以及论文 2 篇</strong>。这些荣誉的取得不仅是对实验室成员努力的肯定，更是对实验室整体实力的彰显。</p>
+      <p><code class="language-plaintext highlighter-rouge">Data Chunk</code> 包含了实际的波形数据，这些数据由一连串的采样帧组成，按时间顺序排列。</p>
+      <p>一个采样点表示一次采样内声音的振幅值。采样点位数越高，可表示的值的范围就越大，音频的质量就越好，但是文件的大小也就越大。一个采样帧包含了一次采样的所有声道的采样点。比如，我有左右两个声道，每个声道有 16 位的采样点，那么一个采样帧就包含了 32 位的数据。</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/image-2.png" alt="" /></p>
+      <p>在 Python 中，我们可以使用 <code class="language-plaintext highlighter-rouge">wave</code> 模块来读取 <code class="language-plaintext highlighter-rouge">wav</code> 文件：</p>
+      <p>440hz_16bit_5s.wav:</p>
+      <audio controls="" src="https://blog.soulter.top/images/visualize-music/440hz_16bit_5s.wav" title="440hz_16bit_5s"></audio>
+      <div class="language-python highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
+
+<span class="k">with</span> <span class="n">wave</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="nf">getparams</span><span class="p">())</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="nf">readframes</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</code></pre>
+        </div>
+      </div>
+      <p>输出如下内容：</p>
+      <pre><code class="language-plain">_wave_params(nchannels=1, sampwidth=2, framerate=44100, nframes=220500, comptype='NONE', compname='not compressed')
+b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p@\x1eD\x88G\xa9J\x7fM\x07P?R'
+</code></pre>
+      <p>这段音频有一个声道，每个采样点占 2 byte，采样率为 44100，总共有 220500 个采样帧。220500 / 44100 = 5 秒。</p>
+      <p>后面读出的采样帧字符串是一段十六进制转义序列，我们可以使用 <code class="language-plaintext highlighter-rouge">struct</code> 模块来解析：</p>
+      <div class="language-python highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
+<span class="kn">import</span> <span class="n">struct</span>
+
+<span class="k">def</span> <span class="nf">read_wave</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">wave</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">nframes</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">getnframes</span><span class="p">()</span>
+        <span class="n">frames</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">readframes</span><span class="p">(</span><span class="n">nframes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">struct</span><span class="p">.</span><span class="nf">unpack</span><span class="p">(</span><span class="sa">f</span><span class="sh">'</span><span class="s">&lt;</span><span class="si">{</span><span class="n">nframes</span><span class="si">}</span><span class="s">h</span><span class="sh">'</span><span class="p">,</span> <span class="n">frames</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="nf">read_wave</span><span class="p">(</span><span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</code></pre>
+        </div>
+      </div>
+      <p>在这里我们解析了前 10 个采样帧，<code class="language-plaintext highlighter-rouge">h</code> 表示短整型，<code class="language-plaintext highlighter-rouge">&lt;</code> 表示小端序。WAVE 文件采用小端序来存储数据。</p>
+      <p>输出如下：</p>
+      <pre><code class="language-plain">(0, 1421, 2835, 4238, 5625, 6989, 8327, 9632, 10899, 12122)
+</code></pre>
+      <p>我们发现这一段数字是逐渐增加的，很符合波形的特点。截取前 0.05 秒的波形，然后根据时间绘制波形图：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725975340572.png" alt="" /></p>
+      <p>可以发现这是一个正弦波。横轴为时间，纵轴为振幅。由于这段音频的采样宽度为 16 位，所以振幅的范围是 $[-2^{15}, 2^{15}-1]$，即 $[-32768, 32767]$。</p>
+      <p>到目前为止，我们已经成功地将音频文件解析为了波形数据，并且成功可视化出了声波振幅随时间变化的波形图。不过，我们想象中的 440Hz 的“可视化图像”应该是那种“只有一个峰”的频谱图，和一开始提到的 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果是一样的。那如何将这种数据转化成频谱图呢？这里，我们需要用到傅立叶变换。</p>
+      <h2 id="快速傅立叶变换fft">快速傅立叶变换（FFT）</h2>
+      <p>傅立叶变换是一种将信号从时域转换到频域的方法，它可以将一个信号分解为一系列不同频率的正弦波。快速傅立叶变换（FFT）是一种计算傅立叶变换的高效算法。下面是快速傅立叶变换的 Python 实现：</p>
+      <div class="language-python highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="n">even</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">odd</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmath</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">2j</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="n">odd</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">even</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">+</span> \
+           <span class="p">[</span><span class="n">even</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+</code></pre>
+        </div>
+      </div>
+      <p>它的输入是一系列采样点的振幅值，输出是一系列复数，表示不同频率的正弦波的振幅和相位。让我们把上面的 440Hz 的波形数据输入到这个函数中：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="p">[</span>
+    <span class="p">(</span><span class="mi">503643</span><span class="o">+</span><span class="mf">0j</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">68801.16613674666</span><span class="o">+</span><span class="mf">116234.4683635989j</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">23890.51738479154</span><span class="o">+</span><span class="mf">53037.36938852984j</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">16335.061327176663</span><span class="o">+</span><span class="mf">34280.395464007364j</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">13741.719659027507</span><span class="o">+</span><span class="mf">24979.846914594244j</span><span class="p">),</span>
+    <span class="bp">...</span>
+<span class="p">]</span>
+</code></pre>
+        </div>
+      </div>
+      <h2 id="可视化频谱">可视化频谱</h2>
+      <p>我们将原始波形数据应用于 FFT，然后将得到的复数值转换为其模长，并进行归一化：</p>
+      <div class="language-python highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="n">spectrum_complex</span><span class="p">,</span> <span class="n">max_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="sh">'''</span><span class="s">将频谱复数转换为振幅，并归一化</span><span class="sh">'''</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="p">[</span><span class="nf">abs</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">spectrum_complex</span><span class="p">]</span>
+    <span class="n">max_spectrum</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">spectrum</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 防止除以 0
+</span>    <span class="k">return</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">max_value</span> <span class="o">*</span> <span class="n">freq</span> <span class="o">/</span> <span class="n">max_spectrum</span><span class="p">)</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">spectrum</span><span class="p">]</span>
+
+<span class="n">spectrum</span> <span class="o">=</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="nf">fft</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">512</span><span class="p">]))[:</span><span class="mi">20</span><span class="p">]</span>
+</code></pre>
+        </div>
+      </div>
+      <p>输出：</p>
+      <pre><code class="language-plain">[0, 0, 0, 0, 0, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</code></pre>
+      <p>是不是有感觉了？！我们采用了前 512 个采样帧的频谱数据，并将它们缩放到 0-10 的范围内，然后取前 20 个频率的振幅值。我们可以使用 <code class="language-plaintext highlighter-rouge">curses</code> 模块来绘制频谱图：</p>
+      <div class="language-python highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="kn">import</span> <span class="n">curses</span><span class="p">,</span> <span class="n">time</span>
+
+<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">):</span>
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">):</span>
+        <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="sh">"</span><span class="s">#</span><span class="sh">"</span> <span class="o">*</span> <span class="n">freq</span><span class="si">}</span><span class="sh">'</span><span class="p">)</span>
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">refresh</span><span class="p">()</span>
+
+<span class="c1"># （这个 main 函数不是最终版本！）
+</span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">frame_rate</span> <span class="o">=</span> <span class="nf">read_wav_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+    <span class="n">frame_size</span> <span class="o">=</span> <span class="mi">2048</span>
+    <span class="n">hop_size</span> <span class="o">=</span> <span class="mi">512</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">hop_size</span><span class="p">):</span>
+        <span class="n">spectrum</span> <span class="o">=</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="nf">fft</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">frame_size</span><span class="p">]))</span>
+        <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">[:</span><span class="mi">40</span><span class="p">])</span>
+        <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</code></pre>
+        </div>
+      </div>
+      <p>这里，我们对音频数据进行了分帧处理，每帧 2048 个采样帧，帧移 512 个采样帧。然后我们计算每一帧的频谱，并绘制频谱图。我们可以看到频谱图随时间变化的效果。</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726126824224.png" alt="" /></p>
+      <p>现在还有一个小问题，就是这个频谱图的播放时间 (约 8s) 远远高于了实际音乐的播放时间 5s。这是由于我们在每次渲染时，将睡眠时间固定为了 0.05s。没有考虑实际音乐的播放速度和一次循环所用到的采样帧占总采样帧的比例。并且，计算 FFT 和渲染频谱图也是会消耗时间的。</p>
+      <p>这也很好解决，为了使可视化跟上音乐的播放速度，我们需要知道音乐的总长度、每一个可视化帧应该的播放时间、可视化帧运算和渲染花费的时间，然后动态调整睡眠时间：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">frame_rate</span> <span class="o">=</span> <span class="nf">read_wav_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+    <span class="n">frame_size</span> <span class="o">=</span> <span class="mi">2048</span>
+    <span class="n">hop_size</span> <span class="o">=</span> <span class="mi">1024</span>
+
+    <span class="n">frame_duration</span> <span class="o">=</span> <span class="n">hop_size</span> <span class="o">/</span> <span class="n">frame_rate</span>  <span class="c1"># 每帧的实际播放时间
+</span>    <span class="n">total_duration</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">frame_rate</span>  <span class="c1"># 音频总时长
+</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">hop_size</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+        <span class="n">spectrum</span> <span class="o">=</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="nf">fft</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">frame_size</span><span class="p">]))</span>
+        <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">[:</span><span class="mi">40</span><span class="p">],</span> <span class="n">i</span> <span class="o">/</span> <span class="n">frame_rate</span><span class="p">,</span> <span class="n">total_duration</span><span class="p">)</span>
+        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+        <span class="c1"># 将可视化帧播放时间剪去运算渲染消耗的时间，来达到自适应。
+</span>        <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame_duration</span> <span class="o">-</span> <span class="p">(</span><span class="n">elapsed_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)))</span>
+</code></pre>
+        </div>
+      </div>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726128923283.png" alt="" /></p>
+      <p>接下来，我们来优化这个播放器。比如：不同振幅采用不同的颜色、把频谱图横过来、平滑可视化帧之间的振幅。让我们来进行优化</p>
+      <p>按照缩放振幅最大值的 0.2、0.4、0.6 倍分割成 4 段，分别采用淡蓝、白、绿、黄颜色区分。</p>
+      <p>初始化 curses 的颜色对：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">init_colors</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">colors</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">start_color</span><span class="p">()</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_WHITE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_YELLOW</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">MAX_VALUE</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">/</span> <span class="n">MAX_VALUE</span> <span class="o">&lt;=</span> <span class="mf">0.2</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">/</span> <span class="n">MAX_VALUE</span> <span class="o">&lt;=</span> <span class="mf">0.4</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">/</span> <span class="n">MAX_VALUE</span> <span class="o">&lt;=</span> <span class="mf">0.6</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</code></pre>
+        </div>
+      </div>
+      <p>渲染：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">curr</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">colors</span>
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
+    <span class="n">max_y</span><span class="p">,</span> <span class="n">max_x</span> <span class="o">=</span> <span class="n">stdscr</span><span class="p">.</span><span class="nf">getmaxyx</span><span class="p">()</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">spectrum</span><span class="p">[:</span><span class="n">max_x</span><span class="p">]</span>
+    <span class="n">half_y</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="c1"># 水平展示频谱
+</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sh">"</span><span class="s">█</span><span class="sh">"</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sh">"</span><span class="s">█</span><span class="sh">"</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">max_y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">curr</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> / </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> s</span><span class="sh">'</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">refresh</span><span class="p">()</span>
+</code></pre>
+        </div>
+      </div>
+      <p>然后，我们采用 EMA（移动指数平均）来实现平滑数据。</p>
+      <p>EMA 的计算公式为：</p>
+      <p>[EMA(t) = (1 - \alpha) \cdot EMA(t-1) + \alpha \cdot x(t)]</p>
+      <p>其中 $\alpha$ 为平滑系数，$x(t)$ 为当前值，$EMA(t-1)$ 为上一次的平滑值。</p>
+      <p>我们只需要记录上一次的平滑后的频谱值，然后在每一帧的频谱值上应用 EMA 即可。</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="nf">init_colors</span><span class="p">()</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">haruhikage.wav</span><span class="sh">'</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">frame_rate</span> <span class="o">=</span> <span class="nf">read_wav_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+    <span class="n">frame_size</span> <span class="o">=</span> <span class="mi">4096</span>
+    <span class="n">hop_size</span> <span class="o">=</span> <span class="mi">2048</span>
+
+    <span class="n">frame_duration</span> <span class="o">=</span> <span class="n">hop_size</span> <span class="o">/</span> <span class="n">frame_rate</span>  <span class="c1"># 每帧的实际播放时间
+</span>    <span class="n">total_duration</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">frame_rate</span>  <span class="c1"># 音频总时长
+</span>
+    <span class="n">audio_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="p">.</span><span class="nc">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">play_audio</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">file_name</span><span class="p">,))</span>
+    <span class="n">audio_thread</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+
+    <span class="n">previous_spectrum</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">ema_alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">hop_size</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+        <span class="n">spectrum</span> <span class="o">=</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="nf">fft</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">frame_size</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">previous_spectrum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># 应用 EMA
+</span>            <span class="n">spectrum</span> <span class="o">=</span> <span class="p">[</span><span class="nf">int</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ema_alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">prev</span> <span class="o">+</span> <span class="n">ema_alpha</span> <span class="o">*</span> <span class="n">curr</span><span class="p">)</span> <span class="k">for</span> <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">previous_spectrum</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">)]</span>
+
+        <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">i</span> <span class="o">/</span> <span class="n">frame_rate</span><span class="p">,</span> <span class="n">total_duration</span><span class="p">)</span>
+        <span class="n">previous_spectrum</span> <span class="o">=</span> <span class="n">spectrum</span>
+        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+        <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame_duration</span> <span class="o">-</span> <span class="p">(</span><span class="n">elapsed_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)))</span>
+
+    <span class="n">audio_thread</span><span class="p">.</span><span class="nf">join</span><span class="p">()</span>
+</code></pre>
+        </div>
+      </div>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726145469076.png" alt="" /></p>
+      <p>挺像回事了 hhh。最后，我们再对整个代码进行一轮优化。</p>
+      <ol>
+        <li>
+          <p>第零，既然这是一个可以可视化音频的工具，为什么不能同时播放音乐呢？于是我用了 <code class="language-plaintext highlighter-rouge">simpleaudio</code> 模块，在子线程中同步播放音乐。</p>
+        </li>
+        <li>
+          <p>第一，上面的代码没有考虑窗口自适应，我们需要在每一次循环中都取一次窗口大小 <code class="language-plaintext highlighter-rouge">max_x</code> 和 <code class="language-plaintext highlighter-rouge">max_y</code>，当窗口发生变化时重新计算 <code class="language-plaintext highlighter-rouge">colors</code> 列表。</p>
+        </li>
+        <li>
+          <p>第二，现在的计算方式是一次性将 4096 个采样帧都进行 EMA 计算，实际我们只需要将窗口的 <code class="language-plaintext highlighter-rouge">max_x</code> 个采样帧进行 EMA 计算和存储即可。</p>
+        </li>
+        <li>
+          <p>第三，我通过和实际音乐播放的时间比对发现，整个渲染部分还是会有延迟（基本上每秒会有 0.003 秒的延迟），如果任由其累加，到了后面，实际的音频播放会和可视化频谱有很大的错位。我直接计算了实际播放时间和可视化帧时间的差，将其作为 <code class="language-plaintext highlighter-rouge">delay</code>，然后在 time.sleep() 时直接减去这个 <code class="language-plaintext highlighter-rouge">delay</code>，这样就能在单次帧渲染时把 delay 给消除。</p>
+        </li>
+        <li>
+          <p>第四，测试发现很多振幅低的频率在频谱图中几乎不可见，这是因为我们采用的是线性归一化，高振幅的频率会压缩低振幅的频率。我们可以换成平方根归一化，这样可以减少高低频率振幅的差距。</p>
+        </li>
+        <li>
+          <p>第五，我发现渲染帧率太高了，而帧之间的振幅变化又太快，导致频谱图看起来很闪烁。于是我设置了一个固定的帧率 <code class="language-plaintext highlighter-rouge">fps</code> 和频谱数据缓冲区，其大小为 <code class="language-plaintext highlighter-rouge">frame_duration / (1/fps)</code>，频谱数据先放入缓冲区，当缓冲区满时全部取出，并求平均值，然后再进行 EMA 计算和渲染。</p>
+          <blockquote>
+            <p>后续发现其实调大 <code class="language-plaintext highlighter-rouge">hop_size</code> 就行。想复杂了 = =</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p>优化后的完整代码如下：</p>
+      <div class="language-python highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
+<span class="kn">import</span> <span class="n">struct</span>
+<span class="kn">import</span> <span class="n">math</span>
+<span class="kn">import</span> <span class="n">cmath</span>
+<span class="kn">import</span> <span class="n">curses</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">threading</span>
+<span class="kn">import</span> <span class="n">simpleaudio</span> <span class="k">as</span> <span class="n">sa</span>
+
+<span class="k">def</span> <span class="nf">read_wav_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">wave</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">wf</span><span class="p">:</span>
+        <span class="n">num_channels</span> <span class="o">=</span> <span class="n">wf</span><span class="p">.</span><span class="nf">getnchannels</span><span class="p">()</span>
+        <span class="n">sample_width</span> <span class="o">=</span> <span class="n">wf</span><span class="p">.</span><span class="nf">getsampwidth</span><span class="p">()</span>
+        <span class="n">frame_rate</span> <span class="o">=</span> <span class="n">wf</span><span class="p">.</span><span class="nf">getframerate</span><span class="p">()</span>
+        <span class="n">num_frames</span> <span class="o">=</span> <span class="n">wf</span><span class="p">.</span><span class="nf">getnframes</span><span class="p">()</span>
+
+        <span class="n">raw_data</span> <span class="o">=</span> <span class="n">wf</span><span class="p">.</span><span class="nf">readframes</span><span class="p">(</span><span class="n">num_frames</span><span class="p">)</span>
+        <span class="n">total_samples</span> <span class="o">=</span> <span class="n">num_frames</span> <span class="o">*</span> <span class="n">num_channels</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">&lt;</span><span class="si">{</span><span class="n">total_samples</span><span class="si">}</span><span class="s">h</span><span class="sh">"</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="nf">unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">num_channels</span><span class="p">)]</span>  <span class="c1"># 只取一个声道
+</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">frame_rate</span>
+
+<span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="n">even</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">odd</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmath</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">2j</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="n">odd</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">even</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">+</span> \
+           <span class="p">[</span><span class="n">even</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="n">spectrum_complex</span><span class="p">,</span> <span class="n">max_y</span><span class="p">):</span>
+    <span class="sh">'''</span><span class="s">将频谱复数转换为振幅，并归一化</span><span class="sh">'''</span>
+    <span class="n">max_y</span> <span class="o">=</span> <span class="nf">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span>  <span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="p">[</span><span class="nf">abs</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">spectrum_complex</span><span class="p">]</span>
+    <span class="n">max_spectrum</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">spectrum</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># return [int(max_y * freq / max_spectrum) for freq in spectrum]
+</span>    <span class="k">return</span> <span class="p">[</span><span class="nf">int</span><span class="p">(</span><span class="n">max_y</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">max_spectrum</span><span class="p">))</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">spectrum</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">max_y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">colors</span>
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
+    <span class="n">half_y</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">freq</span><span class="p">):</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sh">"</span><span class="s">█</span><span class="sh">"</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sh">"</span><span class="s">█</span><span class="sh">"</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+
+<span class="k">def</span> <span class="nf">play_audio</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">wave_obj</span> <span class="o">=</span> <span class="n">sa</span><span class="p">.</span><span class="n">WaveObject</span><span class="p">.</span><span class="nf">from_wave_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">play_obj</span> <span class="o">=</span> <span class="n">wave_obj</span><span class="p">.</span><span class="nf">play</span><span class="p">()</span>
+    <span class="n">play_obj</span><span class="p">.</span><span class="nf">wait_done</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">init_colors</span><span class="p">():</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">start_color</span><span class="p">()</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_WHITE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_GREEN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_YELLOW</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">adjust_colors</span><span class="p">(</span><span class="n">max_y</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">colors</span>
+    <span class="n">max_y</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">max_y</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">/</span> <span class="n">max_y</span> <span class="o">&lt;=</span> <span class="mf">0.2</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">/</span> <span class="n">max_y</span> <span class="o">&lt;=</span> <span class="mf">0.4</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">i</span> <span class="o">/</span> <span class="n">max_y</span> <span class="o">&lt;=</span> <span class="mf">0.6</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ema</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="n">curr</span><span class="p">):</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">curr</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nf">len</span><span class="p">(</span><span class="n">prev</span><span class="p">):</span>
+            <span class="n">new</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="c1"># 自适应窗口大小可能会导致 prev 长度小于 curr
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">new</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="nf">init_colors</span><span class="p">()</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">haruhikage.wav</span><span class="sh">'</span>
+    <span class="n">frame_size</span> <span class="o">=</span> <span class="mi">2048</span>
+    <span class="n">hop_size</span> <span class="o">=</span> <span class="mi">1024</span>
+    <span class="n">ema_alpha</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="c1"># EMA 的 alpha
+</span>    <span class="n">fps</span> <span class="o">=</span> <span class="mi">40</span>
+
+    <span class="n">data</span><span class="p">,</span> <span class="n">frame_rate</span> <span class="o">=</span> <span class="nf">read_wav_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">frame_duration</span> <span class="o">=</span> <span class="n">hop_size</span> <span class="o">/</span> <span class="n">frame_rate</span>  <span class="c1"># 每帧的实际播放时间
+</span>    <span class="n">total_duration</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">frame_rate</span>  <span class="c1"># 音频总时长
+</span>
+    <span class="n">audio_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="p">.</span><span class="nc">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">play_audio</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">file_name</span><span class="p">,))</span>
+    <span class="n">audio_thread</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="n">play_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+
+    <span class="n">previous_spectrum</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># 上一次的频谱
+</span>    <span class="n">last_max_y</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stdscr</span><span class="p">.</span><span class="nf">getmaxyx</span><span class="p">()</span> <span class="c1"># 上一次的窗口大小
+</span>    <span class="nf">adjust_colors</span><span class="p">(</span><span class="n">last_max_y</span><span class="p">)</span>
+
+    <span class="n">cached_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ideal_frame_time</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">fps</span>
+    <span class="n">cached_size</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">ideal_frame_time</span> <span class="o">//</span> <span class="n">frame_duration</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">frame_size</span><span class="p">,</span> <span class="n">hop_size</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+
+        <span class="c1"># 自适应窗口大小
+</span>        <span class="n">max_y</span><span class="p">,</span> <span class="n">max_x</span> <span class="o">=</span> <span class="n">stdscr</span><span class="p">.</span><span class="nf">getmaxyx</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">max_y</span> <span class="o">!=</span> <span class="n">last_max_y</span><span class="p">:</span>
+            <span class="nf">adjust_colors</span><span class="p">(</span><span class="n">max_y</span><span class="p">)</span>
+            <span class="n">last_max_y</span> <span class="o">=</span> <span class="n">max_y</span>
+
+        <span class="n">spectrum</span> <span class="o">=</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="nf">fft</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">frame_size</span><span class="p">])[:</span><span class="n">max_x</span><span class="p">],</span> <span class="n">max_y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">cached_list</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">cached_size</span><span class="p">:</span>
+            <span class="c1"># 求平均
+</span>            <span class="n">spectrum</span> <span class="o">=</span> <span class="p">[</span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">//</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="o">*</span><span class="n">cached_list</span><span class="p">)]</span>
+            <span class="n">cached_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># 应用 EMA
+</span>            <span class="k">if</span> <span class="n">previous_spectrum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">spectrum</span> <span class="o">=</span> <span class="nf">ema</span><span class="p">(</span><span class="n">ema_alpha</span><span class="p">,</span> <span class="n">previous_spectrum</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">)</span>
+            <span class="c1"># 渲染频谱
+</span>            <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">max_y</span><span class="p">)</span>
+
+            <span class="n">previous_spectrum</span> <span class="o">=</span> <span class="n">spectrum</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cached_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
+
+        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+
+        <span class="n">_render_time</span> <span class="o">=</span> <span class="n">elapsed_time</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">_frame_time</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="n">frame_rate</span>
+        <span class="n">_actual_frame_time</span> <span class="o">=</span> <span class="n">elapsed_time</span> <span class="o">-</span> <span class="n">play_start_time</span>
+        <span class="n">_delay</span> <span class="o">=</span> <span class="n">_actual_frame_time</span> <span class="o">-</span> <span class="n">_frame_time</span>
+        <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">max_y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="sh">'</span><span class="s">(</span><span class="si">{</span><span class="n">_actual_frame_time</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">s) </span><span class="si">{</span><span class="n">_frame_time</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> / </span><span class="si">{</span><span class="n">total_duration</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> s delay: </span><span class="si">{</span><span class="p">(</span><span class="n">_delay</span><span class="p">)</span><span class="si">:</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="si">}</span><span class="s">s render: </span><span class="si">{</span><span class="n">_render_time</span><span class="si">:</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="si">}</span><span class="s">s frame: </span><span class="si">{</span><span class="n">frame_duration</span><span class="si">:</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="si">}</span><span class="s">s</span><span class="sh">'</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">stdscr</span><span class="p">.</span><span class="nf">refresh</span><span class="p">()</span>
+
+        <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame_duration</span> <span class="o">-</span> <span class="n">_render_time</span> <span class="o">-</span> <span class="n">_delay</span><span class="p">))</span>
+
+    <span class="n">audio_thread</span><span class="p">.</span><span class="nf">join</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">curses</span><span class="p">.</span><span class="nf">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</code></pre>
+        </div>
+      </div>
+      <p>我们用它来播放一下来自 CHYCHIC 的 <code class="language-plaintext highlighter-rouge">haruhikage.wav</code>：</p>
+      <p>（该 demo 不是最终版本！下面还有两个优化！！）</p>
+      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo_cry.mp4" title="Title" style="width: 100%"></video>
+      <p>相比于 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果，还有很多地方需要优化，比如多声道支持、更平滑的频谱图。</p>
+      <p>（下面是 Update，已经更新了多声道支持）</p>
+      <h2 id="更丝滑的频谱图">更丝滑的频谱图</h2>
+      <p>查阅了相关资料，突然发现我们可以设置两个 EMA Alpha，一个是当 prev_spectrum 小于 curr_spectrum 时的 alpha1，一个是当 prev_spectrum 大于 curr_spectrum 时的 alpha2。前者可以让频谱图更快地上升，后者可以让频谱图更慢地下降。这样就可以让频谱图更加丝滑了。</p>
+      <p>主函数：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="nf">init_colors</span><span class="p">()</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">parse_args</span><span class="p">().</span><span class="nb">file</span>
+    <span class="n">frame_size</span> <span class="o">=</span> <span class="mi">2048</span>
+    <span class="n">hop_size</span> <span class="o">=</span> <span class="mi">1600</span>
+
+    <span class="c1"># The EMA alpha. Means the weight of the **previous** spectrum.
+</span>    <span class="n">ema_alpha_down</span> <span class="o">=</span> <span class="mf">0.93</span> <span class="c1"># when previous value &gt; current value
+</span>    <span class="n">ema_alpha_up</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># when previous value &lt;= current value
+</span>
+    <span class="c1"># ...
+</span></code></pre>
+        </div>
+      </div>
+      <p>EMA 函数：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">ema</span><span class="p">(</span><span class="n">alpha_down</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha_up</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="sh">'''</span><span class="s">Exponential Moving Average</span><span class="sh">'''</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">curr</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nf">len</span><span class="p">(</span><span class="n">prev</span><span class="p">):</span>
+            <span class="c1"># dynamically adjust the size of terminal window may cause the length of prev and curr to be different
+</span>            <span class="n">new</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">new</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">alpha_down</span> <span class="o">*</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha_down</span><span class="p">)</span> <span class="o">*</span> <span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">alpha_up</span> <span class="o">*</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha_up</span><span class="p">)</span> <span class="o">*</span> <span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">new</span>
+</code></pre>
+        </div>
+      </div>
+      <p>效果如下：</p>
+      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo2.mp4" title="demo2" style="width: 100%"></video>
+      <p>可以发现，在鼓点来时，频谱图上升得很快，而在鼓点过后，频谱图下降得很慢。这样就显得更加丝滑！</p>
+      <h2 id="更更丝滑的频谱图">更更丝滑的频谱图</h2>
+      <p>在前面的实现中，我们默认绘图的字符是 “█”，然而，它在 unicode 中叫作 “Full block”。它还有 7 个兄弟：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">▁</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▂</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▃</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▄</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▅</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▆</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▇</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">█</span><span class="sh">'</span><span class="p">]</span>
+</code></pre>
+        </div>
+      </div>
+      <p>我们可以借此实现更加丝滑的频谱图。</p>
+      <p>首先，scale 的最大值可以直接乘以 <code class="language-plaintext highlighter-rouge">len(blocks)</code>：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="n">last_scale_max_val</span> <span class="o">=</span> <span class="nf">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">*</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+</code></pre>
+        </div>
+      </div>
+      <p>然后我们的振幅范围就在 [0, last_scale_max_val] 之间。</p>
+      <p>在绘图时，前 <code class="language-plaintext highlighter-rouge">val // len(blocks)</code> 个字符使用 <code class="language-plaintext highlighter-rouge">Full Block</code>，最后一个字符使用 <code class="language-plaintext highlighter-rouge">blocks[val % len(blocks)]</code>。</p>
+      <p>我们稍加修改 <code class="language-plaintext highlighter-rouge">draw_spectrum</code> 函数：</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">max_y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">colors</span>
+    <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
+    <span class="n">half_y</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">full_1</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">freq</span> <span class="o">//</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">),</span> <span class="nf">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+        <span class="n">full_2</span> <span class="o">=</span> <span class="nf">min</span><span class="p">(</span><span class="n">spectrum</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">//</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">),</span> <span class="nf">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+        <span class="n">left_1</span> <span class="o">=</span> <span class="n">freq</span> <span class="o">%</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+        <span class="n">left_2</span> <span class="o">=</span> <span class="n">spectrum</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+
+        <span class="c1"># draw the full blocks
+</span>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">full_1</span><span class="p">):</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">-</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># if the audio file only has one channel, draw the same spectrum for the other channel
+</span>                <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+                <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">full_2</span><span class="p">):</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+
+        <span class="c1"># draw the left blocks
+</span>        <span class="k">if</span> <span class="n">left_1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">-</span> <span class="n">full_1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">full_1</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">full_1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">full_1</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">left_2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">full_2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_2</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">full_2</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre>
+        </div>
+      </div>
+      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo2.5.mp4" title="demo2.5" style="width: 100%"></video>
+      <p>OHHH! 看样子更加丝滑了！… 怎么下面的频谱图变得断断续续了？</p>
+      <p>因为我们的 blocks 使用的 unicode 字符的填充是从下往上的，因此就会导致在绘制下半部分频谱图时，末端使用的字符方向不对，导致 full block 和其他 block 之间有间隙。怎么解决呢？似乎 unicode 字符没有从上往下填充的字符。</p>
+      <p>一个好办法是创造一个 <code class="language-plaintext highlighter-rouge">colors_reverse</code>，其颜色配置和 <code class="language-plaintext highlighter-rouge">colors</code> 相反，比如 colors 中一个 color 的前景是淡蓝色，背景是黑色，那么 colors_reverse 中这个 color 的前景就是黑色，背景就是淡蓝色。然后我们在绘制频谱图时，将下半部分的频谱图字符颜色设置为 <code class="language-plaintext highlighter-rouge">colors_reverse</code> 中的某个。</p>
+      <div class="language-py highlighter-rouge">
+        <div class="highlight">
+          <pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">max_y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># ...
+</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="c1"># ...
+</span>        <span class="c1"># draw the left blocks
+</span>        <span class="k">if</span> <span class="n">left_1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">-</span> <span class="n">full_1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">full_1</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nf">len</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">full_1</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_1</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors_reverse</span><span class="p">[</span><span class="n">full_1</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">left_2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">full_2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_2</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors_reverse</span><span class="p">[</span><span class="n">full_2</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre>
+        </div>
+      </div>
+      <p>效果如下：</p>
+      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo3.mp4" title="demo3" style="width: 100%"></video>
+      <p>快赶上 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果了！</p>
+      <p>后面有时间再继续优化喵。</p>
+      <h2 id="附直观理解傅立叶变换">附：直观理解傅立叶变换</h2>
+      <p>上文讲到傅立叶变换的基本思想是将一个信号分解为一系列正弦波的叠加。</p>
+      <p>拿方波举个例子，下图是一个 5Hz 的方波和一个 5Hz 的正弦波</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976721919.png" alt="" /></p>
+      <p>是不是差距蛮大的？那如果我们将 2 个正弦波叠加在一起呢？</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976743585.png" alt="" /></p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976828380.png" alt="" /></p>
+      <p>我们会发现，更像方波了。随着我们叠加的正弦波越来越多，我们的波形就会越来越接近方波。</p>
+      <p>我们日常听的音乐就是由大量不同频率的正弦波叠加而成的，而傅立叶变换就能够将其分解为一系列不同频率的波。</p>
+      <p>为了直观理解傅立叶变换，我参考了 <a href="https://www.youtube.com/watch?v=spUNpyF58BY">@3b1b 的视频</a> 里的方法。</p>
+      <p>还是以 5Hz 的正弦波为例。</p>
+      <p>440hz_16bit_5s.wav:</p>
+      <audio controls="" src="https://blog.soulter.top/images/visualize-music/440hz_16bit_5s.wav" title="440hz_16bit_5s"></audio>
+      <p>我们在复平面上从实数轴正半轴开始逆时针转动一个向量：在任意时刻下，向量的模长等于正弦波的振幅，向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">1 Hz</code>，以此绘制得到一个图：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725978427291.png" alt="" /></p>
+      <p>它的质心用红点标了出来。</p>
+      <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">4.2 Hz</code> 时：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726146180844.png" alt="" /></p>
+      <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">4.3 Hz</code> 时：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726146113953.png" alt="" /></p>
+      <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">5 Hz</code> 时：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725979910845.png" alt="" /></p>
+      <p>有没有发现什么？我们绘制出质心与原点的距离随向量的移动速度变化的图（我们称为“缠绕图像”）：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725979995976.png" alt="" /></p>
+      <p>在接近 <code class="language-plaintext highlighter-rouge">5 Hz</code> 时，值最大！！</p>
+      <p>同样，我们将 5Hz + 15Hz 的正弦波叠加在一起，再次绘制这个图：</p>
+      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725980156817.png" alt="" /></p>
+      <p>极大值点同样出现在 5Hz 和 15Hz 处。</p>
+      <p>发生了什么？让我们从公式的角度出发，来解释这个现象。</p>
+      <p>由欧拉公式，我们知道，一个圆周运动可以表示为：
+        \(e^{2\pi i f t}\)</p>
+      <p>其中 $f$ 为频率，$t$ 为时间。</p>
+      <p>上述像花一样的缠绕图像可以表示为：</p>
+      <p>[g(t) e^{2\pi i t}]</p>
+      <p>其中，g(t) 为正弦函数：$ g(t) = \sin(2\pi 5 t) $，也就是一个振幅随时间变化的方程。</p>
+      <p>我们需要描述的是其质心在复平面上的坐标的模随时间变化的方程。因此随机取 $N$ 个时间点，计算其质心的坐标，然后取其模长的平均值。</p>
       <table>
-        <thead>
-          <tr>
-            <th>奖项名称</th>
-            <th>获奖者</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
-            <td>CCPC 中国大学生程序设计竞赛（区域赛）铜奖</td>
-            <td>王诺贤</td>
-          </tr>
-          <tr>
-            <td>ICPC 国际大学生程序设计竞赛（区域赛）铜奖</td>
-            <td>王诺贤</td>
-          </tr>
-          <tr>
-            <td>ICPC 国际大学生程序设计竞赛（区域赛）铜奖</td>
-            <td>陈宽宽</td>
-          </tr>
-          <tr>
-            <td>操作系统设计赛全国二等奖</td>
-            <td>陈宽宽、王诺贤</td>
-          </tr>
-          <tr>
-            <td>龙芯杯团体赛全国二等奖</td>
-            <td>王雨辰、丁正枫</td>
-          </tr>
-          <tr>
-            <td>龙芯杯个人赛全国三等奖</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>数据库管理系统设计赛优胜奖</td>
-            <td>廖玮珑、王诺贤</td>
-          </tr>
-          <tr>
-            <td>蓝桥杯程序设计大赛 C/C++ A 组国家三等奖</td>
-            <td>王诺贤</td>
-          </tr>
-          <tr>
-            <td>网络技术挑战赛三等奖</td>
-            <td>唐学彬</td>
-          </tr>
-          <tr>
-            <td>全国大学生计算机博弈大赛冠军</td>
-            <td>张灿</td>
-          </tr>
-          <tr>
-            <td>全国大学生计算机博弈大赛一等奖</td>
-            <td>丁正枫</td>
-          </tr>
-          <tr>
-            <td>全国大学生计算机博弈大赛二等奖</td>
-            <td>廖玮珑</td>
-          </tr>
-          <tr>
-            <td>“大唐杯”全国大学生新一代信息通信技术大赛国家二等奖</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>中国大学生计算机设计大赛国家二等奖</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>中国大学生计算机设计大赛国家三等奖</td>
-            <td>刁明轩、张溪延、黄昊、韩连伟</td>
-          </tr>
-          <tr>
-            <td>挑战杯揭榜挂帅“虚拟环境中核工程设备运动属性转换与交互技术研究”全国二等奖</td>
-            <td>黄昊</td>
-          </tr>
-          <tr>
-            <td>挑战杯全国二等奖</td>
-            <td>陈宽宽</td>
-          </tr>
-          <tr>
-            <td>全国青年科普创新实验大赛二等奖</td>
-            <td>张灿</td>
-          </tr>
-          <tr>
-            <td>计算机系统能力大赛 OceanBase 数据库赛道北京市第一名</td>
-            <td>王诺贤、廖玮珑</td>
-          </tr>
-          <tr>
-            <td>计算机系统能力大赛 OceanBase 数据库赛道北京市第三名</td>
-            <td>陈宽宽、刁明轩</td>
-          </tr>
-          <tr>
-            <td>蓝桥杯程序设计大赛 C/C++ A 组省级二等奖</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>蓝桥杯程序设计大赛 Python 组省级二等奖</td>
-            <td>廖玮珑</td>
-          </tr>
-          <tr>
-            <td>大学生数学竞赛省级一等奖</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>集成电路设计大赛北京市一等奖</td>
-            <td>丁正枫</td>
-          </tr>
-          <tr>
-            <td>集成电路设计大赛北京市一等奖</td>
-            <td>王雨辰</td>
-          </tr>
-          <tr>
-            <td>中国大学生计算机设计大赛北京市二等奖</td>
-            <td>李睿琦</td>
-          </tr>
-          <tr>
-            <td>中国大学生计算机设计大赛北京市三等奖</td>
-            <td>朱博林</td>
-          </tr>
-          <tr>
-            <td>中国大学生计算机设计大赛北京市三等奖</td>
-            <td>崔永亮、张灿、祁珏瑜、陈铎友</td>
-          </tr>
-          <tr>
-            <td>中国大学生计算机设计大赛北京市三等奖</td>
-            <td>周奔成</td>
-          </tr>
-          <tr>
-            <td>华北五省计算机大赛省级三等奖</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>机器人先进视觉赛二等奖</td>
-            <td>王诺贤</td>
-          </tr>
-          <tr>
-            <td>全国大学生数学建模国赛北京市二等奖</td>
-            <td>刘彦甫</td>
-          </tr>
-          <tr>
-            <td>全国大学生数学建模大赛北京市二等奖</td>
-            <td>吴祥楠</td>
-          </tr>
-          <tr>
-            <td>互联网 + 北京市级三等奖</td>
-            <td>张灿</td>
-          </tr>
-          <tr>
-            <td>京彩大创“百强创业团队”</td>
-            <td>张灿</td>
-          </tr>
-          <tr>
-            <td>智能汽车竞赛二等奖</td>
-            <td>丁正枫</td>
-          </tr>
-          <tr>
-            <td>大学生创新创业大赛二等奖</td>
-            <td>张灿</td>
-          </tr>
-          <tr>
-            <td>全国大学生电子设计大赛北京市二等奖</td>
-            <td>吴祥楠</td>
-          </tr>
-          <tr>
-            <td>LoongArch32R 自主指令集下单周期处理器教学设计与应用</td>
-            <td>崔晓龙，王雨辰，张磊，刘欣，林耀虎</td>
-          </tr>
-          <tr>
-            <td>Fast Adaptation Mechanism for Intelligent Routing in Dynamic Networks Based on Transfer Learning</td>
-            <td>Xiaolong Cui, Yuchen Wang, Xinyi Xu, Wei Huangfu, Jiahao Huo</td>
-          </tr>
-          <tr>
-            <td>Intelligent art factory: achieving creative automation through parallel art agents</td>
-            <td>Chao GUO1, Xingyuan DAI1, Weilong LIAO2, Jueyu QI2, Yue LU3, Qinghua NI4, Lin WANG5, Fei-Yue WANG1</td>
-          </tr>
-          <tr>
-            <td>材料基因智能计算集成系统软著</td>
-            <td>刁明轩</td>
-          </tr>
-          <tr>
-            <td>心血管病智能辅诊系统</td>
-            <td>刁明轩</td>
+            <td>[\frac{1}{N} \sum_{n=1}^{N}</td>
+            <td>g(t_n) e^{2\pi i t_n}</td>
+            <td>]</td>
           </tr>
         </tbody>
       </table>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-12-10-annual-review/competition1.jpg" alt="alt" />
-        证书展柜 1</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-12-10-annual-review/competition2.jpg" alt="alt" />
-        证书展柜 2</p>
-      <h2 id="硕果累累保研名校">硕果累累，保研名校</h2>
-      <p>值得一提的是，806 实验室的大四学生在学业上也取得了令人瞩目的成绩，<strong>大四同学全部保研</strong>。他们凭借扎实的专业技能和出色的综合素质，成功保研至 <strong>北大、南大、北航、国科大、北科、北邮</strong> 等顶尖院校。这一成绩的取得不仅为实验室增添了光彩，更为成员们的未来发展奠定了坚实的基础。</p>
-      <h2 id="智领未来续写辉煌">智领未来，续写辉煌</h2>
-      <p>展望未来，806 实验室将继续秉承“勤于思，敏于行”的实验室精神，不断探索新技术、新领域，为培养更多优秀的计算机人才贡献力量。我们坚信，在全体成员的共同努力下，806 实验室必将迎来更加辉煌的明天！</p>
-      ]]></content><author><name>cxl</name></author><category term="汇报" /><category term="annual_review" /><summary type="html"><![CDATA[勤敏轩 2024：智潮涌动，硕果盈枝。]]></summary></entry><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
-    <h2 id="前提">前提</h2>
-    <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
-    <h2 id="原理">原理</h2>
-    <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
-    <h2 id="租服务器">租服务器</h2>
-    <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
-    <blockquote>
-      <p>虚拟专用服务器（Virtual Private Server，简称 VPS）技术，是将一台服务器分割成多个虚拟专享服务器的优质服务。实现 VPS 的技术分为容器技术，和虚拟化技术。在容器或虚拟机中，每个 VPS 都可选配独立公网 IP 地址、独立操作系统、实现不同 VPS 间磁盘空间、内存、CPU 资源、进程和系统配置的隔离，为用户和应用程序模拟出“独占”使用计算资源的体验。——百度百科</p>
+      <p>类似这样，我们对函数作积分，就得到了傅立叶变换：</p>
+      <table>
+        <tbody>
+          <tr>
+            <td>[\int_{t_1}^{t_2}</td>
+            <td>g(t) e^{2\pi i t}</td>
+            <td>dt]</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>其值表示的是在 $t_1$ 到 $t_2$ 时刻下，频率为 $f$ 的声波的相对振幅。如果某一个频率的波的强度很大，那么值也会越大。</p>
+      <p>看文字不如直接看 <a href="https://www.youtube.com/watch?v=spUNpyF58BY">@3b1b 的视频</a>。</p>
+      <h2 id="总结">总结</h2>
+      <p>本文介绍了 <code class="language-plaintext highlighter-rouge">wav</code> 的编码结构和傅立叶变换在音频可视化中的应用，并手搓了一个 TUI 的支持频谱可视化的音频播放器。最后，我们通过直观的方式理解了傅立叶变换的基本原理。</p>
+      <p>代码开源在了 <a href="https://github.com/soulter/wav-spectrum-visualizer">GitHub</a>，可以去玩玩。</p>
+      <h2 id="参考文献">参考文献</h2>
+      <p>[1] WAVE File Format. https://web.archive.org/web/20140221054954/http://home.roadrunner.com/~jgglatt/tech/wave.htm</p>
+      <p>[2] But what is the Fourier Transform? A visual introduction. https://www.youtube.com/watch?v=spUNpyF58BY</p>
+      <p>[3] 为什么要进行傅立叶变换。https://ibillxia.github.io/blog/2013/04/04/why-do-Fourier-transformation/</p>
+      ]]></content><author><name>Soulter</name></author><category term="教程" /><category term="音频编码" /><category term="ArchLinux" /><summary type="html"><![CDATA[最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 ncmpcpp 这个音乐播放器了。]]></summary></entry><entry><title type="html">**勤敏轩 2024**：智潮涌动，硕果盈枝</title><link href="https://ustb-806.github.io/news/2024/12/annual-review/" rel="alternate" type="text/html" title="**勤敏轩 2024**：智潮涌动，硕果盈枝" /><published>2024-12-10T00:00:00+08:00</published><updated>2024-12-10T15:53:40+08:00</updated><id>https://ustb-806.github.io/news/2024/12/annual-review</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/12/annual-review/"><![CDATA[<blockquote>
+      <p><strong>勤敏轩 2024</strong>：智潮涌动，硕果盈枝。</p>
     </blockquote>
-    <p>那么该租用一个什么样的 VPS 以及在哪里租比较合适呢？</p>
-    <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
-    <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
-    <p>注册好账号之后，订购新服务：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
-    <p>选择第一个：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
-    <p>进入之后选择详细的服务：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
-    <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
-    <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
-    <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>ssh root@&lt;你的IPv4地址&gt;
+    <h2 id="勤敏启航创新飞扬">勤敏启航，创新飞扬</h2>
+    <p>在充满挑战与机遇的 2024 年，勤敏轩学生创新实验室（简称 806 实验室）秉持着对技术的执着追求和创新的无限热情，走过了充实而辉煌的一年。806 实验室汇聚了众多在校本科生，他们共同致力于计算机专业学科竞赛以及创新创业竞赛的深耕细作。</p>
+    <p>实验室下设系统部、人工智能部、游戏部和开发部四个部门，每个部门都承载着不同的使命与梦想。在秋季，我们进行了大规模的招新活动，为实验室注入了新的活力。同时，实验室积极维护自己的官方网站 <a href="https://ustb-806.github.io">https://ustb-806.github.io</a>，为成员们提供了一个展示与交流的平台。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/static/806_2.jpg" alt="alt" />
+      勤敏轩实验室</p>
+    <h2 id="群英荟萃成就斐然">群英荟萃，成就斐然</h2>
+    <h3 id="系统部系统耕耘荣耀绽放">系统部：系统耕耘，荣耀绽放</h3>
+    <p>系统部专注于计算机系统能力的培养，在过去的一年里，系统部成员在各类高水平系统能力竞赛中屡获佳绩：</p>
+    <ul>
+      <li>
+        <p>刁明轩同学获得“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”个人赛全国三等奖；</p>
+      </li>
+      <li>
+        <p>丁正枫、王雨辰等同学则荣获“龙芯杯”团体赛全国二等奖；</p>
+      </li>
+      <li>
+        <p>陈宽宽、王诺贤同学在“第四届全国大学生计算机系统能力大赛（操作系统设计赛）内核实现赛道（基于 RISCV 硬件）”中获得了全国二等奖。</p>
+      </li>
+    </ul>
+    <p>这些荣誉的取得，充分展现了系统部成员扎实的专业技能和团队协作精神。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/02.jpg" alt="alt" />
+      “龙芯杯”颁奖典礼，刁明轩（左五）</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/03.jpg" alt="alt" />
+      “龙芯杯”团队赛复赛现场</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-os-competition/2.jpg" alt="alt" />
+      操作系统设计赛</p>
+    <h3 id="人工智能部ai-探索智慧引领">人工智能部：AI 探索，智慧引领</h3>
+    <p>人工智能部致力于打造优质的 AI 技术学习和开发社群。</p>
+    <p>部内成员不仅深入学习了深度学习、CNN、RNN、transformer 等传统模型，还积极参与各类算法竞赛，如计算机设计大赛等，取得了市级二、三等奖的优异成绩。</p>
+    <p>祁珏瑜、王苏晴等多名成员还在本校、中科院课题组参与项目实习，发表论文，展现了实验室在 AI 领域的深厚底蕴。</p>
+    <h3 id="开发部开发实践创新无限">开发部：开发实践，创新无限</h3>
+    <p>开发部涉猎 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域。</p>
+    <p>在过去的一年里，开发部成员在 github 上开源了多个项目，如廖玮珑的 <a href="https://github.com/Soulter/AstrBot">AstrBot</a>、<a href="https://github.com/Soulter/hugging-chat-api">hugging-chat-api</a> 等，获得了广泛好评。同时，他们还开发了 WordEase 英语学习软件，为学校和开源社区做出了宝贵贡献。</p>
+    <p>此外，祁珏瑜、崔永亮等成员还开发了 stable-diffusion 插件，进一步丰富了实验室的技术储备。</p>
+    <h3 id="游戏部游戏创想乐趣无限">游戏部：游戏创想，乐趣无限</h3>
+    <p>游戏部是实验室中充满活力和创意的部门。他们专注于游戏开发与设计，旨在培养成员的游戏制作能力和团队合作精神。</p>
+    <p>在过去的一年里，游戏部成员不仅参加了计算机设计大赛并荣获国家三等奖的成绩，还积极实习并担任 Unity 开发的岗位。</p>
+    <p>未来，他们计划以月为单位稳定产出游戏作品，并参加各类线上或线下 gamejam 比赛，为实验室的游戏事业贡献力量。</p>
+    <h2 id="荣誉满载成果斐然">荣誉满载，成果斐然</h2>
+    <p>在全体成员的共同努力下，806 实验室在 2024 年取得了丰硕的成果。实验室一共获得 <strong>国奖 18 项、省（市）奖 19 项、校奖 2 项、软著 2 项以及论文 2 篇</strong>。这些荣誉的取得不仅是对实验室成员努力的肯定，更是对实验室整体实力的彰显。</p>
+    <table>
+      <thead>
+        <tr>
+          <th>奖项名称</th>
+          <th>获奖者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CCPC 中国大学生程序设计竞赛（区域赛）铜奖</td>
+          <td>王诺贤</td>
+        </tr>
+        <tr>
+          <td>ICPC 国际大学生程序设计竞赛（区域赛）铜奖</td>
+          <td>王诺贤</td>
+        </tr>
+        <tr>
+          <td>ICPC 国际大学生程序设计竞赛（区域赛）铜奖</td>
+          <td>陈宽宽</td>
+        </tr>
+        <tr>
+          <td>操作系统设计赛全国二等奖</td>
+          <td>陈宽宽、王诺贤</td>
+        </tr>
+        <tr>
+          <td>龙芯杯团体赛全国二等奖</td>
+          <td>王雨辰、丁正枫</td>
+        </tr>
+        <tr>
+          <td>龙芯杯个人赛全国三等奖</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>数据库管理系统设计赛优胜奖</td>
+          <td>廖玮珑、王诺贤</td>
+        </tr>
+        <tr>
+          <td>蓝桥杯程序设计大赛 C/C++ A 组国家三等奖</td>
+          <td>王诺贤</td>
+        </tr>
+        <tr>
+          <td>网络技术挑战赛三等奖</td>
+          <td>唐学彬</td>
+        </tr>
+        <tr>
+          <td>全国大学生计算机博弈大赛冠军</td>
+          <td>张灿</td>
+        </tr>
+        <tr>
+          <td>全国大学生计算机博弈大赛一等奖</td>
+          <td>丁正枫</td>
+        </tr>
+        <tr>
+          <td>全国大学生计算机博弈大赛二等奖</td>
+          <td>廖玮珑</td>
+        </tr>
+        <tr>
+          <td>“大唐杯”全国大学生新一代信息通信技术大赛国家二等奖</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>中国大学生计算机设计大赛国家二等奖</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>中国大学生计算机设计大赛国家三等奖</td>
+          <td>刁明轩、张溪延、黄昊、韩连伟</td>
+        </tr>
+        <tr>
+          <td>挑战杯揭榜挂帅“虚拟环境中核工程设备运动属性转换与交互技术研究”全国二等奖</td>
+          <td>黄昊</td>
+        </tr>
+        <tr>
+          <td>挑战杯全国二等奖</td>
+          <td>陈宽宽</td>
+        </tr>
+        <tr>
+          <td>全国青年科普创新实验大赛二等奖</td>
+          <td>张灿</td>
+        </tr>
+        <tr>
+          <td>计算机系统能力大赛 OceanBase 数据库赛道北京市第一名</td>
+          <td>王诺贤、廖玮珑</td>
+        </tr>
+        <tr>
+          <td>计算机系统能力大赛 OceanBase 数据库赛道北京市第三名</td>
+          <td>陈宽宽、刁明轩</td>
+        </tr>
+        <tr>
+          <td>蓝桥杯程序设计大赛 C/C++ A 组省级二等奖</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>蓝桥杯程序设计大赛 Python 组省级二等奖</td>
+          <td>廖玮珑</td>
+        </tr>
+        <tr>
+          <td>大学生数学竞赛省级一等奖</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>集成电路设计大赛北京市一等奖</td>
+          <td>丁正枫</td>
+        </tr>
+        <tr>
+          <td>集成电路设计大赛北京市一等奖</td>
+          <td>王雨辰</td>
+        </tr>
+        <tr>
+          <td>中国大学生计算机设计大赛北京市二等奖</td>
+          <td>李睿琦</td>
+        </tr>
+        <tr>
+          <td>中国大学生计算机设计大赛北京市三等奖</td>
+          <td>朱博林</td>
+        </tr>
+        <tr>
+          <td>中国大学生计算机设计大赛北京市三等奖</td>
+          <td>崔永亮、张灿、祁珏瑜、陈铎友</td>
+        </tr>
+        <tr>
+          <td>中国大学生计算机设计大赛北京市三等奖</td>
+          <td>周奔成</td>
+        </tr>
+        <tr>
+          <td>华北五省计算机大赛省级三等奖</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>机器人先进视觉赛二等奖</td>
+          <td>王诺贤</td>
+        </tr>
+        <tr>
+          <td>全国大学生数学建模国赛北京市二等奖</td>
+          <td>刘彦甫</td>
+        </tr>
+        <tr>
+          <td>全国大学生数学建模大赛北京市二等奖</td>
+          <td>吴祥楠</td>
+        </tr>
+        <tr>
+          <td>互联网 + 北京市级三等奖</td>
+          <td>张灿</td>
+        </tr>
+        <tr>
+          <td>京彩大创“百强创业团队”</td>
+          <td>张灿</td>
+        </tr>
+        <tr>
+          <td>智能汽车竞赛二等奖</td>
+          <td>丁正枫</td>
+        </tr>
+        <tr>
+          <td>大学生创新创业大赛二等奖</td>
+          <td>张灿</td>
+        </tr>
+        <tr>
+          <td>全国大学生电子设计大赛北京市二等奖</td>
+          <td>吴祥楠</td>
+        </tr>
+        <tr>
+          <td>LoongArch32R 自主指令集下单周期处理器教学设计与应用</td>
+          <td>崔晓龙，王雨辰，张磊，刘欣，林耀虎</td>
+        </tr>
+        <tr>
+          <td>Fast Adaptation Mechanism for Intelligent Routing in Dynamic Networks Based on Transfer Learning</td>
+          <td>Xiaolong Cui, Yuchen Wang, Xinyi Xu, Wei Huangfu, Jiahao Huo</td>
+        </tr>
+        <tr>
+          <td>Intelligent art factory: achieving creative automation through parallel art agents</td>
+          <td>Chao GUO1, Xingyuan DAI1, Weilong LIAO2, Jueyu QI2, Yue LU3, Qinghua NI4, Lin WANG5, Fei-Yue WANG1</td>
+        </tr>
+        <tr>
+          <td>材料基因智能计算集成系统软著</td>
+          <td>刁明轩</td>
+        </tr>
+        <tr>
+          <td>心血管病智能辅诊系统</td>
+          <td>刁明轩</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-12-10-annual-review/competition1.jpg" alt="alt" />
+      证书展柜 1</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-12-10-annual-review/competition2.jpg" alt="alt" />
+      证书展柜 2</p>
+    <h2 id="硕果累累保研名校">硕果累累，保研名校</h2>
+    <p>值得一提的是，806 实验室的大四学生在学业上也取得了令人瞩目的成绩，<strong>大四同学全部保研</strong>。他们凭借扎实的专业技能和出色的综合素质，成功保研至 <strong>北大、南大、北航、国科大、北科、北邮</strong> 等顶尖院校。这一成绩的取得不仅为实验室增添了光彩，更为成员们的未来发展奠定了坚实的基础。</p>
+    <h2 id="智领未来续写辉煌">智领未来，续写辉煌</h2>
+    <p>展望未来，806 实验室将继续秉承“勤于思，敏于行”的实验室精神，不断探索新技术、新领域，为培养更多优秀的计算机人才贡献力量。我们坚信，在全体成员的共同努力下，806 实验室必将迎来更加辉煌的明天！</p>
+    ]]></content><author><name>cxl</name></author><category term="汇报" /><category term="annual_review" /><summary type="html"><![CDATA[勤敏轩 2024：智潮涌动，硕果盈枝。]]></summary></entry><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
+  <h2 id="前提">前提</h2>
+  <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
+  <h2 id="原理">原理</h2>
+  <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
+  <h2 id="租服务器">租服务器</h2>
+  <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
+  <blockquote>
+    <p>虚拟专用服务器（Virtual Private Server，简称 VPS）技术，是将一台服务器分割成多个虚拟专享服务器的优质服务。实现 VPS 的技术分为容器技术，和虚拟化技术。在容器或虚拟机中，每个 VPS 都可选配独立公网 IP 地址、独立操作系统、实现不同 VPS 间磁盘空间、内存、CPU 资源、进程和系统配置的隔离，为用户和应用程序模拟出“独占”使用计算资源的体验。——百度百科</p>
+  </blockquote>
+  <p>那么该租用一个什么样的 VPS 以及在哪里租比较合适呢？</p>
+  <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
+  <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
+  <p>注册好账号之后，订购新服务：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
+  <p>选择第一个：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
+  <p>进入之后选择详细的服务：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
+  <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
+  <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
+  <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>ssh root@&lt;你的IPv4地址&gt;
 </code></pre>
-      </div>
     </div>
-    <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
-    <p>成功进入 VPS。</p>
-    <h2 id="vps-设定">VPS 设定</h2>
-    <p>首先，更新 Ubuntu。终端输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nb">sudo </span>apt update
+  </div>
+  <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
+  <p>成功进入 VPS。</p>
+  <h2 id="vps-设定">VPS 设定</h2>
+  <p>首先，更新 Ubuntu。终端输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nb">sudo </span>apt update
 <span class="nb">sudo </span>apt <span class="nb">install </span>curl
 <span class="nb">sudo </span>apt <span class="nb">install </span>socat
 <span class="nb">sudo </span>apt <span class="nb">install </span>ufw
 </code></pre>
-      </div>
     </div>
-    <h3 id="安装-x-ui">安装 X-UI</h3>
-    <p>终端输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
+  </div>
+  <h3 id="安装-x-ui">安装 X-UI</h3>
+  <p>终端输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
 </code></pre>
-      </div>
     </div>
-    <p>依次设置账号密码和端口：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
-    <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
-    <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nb">sudo </span>ufw status   <span class="c"># 查看本地端口开启情况</span>
+  </div>
+  <p>依次设置账号密码和端口：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
+  <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
+  <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nb">sudo </span>ufw status   <span class="c"># 查看本地端口开启情况</span>
 <span class="nb">sudo </span>ufw <span class="nb">enable</span>   <span class="c"># 开启防火墙，允许访问特定端口</span>
 <span class="nb">sudo </span>ufw allow 20
 <span class="nb">sudo </span>ufw allow 21
@@ -298,70 +945,70 @@
                           <span class="c"># 如果多人使用根据自己需求再开启几个</span>
 <span class="nb">sudo </span>ufw status  <span class="c"># 重新检查端口开放情况</span>
 </code></pre>
-      </div>
     </div>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
-    <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
-    <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nb">echo </span>net.core.default_qdisc<span class="o">=</span>fq <span class="o">&gt;&gt;</span> /etc/sysctl.conf
+  </div>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
+  <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
+  <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nb">echo </span>net.core.default_qdisc<span class="o">=</span>fq <span class="o">&gt;&gt;</span> /etc/sysctl.conf
 <span class="nb">echo </span>net.ipv4.tcp_congestion_control<span class="o">=</span>bbr <span class="o">&gt;&gt;</span> /etc/sysctl.conf   <span class="c"># 修改系统变量</span>
 sysctl <span class="nt">-p</span>   <span class="c"># 保存</span>
 </code></pre>
-      </div>
     </div>
-    <p>接下来检查是否开启成功。</p>
-    <p>分别输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+  </div>
+  <p>接下来检查是否开启成功。</p>
+  <p>分别输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
 lsmod | <span class="nb">grep </span>bbr
 </code></pre>
-      </div>
     </div>
-    <p>如果第一个输出：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+  </div>
+  <p>如果第一个输出：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
 net.ipv4.tcp_available_congestion_control <span class="o">=</span> bbr cubic reno
 </code></pre>
-      </div>
     </div>
-    <p>第二个有输出结果（如果失败不会有输出结果）就说明 BBR 开启成功了。</p>
-    <h3 id="配置-x-ui">配置 X-UI</h3>
-    <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
-    <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
-    <p>在入站列表中配置：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
-    <p>在操作中点击「二维码」，然后复制：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
-    <h2 id="配置客户端">配置客户端</h2>
-    <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
-    <h3 id="v2ray-配置">V2ray 配置</h3>
-    <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
-    <p>下载后解压，双击「v2rayN」运行。</p>
-    <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
-    <p>导入成功如下：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
-    <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
-    <p>如下：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
-    <p>点击确定进行保存。</p>
-    <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
-    <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
-    <h2 id="全文完">全文完</h2>
-    <blockquote>
-      <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
-    </blockquote>
-    ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+  </div>
+  <p>第二个有输出结果（如果失败不会有输出结果）就说明 BBR 开启成功了。</p>
+  <h3 id="配置-x-ui">配置 X-UI</h3>
+  <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
+  <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
+  <p>在入站列表中配置：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
+  <p>在操作中点击「二维码」，然后复制：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
+  <h2 id="配置客户端">配置客户端</h2>
+  <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
+  <h3 id="v2ray-配置">V2ray 配置</h3>
+  <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
+  <p>下载后解压，双击「v2rayN」运行。</p>
+  <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
+  <p>导入成功如下：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
+  <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
+  <p>如下：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
+  <p>点击确定进行保存。</p>
+  <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
+  <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
+  <h2 id="全文完">全文完</h2>
+  <blockquote>
+    <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
+  </blockquote>
+  ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
     <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
   </blockquote>
   <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
