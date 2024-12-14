@@ -42,3 +42,14 @@ fridemn:
     - label: GitHub
       icon: fab fa-fw fa-github
       url: https://github.com/Fridemn
+
+Soulter:
+  name: Soulter
+  avatar: "https://blog.soulter.top/assets/avatar.webp"
+  links:
+    - label: Website
+      icon: far fa-fw fa-globe
+      url: https://soulter.top
+    - label: GitHub
+      icon: fab fa-fw fa-github
+      url: https://github.com/Soulter
