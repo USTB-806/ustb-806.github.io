@@ -229,3 +229,7 @@ MCDReforged 的安装请参考[官方手册](https://docs.mcdreforged.com/zh-cn/
 最后是夹带私货时间！
 
 ![](https://blog-s3.806.group/post/2024/2024-11-20-how-to-setup-mc-server-on-linux/banner.png)
+猜猜这些都是谁？（提示：全部都是 806 系统部成员）
+{: .text-center}
+
+> 原文链接：https://blog.bosswnx.xyz/posts/2024/how-to-setup-mc-server-on-linux/

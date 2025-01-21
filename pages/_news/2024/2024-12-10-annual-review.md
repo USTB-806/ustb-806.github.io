@@ -3,8 +3,8 @@ title: "**勤敏轩2024**：智潮涌动，硕果盈枝"
 author: "cxl"
 header:
     overlay_image: https://blog-s3.806.group/static/news-banner.jpg
-categories: ["汇报"]
-tags: ["annual_review"]
+categories: ["总结"]
+tags: ["年终总结"]
 ---
 
 > **勤敏轩2024**：智潮涌动，硕果盈枝。
