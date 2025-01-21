@@ -1,21 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-01-21T21:05:15+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">如何从零开始可视化一首音乐？</title><link href="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/" rel="alternate" type="text/html" title="如何从零开始可视化一首音乐？" /><published>2024-12-14T00:00:00+08:00</published><updated>2024-12-14T14:08:51+08:00</updated><id>https://ustb-806.github.io/blogs/2024/12/visualize-spectumn</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/"><![CDATA[<p>最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 这个音乐播放器了。</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/ncmpcpp_demo.gif" alt="ncmpcpp 的可视化音频效果" /></p>
-      <p>日常办公时把它放在屏幕角落，就会感觉工作环境变得更有趣了。这也让我对它的实现产生了巨大的好奇心，于是我决定探索一下它是如何实现的。</p>
-      <p>本文将深入底层，从音频编码开始讲起，探究 <code class="language-plaintext highlighter-rouge">wav</code> 格式的音频文件是如何被解析的，然后再讲解如何通过傅立叶变换将音频信号转换为频谱图，最后再着手实现。</p>
-      <h1 id="音频编码">音频编码</h1>
-      <h2 id="声波">声波</h2>
-      <p>中学物理教过我们，声音是一种机械波，由物体振动产生，通过介质传播。当波通过介质传递到耳朵时，耳膜会随之振动，我们才能听到声音。</p>
-      <p>声波会引起麦克风（注：这里以动圈式麦克风为例）传感器中的振膜振动，振膜与被磁铁包围着住的线圈相连，根据法拉第定律和楞次定律，振膜振动会使磁场中线圈移动而产生感应电流。此时，只需要监测线圈两极的电压即可得到声音的波形图。机械振动就被转换为了电压信号。</p>
-      <p>我们现在得到的是连续的模拟信号，还需要将其转换成计算机可识别的离散的数字信号。</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/image.png#full" alt="连续的模拟信号。图片来源@cjting" /></p>
-      <p>这时候，我们需要对信号进行模数转换（ADC）。AD 芯片每隔一段时间（几微秒）对波形图打点采样，得到每一个点的电压值，然后量化为二进制数，最后再进行编码，我们就得到了音频波形数据。</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/image-1.png#full" alt="采样。图片来源@cjting" /></p>
-      <h2 id="wav-格式">WAV 格式</h2>
-      <p>和图像、视频一样，音频编码格式也主要分为两大类：有损压缩和无损压缩格式。</p>
-      <p><code class="language-plaintext highlighter-rouge">wav</code> 就是一种典型的无损压缩格式，它是由微软和 IBM 共同开发的一种音频文件格式。它被称为“波形文件”，它也是相对好理解的一个音频格式。</p>
-      <p>一个完整的 <code class="language-plaintext highlighter-rouge">wav</code> 文件必须包含两个区块：<code class="language-plaintext highlighter-rouge">Format Chunk</code> 和 <code class="language-plaintext highlighter-rouge">Data Chunk</code></p>
-      <p>下面是一个包含了以上两个 Chunk 的 WAV 文件的例子：</p>
-      <pre><code class="language-plain"> __________________________
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://ustb-806.github.io/feed/blogs.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-01-21T21:10:05+08:00</updated><id>https://ustb-806.github.io/feed/blogs.xml</id><title type="html">806 @ USTB | Blogs</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">第四次工业革命｜Cursor 体验报告</title><link href="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/" rel="alternate" type="text/html" title="第四次工业革命｜Cursor 体验报告" /><published>2025-01-20T00:00:00+08:00</published><updated>2025-01-21T21:08:31+08:00</updated><id>https://ustb-806.github.io/blogs/2025/01/cursor-experience-review</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/"><![CDATA[<p>最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。</p>
+      <p>没想到，这一试，彻底颠覆了我的认知……</p>
+      <h2 id="cursor-是什么">Cursor 是什么</h2>
+      <p>简单来说，Cursor 是一个 VSCode 的 fork 版本，但是往里面加入了非常多 AI 相关的功能，包括更智能的代码补全，集成内部的 AI 对话框，以及本篇文章的重点内容——Composer 等等。</p>
+      <p>你可能会问，这和 VSCode 自己的 Copilot 有什么区别呢？区别大着呢。</p>
+      <p>简单概括 Cursor 和 Copilot 的区别：Cursor 的代码补全，不仅是能够补全后面的代码，更重要的是能<strong>对已有的代码进行修改</strong>。并且 Cursor 的上下文不仅局限于当前文件，而是整个工作区（文件夹）内的所有文件，甚至是电脑的剪切板，甚至是之前删掉的某些内容！Cursor 就好像有记忆力一般，用的越久，就越能够明白整个项目的结构。</p>
+      <p>拿一个具体的例子来举例。</p>
+      <p>我想在博客的 i18n 文件里插入一些新写好的内容。在 Cursor 里，只需要粘贴下来，然后输入第一个 <code class="language-plaintext highlighter-rouge">"</code> 号，接下来就只需要……不停按 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 就好了：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/1.gif" alt="1" /></p>
+      <p>或者还可以调用 Cursor 的代码修改功能来实现。这个功能更适合想实现的目标比较复杂，代码补全没法直接通过上下文进行推测的情况。如果生成的有错误，还能通过代码补全自动发现并改正：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/2.gif" alt="2" /></p>
+      <p>这些都还只是小场面。</p>
+      <p>前段时间在打 OceanBase 比赛的时候，写 C++ 的大项目。C++ 的函数定义和函数实现是分别在 <code class="language-plaintext highlighter-rouge">.cpp</code> 和 <code class="language-plaintext highlighter-rouge">.h</code> 文件里的。如果想要增加一个函数的参数，就必须要在两个地方都进行修改。而且由于 C++ 继承的特性，经常会导致改了一个类的方法，就需要把他派生出来的所有类的方法都进行修改。</p>
+      <p>使用 Cursor，只需要在 <code class="language-plaintext highlighter-rouge">.h</code> 文件中增加新的参数，切换到 <code class="language-plaintext highlighter-rouge">.cpp</code> 的实现时，会自动补全，并且还会把所有这个函数的调用都增加新的参数！这让我能够剩下大量的时间，专注于处理思路问题和解决 bug，而不是处理这些苦力活。</p>
+      <p>但仅仅是这些功能的话，只是让我觉得这比 Copilot 聪明一些而已，但还不够为了他单独写一篇文章。真正让我觉得颠覆的功能是——Composer。</p>
+      <h2 id="革命性的突破composer">革命性的突破——Composer</h2>
+      <p>昨天晚上，我在 Bing 站点管理器里查看我的博客数据的时候，突然有个想法——在 GitHub workflow 弄一个脚本，每天凌晨的时候通过 Bing Url API 自动提交博客的最新 10 篇文章，这样就不会浪费每天的提交额度了。</p>
+      <p>说干就干，我立刻翻开了 Bing 提交 API 的<a href="https://www.bing.com/webmasters/url-submission-api#APIs">说明文档</a>，但是……看不懂啊！对于一个完全没有写过后端，前端也只是在折腾博客的时候照猫画虎了解了一些的人来说，不花个几个小时系统学习一下这些知识，真的完全没法做到。</p>
+      <p>正当想放弃的时候，我突然想到了 Composer。在这之前，除了新手教学以外，我还没用真正用过这个功能呢，那要不就试试吧！</p>
+      <p>Composer 是一个增强版的代码修改功能，他能够读取并修改你的整个工作区的所有文件，甚至还能根据要求新建文件，可以说这才是完全体的 Copilot。</p>
+      <p>稍微计划了一下，想要实现上述的功能，大概需要分成以下几个步骤：</p>
+      <ol>
+        <li>将 <code class="language-plaintext highlighter-rouge">/src/content/</code> 下的所有 <code class="language-plaintext highlighter-rouge">md,mdx</code> 格式的文件找出来；</li>
+        <li>按照其 <code class="language-plaintext highlighter-rouge">frontmatter</code> 里的 <code class="language-plaintext highlighter-rouge">date</code> 属性进行排序；</li>
+        <li>处理成合适的 url 链接；</li>
+        <li>通过 Bing 提交 API 进行提交。</li>
+      </ol>
+      <p>开始行动！直接开门见山，告诉他帮我找出最新的 10 篇文章：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/3.gif" alt="3" /></p>
+      <p>写得很快，但是报错了……尴尬，难道要出师未捷身先死了吗？</p>
+      <p>把错误复制给他：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/4.gif" alt="4" /></p>
+      <p>没想到，他通过项目的配置文件知道了我使用的是 ejs，一下子就解决了！有点惊叹。</p>
+      <p>那么接下来是把路径处理成 url 的格式。写了个 <code class="language-plaintext highlighter-rouge">baseUrl</code> 代表域名，让他把路径修改成网址：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/5.gif" alt="5" /></p>
+      <p>Cursor 竟然连 <code class="language-plaintext highlighter-rouge">baseUrl</code> 都自动补全了，真的震惊！</p>
+      <p>但这还不够，文章的 url 是只有年份，没有后面的月和日的，再让他继续处理：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/6.gif" alt="6" /></p>
+      <p>哎呀，又出错了，加上了年份但是没有正确去掉月和日。把错误反馈给他：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/7.gif" alt="7" /></p>
+      <p>就这么反馈给他一下他就把错误处理好了……这效率太快了。</p>
+      <p>那么现在网址处理完成了，接下来就是通过 API 给 Bing 提交。直接把刚刚 Bing 的 API 格式复制给他，让他帮我提交：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/8.gif" alt="8" /></p>
+      <p>就这么两下，实现了……我刚刚倒上的水还没喝几口呢……</p>
+      <p>但是看返回的信息好像没有成功提交？原来是今天的提交额度不够了，尴尬……那要不然改成一个一个提交，遇到限额满了就停止提交吧：</p>
+      <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/9.gif" alt="9" /></p>
+      <p>于是就这么完成了……最后只需要生成一个 GitHub workflow 脚本，让 GitHub 每天定时自动执行就好了。当然，这也只需要一句话的事情，这里就不展示了。</p>
+      <p>就这么不到 10 分钟，Cursor 就完成了原本可能需要好几个小时甚至一两天才能实现的功能。而我甚至都不需要学会前端的各种知识，就能轻松实现。</p>
+      <p>从此，我再也不需要因为一点小小的需求，而去学习大量无关紧要的知识了。唯一要做的就是把任务进行拆分，然后依次告诉 Cursor 让他帮我实现，遇到错误了就再反馈给他就好了。我甚至不需要复制粘贴……</p>
+      <h2 id="现状与未来">现状与未来</h2>
+      <p>我敢说，Cursor 是我到目前为止，唯二觉得能算得上是生产力的 AI 工具了，另一个是 ChatGPT。Cursor 利用现在大模型庞大的知识储备，让我能够迅速补上知识层面的漏洞。从此之后我写代码，就好像战场上的指挥官，我只需要指挥，苦力基本上可以依靠 AI 来实现。</p>
+      <p>现在 Cursor 支持的最高的模型还仅仅是 claude-3.5，不敢想象如果以后能接入 o1 等更高级的模型，Cursor 的能力会发展成什么样。</p>
+      <p>其实相较于图片，视频，音乐等领域，我觉得代码生成才是大模型最能崭露头角的地方，同时也是最容易替代人工的地方。</p>
+      <p>虽然 DALL-E、Sora 等模型能生成出来很多高质量的作品，但还是被我们吐槽一眼 AI。究其原因，我觉得还是 AI 生成的过程依旧只是照猫画虎，它并不能理解图片中的各种物理规律，更别说是视频了。</p>
+      <p>而且在这种较为「艺术」的领域，我们欣赏一部作品，欣赏的是作者创作这个作品时候的想法，又或者是欣赏某个作者的特殊的风格。我会因为一部电影是诺兰导演的而特意去电影院观看，映后会和朋友讨论片中的各种细节与伏笔，感受诺兰想通过镜头转达给我们的思考。但我若是看到一部 AI 生成的电影，我只会说「哇，这个 AI 好厉害」。</p>
+      <p>但是在代码这个领域，目标只要一个——写出符合要求的代码，而这正是现在的 AI 最擅长的。</p>
+      <p>人和机器最大的不同，是<em>人有人性</em>。通俗一点来讲，就是人会有喜怒哀乐，会有爱恨情仇，会有希望梦想，会有诗和远方……这些，这是机器不具备的。但很可惜，或许是因为社会的压力，又或者是因为其他原因，有些人已经失去了这部分能力，变成了一个活着的机器了。</p>
+      ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Cursor" /><category term="AI" /><summary type="html"><![CDATA[最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。]]></summary></entry><entry><title type="html">如何从零开始可视化一首音乐？</title><link href="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/" rel="alternate" type="text/html" title="如何从零开始可视化一首音乐？" /><published>2024-12-14T00:00:00+08:00</published><updated>2024-12-14T14:08:51+08:00</updated><id>https://ustb-806.github.io/blogs/2024/12/visualize-spectumn</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/"><![CDATA[<p>最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 这个音乐播放器了。</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/ncmpcpp_demo.gif" alt="ncmpcpp 的可视化音频效果" /></p>
+    <p>日常办公时把它放在屏幕角落，就会感觉工作环境变得更有趣了。这也让我对它的实现产生了巨大的好奇心，于是我决定探索一下它是如何实现的。</p>
+    <p>本文将深入底层，从音频编码开始讲起，探究 <code class="language-plaintext highlighter-rouge">wav</code> 格式的音频文件是如何被解析的，然后再讲解如何通过傅立叶变换将音频信号转换为频谱图，最后再着手实现。</p>
+    <h1 id="音频编码">音频编码</h1>
+    <h2 id="声波">声波</h2>
+    <p>中学物理教过我们，声音是一种机械波，由物体振动产生，通过介质传播。当波通过介质传递到耳朵时，耳膜会随之振动，我们才能听到声音。</p>
+    <p>声波会引起麦克风（注：这里以动圈式麦克风为例）传感器中的振膜振动，振膜与被磁铁包围着住的线圈相连，根据法拉第定律和楞次定律，振膜振动会使磁场中线圈移动而产生感应电流。此时，只需要监测线圈两极的电压即可得到声音的波形图。机械振动就被转换为了电压信号。</p>
+    <p>我们现在得到的是连续的模拟信号，还需要将其转换成计算机可识别的离散的数字信号。</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/image.png#full" alt="连续的模拟信号。图片来源@cjting" /></p>
+    <p>这时候，我们需要对信号进行模数转换（ADC）。AD 芯片每隔一段时间（几微秒）对波形图打点采样，得到每一个点的电压值，然后量化为二进制数，最后再进行编码，我们就得到了音频波形数据。</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/image-1.png#full" alt="采样。图片来源@cjting" /></p>
+    <h2 id="wav-格式">WAV 格式</h2>
+    <p>和图像、视频一样，音频编码格式也主要分为两大类：有损压缩和无损压缩格式。</p>
+    <p><code class="language-plaintext highlighter-rouge">wav</code> 就是一种典型的无损压缩格式，它是由微软和 IBM 共同开发的一种音频文件格式。它被称为“波形文件”，它也是相对好理解的一个音频格式。</p>
+    <p>一个完整的 <code class="language-plaintext highlighter-rouge">wav</code> 文件必须包含两个区块：<code class="language-plaintext highlighter-rouge">Format Chunk</code> 和 <code class="language-plaintext highlighter-rouge">Data Chunk</code></p>
+    <p>下面是一个包含了以上两个 Chunk 的 WAV 文件的例子：</p>
+    <pre><code class="language-plain"> __________________________
 | RIFF WAVE Chunk	   |
 |   groupID  = 'RIFF'      |
 |   riffType = 'WAVE'      |
@@ -29,39 +86,39 @@
 |   |__________________|   |
 |__________________________|
 </code></pre>
-      <p><code class="language-plaintext highlighter-rouge">Format Chunk</code> 包含了重要的描述波形的参数：</p>
-      <ul>
-        <li>采样率（Sample Rate）：每秒采样模拟信号的次数</li>
-        <li>采样宽度（Sample Width）：每个采样点的位数</li>
-        <li>声道数量（Audio Channels）</li>
-        <li>采样帧总数（Sample Frame）</li>
-        <li>压缩方式（Compression Type）</li>
-      </ul>
-      <p><code class="language-plaintext highlighter-rouge">Data Chunk</code> 包含了实际的波形数据，这些数据由一连串的采样帧组成，按时间顺序排列。</p>
-      <p>一个采样点表示一次采样内声音的振幅值。采样点位数越高，可表示的值的范围就越大，音频的质量就越好，但是文件的大小也就越大。一个采样帧包含了一次采样的所有声道的采样点。比如，我有左右两个声道，每个声道有 16 位的采样点，那么一个采样帧就包含了 32 位的数据。</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/image-2.png" alt="" /></p>
-      <p>在 Python 中，我们可以使用 <code class="language-plaintext highlighter-rouge">wave</code> 模块来读取 <code class="language-plaintext highlighter-rouge">wav</code> 文件：</p>
-      <p>440hz_16bit_5s.wav:</p>
-      <audio controls="" src="https://blog.soulter.top/images/visualize-music/440hz_16bit_5s.wav" title="440hz_16bit_5s"></audio>
-      <div class="language-python highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
+    <p><code class="language-plaintext highlighter-rouge">Format Chunk</code> 包含了重要的描述波形的参数：</p>
+    <ul>
+      <li>采样率（Sample Rate）：每秒采样模拟信号的次数</li>
+      <li>采样宽度（Sample Width）：每个采样点的位数</li>
+      <li>声道数量（Audio Channels）</li>
+      <li>采样帧总数（Sample Frame）</li>
+      <li>压缩方式（Compression Type）</li>
+    </ul>
+    <p><code class="language-plaintext highlighter-rouge">Data Chunk</code> 包含了实际的波形数据，这些数据由一连串的采样帧组成，按时间顺序排列。</p>
+    <p>一个采样点表示一次采样内声音的振幅值。采样点位数越高，可表示的值的范围就越大，音频的质量就越好，但是文件的大小也就越大。一个采样帧包含了一次采样的所有声道的采样点。比如，我有左右两个声道，每个声道有 16 位的采样点，那么一个采样帧就包含了 32 位的数据。</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/image-2.png" alt="" /></p>
+    <p>在 Python 中，我们可以使用 <code class="language-plaintext highlighter-rouge">wave</code> 模块来读取 <code class="language-plaintext highlighter-rouge">wav</code> 文件：</p>
+    <p>440hz_16bit_5s.wav:</p>
+    <audio controls="" src="https://blog.soulter.top/images/visualize-music/440hz_16bit_5s.wav" title="440hz_16bit_5s"></audio>
+    <div class="language-python highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
 
 <span class="k">with</span> <span class="n">wave</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">rb</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nf">print</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="nf">getparams</span><span class="p">())</span>
     <span class="nf">print</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="nf">readframes</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 </code></pre>
-        </div>
       </div>
-      <p>输出如下内容：</p>
-      <pre><code class="language-plain">_wave_params(nchannels=1, sampwidth=2, framerate=44100, nframes=220500, comptype='NONE', compname='not compressed')
+    </div>
+    <p>输出如下内容：</p>
+    <pre><code class="language-plain">_wave_params(nchannels=1, sampwidth=2, framerate=44100, nframes=220500, comptype='NONE', compname='not compressed')
 b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p@\x1eD\x88G\xa9J\x7fM\x07P?R'
 </code></pre>
-      <p>这段音频有一个声道，每个采样点占 2 byte，采样率为 44100，总共有 220500 个采样帧。220500 / 44100 = 5 秒。</p>
-      <p>后面读出的采样帧字符串是一段十六进制转义序列，我们可以使用 <code class="language-plaintext highlighter-rouge">struct</code> 模块来解析：</p>
-      <div class="language-python highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
+    <p>这段音频有一个声道，每个采样点占 2 byte，采样率为 44100，总共有 220500 个采样帧。220500 / 44100 = 5 秒。</p>
+    <p>后面读出的采样帧字符串是一段十六进制转义序列，我们可以使用 <code class="language-plaintext highlighter-rouge">struct</code> 模块来解析：</p>
+    <div class="language-python highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
 <span class="kn">import</span> <span class="n">struct</span>
 
 <span class="k">def</span> <span class="nf">read_wave</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -73,21 +130,21 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
 <span class="n">data</span> <span class="o">=</span> <span class="nf">read_wave</span><span class="p">(</span><span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 </code></pre>
-        </div>
       </div>
-      <p>在这里我们解析了前 10 个采样帧，<code class="language-plaintext highlighter-rouge">h</code> 表示短整型，<code class="language-plaintext highlighter-rouge">&lt;</code> 表示小端序。WAVE 文件采用小端序来存储数据。</p>
-      <p>输出如下：</p>
-      <pre><code class="language-plain">(0, 1421, 2835, 4238, 5625, 6989, 8327, 9632, 10899, 12122)
+    </div>
+    <p>在这里我们解析了前 10 个采样帧，<code class="language-plaintext highlighter-rouge">h</code> 表示短整型，<code class="language-plaintext highlighter-rouge">&lt;</code> 表示小端序。WAVE 文件采用小端序来存储数据。</p>
+    <p>输出如下：</p>
+    <pre><code class="language-plain">(0, 1421, 2835, 4238, 5625, 6989, 8327, 9632, 10899, 12122)
 </code></pre>
-      <p>我们发现这一段数字是逐渐增加的，很符合波形的特点。截取前 0.05 秒的波形，然后根据时间绘制波形图：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725975340572.png" alt="" /></p>
-      <p>可以发现这是一个正弦波。横轴为时间，纵轴为振幅。由于这段音频的采样宽度为 16 位，所以振幅的范围是 $[-2^{15}, 2^{15}-1]$，即 $[-32768, 32767]$。</p>
-      <p>到目前为止，我们已经成功地将音频文件解析为了波形数据，并且成功可视化出了声波振幅随时间变化的波形图。不过，我们想象中的 440Hz 的“可视化图像”应该是那种“只有一个峰”的频谱图，和一开始提到的 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果是一样的。那如何将这种数据转化成频谱图呢？这里，我们需要用到傅立叶变换。</p>
-      <h2 id="快速傅立叶变换fft">快速傅立叶变换（FFT）</h2>
-      <p>傅立叶变换是一种将信号从时域转换到频域的方法，它可以将一个信号分解为一系列不同频率的正弦波。快速傅立叶变换（FFT）是一种计算傅立叶变换的高效算法。下面是快速傅立叶变换的 Python 实现：</p>
-      <div class="language-python highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <p>我们发现这一段数字是逐渐增加的，很符合波形的特点。截取前 0.05 秒的波形，然后根据时间绘制波形图：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725975340572.png" alt="" /></p>
+    <p>可以发现这是一个正弦波。横轴为时间，纵轴为振幅。由于这段音频的采样宽度为 16 位，所以振幅的范围是 $[-2^{15}, 2^{15}-1]$，即 $[-32768, 32767]$。</p>
+    <p>到目前为止，我们已经成功地将音频文件解析为了波形数据，并且成功可视化出了声波振幅随时间变化的波形图。不过，我们想象中的 440Hz 的“可视化图像”应该是那种“只有一个峰”的频谱图，和一开始提到的 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果是一样的。那如何将这种数据转化成频谱图呢？这里，我们需要用到傅立叶变换。</p>
+    <h2 id="快速傅立叶变换fft">快速傅立叶变换（FFT）</h2>
+    <p>傅立叶变换是一种将信号从时域转换到频域的方法，它可以将一个信号分解为一系列不同频率的正弦波。快速傅立叶变换（FFT）是一种计算傅立叶变换的高效算法。下面是快速傅立叶变换的 Python 实现：</p>
+    <div class="language-python highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">x</span>
@@ -97,12 +154,12 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
     <span class="k">return</span> <span class="p">[</span><span class="n">even</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">+</span> \
            <span class="p">[</span><span class="n">even</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span>
 </code></pre>
-        </div>
       </div>
-      <p>它的输入是一系列采样点的振幅值，输出是一系列复数，表示不同频率的正弦波的振幅和相位。让我们把上面的 440Hz 的波形数据输入到这个函数中：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="p">[</span>
+    </div>
+    <p>它的输入是一系列采样点的振幅值，输出是一系列复数，表示不同频率的正弦波的振幅和相位。让我们把上面的 440Hz 的波形数据输入到这个函数中：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="p">[</span>
     <span class="p">(</span><span class="mi">503643</span><span class="o">+</span><span class="mf">0j</span><span class="p">),</span>
     <span class="p">(</span><span class="o">-</span><span class="mf">68801.16613674666</span><span class="o">+</span><span class="mf">116234.4683635989j</span><span class="p">),</span>
     <span class="p">(</span><span class="o">-</span><span class="mf">23890.51738479154</span><span class="o">+</span><span class="mf">53037.36938852984j</span><span class="p">),</span>
@@ -111,13 +168,13 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
     <span class="bp">...</span>
 <span class="p">]</span>
 </code></pre>
-        </div>
       </div>
-      <h2 id="可视化频谱">可视化频谱</h2>
-      <p>我们将原始波形数据应用于 FFT，然后将得到的复数值转换为其模长，并进行归一化：</p>
-      <div class="language-python highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="n">spectrum_complex</span><span class="p">,</span> <span class="n">max_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+    </div>
+    <h2 id="可视化频谱">可视化频谱</h2>
+    <p>我们将原始波形数据应用于 FFT，然后将得到的复数值转换为其模长，并进行归一化：</p>
+    <div class="language-python highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="n">spectrum_complex</span><span class="p">,</span> <span class="n">max_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
     <span class="sh">'''</span><span class="s">将频谱复数转换为振幅，并归一化</span><span class="sh">'''</span>
     <span class="n">spectrum</span> <span class="o">=</span> <span class="p">[</span><span class="nf">abs</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span> <span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">spectrum_complex</span><span class="p">]</span>
     <span class="n">max_spectrum</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">spectrum</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 防止除以 0
@@ -125,15 +182,15 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
 
 <span class="n">spectrum</span> <span class="o">=</span> <span class="nf">scale_spectrum</span><span class="p">(</span><span class="nf">fft</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">512</span><span class="p">]))[:</span><span class="mi">20</span><span class="p">]</span>
 </code></pre>
-        </div>
       </div>
-      <p>输出：</p>
-      <pre><code class="language-plain">[0, 0, 0, 0, 0, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    </div>
+    <p>输出：</p>
+    <pre><code class="language-plain">[0, 0, 0, 0, 0, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 </code></pre>
-      <p>是不是有感觉了？！我们采用了前 512 个采样帧的频谱数据，并将它们缩放到 0-10 的范围内，然后取前 20 个频率的振幅值。我们可以使用 <code class="language-plaintext highlighter-rouge">curses</code> 模块来绘制频谱图：</p>
-      <div class="language-python highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="kn">import</span> <span class="n">curses</span><span class="p">,</span> <span class="n">time</span>
+    <p>是不是有感觉了？！我们采用了前 512 个采样帧的频谱数据，并将它们缩放到 0-10 的范围内，然后取前 20 个频率的振幅值。我们可以使用 <code class="language-plaintext highlighter-rouge">curses</code> 模块来绘制频谱图：</p>
+    <div class="language-python highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="kn">import</span> <span class="n">curses</span><span class="p">,</span> <span class="n">time</span>
 
 <span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">):</span>
     <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
@@ -157,15 +214,15 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">curses</span><span class="p">.</span><span class="nf">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
 </code></pre>
-        </div>
       </div>
-      <p>这里，我们对音频数据进行了分帧处理，每帧 2048 个采样帧，帧移 512 个采样帧。然后我们计算每一帧的频谱，并绘制频谱图。我们可以看到频谱图随时间变化的效果。</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726126824224.png" alt="" /></p>
-      <p>现在还有一个小问题，就是这个频谱图的播放时间 (约 8s) 远远高于了实际音乐的播放时间 5s。这是由于我们在每次渲染时，将睡眠时间固定为了 0.05s。没有考虑实际音乐的播放速度和一次循环所用到的采样帧占总采样帧的比例。并且，计算 FFT 和渲染频谱图也是会消耗时间的。</p>
-      <p>这也很好解决，为了使可视化跟上音乐的播放速度，我们需要知道音乐的总长度、每一个可视化帧应该的播放时间、可视化帧运算和渲染花费的时间，然后动态调整睡眠时间：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    </div>
+    <p>这里，我们对音频数据进行了分帧处理，每帧 2048 个采样帧，帧移 512 个采样帧。然后我们计算每一帧的频谱，并绘制频谱图。我们可以看到频谱图随时间变化的效果。</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726126824224.png" alt="" /></p>
+    <p>现在还有一个小问题，就是这个频谱图的播放时间 (约 8s) 远远高于了实际音乐的播放时间 5s。这是由于我们在每次渲染时，将睡眠时间固定为了 0.05s。没有考虑实际音乐的播放速度和一次循环所用到的采样帧占总采样帧的比例。并且，计算 FFT 和渲染频谱图也是会消耗时间的。</p>
+    <p>这也很好解决，为了使可视化跟上音乐的播放速度，我们需要知道音乐的总长度、每一个可视化帧应该的播放时间、可视化帧运算和渲染花费的时间，然后动态调整睡眠时间：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">440hz_16bit_5s.wav</span><span class="sh">'</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">frame_rate</span> <span class="o">=</span> <span class="nf">read_wav_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 
@@ -183,15 +240,15 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
         <span class="c1"># 将可视化帧播放时间剪去运算渲染消耗的时间，来达到自适应。
 </span>        <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">frame_duration</span> <span class="o">-</span> <span class="p">(</span><span class="n">elapsed_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)))</span>
 </code></pre>
-        </div>
       </div>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726128923283.png" alt="" /></p>
-      <p>接下来，我们来优化这个播放器。比如：不同振幅采用不同的颜色、把频谱图横过来、平滑可视化帧之间的振幅。让我们来进行优化</p>
-      <p>按照缩放振幅最大值的 0.2、0.4、0.6 倍分割成 4 段，分别采用淡蓝、白、绿、黄颜色区分。</p>
-      <p>初始化 curses 的颜色对：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">init_colors</span><span class="p">():</span>
+    </div>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726128923283.png" alt="" /></p>
+    <p>接下来，我们来优化这个播放器。比如：不同振幅采用不同的颜色、把频谱图横过来、平滑可视化帧之间的振幅。让我们来进行优化</p>
+    <p>按照缩放振幅最大值的 0.2、0.4、0.6 倍分割成 4 段，分别采用淡蓝、白、绿、黄颜色区分。</p>
+    <p>初始化 curses 的颜色对：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">init_colors</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">colors</span>
     <span class="n">curses</span><span class="p">.</span><span class="nf">start_color</span><span class="p">()</span>
     <span class="n">curses</span><span class="p">.</span><span class="nf">init_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="n">COLOR_CYAN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -208,12 +265,12 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
         <span class="k">else</span><span class="p">:</span>
             <span class="n">colors</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre>
-        </div>
       </div>
-      <p>渲染：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">curr</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+    </div>
+    <p>渲染：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">,</span> <span class="n">curr</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">colors</span>
     <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
     <span class="n">max_y</span><span class="p">,</span> <span class="n">max_x</span> <span class="o">=</span> <span class="n">stdscr</span><span class="p">.</span><span class="nf">getmaxyx</span><span class="p">()</span>
@@ -229,16 +286,16 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
     <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">max_y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="sh">'</span><span class="si">{</span><span class="n">curr</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> / </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s"> s</span><span class="sh">'</span><span class="p">,</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
     <span class="n">stdscr</span><span class="p">.</span><span class="nf">refresh</span><span class="p">()</span>
 </code></pre>
-        </div>
       </div>
-      <p>然后，我们采用 EMA（移动指数平均）来实现平滑数据。</p>
-      <p>EMA 的计算公式为：</p>
-      <p>[EMA(t) = (1 - \alpha) \cdot EMA(t-1) + \alpha \cdot x(t)]</p>
-      <p>其中 $\alpha$ 为平滑系数，$x(t)$ 为当前值，$EMA(t-1)$ 为上一次的平滑值。</p>
-      <p>我们只需要记录上一次的平滑后的频谱值，然后在每一帧的频谱值上应用 EMA 即可。</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code>
+    </div>
+    <p>然后，我们采用 EMA（移动指数平均）来实现平滑数据。</p>
+    <p>EMA 的计算公式为：</p>
+    <p>[EMA(t) = (1 - \alpha) \cdot EMA(t-1) + \alpha \cdot x(t)]</p>
+    <p>其中 $\alpha$ 为平滑系数，$x(t)$ 为当前值，$EMA(t-1)$ 为上一次的平滑值。</p>
+    <p>我们只需要记录上一次的平滑后的频谱值，然后在每一帧的频谱值上应用 EMA 即可。</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
     <span class="nf">init_colors</span><span class="p">()</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="sh">'</span><span class="s">haruhikage.wav</span><span class="sh">'</span>
@@ -271,37 +328,37 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
 
     <span class="n">audio_thread</span><span class="p">.</span><span class="nf">join</span><span class="p">()</span>
 </code></pre>
-        </div>
       </div>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726145469076.png" alt="" /></p>
-      <p>挺像回事了 hhh。最后，我们再对整个代码进行一轮优化。</p>
-      <ol>
-        <li>
-          <p>第零，既然这是一个可以可视化音频的工具，为什么不能同时播放音乐呢？于是我用了 <code class="language-plaintext highlighter-rouge">simpleaudio</code> 模块，在子线程中同步播放音乐。</p>
-        </li>
-        <li>
-          <p>第一，上面的代码没有考虑窗口自适应，我们需要在每一次循环中都取一次窗口大小 <code class="language-plaintext highlighter-rouge">max_x</code> 和 <code class="language-plaintext highlighter-rouge">max_y</code>，当窗口发生变化时重新计算 <code class="language-plaintext highlighter-rouge">colors</code> 列表。</p>
-        </li>
-        <li>
-          <p>第二，现在的计算方式是一次性将 4096 个采样帧都进行 EMA 计算，实际我们只需要将窗口的 <code class="language-plaintext highlighter-rouge">max_x</code> 个采样帧进行 EMA 计算和存储即可。</p>
-        </li>
-        <li>
-          <p>第三，我通过和实际音乐播放的时间比对发现，整个渲染部分还是会有延迟（基本上每秒会有 0.003 秒的延迟），如果任由其累加，到了后面，实际的音频播放会和可视化频谱有很大的错位。我直接计算了实际播放时间和可视化帧时间的差，将其作为 <code class="language-plaintext highlighter-rouge">delay</code>，然后在 time.sleep() 时直接减去这个 <code class="language-plaintext highlighter-rouge">delay</code>，这样就能在单次帧渲染时把 delay 给消除。</p>
-        </li>
-        <li>
-          <p>第四，测试发现很多振幅低的频率在频谱图中几乎不可见，这是因为我们采用的是线性归一化，高振幅的频率会压缩低振幅的频率。我们可以换成平方根归一化，这样可以减少高低频率振幅的差距。</p>
-        </li>
-        <li>
-          <p>第五，我发现渲染帧率太高了，而帧之间的振幅变化又太快，导致频谱图看起来很闪烁。于是我设置了一个固定的帧率 <code class="language-plaintext highlighter-rouge">fps</code> 和频谱数据缓冲区，其大小为 <code class="language-plaintext highlighter-rouge">frame_duration / (1/fps)</code>，频谱数据先放入缓冲区，当缓冲区满时全部取出，并求平均值，然后再进行 EMA 计算和渲染。</p>
-          <blockquote>
-            <p>后续发现其实调大 <code class="language-plaintext highlighter-rouge">hop_size</code> 就行。想复杂了 = =</p>
-          </blockquote>
-        </li>
-      </ol>
-      <p>优化后的完整代码如下：</p>
-      <div class="language-python highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
+    </div>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726145469076.png" alt="" /></p>
+    <p>挺像回事了 hhh。最后，我们再对整个代码进行一轮优化。</p>
+    <ol>
+      <li>
+        <p>第零，既然这是一个可以可视化音频的工具，为什么不能同时播放音乐呢？于是我用了 <code class="language-plaintext highlighter-rouge">simpleaudio</code> 模块，在子线程中同步播放音乐。</p>
+      </li>
+      <li>
+        <p>第一，上面的代码没有考虑窗口自适应，我们需要在每一次循环中都取一次窗口大小 <code class="language-plaintext highlighter-rouge">max_x</code> 和 <code class="language-plaintext highlighter-rouge">max_y</code>，当窗口发生变化时重新计算 <code class="language-plaintext highlighter-rouge">colors</code> 列表。</p>
+      </li>
+      <li>
+        <p>第二，现在的计算方式是一次性将 4096 个采样帧都进行 EMA 计算，实际我们只需要将窗口的 <code class="language-plaintext highlighter-rouge">max_x</code> 个采样帧进行 EMA 计算和存储即可。</p>
+      </li>
+      <li>
+        <p>第三，我通过和实际音乐播放的时间比对发现，整个渲染部分还是会有延迟（基本上每秒会有 0.003 秒的延迟），如果任由其累加，到了后面，实际的音频播放会和可视化频谱有很大的错位。我直接计算了实际播放时间和可视化帧时间的差，将其作为 <code class="language-plaintext highlighter-rouge">delay</code>，然后在 time.sleep() 时直接减去这个 <code class="language-plaintext highlighter-rouge">delay</code>，这样就能在单次帧渲染时把 delay 给消除。</p>
+      </li>
+      <li>
+        <p>第四，测试发现很多振幅低的频率在频谱图中几乎不可见，这是因为我们采用的是线性归一化，高振幅的频率会压缩低振幅的频率。我们可以换成平方根归一化，这样可以减少高低频率振幅的差距。</p>
+      </li>
+      <li>
+        <p>第五，我发现渲染帧率太高了，而帧之间的振幅变化又太快，导致频谱图看起来很闪烁。于是我设置了一个固定的帧率 <code class="language-plaintext highlighter-rouge">fps</code> 和频谱数据缓冲区，其大小为 <code class="language-plaintext highlighter-rouge">frame_duration / (1/fps)</code>，频谱数据先放入缓冲区，当缓冲区满时全部取出，并求平均值，然后再进行 EMA 计算和渲染。</p>
+        <blockquote>
+          <p>后续发现其实调大 <code class="language-plaintext highlighter-rouge">hop_size</code> 就行。想复杂了 = =</p>
+        </blockquote>
+      </li>
+    </ol>
+    <p>优化后的完整代码如下：</p>
+    <div class="language-python highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="kn">import</span> <span class="n">wave</span>
 <span class="kn">import</span> <span class="n">struct</span>
 <span class="kn">import</span> <span class="n">math</span>
 <span class="kn">import</span> <span class="n">cmath</span>
@@ -456,19 +513,19 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
     <span class="n">colors</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">curses</span><span class="p">.</span><span class="nf">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
 </code></pre>
-        </div>
       </div>
-      <p>我们用它来播放一下来自 CHYCHIC 的 <code class="language-plaintext highlighter-rouge">haruhikage.wav</code>：</p>
-      <p>（该 demo 不是最终版本！下面还有两个优化！！）</p>
-      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo_cry.mp4" title="Title" style="width: 100%"></video>
-      <p>相比于 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果，还有很多地方需要优化，比如多声道支持、更平滑的频谱图。</p>
-      <p>（下面是 Update，已经更新了多声道支持）</p>
-      <h2 id="更丝滑的频谱图">更丝滑的频谱图</h2>
-      <p>查阅了相关资料，突然发现我们可以设置两个 EMA Alpha，一个是当 prev_spectrum 小于 curr_spectrum 时的 alpha1，一个是当 prev_spectrum 大于 curr_spectrum 时的 alpha2。前者可以让频谱图更快地上升，后者可以让频谱图更慢地下降。这样就可以让频谱图更加丝滑了。</p>
-      <p>主函数：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    </div>
+    <p>我们用它来播放一下来自 CHYCHIC 的 <code class="language-plaintext highlighter-rouge">haruhikage.wav</code>：</p>
+    <p>（该 demo 不是最终版本！下面还有两个优化！！）</p>
+    <video controls="" src="https://blog.soulter.top/images/visualize-music/demo_cry.mp4" title="Title" style="width: 100%"></video>
+    <p>相比于 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果，还有很多地方需要优化，比如多声道支持、更平滑的频谱图。</p>
+    <p>（下面是 Update，已经更新了多声道支持）</p>
+    <h2 id="更丝滑的频谱图">更丝滑的频谱图</h2>
+    <p>查阅了相关资料，突然发现我们可以设置两个 EMA Alpha，一个是当 prev_spectrum 小于 curr_spectrum 时的 alpha1，一个是当 prev_spectrum 大于 curr_spectrum 时的 alpha2。前者可以让频谱图更快地上升，后者可以让频谱图更慢地下降。这样就可以让频谱图更加丝滑了。</p>
+    <p>主函数：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
     <span class="nf">init_colors</span><span class="p">()</span>
     <span class="n">file_name</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">parse_args</span><span class="p">().</span><span class="nb">file</span>
     <span class="n">frame_size</span> <span class="o">=</span> <span class="mi">2048</span>
@@ -480,12 +537,12 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
 </span>
     <span class="c1"># ...
 </span></code></pre>
-        </div>
       </div>
-      <p>EMA 函数：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">ema</span><span class="p">(</span><span class="n">alpha_down</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha_up</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    </div>
+    <p>EMA 函数：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">ema</span><span class="p">(</span><span class="n">alpha_down</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha_up</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
     <span class="sh">'''</span><span class="s">Exponential Moving Average</span><span class="sh">'''</span>
     <span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">curr</span><span class="p">)):</span>
@@ -499,33 +556,33 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
                 <span class="n">new</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">alpha_up</span> <span class="o">*</span> <span class="n">prev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha_up</span><span class="p">)</span> <span class="o">*</span> <span class="n">curr</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
     <span class="k">return</span> <span class="n">new</span>
 </code></pre>
-        </div>
       </div>
-      <p>效果如下：</p>
-      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo2.mp4" title="demo2" style="width: 100%"></video>
-      <p>可以发现，在鼓点来时，频谱图上升得很快，而在鼓点过后，频谱图下降得很慢。这样就显得更加丝滑！</p>
-      <h2 id="更更丝滑的频谱图">更更丝滑的频谱图</h2>
-      <p>在前面的实现中，我们默认绘图的字符是 “█”，然而，它在 unicode 中叫作 “Full block”。它还有 7 个兄弟：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">▁</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▂</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▃</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▄</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▅</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▆</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▇</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">█</span><span class="sh">'</span><span class="p">]</span>
+    </div>
+    <p>效果如下：</p>
+    <video controls="" src="https://blog.soulter.top/images/visualize-music/demo2.mp4" title="demo2" style="width: 100%"></video>
+    <p>可以发现，在鼓点来时，频谱图上升得很快，而在鼓点过后，频谱图下降得很慢。这样就显得更加丝滑！</p>
+    <h2 id="更更丝滑的频谱图">更更丝滑的频谱图</h2>
+    <p>在前面的实现中，我们默认绘图的字符是 “█”，然而，它在 unicode 中叫作 “Full block”。它还有 7 个兄弟：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">▁</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▂</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▃</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▄</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▅</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▆</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">▇</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">█</span><span class="sh">'</span><span class="p">]</span>
 </code></pre>
-        </div>
       </div>
-      <p>我们可以借此实现更加丝滑的频谱图。</p>
-      <p>首先，scale 的最大值可以直接乘以 <code class="language-plaintext highlighter-rouge">len(blocks)</code>：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="n">last_scale_max_val</span> <span class="o">=</span> <span class="nf">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">*</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+    </div>
+    <p>我们可以借此实现更加丝滑的频谱图。</p>
+    <p>首先，scale 的最大值可以直接乘以 <code class="language-plaintext highlighter-rouge">len(blocks)</code>：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="n">last_scale_max_val</span> <span class="o">=</span> <span class="nf">int</span><span class="p">((</span><span class="n">max_y</span> <span class="o">*</span> <span class="nf">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
 </code></pre>
-        </div>
       </div>
-      <p>然后我们的振幅范围就在 [0, last_scale_max_val] 之间。</p>
-      <p>在绘图时，前 <code class="language-plaintext highlighter-rouge">val // len(blocks)</code> 个字符使用 <code class="language-plaintext highlighter-rouge">Full Block</code>，最后一个字符使用 <code class="language-plaintext highlighter-rouge">blocks[val % len(blocks)]</code>。</p>
-      <p>我们稍加修改 <code class="language-plaintext highlighter-rouge">draw_spectrum</code> 函数：</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">max_y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    </div>
+    <p>然后我们的振幅范围就在 [0, last_scale_max_val] 之间。</p>
+    <p>在绘图时，前 <code class="language-plaintext highlighter-rouge">val // len(blocks)</code> 个字符使用 <code class="language-plaintext highlighter-rouge">Full Block</code>，最后一个字符使用 <code class="language-plaintext highlighter-rouge">blocks[val % len(blocks)]</code>。</p>
+    <p>我们稍加修改 <code class="language-plaintext highlighter-rouge">draw_spectrum</code> 函数：</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">max_y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">colors</span>
     <span class="n">stdscr</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
     <span class="n">half_y</span> <span class="o">=</span> <span class="n">max_y</span> <span class="o">//</span> <span class="mi">2</span>
@@ -554,15 +611,15 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
         <span class="k">if</span> <span class="n">left_2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">full_2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_2</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">full_2</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 </code></pre>
-        </div>
       </div>
-      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo2.5.mp4" title="demo2.5" style="width: 100%"></video>
-      <p>OHHH! 看样子更加丝滑了！… 怎么下面的频谱图变得断断续续了？</p>
-      <p>因为我们的 blocks 使用的 unicode 字符的填充是从下往上的，因此就会导致在绘制下半部分频谱图时，末端使用的字符方向不对，导致 full block 和其他 block 之间有间隙。怎么解决呢？似乎 unicode 字符没有从上往下填充的字符。</p>
-      <p>一个好办法是创造一个 <code class="language-plaintext highlighter-rouge">colors_reverse</code>，其颜色配置和 <code class="language-plaintext highlighter-rouge">colors</code> 相反，比如 colors 中一个 color 的前景是淡蓝色，背景是黑色，那么 colors_reverse 中这个 color 的前景就是黑色，背景就是淡蓝色。然后我们在绘制频谱图时，将下半部分的频谱图字符颜色设置为 <code class="language-plaintext highlighter-rouge">colors_reverse</code> 中的某个。</p>
-      <div class="language-py highlighter-rouge">
-        <div class="highlight">
-          <pre class="highlight"><code>
+    </div>
+    <video controls="" src="https://blog.soulter.top/images/visualize-music/demo2.5.mp4" title="demo2.5" style="width: 100%"></video>
+    <p>OHHH! 看样子更加丝滑了！… 怎么下面的频谱图变得断断续续了？</p>
+    <p>因为我们的 blocks 使用的 unicode 字符的填充是从下往上的，因此就会导致在绘制下半部分频谱图时，末端使用的字符方向不对，导致 full block 和其他 block 之间有间隙。怎么解决呢？似乎 unicode 字符没有从上往下填充的字符。</p>
+    <p>一个好办法是创造一个 <code class="language-plaintext highlighter-rouge">colors_reverse</code>，其颜色配置和 <code class="language-plaintext highlighter-rouge">colors</code> 相反，比如 colors 中一个 color 的前景是淡蓝色，背景是黑色，那么 colors_reverse 中这个 color 的前景就是黑色，背景就是淡蓝色。然后我们在绘制频谱图时，将下半部分的频谱图字符颜色设置为 <code class="language-plaintext highlighter-rouge">colors_reverse</code> 中的某个。</p>
+    <div class="language-py highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight"><code>
 <span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">stdscr</span><span class="p">,</span> <span class="n">spectrum</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span> <span class="n">max_y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="c1"># ...
 </span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">spectrum</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
@@ -575,134 +632,134 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
         <span class="k">if</span> <span class="n">left_2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">stdscr</span><span class="p">.</span><span class="nf">addstr</span><span class="p">(</span><span class="n">half_y</span> <span class="o">+</span> <span class="n">full_2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="n">left_2</span><span class="p">],</span> <span class="n">curses</span><span class="p">.</span><span class="nf">color_pair</span><span class="p">(</span><span class="n">colors_reverse</span><span class="p">[</span><span class="n">full_2</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 </code></pre>
-        </div>
-      </div>
-      <p>效果如下：</p>
-      <video controls="" src="https://blog.soulter.top/images/visualize-music/demo3.mp4" title="demo3" style="width: 100%"></video>
-      <p>快赶上 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果了！</p>
-      <p>后面有时间再继续优化喵。</p>
-      <h2 id="附直观理解傅立叶变换">附：直观理解傅立叶变换</h2>
-      <p>上文讲到傅立叶变换的基本思想是将一个信号分解为一系列正弦波的叠加。</p>
-      <p>拿方波举个例子，下图是一个 5Hz 的方波和一个 5Hz 的正弦波</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976721919.png" alt="" /></p>
-      <p>是不是差距蛮大的？那如果我们将 2 个正弦波叠加在一起呢？</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976743585.png" alt="" /></p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976828380.png" alt="" /></p>
-      <p>我们会发现，更像方波了。随着我们叠加的正弦波越来越多，我们的波形就会越来越接近方波。</p>
-      <p>我们日常听的音乐就是由大量不同频率的正弦波叠加而成的，而傅立叶变换就能够将其分解为一系列不同频率的波。</p>
-      <p>为了直观理解傅立叶变换，我参考了 <a href="https://www.youtube.com/watch?v=spUNpyF58BY">@3b1b 的视频</a> 里的方法。</p>
-      <p>还是以 5Hz 的正弦波为例。</p>
-      <p>440hz_16bit_5s.wav:</p>
-      <audio controls="" src="https://blog.soulter.top/images/visualize-music/440hz_16bit_5s.wav" title="440hz_16bit_5s"></audio>
-      <p>我们在复平面上从实数轴正半轴开始逆时针转动一个向量：在任意时刻下，向量的模长等于正弦波的振幅，向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">1 Hz</code>，以此绘制得到一个图：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725978427291.png" alt="" /></p>
-      <p>它的质心用红点标了出来。</p>
-      <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">4.2 Hz</code> 时：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726146180844.png" alt="" /></p>
-      <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">4.3 Hz</code> 时：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726146113953.png" alt="" /></p>
-      <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">5 Hz</code> 时：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725979910845.png" alt="" /></p>
-      <p>有没有发现什么？我们绘制出质心与原点的距离随向量的移动速度变化的图（我们称为“缠绕图像”）：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725979995976.png" alt="" /></p>
-      <p>在接近 <code class="language-plaintext highlighter-rouge">5 Hz</code> 时，值最大！！</p>
-      <p>同样，我们将 5Hz + 15Hz 的正弦波叠加在一起，再次绘制这个图：</p>
-      <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725980156817.png" alt="" /></p>
-      <p>极大值点同样出现在 5Hz 和 15Hz 处。</p>
-      <p>发生了什么？让我们从公式的角度出发，来解释这个现象。</p>
-      <p>由欧拉公式，我们知道，一个圆周运动可以表示为：
-        \(e^{2\pi i f t}\)</p>
-      <p>其中 $f$ 为频率，$t$ 为时间。</p>
-      <p>上述像花一样的缠绕图像可以表示为：</p>
-      <p>[g(t) e^{2\pi i t}]</p>
-      <p>其中，g(t) 为正弦函数：$ g(t) = \sin(2\pi 5 t) $，也就是一个振幅随时间变化的方程。</p>
-      <p>我们需要描述的是其质心在复平面上的坐标的模随时间变化的方程。因此随机取 $N$ 个时间点，计算其质心的坐标，然后取其模长的平均值。</p>
-      <table>
-        <tbody>
-          <tr>
-            <td>[\frac{1}{N} \sum_{n=1}^{N}</td>
-            <td>g(t_n) e^{2\pi i t_n}</td>
-            <td>]</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>类似这样，我们对函数作积分，就得到了傅立叶变换：</p>
-      <table>
-        <tbody>
-          <tr>
-            <td>[\int_{t_1}^{t_2}</td>
-            <td>g(t) e^{2\pi i t}</td>
-            <td>dt]</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>其值表示的是在 $t_1$ 到 $t_2$ 时刻下，频率为 $f$ 的声波的相对振幅。如果某一个频率的波的强度很大，那么值也会越大。</p>
-      <p>看文字不如直接看 <a href="https://www.youtube.com/watch?v=spUNpyF58BY">@3b1b 的视频</a>。</p>
-      <h2 id="总结">总结</h2>
-      <p>本文介绍了 <code class="language-plaintext highlighter-rouge">wav</code> 的编码结构和傅立叶变换在音频可视化中的应用，并手搓了一个 TUI 的支持频谱可视化的音频播放器。最后，我们通过直观的方式理解了傅立叶变换的基本原理。</p>
-      <p>代码开源在了 <a href="https://github.com/soulter/wav-spectrum-visualizer">GitHub</a>，可以去玩玩。</p>
-      <h2 id="参考文献">参考文献</h2>
-      <p>[1] WAVE File Format. https://web.archive.org/web/20140221054954/http://home.roadrunner.com/~jgglatt/tech/wave.htm</p>
-      <p>[2] But what is the Fourier Transform? A visual introduction. https://www.youtube.com/watch?v=spUNpyF58BY</p>
-      <p>[3] 为什么要进行傅立叶变换。https://ibillxia.github.io/blog/2013/04/04/why-do-Fourier-transformation/</p>
-      ]]></content><author><name>Soulter</name></author><category term="教程" /><category term="音频编码" /><category term="ArchLinux" /><summary type="html"><![CDATA[最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 ncmpcpp 这个音乐播放器了。]]></summary></entry><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
-    <h2 id="前提">前提</h2>
-    <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
-    <h2 id="原理">原理</h2>
-    <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
-    <h2 id="租服务器">租服务器</h2>
-    <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
-    <blockquote>
-      <p>虚拟专用服务器（Virtual Private Server，简称 VPS）技术，是将一台服务器分割成多个虚拟专享服务器的优质服务。实现 VPS 的技术分为容器技术，和虚拟化技术。在容器或虚拟机中，每个 VPS 都可选配独立公网 IP 地址、独立操作系统、实现不同 VPS 间磁盘空间、内存、CPU 资源、进程和系统配置的隔离，为用户和应用程序模拟出“独占”使用计算资源的体验。——百度百科</p>
-    </blockquote>
-    <p>那么该租用一个什么样的 VPS 以及在哪里租比较合适呢？</p>
-    <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
-    <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
-    <p>注册好账号之后，订购新服务：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
-    <p>选择第一个：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
-    <p>进入之后选择详细的服务：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
-    <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
-    <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
-    <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>ssh root@&lt;你的IPv4地址&gt;
-</code></pre>
       </div>
     </div>
-    <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
-    <p>成功进入 VPS。</p>
-    <h2 id="vps-设定">VPS 设定</h2>
-    <p>首先，更新 Ubuntu。终端输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nb">sudo </span>apt update
+    <p>效果如下：</p>
+    <video controls="" src="https://blog.soulter.top/images/visualize-music/demo3.mp4" title="demo3" style="width: 100%"></video>
+    <p>快赶上 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 的效果了！</p>
+    <p>后面有时间再继续优化喵。</p>
+    <h2 id="附直观理解傅立叶变换">附：直观理解傅立叶变换</h2>
+    <p>上文讲到傅立叶变换的基本思想是将一个信号分解为一系列正弦波的叠加。</p>
+    <p>拿方波举个例子，下图是一个 5Hz 的方波和一个 5Hz 的正弦波</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976721919.png" alt="" /></p>
+    <p>是不是差距蛮大的？那如果我们将 2 个正弦波叠加在一起呢？</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976743585.png" alt="" /></p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725976828380.png" alt="" /></p>
+    <p>我们会发现，更像方波了。随着我们叠加的正弦波越来越多，我们的波形就会越来越接近方波。</p>
+    <p>我们日常听的音乐就是由大量不同频率的正弦波叠加而成的，而傅立叶变换就能够将其分解为一系列不同频率的波。</p>
+    <p>为了直观理解傅立叶变换，我参考了 <a href="https://www.youtube.com/watch?v=spUNpyF58BY">@3b1b 的视频</a> 里的方法。</p>
+    <p>还是以 5Hz 的正弦波为例。</p>
+    <p>440hz_16bit_5s.wav:</p>
+    <audio controls="" src="https://blog.soulter.top/images/visualize-music/440hz_16bit_5s.wav" title="440hz_16bit_5s"></audio>
+    <p>我们在复平面上从实数轴正半轴开始逆时针转动一个向量：在任意时刻下，向量的模长等于正弦波的振幅，向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">1 Hz</code>，以此绘制得到一个图：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725978427291.png" alt="" /></p>
+    <p>它的质心用红点标了出来。</p>
+    <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">4.2 Hz</code> 时：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726146180844.png" alt="" /></p>
+    <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">4.3 Hz</code> 时：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1726146113953.png" alt="" /></p>
+    <p>当向量的移动速度设置为 <code class="language-plaintext highlighter-rouge">5 Hz</code> 时：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725979910845.png" alt="" /></p>
+    <p>有没有发现什么？我们绘制出质心与原点的距离随向量的移动速度变化的图（我们称为“缠绕图像”）：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725979995976.png" alt="" /></p>
+    <p>在接近 <code class="language-plaintext highlighter-rouge">5 Hz</code> 时，值最大！！</p>
+    <p>同样，我们将 5Hz + 15Hz 的正弦波叠加在一起，再次绘制这个图：</p>
+    <p><img src="https://blog.soulter.top/images/visualize-music/QQ_1725980156817.png" alt="" /></p>
+    <p>极大值点同样出现在 5Hz 和 15Hz 处。</p>
+    <p>发生了什么？让我们从公式的角度出发，来解释这个现象。</p>
+    <p>由欧拉公式，我们知道，一个圆周运动可以表示为：
+      \(e^{2\pi i f t}\)</p>
+    <p>其中 $f$ 为频率，$t$ 为时间。</p>
+    <p>上述像花一样的缠绕图像可以表示为：</p>
+    <p>[g(t) e^{2\pi i t}]</p>
+    <p>其中，g(t) 为正弦函数：$ g(t) = \sin(2\pi 5 t) $，也就是一个振幅随时间变化的方程。</p>
+    <p>我们需要描述的是其质心在复平面上的坐标的模随时间变化的方程。因此随机取 $N$ 个时间点，计算其质心的坐标，然后取其模长的平均值。</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>[\frac{1}{N} \sum_{n=1}^{N}</td>
+          <td>g(t_n) e^{2\pi i t_n}</td>
+          <td>]</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>类似这样，我们对函数作积分，就得到了傅立叶变换：</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>[\int_{t_1}^{t_2}</td>
+          <td>g(t) e^{2\pi i t}</td>
+          <td>dt]</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>其值表示的是在 $t_1$ 到 $t_2$ 时刻下，频率为 $f$ 的声波的相对振幅。如果某一个频率的波的强度很大，那么值也会越大。</p>
+    <p>看文字不如直接看 <a href="https://www.youtube.com/watch?v=spUNpyF58BY">@3b1b 的视频</a>。</p>
+    <h2 id="总结">总结</h2>
+    <p>本文介绍了 <code class="language-plaintext highlighter-rouge">wav</code> 的编码结构和傅立叶变换在音频可视化中的应用，并手搓了一个 TUI 的支持频谱可视化的音频播放器。最后，我们通过直观的方式理解了傅立叶变换的基本原理。</p>
+    <p>代码开源在了 <a href="https://github.com/soulter/wav-spectrum-visualizer">GitHub</a>，可以去玩玩。</p>
+    <h2 id="参考文献">参考文献</h2>
+    <p>[1] WAVE File Format. https://web.archive.org/web/20140221054954/http://home.roadrunner.com/~jgglatt/tech/wave.htm</p>
+    <p>[2] But what is the Fourier Transform? A visual introduction. https://www.youtube.com/watch?v=spUNpyF58BY</p>
+    <p>[3] 为什么要进行傅立叶变换。https://ibillxia.github.io/blog/2013/04/04/why-do-Fourier-transformation/</p>
+    ]]></content><author><name>Soulter</name></author><category term="教程" /><category term="音频编码" /><category term="ArchLinux" /><summary type="html"><![CDATA[最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 ncmpcpp 这个音乐播放器了。]]></summary></entry><entry><title type="html">配置校园网 IPv6 免流</title><link href="https://ustb-806.github.io/blogs/2024/11/ipv6/" rel="alternate" type="text/html" title="配置校园网 IPv6 免流" /><published>2024-11-21T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/ipv6</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/ipv6/"><![CDATA[<p>本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。</p>
+  <h2 id="前提">前提</h2>
+  <p>校园网免流基于 IPv6 流量不计费，所以要先确定自己使用的无线网/有线网是否支持 IPv6。</p>
+  <h2 id="原理">原理</h2>
+  <p>校园网同时支持 IPv4 和 IPv6，但是使用 IPV6 并不计费，因此本地通过 IPv6 协议向服务器发送请求，服务器获取到网络资源后再通过 IPv6 将数据发送到本地，就相当于全程使用 IPv6 与互联网进行数据交互。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629155642916.png" alt="image-20240629155642916" /></p>
+  <h2 id="租服务器">租服务器</h2>
+  <p>首先我们要租一台代替我们在互联网上下载资源的服务器，或者准确一些，「VPS」。</p>
+  <blockquote>
+    <p>虚拟专用服务器（Virtual Private Server，简称 VPS）技术，是将一台服务器分割成多个虚拟专享服务器的优质服务。实现 VPS 的技术分为容器技术，和虚拟化技术。在容器或虚拟机中，每个 VPS 都可选配独立公网 IP 地址、独立操作系统、实现不同 VPS 间磁盘空间、内存、CPU 资源、进程和系统配置的隔离，为用户和应用程序模拟出“独占”使用计算资源的体验。——百度百科</p>
+  </blockquote>
+  <p>那么该租用一个什么样的 VPS 以及在哪里租比较合适呢？</p>
+  <p>首先，为了能够保证网络的流畅，我们要证低延迟和高带宽，此外，我们平时也需要科学上网，但能够找到的机场要么贵要么慢，不妨我们直接搞一个既能科学上网又能免流的 VPS。那么我认为 VPS 的位置最合适的就是香港，不仅能访问到大多数外网的资源又能保证不会在使用免流的时候访问不了国内一些网站。</p>
+  <p>那么接下来就是 VPS 租用平台的选取，首先排除阿里云等平台，不仅贵而且带宽仅能给到 30Mb/s。在寻找了一段时间之后，我找到了 <a href="https://churros.cloud/index.php">Churros</a> 这个平台，在这可以租到带宽最多为 625Mb/s。</p>
+  <p>注册好账号之后，订购新服务：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163011540.png" alt="image-20240629163011540" /></p>
+  <p>选择第一个：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163126172.png" alt="image-20240629163126172" /></p>
+  <p>进入之后选择详细的服务：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629163244014.png" alt="image-20240629163244014" /></p>
+  <p>其中 CPU 一核，RAM 1G，存储 10G 就够用。带宽 1Gbps 就是上限 125Mb/s。流量根据自己需求选择，记得一定要有一个 IPv6 地址，否则无法免流。下面的系统可以根据自己的偏好选择，这里以 Ubuntu20.04 LTS 为例。</p>
+  <p><strong>记得设定一个自己记得住的 root 密码。</strong></p>
+  <p>VPS 设定需要几分钟，设定完成之后在终端中输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>ssh root@&lt;你的IPv4地址&gt;
+</code></pre>
+    </div>
+  </div>
+  <p>弹出 <code class="language-plaintext highlighter-rouge">Are you sure you want to continue connecting (yes/no/[fingerprint])? </code> 输入 <code class="language-plaintext highlighter-rouge">yes</code>，之后输入自己的密码。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629170451589.png" alt="image-20240629170451589" /></p>
+  <p>成功进入 VPS。</p>
+  <h2 id="vps-设定">VPS 设定</h2>
+  <p>首先，更新 Ubuntu。终端输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nb">sudo </span>apt update
 <span class="nb">sudo </span>apt <span class="nb">install </span>curl
 <span class="nb">sudo </span>apt <span class="nb">install </span>socat
 <span class="nb">sudo </span>apt <span class="nb">install </span>ufw
 </code></pre>
-      </div>
     </div>
-    <h3 id="安装-x-ui">安装 X-UI</h3>
-    <p>终端输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
+  </div>
+  <h3 id="安装-x-ui">安装 X-UI</h3>
+  <p>终端输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>bash &lt;<span class="o">(</span>curl <span class="nt">-Ls</span> https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh<span class="o">)</span>
 </code></pre>
-      </div>
     </div>
-    <p>依次设置账号密码和端口：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
-    <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
-    <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nb">sudo </span>ufw status   <span class="c"># 查看本地端口开启情况</span>
+  </div>
+  <p>依次设置账号密码和端口：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629171501501.png" alt="image-20240629171501501" /></p>
+  <p>这里我自定义了端口为 <code class="language-plaintext highlighter-rouge">54321</code>，实际上任何端口都可以，自己能记住即可，不必完全相同。</p>
+  <h3 id="开放-ufw-防火墙端口">开放 ufw 防火墙端口</h3>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nb">sudo </span>ufw status   <span class="c"># 查看本地端口开启情况</span>
 <span class="nb">sudo </span>ufw <span class="nb">enable</span>   <span class="c"># 开启防火墙，允许访问特定端口</span>
 <span class="nb">sudo </span>ufw allow 20
 <span class="nb">sudo </span>ufw allow 21
@@ -712,70 +769,70 @@ b'\x00\x00\x8d\x05\x13\x0b\x8e\x10\xf9\x15M\x1b\x87 \xa0%\x93*Z/\xf33W8\x82&lt;p
                           <span class="c"># 如果多人使用根据自己需求再开启几个</span>
 <span class="nb">sudo </span>ufw status  <span class="c"># 重新检查端口开放情况</span>
 </code></pre>
-      </div>
     </div>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
-    <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
-    <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code><span class="nb">echo </span>net.core.default_qdisc<span class="o">=</span>fq <span class="o">&gt;&gt;</span> /etc/sysctl.conf
+  </div>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629204716087.png" alt="image-20240629204716087" /></p>
+  <h3 id="开启-bbr-加速">开启 BBR 加速</h3>
+  <p>新的 TCP 拥塞控制算法 BBR (Bottleneck Bandwidth and RTT) 可以让服务器的带宽尽量跑满，并且尽量不要有排队的情况，让网络服务更佳稳定和高效。</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="nb">echo </span>net.core.default_qdisc<span class="o">=</span>fq <span class="o">&gt;&gt;</span> /etc/sysctl.conf
 <span class="nb">echo </span>net.ipv4.tcp_congestion_control<span class="o">=</span>bbr <span class="o">&gt;&gt;</span> /etc/sysctl.conf   <span class="c"># 修改系统变量</span>
 sysctl <span class="nt">-p</span>   <span class="c"># 保存</span>
 </code></pre>
-      </div>
     </div>
-    <p>接下来检查是否开启成功。</p>
-    <p>分别输入：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+  </div>
+  <p>接下来检查是否开启成功。</p>
+  <p>分别输入：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
 lsmod | <span class="nb">grep </span>bbr
 </code></pre>
-      </div>
     </div>
-    <p>如果第一个输出：</p>
-    <div class="language-bash highlighter-rouge">
-      <div class="highlight">
-        <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
+  </div>
+  <p>如果第一个输出：</p>
+  <div class="language-bash highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>sysctl net.ipv4.tcp_available_congestion_control
 net.ipv4.tcp_available_congestion_control <span class="o">=</span> bbr cubic reno
 </code></pre>
-      </div>
     </div>
-    <p>第二个有输出结果（如果失败不会有输出结果）就说明 BBR 开启成功了。</p>
-    <h3 id="配置-x-ui">配置 X-UI</h3>
-    <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
-    <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
-    <p>在入站列表中配置：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
-    <p>在操作中点击「二维码」，然后复制：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
-    <h2 id="配置客户端">配置客户端</h2>
-    <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
-    <h3 id="v2ray-配置">V2ray 配置</h3>
-    <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
-    <p>下载后解压，双击「v2rayN」运行。</p>
-    <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
-    <p>导入成功如下：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
-    <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
-    <p>如下：</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
-    <p>点击确定进行保存。</p>
-    <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
-    <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
-    <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
-    <h2 id="全文完">全文完</h2>
-    <blockquote>
-      <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
-    </blockquote>
-    ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2025-01-21T21:03:46+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
+  </div>
+  <p>第二个有输出结果（如果失败不会有输出结果）就说明 BBR 开启成功了。</p>
+  <h3 id="配置-x-ui">配置 X-UI</h3>
+  <p>在浏览器中输入 <code class="language-plaintext highlighter-rouge">&lt;IPv4地址&gt;:&lt;端口号&gt;</code></p>
+  <p>如 <code class="language-plaintext highlighter-rouge">103.229.54.***:54321</code> 进行登录</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629190947466.png" alt="image-20240629190947466" /></p>
+  <p>在入站列表中配置：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191636631.png" alt="image-20240629191636631" /></p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629191629249.png" alt="image-20240629191629249" /></p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192247486.png" alt="image-20240629192247486" /></p>
+  <p>在操作中点击「二维码」，然后复制：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192346320.png" alt="image-20240629192346320" /></p>
+  <h2 id="配置客户端">配置客户端</h2>
+  <p>VPS 的配置已经完成，接下来就是要在电脑上使用。</p>
+  <h3 id="v2ray-配置">V2ray 配置</h3>
+  <p>V2ray 下载：<a href="https://github.com/2dust/v2rayN/releases/download/4.26/v2rayN-Core.zip">下载链接</a>。</p>
+  <p>下载后解压，双击「v2rayN」运行。</p>
+  <p>在 V2ray 中点击「服务器」，「从剪贴板导入批量 url」</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192535573.png" alt="image-20240629192535573" /></p>
+  <p>导入成功如下：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192723613.png" alt="image-20240629192723613" /></p>
+  <p>双击，进入编辑，将 IPv4 地址替换为自己的 IPv6 地址：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629192853962.png" alt="image-20240629192853962" /></p>
+  <p>如下：</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193011319.png" alt="image-20240629193011319" /></p>
+  <p>点击确定进行保存。</p>
+  <p>在任务栏右侧找到 V2ray 的图标，在「服务器」中选择自己的服务器，「系统代理」中选择「自动配置系统代理」，「路由」中选择「全局」。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193446792.png" alt="image-20240629193446792" /></p>
+  <p>在任务管理器中查看网络使用情况，如果全都是 V2ray 用的就代表配置成功了。可以肆意上网了。</p>
+  <p><img src="https://blog-s3.806.group/post/2024/2024-11-21-ipv6/image-20240629193435397.png" alt="image-20240629193435397" /></p>
+  <h2 id="全文完">全文完</h2>
+  <blockquote>
+    <p>原文链接：<a href="https://fridemn.best/archives/xiao-yuan-wang-mian-liu">https://fridemn.best/archives/xiao-yuan-wang-mian-liu</a></p>
+  </blockquote>
+  ]]></content><author><name>Fridemn</name></author><category term="教程" /><category term="校园网" /><category term="IPv6" /><summary type="html"><![CDATA[本文介绍如何在校园网环境内利用教育网 IPv6 进行免流。]]></summary></entry><entry><title type="html">如何在 Linux 上部署一个 MC 纯净/整合包服务器</title><link href="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/" rel="alternate" type="text/html" title="如何在 Linux 上部署一个 MC 纯净/整合包服务器" /><published>2024-11-20T00:00:00+08:00</published><updated>2025-01-21T21:03:46+08:00</updated><id>https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/11/how-to-setup-mc-server-on-linux/"><![CDATA[<blockquote>
     <p>作为 806 系统部的一员，能够在 Linux 服务器上部署一个 MC 服务端是所有人必须要会的技能。——系统部传统</p>
   </blockquote>
   <p>要想和好基友们开黑 MC，一般会采用单人游戏 + 对局域网开放的方式。但是这样有一个弊端：每次游戏的时候都需要主机在线，这对于随时随地都可能想上线种田的大四老登来说是不可容忍的，而 806 正好又不缺服务器，所以在服务器上部署一个 MC 服务端是更合适的方式。</p>
