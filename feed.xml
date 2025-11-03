@@ -1,71 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-05-28T01:01:16+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩</title><link href="https://ustb-806.github.io/news/2025/05/asc/" rel="alternate" type="text/html" title="祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩" /><published>2025-05-27T00:00:00+08:00</published><updated>2025-05-27T21:46:01+08:00</updated><id>https://ustb-806.github.io/news/2025/05/asc</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/05/asc/"><![CDATA[<p>ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。</p>
-      <p>近日，2025ASC 世界大学生超级计算机竞赛（ASC25）顺利结束，本届赛事聚焦”AI for Science”前沿领域，首创性将 AlphaFold3 蛋白质预测（2024 诺贝尔化学奖）与 mRNA 疫苗 RNA 修饰技术（2023 诺贝尔医学奖）转化为核心赛题，构建”计算生物学 - 人工智能 - 超算系统”融合竞技平台。</p>
-      <p>在为期两个月的预赛中，我校团队在 4000 瓦功耗约束下自行设计超级计算机系统，完成了 HPL、HPCG 基准测试优化、AlphaFold3 蛋白质结构预测推理加速及 RNA m5C 修饰位点检测等核心任务。来自全球的 300 余支队伍经过激烈角逐，最终，浙江大学、北京大学、清华大学等 25 支队伍脱颖而出获得一等奖。我校 ASC889 队、ASC1172 队、ASC888 队分别以第 28 名、第 31 名、第 78 名的成绩荣获二等奖，与我校代表队同获二等奖的还有来自电子科技大学等高校代表队。</p>
-      <p>ASC1172 队刁明轩在 RNA m5C 检测赛题中，完成了从原始测序数据到高置信度 m5C 位点检测的全流程复现与优化。通过整合 Snakemake 工作流，基于 Conda 封装 hisat3n、samtools 等工具链，解决了参考基因组 C→T 索引构建、多步骤并行参数配置等关键问题，成功复现流程并验证初始结果。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/01.jpg" alt="" />
-        ASC1172 队伍合照（右一：刁明轩）</p>
-      <p>ASC889 队在 AlphaFold3 推理优化上，主要通过软件层面的算法加速技术提升计算效率。通过采用 Flashattention2 优化注意力机制的计算路径，降低显存占用并加速矩阵运算；结合 DPM-Solver 改进扩散过程求解器的数值稳定性，减少迭代次数；同时实现了从 GPU 到 CPU 上的迁移，并启用了持久缓存优化。通过严格的测试和优化流程，最终在保障结构预测精度的前提下压缩了计算耗时。</p>
-      <p>对于 m5C 修饰点检测，通过采用并行压缩、精细化线程分配及过滤条件调整，减少 I/O 瓶颈与计算负载。同时采取分治并行合并策略、惰性求值及向量化计算等优化数据读写与内存管理，综合实现性能提升。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/02.jpg" alt="" />
-        ASC889 队伍合照（从左至右，中间三位：刘彦甫、唐学彬、刘畅）</p>
-      ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="超算" /><summary type="html"><![CDATA[ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。]]></summary></entry><entry><title type="html">第四次工业革命｜Cursor 体验报告</title><link href="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/" rel="alternate" type="text/html" title="第四次工业革命｜Cursor 体验报告" /><published>2025-01-20T00:00:00+08:00</published><updated>2025-01-21T21:08:31+08:00</updated><id>https://ustb-806.github.io/blogs/2025/01/cursor-experience-review</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/"><![CDATA[<p>最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。</p>
-    <p>没想到，这一试，彻底颠覆了我的认知……</p>
-    <h2 id="cursor-是什么">Cursor 是什么</h2>
-    <p>简单来说，Cursor 是一个 VSCode 的 fork 版本，但是往里面加入了非常多 AI 相关的功能，包括更智能的代码补全，集成内部的 AI 对话框，以及本篇文章的重点内容——Composer 等等。</p>
-    <p>你可能会问，这和 VSCode 自己的 Copilot 有什么区别呢？区别大着呢。</p>
-    <p>简单概括 Cursor 和 Copilot 的区别：Cursor 的代码补全，不仅是能够补全后面的代码，更重要的是能<strong>对已有的代码进行修改</strong>。并且 Cursor 的上下文不仅局限于当前文件，而是整个工作区（文件夹）内的所有文件，甚至是电脑的剪切板，甚至是之前删掉的某些内容！Cursor 就好像有记忆力一般，用的越久，就越能够明白整个项目的结构。</p>
-    <p>拿一个具体的例子来举例。</p>
-    <p>我想在博客的 i18n 文件里插入一些新写好的内容。在 Cursor 里，只需要粘贴下来，然后输入第一个 <code class="language-plaintext highlighter-rouge">"</code> 号，接下来就只需要……不停按 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 就好了：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/1.gif" alt="1" /></p>
-    <p>或者还可以调用 Cursor 的代码修改功能来实现。这个功能更适合想实现的目标比较复杂，代码补全没法直接通过上下文进行推测的情况。如果生成的有错误，还能通过代码补全自动发现并改正：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/2.gif" alt="2" /></p>
-    <p>这些都还只是小场面。</p>
-    <p>前段时间在打 OceanBase 比赛的时候，写 C++ 的大项目。C++ 的函数定义和函数实现是分别在 <code class="language-plaintext highlighter-rouge">.cpp</code> 和 <code class="language-plaintext highlighter-rouge">.h</code> 文件里的。如果想要增加一个函数的参数，就必须要在两个地方都进行修改。而且由于 C++ 继承的特性，经常会导致改了一个类的方法，就需要把他派生出来的所有类的方法都进行修改。</p>
-    <p>使用 Cursor，只需要在 <code class="language-plaintext highlighter-rouge">.h</code> 文件中增加新的参数，切换到 <code class="language-plaintext highlighter-rouge">.cpp</code> 的实现时，会自动补全，并且还会把所有这个函数的调用都增加新的参数！这让我能够剩下大量的时间，专注于处理思路问题和解决 bug，而不是处理这些苦力活。</p>
-    <p>但仅仅是这些功能的话，只是让我觉得这比 Copilot 聪明一些而已，但还不够为了他单独写一篇文章。真正让我觉得颠覆的功能是——Composer。</p>
-    <h2 id="革命性的突破composer">革命性的突破——Composer</h2>
-    <p>昨天晚上，我在 Bing 站点管理器里查看我的博客数据的时候，突然有个想法——在 GitHub workflow 弄一个脚本，每天凌晨的时候通过 Bing Url API 自动提交博客的最新 10 篇文章，这样就不会浪费每天的提交额度了。</p>
-    <p>说干就干，我立刻翻开了 Bing 提交 API 的<a href="https://www.bing.com/webmasters/url-submission-api#APIs">说明文档</a>，但是……看不懂啊！对于一个完全没有写过后端，前端也只是在折腾博客的时候照猫画虎了解了一些的人来说，不花个几个小时系统学习一下这些知识，真的完全没法做到。</p>
-    <p>正当想放弃的时候，我突然想到了 Composer。在这之前，除了新手教学以外，我还没用真正用过这个功能呢，那要不就试试吧！</p>
-    <p>Composer 是一个增强版的代码修改功能，他能够读取并修改你的整个工作区的所有文件，甚至还能根据要求新建文件，可以说这才是完全体的 Copilot。</p>
-    <p>稍微计划了一下，想要实现上述的功能，大概需要分成以下几个步骤：</p>
-    <ol>
-      <li>将 <code class="language-plaintext highlighter-rouge">/src/content/</code> 下的所有 <code class="language-plaintext highlighter-rouge">md,mdx</code> 格式的文件找出来；</li>
-      <li>按照其 <code class="language-plaintext highlighter-rouge">frontmatter</code> 里的 <code class="language-plaintext highlighter-rouge">date</code> 属性进行排序；</li>
-      <li>处理成合适的 url 链接；</li>
-      <li>通过 Bing 提交 API 进行提交。</li>
-    </ol>
-    <p>开始行动！直接开门见山，告诉他帮我找出最新的 10 篇文章：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/3.gif" alt="3" /></p>
-    <p>写得很快，但是报错了……尴尬，难道要出师未捷身先死了吗？</p>
-    <p>把错误复制给他：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/4.gif" alt="4" /></p>
-    <p>没想到，他通过项目的配置文件知道了我使用的是 ejs，一下子就解决了！有点惊叹。</p>
-    <p>那么接下来是把路径处理成 url 的格式。写了个 <code class="language-plaintext highlighter-rouge">baseUrl</code> 代表域名，让他把路径修改成网址：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/5.gif" alt="5" /></p>
-    <p>Cursor 竟然连 <code class="language-plaintext highlighter-rouge">baseUrl</code> 都自动补全了，真的震惊！</p>
-    <p>但这还不够，文章的 url 是只有年份，没有后面的月和日的，再让他继续处理：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/6.gif" alt="6" /></p>
-    <p>哎呀，又出错了，加上了年份但是没有正确去掉月和日。把错误反馈给他：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/7.gif" alt="7" /></p>
-    <p>就这么反馈给他一下他就把错误处理好了……这效率太快了。</p>
-    <p>那么现在网址处理完成了，接下来就是通过 API 给 Bing 提交。直接把刚刚 Bing 的 API 格式复制给他，让他帮我提交：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/8.gif" alt="8" /></p>
-    <p>就这么两下，实现了……我刚刚倒上的水还没喝几口呢……</p>
-    <p>但是看返回的信息好像没有成功提交？原来是今天的提交额度不够了，尴尬……那要不然改成一个一个提交，遇到限额满了就停止提交吧：</p>
-    <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/9.gif" alt="9" /></p>
-    <p>于是就这么完成了……最后只需要生成一个 GitHub workflow 脚本，让 GitHub 每天定时自动执行就好了。当然，这也只需要一句话的事情，这里就不展示了。</p>
-    <p>就这么不到 10 分钟，Cursor 就完成了原本可能需要好几个小时甚至一两天才能实现的功能。而我甚至都不需要学会前端的各种知识，就能轻松实现。</p>
-    <p>从此，我再也不需要因为一点小小的需求，而去学习大量无关紧要的知识了。唯一要做的就是把任务进行拆分，然后依次告诉 Cursor 让他帮我实现，遇到错误了就再反馈给他就好了。我甚至不需要复制粘贴……</p>
-    <h2 id="现状与未来">现状与未来</h2>
-    <p>我敢说，Cursor 是我到目前为止，唯二觉得能算得上是生产力的 AI 工具了，另一个是 ChatGPT。Cursor 利用现在大模型庞大的知识储备，让我能够迅速补上知识层面的漏洞。从此之后我写代码，就好像战场上的指挥官，我只需要指挥，苦力基本上可以依靠 AI 来实现。</p>
-    <p>现在 Cursor 支持的最高的模型还仅仅是 claude-3.5，不敢想象如果以后能接入 o1 等更高级的模型，Cursor 的能力会发展成什么样。</p>
-    <p>其实相较于图片，视频，音乐等领域，我觉得代码生成才是大模型最能崭露头角的地方，同时也是最容易替代人工的地方。</p>
-    <p>虽然 DALL-E、Sora 等模型能生成出来很多高质量的作品，但还是被我们吐槽一眼 AI。究其原因，我觉得还是 AI 生成的过程依旧只是照猫画虎，它并不能理解图片中的各种物理规律，更别说是视频了。</p>
-    <p>而且在这种较为「艺术」的领域，我们欣赏一部作品，欣赏的是作者创作这个作品时候的想法，又或者是欣赏某个作者的特殊的风格。我会因为一部电影是诺兰导演的而特意去电影院观看，映后会和朋友讨论片中的各种细节与伏笔，感受诺兰想通过镜头转达给我们的思考。但我若是看到一部 AI 生成的电影，我只会说「哇，这个 AI 好厉害」。</p>
-    <p>但是在代码这个领域，目标只要一个——写出符合要求的代码，而这正是现在的 AI 最擅长的。</p>
-    <p>人和机器最大的不同，是<em>人有人性</em>。通俗一点来讲，就是人会有喜怒哀乐，会有爱恨情仇，会有希望梦想，会有诗和远方……这些，这是机器不具备的。但很可惜，或许是因为社会的压力，又或者是因为其他原因，有些人已经失去了这部分能力，变成了一个活着的机器了。</p>
-    ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Cursor" /><category term="AI" /><summary type="html"><![CDATA[最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。]]></summary></entry><entry><title type="html">如何从零开始可视化一首音乐？</title><link href="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/" rel="alternate" type="text/html" title="如何从零开始可视化一首音乐？" /><published>2024-12-14T00:00:00+08:00</published><updated>2024-12-14T14:08:51+08:00</updated><id>https://ustb-806.github.io/blogs/2024/12/visualize-spectumn</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/"><![CDATA[<p>最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 这个音乐播放器了。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-11-03T20:23:51+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告</title><link href="https://ustb-806.github.io/news/2025/11/ACMMM/" rel="alternate" type="text/html" title="祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告" /><published>2025-11-03T00:00:00+08:00</published><updated>2025-11-03T20:21:45+08:00</updated><id>https://ustb-806.github.io/news/2025/11/ACMMM</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/ACMMM/"><![CDATA[<p>近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 <strong>ACM Multimedia 2025</strong>上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。</p>
+      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/03.png" alt="" />
+        论文首页 (全文详见 https://doi.org/10.1145/3746027.3755572)</p>
+      <p>ACMMM（ACM International Conference on Multimedia）是计算机科学领域最重要、最负盛名的多媒体旗舰会议，今年迎来了第 33 届盛会。该会议由国际计算机协会（ACM）主办，属于中国计算机学会（CCF）推荐的 A 类国际学术会议，在全球多媒体、计算机视觉、人机交互等研究领域具有极高的学术地位和影响力。ACMMM 2025 已于 2025 年 10 月 27 日 -10 月 31 日 在爱尔兰都柏林的<strong>皇家都柏林会议中心（Royal Dublin Convention Centre）</strong>成功举办。本次大会致力于整合和交流跨模态信息，重点关注人工智能、3D 与元宇宙、医疗保健、教育和娱乐等领域的创新应用，吸引了来自世界各地的顶尖学者、研究人员和行业精英，分享最新的研究成果和技术进展。</p>
+      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/02.jpg" alt="" />
+        陈铎友在 ACMMM2025 会议现场</p>
+      <p>陈铎友的论文聚焦于稀疏视角 CT 重建这一重要的医学影像技术难题。他指出，计算机断层扫描（CT）虽然是临床广泛使用的影像模态，但传统的密集采集方式存在扫描时间长和辐射暴露量大的挑战，而稀疏视角 CT 重建技术旨在利用少量 X 射线投影图像高效准确地恢复三维 CT 图像，从而降低成本和风险。研究团队发现，现有基于扩散模型（如 Latent Diffusion Model, LDM）的重建方法，在处理 2D X 射线投影的潜在表示与 3D CT 图像的潜在表示时，难以有效对齐这两种模态的潜在空间。针对该问题，论文提出了一致性潜在空间扩散模型（Consistent Latent Space Diffusion Model, CLS-DM），并创新性地引入了<strong>跨模态特征对比学习（cross-modal feature contrastive learning）</strong>机制，成功解决了 2D 和 3D 潜在空间的不一致性问题，显著提升了稀疏视角下 CT 图像三维重建的质量和效率。</p>
+      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/01.jpg" alt="" />
+        陈铎友在进行现场汇报（爱尔兰都柏林皇家会议中心）</p>
+      <p>陈铎友已成功参加了 ACMMM 2025 线下会议，并在国际同行面前展示和解读了其研究成果。现场报告是对研究工作的专业认可，也是与全球多媒体领域专家学者进行深入交流、拓展学术视野的绝佳平台。附图中，我们看到陈铎友同学在会议宣传板前的合影，以及他在会议现场进行报告的精彩瞬间。本次论文的成功发表和现场汇报，是团队在多媒体研究领域的重要一步。</p>
+      ]]></content><author><name>USTB-806</name></author><category term="学术会议" /><category term="人工智能部" /><category term="ACMMM" /><summary type="html"><![CDATA[近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 ACM Multimedia 2025上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。]]></summary></entry><entry><title type="html">祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩</title><link href="https://ustb-806.github.io/news/2025/05/asc/" rel="alternate" type="text/html" title="祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩" /><published>2025-05-27T00:00:00+08:00</published><updated>2025-05-27T21:46:01+08:00</updated><id>https://ustb-806.github.io/news/2025/05/asc</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/05/asc/"><![CDATA[<p>ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。</p>
+    <p>近日，2025ASC 世界大学生超级计算机竞赛（ASC25）顺利结束，本届赛事聚焦”AI for Science”前沿领域，首创性将 AlphaFold3 蛋白质预测（2024 诺贝尔化学奖）与 mRNA 疫苗 RNA 修饰技术（2023 诺贝尔医学奖）转化为核心赛题，构建”计算生物学 - 人工智能 - 超算系统”融合竞技平台。</p>
+    <p>在为期两个月的预赛中，我校团队在 4000 瓦功耗约束下自行设计超级计算机系统，完成了 HPL、HPCG 基准测试优化、AlphaFold3 蛋白质结构预测推理加速及 RNA m5C 修饰位点检测等核心任务。来自全球的 300 余支队伍经过激烈角逐，最终，浙江大学、北京大学、清华大学等 25 支队伍脱颖而出获得一等奖。我校 ASC889 队、ASC1172 队、ASC888 队分别以第 28 名、第 31 名、第 78 名的成绩荣获二等奖，与我校代表队同获二等奖的还有来自电子科技大学等高校代表队。</p>
+    <p>ASC1172 队刁明轩在 RNA m5C 检测赛题中，完成了从原始测序数据到高置信度 m5C 位点检测的全流程复现与优化。通过整合 Snakemake 工作流，基于 Conda 封装 hisat3n、samtools 等工具链，解决了参考基因组 C→T 索引构建、多步骤并行参数配置等关键问题，成功复现流程并验证初始结果。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/01.jpg" alt="" />
+      ASC1172 队伍合照（右一：刁明轩）</p>
+    <p>ASC889 队在 AlphaFold3 推理优化上，主要通过软件层面的算法加速技术提升计算效率。通过采用 Flashattention2 优化注意力机制的计算路径，降低显存占用并加速矩阵运算；结合 DPM-Solver 改进扩散过程求解器的数值稳定性，减少迭代次数；同时实现了从 GPU 到 CPU 上的迁移，并启用了持久缓存优化。通过严格的测试和优化流程，最终在保障结构预测精度的前提下压缩了计算耗时。</p>
+    <p>对于 m5C 修饰点检测，通过采用并行压缩、精细化线程分配及过滤条件调整，减少 I/O 瓶颈与计算负载。同时采取分治并行合并策略、惰性求值及向量化计算等优化数据读写与内存管理，综合实现性能提升。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/02.jpg" alt="" />
+      ASC889 队伍合照（从左至右，中间三位：刘彦甫、唐学彬、刘畅）</p>
+    ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="超算" /><summary type="html"><![CDATA[ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。]]></summary></entry><entry><title type="html">第四次工业革命｜Cursor 体验报告</title><link href="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/" rel="alternate" type="text/html" title="第四次工业革命｜Cursor 体验报告" /><published>2025-01-20T00:00:00+08:00</published><updated>2025-01-21T21:08:31+08:00</updated><id>https://ustb-806.github.io/blogs/2025/01/cursor-experience-review</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/"><![CDATA[<p>最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。</p>
+  <p>没想到，这一试，彻底颠覆了我的认知……</p>
+  <h2 id="cursor-是什么">Cursor 是什么</h2>
+  <p>简单来说，Cursor 是一个 VSCode 的 fork 版本，但是往里面加入了非常多 AI 相关的功能，包括更智能的代码补全，集成内部的 AI 对话框，以及本篇文章的重点内容——Composer 等等。</p>
+  <p>你可能会问，这和 VSCode 自己的 Copilot 有什么区别呢？区别大着呢。</p>
+  <p>简单概括 Cursor 和 Copilot 的区别：Cursor 的代码补全，不仅是能够补全后面的代码，更重要的是能<strong>对已有的代码进行修改</strong>。并且 Cursor 的上下文不仅局限于当前文件，而是整个工作区（文件夹）内的所有文件，甚至是电脑的剪切板，甚至是之前删掉的某些内容！Cursor 就好像有记忆力一般，用的越久，就越能够明白整个项目的结构。</p>
+  <p>拿一个具体的例子来举例。</p>
+  <p>我想在博客的 i18n 文件里插入一些新写好的内容。在 Cursor 里，只需要粘贴下来，然后输入第一个 <code class="language-plaintext highlighter-rouge">"</code> 号，接下来就只需要……不停按 <code class="language-plaintext highlighter-rouge">&lt;Tab&gt;</code> 就好了：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/1.gif" alt="1" /></p>
+  <p>或者还可以调用 Cursor 的代码修改功能来实现。这个功能更适合想实现的目标比较复杂，代码补全没法直接通过上下文进行推测的情况。如果生成的有错误，还能通过代码补全自动发现并改正：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/2.gif" alt="2" /></p>
+  <p>这些都还只是小场面。</p>
+  <p>前段时间在打 OceanBase 比赛的时候，写 C++ 的大项目。C++ 的函数定义和函数实现是分别在 <code class="language-plaintext highlighter-rouge">.cpp</code> 和 <code class="language-plaintext highlighter-rouge">.h</code> 文件里的。如果想要增加一个函数的参数，就必须要在两个地方都进行修改。而且由于 C++ 继承的特性，经常会导致改了一个类的方法，就需要把他派生出来的所有类的方法都进行修改。</p>
+  <p>使用 Cursor，只需要在 <code class="language-plaintext highlighter-rouge">.h</code> 文件中增加新的参数，切换到 <code class="language-plaintext highlighter-rouge">.cpp</code> 的实现时，会自动补全，并且还会把所有这个函数的调用都增加新的参数！这让我能够剩下大量的时间，专注于处理思路问题和解决 bug，而不是处理这些苦力活。</p>
+  <p>但仅仅是这些功能的话，只是让我觉得这比 Copilot 聪明一些而已，但还不够为了他单独写一篇文章。真正让我觉得颠覆的功能是——Composer。</p>
+  <h2 id="革命性的突破composer">革命性的突破——Composer</h2>
+  <p>昨天晚上，我在 Bing 站点管理器里查看我的博客数据的时候，突然有个想法——在 GitHub workflow 弄一个脚本，每天凌晨的时候通过 Bing Url API 自动提交博客的最新 10 篇文章，这样就不会浪费每天的提交额度了。</p>
+  <p>说干就干，我立刻翻开了 Bing 提交 API 的<a href="https://www.bing.com/webmasters/url-submission-api#APIs">说明文档</a>，但是……看不懂啊！对于一个完全没有写过后端，前端也只是在折腾博客的时候照猫画虎了解了一些的人来说，不花个几个小时系统学习一下这些知识，真的完全没法做到。</p>
+  <p>正当想放弃的时候，我突然想到了 Composer。在这之前，除了新手教学以外，我还没用真正用过这个功能呢，那要不就试试吧！</p>
+  <p>Composer 是一个增强版的代码修改功能，他能够读取并修改你的整个工作区的所有文件，甚至还能根据要求新建文件，可以说这才是完全体的 Copilot。</p>
+  <p>稍微计划了一下，想要实现上述的功能，大概需要分成以下几个步骤：</p>
+  <ol>
+    <li>将 <code class="language-plaintext highlighter-rouge">/src/content/</code> 下的所有 <code class="language-plaintext highlighter-rouge">md,mdx</code> 格式的文件找出来；</li>
+    <li>按照其 <code class="language-plaintext highlighter-rouge">frontmatter</code> 里的 <code class="language-plaintext highlighter-rouge">date</code> 属性进行排序；</li>
+    <li>处理成合适的 url 链接；</li>
+    <li>通过 Bing 提交 API 进行提交。</li>
+  </ol>
+  <p>开始行动！直接开门见山，告诉他帮我找出最新的 10 篇文章：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/3.gif" alt="3" /></p>
+  <p>写得很快，但是报错了……尴尬，难道要出师未捷身先死了吗？</p>
+  <p>把错误复制给他：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/4.gif" alt="4" /></p>
+  <p>没想到，他通过项目的配置文件知道了我使用的是 ejs，一下子就解决了！有点惊叹。</p>
+  <p>那么接下来是把路径处理成 url 的格式。写了个 <code class="language-plaintext highlighter-rouge">baseUrl</code> 代表域名，让他把路径修改成网址：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/5.gif" alt="5" /></p>
+  <p>Cursor 竟然连 <code class="language-plaintext highlighter-rouge">baseUrl</code> 都自动补全了，真的震惊！</p>
+  <p>但这还不够，文章的 url 是只有年份，没有后面的月和日的，再让他继续处理：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/6.gif" alt="6" /></p>
+  <p>哎呀，又出错了，加上了年份但是没有正确去掉月和日。把错误反馈给他：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/7.gif" alt="7" /></p>
+  <p>就这么反馈给他一下他就把错误处理好了……这效率太快了。</p>
+  <p>那么现在网址处理完成了，接下来就是通过 API 给 Bing 提交。直接把刚刚 Bing 的 API 格式复制给他，让他帮我提交：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/8.gif" alt="8" /></p>
+  <p>就这么两下，实现了……我刚刚倒上的水还没喝几口呢……</p>
+  <p>但是看返回的信息好像没有成功提交？原来是今天的提交额度不够了，尴尬……那要不然改成一个一个提交，遇到限额满了就停止提交吧：</p>
+  <p><img src="https://blog-s3.bosswnx.xyz/2024-12-12-cursor-experience-review/9.gif" alt="9" /></p>
+  <p>于是就这么完成了……最后只需要生成一个 GitHub workflow 脚本，让 GitHub 每天定时自动执行就好了。当然，这也只需要一句话的事情，这里就不展示了。</p>
+  <p>就这么不到 10 分钟，Cursor 就完成了原本可能需要好几个小时甚至一两天才能实现的功能。而我甚至都不需要学会前端的各种知识，就能轻松实现。</p>
+  <p>从此，我再也不需要因为一点小小的需求，而去学习大量无关紧要的知识了。唯一要做的就是把任务进行拆分，然后依次告诉 Cursor 让他帮我实现，遇到错误了就再反馈给他就好了。我甚至不需要复制粘贴……</p>
+  <h2 id="现状与未来">现状与未来</h2>
+  <p>我敢说，Cursor 是我到目前为止，唯二觉得能算得上是生产力的 AI 工具了，另一个是 ChatGPT。Cursor 利用现在大模型庞大的知识储备，让我能够迅速补上知识层面的漏洞。从此之后我写代码，就好像战场上的指挥官，我只需要指挥，苦力基本上可以依靠 AI 来实现。</p>
+  <p>现在 Cursor 支持的最高的模型还仅仅是 claude-3.5，不敢想象如果以后能接入 o1 等更高级的模型，Cursor 的能力会发展成什么样。</p>
+  <p>其实相较于图片，视频，音乐等领域，我觉得代码生成才是大模型最能崭露头角的地方，同时也是最容易替代人工的地方。</p>
+  <p>虽然 DALL-E、Sora 等模型能生成出来很多高质量的作品，但还是被我们吐槽一眼 AI。究其原因，我觉得还是 AI 生成的过程依旧只是照猫画虎，它并不能理解图片中的各种物理规律，更别说是视频了。</p>
+  <p>而且在这种较为「艺术」的领域，我们欣赏一部作品，欣赏的是作者创作这个作品时候的想法，又或者是欣赏某个作者的特殊的风格。我会因为一部电影是诺兰导演的而特意去电影院观看，映后会和朋友讨论片中的各种细节与伏笔，感受诺兰想通过镜头转达给我们的思考。但我若是看到一部 AI 生成的电影，我只会说「哇，这个 AI 好厉害」。</p>
+  <p>但是在代码这个领域，目标只要一个——写出符合要求的代码，而这正是现在的 AI 最擅长的。</p>
+  <p>人和机器最大的不同，是<em>人有人性</em>。通俗一点来讲，就是人会有喜怒哀乐，会有爱恨情仇，会有希望梦想，会有诗和远方……这些，这是机器不具备的。但很可惜，或许是因为社会的压力，又或者是因为其他原因，有些人已经失去了这部分能力，变成了一个活着的机器了。</p>
+  ]]></content><author><name>Nelson Boss</name></author><category term="教程" /><category term="Cursor" /><category term="AI" /><summary type="html"><![CDATA[最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。]]></summary></entry><entry><title type="html">如何从零开始可视化一首音乐？</title><link href="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/" rel="alternate" type="text/html" title="如何从零开始可视化一首音乐？" /><published>2024-12-14T00:00:00+08:00</published><updated>2024-12-14T14:08:51+08:00</updated><id>https://ustb-806.github.io/blogs/2024/12/visualize-spectumn</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2024/12/visualize-spectumn/"><![CDATA[<p>最近换上了 ArchLinux，体验了众多美观的 TUI 应用。其中我认为最酷炫的当属 <code class="language-plaintext highlighter-rouge">ncmpcpp</code> 这个音乐播放器了。</p>
   <p><img src="https://blog.soulter.top/images/visualize-music/ncmpcpp_demo.gif" alt="ncmpcpp 的可视化音频效果" /></p>
   <p>日常办公时把它放在屏幕角落，就会感觉工作环境变得更有趣了。这也让我对它的实现产生了巨大的好奇心，于是我决定探索一下它是如何实现的。</p>
   <p>本文将深入底层，从音频编码开始讲起，探究 <code class="language-plaintext highlighter-rouge">wav</code> 格式的音频文件是如何被解析的，然后再讲解如何通过傅立叶变换将音频信号转换为频谱图，最后再着手实现。</p>
@@ -1694,22 +1704,4 @@ scoreboard objectives setdisplay sidebar deathCount
     <li>设计过一个或多个项目。</li>
   </ul>
   <p>拟招 5 人左右。</p>
-  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry><entry><title type="html">祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩</title><link href="https://ustb-806.github.io/news/2024/10/lxb/" rel="alternate" type="text/html" title="祝贺刁明轩、丁正枫、王雨辰在“第八届全国大学生计算机系统能力培养大赛（龙芯杯）”取得佳绩" /><published>2024-10-02T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/lxb</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/lxb/"><![CDATA[<p>全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。</p>
-  <p>第八届全国大学生计算机系统能力培养大赛（龙芯杯）分为团体赛和个人赛两项赛事。团队赛共 110 支队伍报名，个人赛共 782 人报名。经过初赛的激烈角逐，全国共有 28 支代表队和 40 位个人进入决赛。</p>
-  <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/01.jpg" alt="" />
-    决赛合影</p>
-  <p>在个人赛方面，刁明轩同学设计了基于 MIPS 指令集的 32 位单发射五级流水线 CPU。初赛中，该作品可以通过三级功能测试和性能测试，时钟频率可以稳定运行在 58MHz。现场决赛阶段，刁明轩同学顺利完成了现场汇编代码的编写，最终获得龙芯杯个人赛三等奖。</p>
-  <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/02.jpg" alt="" />
-    个人赛颁奖（左五：刁明轩）</p>
-  <p>在团队赛方面，北科队伍 tesserae of tantalus（成员：丁正枫、王雨辰、赖烁喆、张卓立）实现了一个六级流水顺序双发射的处理器软核，同时实现了分支预测，指令数据缓存，TLB 等模块，可以顺利启动经典的 bootloader 并完成指定功能。</p>
-  <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/03.jpg" alt="" />
-    团队赛决赛现场（从左到右：王雨辰、赖烁喆、丁正枫）</p>
-  <p>现场决赛阶段，经过团队指令集答题，汇编代码编写，团队答辩等环节的重重考验，最终获得全国二等奖，实现了我校在该项赛事成绩的新突破。</p>
-  <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/04.jpg" alt="" />
-    团队赛颁奖</p>
-  <p>获奖证书：</p>
-  <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/certificate1.jpg" alt="" />
-    个人赛三等奖</p>
-  <p class="text-center"><img src="https://blog-s3.806.group/post/2024/2024-10-02-lxb/certificate2.jpg" alt="" />
-    团队赛二等奖</p>
-  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="龙芯杯" /><category term="计算机系统能力大赛" /><summary type="html"><![CDATA[全国大学生计算机系统能力培养大赛（龙芯杯）是由系统能力培养研究专家组和系统能力培养示范高校共同发起，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，面向高校大学生举办的全国性大赛。]]></summary></entry></feed>
+  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry></feed>
