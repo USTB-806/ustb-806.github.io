@@ -2,7 +2,7 @@
 title: "**勤敏轩2025**：智创未来，风华正茂"
 author: "cxl"
 header:
-	overlay_image: https://blog-s3.806.group/static/news-banner.jpg
+    overlay_image: https://blog-s3.806.group/static/news-banner.jpg
 categories: ["总结"]
 tags: ["年终总结"]
 ---
