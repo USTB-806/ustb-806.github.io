@@ -1,24 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-11-03T20:23:51+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告</title><link href="https://ustb-806.github.io/news/2025/11/ACMMM/" rel="alternate" type="text/html" title="祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告" /><published>2025-11-03T00:00:00+08:00</published><updated>2025-11-03T20:21:45+08:00</updated><id>https://ustb-806.github.io/news/2025/11/ACMMM</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/ACMMM/"><![CDATA[<p>近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 <strong>ACM Multimedia 2025</strong>上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/03.png" alt="" />
-        论文首页 (全文详见 https://doi.org/10.1145/3746027.3755572)</p>
-      <p>ACMMM（ACM International Conference on Multimedia）是计算机科学领域最重要、最负盛名的多媒体旗舰会议，今年迎来了第 33 届盛会。该会议由国际计算机协会（ACM）主办，属于中国计算机学会（CCF）推荐的 A 类国际学术会议，在全球多媒体、计算机视觉、人机交互等研究领域具有极高的学术地位和影响力。ACMMM 2025 已于 2025 年 10 月 27 日 -10 月 31 日 在爱尔兰都柏林的<strong>皇家都柏林会议中心（Royal Dublin Convention Centre）</strong>成功举办。本次大会致力于整合和交流跨模态信息，重点关注人工智能、3D 与元宇宙、医疗保健、教育和娱乐等领域的创新应用，吸引了来自世界各地的顶尖学者、研究人员和行业精英，分享最新的研究成果和技术进展。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/02.jpg" alt="" />
-        陈铎友在 ACMMM2025 会议现场</p>
-      <p>陈铎友的论文聚焦于稀疏视角 CT 重建这一重要的医学影像技术难题。他指出，计算机断层扫描（CT）虽然是临床广泛使用的影像模态，但传统的密集采集方式存在扫描时间长和辐射暴露量大的挑战，而稀疏视角 CT 重建技术旨在利用少量 X 射线投影图像高效准确地恢复三维 CT 图像，从而降低成本和风险。研究团队发现，现有基于扩散模型（如 Latent Diffusion Model, LDM）的重建方法，在处理 2D X 射线投影的潜在表示与 3D CT 图像的潜在表示时，难以有效对齐这两种模态的潜在空间。针对该问题，论文提出了一致性潜在空间扩散模型（Consistent Latent Space Diffusion Model, CLS-DM），并创新性地引入了<strong>跨模态特征对比学习（cross-modal feature contrastive learning）</strong>机制，成功解决了 2D 和 3D 潜在空间的不一致性问题，显著提升了稀疏视角下 CT 图像三维重建的质量和效率。</p>
-      <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/01.jpg" alt="" />
-        陈铎友在进行现场汇报（爱尔兰都柏林皇家会议中心）</p>
-      <p>陈铎友已成功参加了 ACMMM 2025 线下会议，并在国际同行面前展示和解读了其研究成果。现场报告是对研究工作的专业认可，也是与全球多媒体领域专家学者进行深入交流、拓展学术视野的绝佳平台。附图中，我们看到陈铎友同学在会议宣传板前的合影，以及他在会议现场进行报告的精彩瞬间。本次论文的成功发表和现场汇报，是团队在多媒体研究领域的重要一步。</p>
-      ]]></content><author><name>USTB-806</name></author><category term="学术会议" /><category term="人工智能部" /><category term="ACMMM" /><summary type="html"><![CDATA[近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 ACM Multimedia 2025上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。]]></summary></entry><entry><title type="html">祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩</title><link href="https://ustb-806.github.io/news/2025/05/asc/" rel="alternate" type="text/html" title="祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩" /><published>2025-05-27T00:00:00+08:00</published><updated>2025-05-27T21:46:01+08:00</updated><id>https://ustb-806.github.io/news/2025/05/asc</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/05/asc/"><![CDATA[<p>ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。</p>
-    <p>近日，2025ASC 世界大学生超级计算机竞赛（ASC25）顺利结束，本届赛事聚焦”AI for Science”前沿领域，首创性将 AlphaFold3 蛋白质预测（2024 诺贝尔化学奖）与 mRNA 疫苗 RNA 修饰技术（2023 诺贝尔医学奖）转化为核心赛题，构建”计算生物学 - 人工智能 - 超算系统”融合竞技平台。</p>
-    <p>在为期两个月的预赛中，我校团队在 4000 瓦功耗约束下自行设计超级计算机系统，完成了 HPL、HPCG 基准测试优化、AlphaFold3 蛋白质结构预测推理加速及 RNA m5C 修饰位点检测等核心任务。来自全球的 300 余支队伍经过激烈角逐，最终，浙江大学、北京大学、清华大学等 25 支队伍脱颖而出获得一等奖。我校 ASC889 队、ASC1172 队、ASC888 队分别以第 28 名、第 31 名、第 78 名的成绩荣获二等奖，与我校代表队同获二等奖的还有来自电子科技大学等高校代表队。</p>
-    <p>ASC1172 队刁明轩在 RNA m5C 检测赛题中，完成了从原始测序数据到高置信度 m5C 位点检测的全流程复现与优化。通过整合 Snakemake 工作流，基于 Conda 封装 hisat3n、samtools 等工具链，解决了参考基因组 C→T 索引构建、多步骤并行参数配置等关键问题，成功复现流程并验证初始结果。</p>
-    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/01.jpg" alt="" />
-      ASC1172 队伍合照（右一：刁明轩）</p>
-    <p>ASC889 队在 AlphaFold3 推理优化上，主要通过软件层面的算法加速技术提升计算效率。通过采用 Flashattention2 优化注意力机制的计算路径，降低显存占用并加速矩阵运算；结合 DPM-Solver 改进扩散过程求解器的数值稳定性，减少迭代次数；同时实现了从 GPU 到 CPU 上的迁移，并启用了持久缓存优化。通过严格的测试和优化流程，最终在保障结构预测精度的前提下压缩了计算耗时。</p>
-    <p>对于 m5C 修饰点检测，通过采用并行压缩、精细化线程分配及过滤条件调整，减少 I/O 瓶颈与计算负载。同时采取分治并行合并策略、惰性求值及向量化计算等优化数据读写与内存管理，综合实现性能提升。</p>
-    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/02.jpg" alt="" />
-      ASC889 队伍合照（从左至右，中间三位：刘彦甫、唐学彬、刘畅）</p>
-    ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="超算" /><summary type="html"><![CDATA[ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。]]></summary></entry><entry><title type="html">第四次工业革命｜Cursor 体验报告</title><link href="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/" rel="alternate" type="text/html" title="第四次工业革命｜Cursor 体验报告" /><published>2025-01-20T00:00:00+08:00</published><updated>2025-01-21T21:08:31+08:00</updated><id>https://ustb-806.github.io/blogs/2025/01/cursor-experience-review</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/"><![CDATA[<p>最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-11-26T12:15:04+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺！Soulter 主导开发的开源项目 AstrBot 获 GitHub 1.3w+ Star 并引领 Agent 开发新范式</title><link href="https://ustb-806.github.io/news/2025/11/astrbot/" rel="alternate" type="text/html" title="祝贺！Soulter 主导开发的开源项目 AstrBot 获 GitHub 1.3w+ Star 并引领 Agent 开发新范式" /><published>2025-11-26T00:00:00+08:00</published><updated>2025-11-26T12:13:34+08:00</updated><id>https://ustb-806.github.io/news/2025/11/astrbot</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/astrbot/"><![CDATA[<p>近日，Soulter 主导开发的开源大模型应用 AstrBot 在开源社区取得重大影响力突破。截至目前，该项目在 GitHub 上已获得超过 13,600 颗 Star，Forks 数突破 1,000，Docker 拉取次数超过 193,000 次，成为了连接大语言模型（LLM）与即时通讯（IM）平台领域的标杆性基础设施。
+        <img src="https://blog-s3.806.group/post/2025-11-25-astrbot/01.png" alt="" /></p>
+      <p><strong>项目介绍</strong>
+        AstrBot (Agentic IM ChatBot Infrastructure) 是一个功能强大的多平台大模型机器人基础设施。该项目旨在为开发者和研究人员提供一个高可扩展的 Agent 开发框架，支持将 OpenAI、Gemini、DeepSeek 等前沿大模型无缝接入到 QQ、企业微信、Telegram、Discord、飞书、钉钉等主流即时通讯软件中。
+        与传统的问答机器人不同，AstrBot 引入了 Agentic（智能体）能力，支持多轮工具调用、内置代码执行沙盒、原生 RAG（检索增强生成）知识库以及多模态交互。这使得机器人不仅能进行对话，更能自主完成复杂的任务流，真正实现了从“聊天”到“办事”的跨越。
+        <img src="https://blog-s3.806.group/post/2025-11-25-astrbot/02.png" alt="" /></p>
+      <p><strong>社区影响力与技术贡献</strong>
+        自发布以来，AstrBot 凭借其优秀的架构设计和活跃的开源社区，迅速成长为 LLM 应用落地的重要工具。
+        • 广泛的生态支持：社区已贡献超过 660+ 个插件，涵盖了从效率工具到娱乐互动的多种场景。
+        • 高活跃度：项目 7 日活跃部署实例数超过 7,600+，7 日活跃交互用户数突破 110,000+，证明了其在实际生产环境中的可靠性。
+        • 技术兼容性：全面支持 Dify、Coze 等 LLMOps 平台，兼容多种部署方式（Docker, Windows, 宝塔等），极大地降低了 AI 应用的开发与部署门槛。
+        Soulter 同学在项目开发过程中，展现了出色的全栈工程能力与开源社区运营能力，为大模型应用在即时通讯场景下的普及做出了重要贡献。
+        相关链接
+        • 项目主页：https://astrbot.app/
+        • 代码仓库：https://github.com/AstrBotDevs/AstrBot
+        再次祝贺 Soulter 同学取得的优异成绩！希望实验室全体成员继续秉持开源精神，在人工智能与软件工程领域探索更多可能。</p>
+      ]]></content><author><name>USTB-806</name></author><category term="开源项目" /><category term="开发部" /><category term="AstrBot" /><summary type="html"><![CDATA[近日，Soulter 主导开发的开源大模型应用 AstrBot 在开源社区取得重大影响力突破。截至目前，该项目在 GitHub 上已获得超过 13,600 颗 Star，Forks 数突破 1,000，Docker 拉取次数超过 193,000 次，成为了连接大语言模型（LLM）与即时通讯（IM）平台领域的标杆性基础设施。]]></summary></entry><entry><title type="html">祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告</title><link href="https://ustb-806.github.io/news/2025/11/ACMMM/" rel="alternate" type="text/html" title="祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告" /><published>2025-11-03T00:00:00+08:00</published><updated>2025-11-03T20:21:45+08:00</updated><id>https://ustb-806.github.io/news/2025/11/ACMMM</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/ACMMM/"><![CDATA[<p>近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 <strong>ACM Multimedia 2025</strong>上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/03.png" alt="" />
+      论文首页 (全文详见 https://doi.org/10.1145/3746027.3755572)</p>
+    <p>ACMMM（ACM International Conference on Multimedia）是计算机科学领域最重要、最负盛名的多媒体旗舰会议，今年迎来了第 33 届盛会。该会议由国际计算机协会（ACM）主办，属于中国计算机学会（CCF）推荐的 A 类国际学术会议，在全球多媒体、计算机视觉、人机交互等研究领域具有极高的学术地位和影响力。ACMMM 2025 已于 2025 年 10 月 27 日 -10 月 31 日 在爱尔兰都柏林的<strong>皇家都柏林会议中心（Royal Dublin Convention Centre）</strong>成功举办。本次大会致力于整合和交流跨模态信息，重点关注人工智能、3D 与元宇宙、医疗保健、教育和娱乐等领域的创新应用，吸引了来自世界各地的顶尖学者、研究人员和行业精英，分享最新的研究成果和技术进展。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/02.jpg" alt="" />
+      陈铎友在 ACMMM2025 会议现场</p>
+    <p>陈铎友的论文聚焦于稀疏视角 CT 重建这一重要的医学影像技术难题。他指出，计算机断层扫描（CT）虽然是临床广泛使用的影像模态，但传统的密集采集方式存在扫描时间长和辐射暴露量大的挑战，而稀疏视角 CT 重建技术旨在利用少量 X 射线投影图像高效准确地恢复三维 CT 图像，从而降低成本和风险。研究团队发现，现有基于扩散模型（如 Latent Diffusion Model, LDM）的重建方法，在处理 2D X 射线投影的潜在表示与 3D CT 图像的潜在表示时，难以有效对齐这两种模态的潜在空间。针对该问题，论文提出了一致性潜在空间扩散模型（Consistent Latent Space Diffusion Model, CLS-DM），并创新性地引入了<strong>跨模态特征对比学习（cross-modal feature contrastive learning）</strong>机制，成功解决了 2D 和 3D 潜在空间的不一致性问题，显著提升了稀疏视角下 CT 图像三维重建的质量和效率。</p>
+    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/01.jpg" alt="" />
+      陈铎友在进行现场汇报（爱尔兰都柏林皇家会议中心）</p>
+    <p>陈铎友已成功参加了 ACMMM 2025 线下会议，并在国际同行面前展示和解读了其研究成果。现场报告是对研究工作的专业认可，也是与全球多媒体领域专家学者进行深入交流、拓展学术视野的绝佳平台。附图中，我们看到陈铎友同学在会议宣传板前的合影，以及他在会议现场进行报告的精彩瞬间。本次论文的成功发表和现场汇报，是团队在多媒体研究领域的重要一步。</p>
+    ]]></content><author><name>USTB-806</name></author><category term="学术会议" /><category term="人工智能部" /><category term="ACMMM" /><summary type="html"><![CDATA[近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 ACM Multimedia 2025上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。]]></summary></entry><entry><title type="html">祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩</title><link href="https://ustb-806.github.io/news/2025/05/asc/" rel="alternate" type="text/html" title="祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩" /><published>2025-05-27T00:00:00+08:00</published><updated>2025-05-27T21:46:01+08:00</updated><id>https://ustb-806.github.io/news/2025/05/asc</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/05/asc/"><![CDATA[<p>ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。</p>
+  <p>近日，2025ASC 世界大学生超级计算机竞赛（ASC25）顺利结束，本届赛事聚焦”AI for Science”前沿领域，首创性将 AlphaFold3 蛋白质预测（2024 诺贝尔化学奖）与 mRNA 疫苗 RNA 修饰技术（2023 诺贝尔医学奖）转化为核心赛题，构建”计算生物学 - 人工智能 - 超算系统”融合竞技平台。</p>
+  <p>在为期两个月的预赛中，我校团队在 4000 瓦功耗约束下自行设计超级计算机系统，完成了 HPL、HPCG 基准测试优化、AlphaFold3 蛋白质结构预测推理加速及 RNA m5C 修饰位点检测等核心任务。来自全球的 300 余支队伍经过激烈角逐，最终，浙江大学、北京大学、清华大学等 25 支队伍脱颖而出获得一等奖。我校 ASC889 队、ASC1172 队、ASC888 队分别以第 28 名、第 31 名、第 78 名的成绩荣获二等奖，与我校代表队同获二等奖的还有来自电子科技大学等高校代表队。</p>
+  <p>ASC1172 队刁明轩在 RNA m5C 检测赛题中，完成了从原始测序数据到高置信度 m5C 位点检测的全流程复现与优化。通过整合 Snakemake 工作流，基于 Conda 封装 hisat3n、samtools 等工具链，解决了参考基因组 C→T 索引构建、多步骤并行参数配置等关键问题，成功复现流程并验证初始结果。</p>
+  <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/01.jpg" alt="" />
+    ASC1172 队伍合照（右一：刁明轩）</p>
+  <p>ASC889 队在 AlphaFold3 推理优化上，主要通过软件层面的算法加速技术提升计算效率。通过采用 Flashattention2 优化注意力机制的计算路径，降低显存占用并加速矩阵运算；结合 DPM-Solver 改进扩散过程求解器的数值稳定性，减少迭代次数；同时实现了从 GPU 到 CPU 上的迁移，并启用了持久缓存优化。通过严格的测试和优化流程，最终在保障结构预测精度的前提下压缩了计算耗时。</p>
+  <p>对于 m5C 修饰点检测，通过采用并行压缩、精细化线程分配及过滤条件调整，减少 I/O 瓶颈与计算负载。同时采取分治并行合并策略、惰性求值及向量化计算等优化数据读写与内存管理，综合实现性能提升。</p>
+  <p class="text-center"><img src="https://blog-s3.806.group/post/2025-05-27-asc/02.jpg" alt="" />
+    ASC889 队伍合照（从左至右，中间三位：刘彦甫、唐学彬、刘畅）</p>
+  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="系统部" /><category term="超算" /><summary type="html"><![CDATA[ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。]]></summary></entry><entry><title type="html">第四次工业革命｜Cursor 体验报告</title><link href="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/" rel="alternate" type="text/html" title="第四次工业革命｜Cursor 体验报告" /><published>2025-01-20T00:00:00+08:00</published><updated>2025-01-21T21:08:31+08:00</updated><id>https://ustb-806.github.io/blogs/2025/01/cursor-experience-review</id><content type="html" xml:base="https://ustb-806.github.io/blogs/2025/01/cursor-experience-review/"><![CDATA[<p>最开始听说 Cursor 这个工具的时候，是在知乎的某个回答里。当时以为这又是一个借着 AI 的热度，套了个 VSCode 的壳的圈钱软件，但当某一天在一次 OpenAI 的发布会上看到展示的员工也用 Cursor 的时后，我才改变了这个鲁莽的想法，决定亲自试一试。毕竟能让世界顶级大厂的人都愿意使用，那肯定是有他的过人之处。</p>
   <p>没想到，这一试，彻底颠覆了我的认知……</p>
   <h2 id="cursor-是什么">Cursor 是什么</h2>
   <p>简单来说，Cursor 是一个 VSCode 的 fork 版本，但是往里面加入了非常多 AI 相关的功能，包括更智能的代码补全，集成内部的 AI 对话框，以及本篇文章的重点内容——Composer 等等。</p>
@@ -1580,128 +1596,4 @@ scoreboard objectives setdisplay sidebar deathCount
   <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
   <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
   <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
-  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry><entry><title type="html">806 实验室 2024 届招新</title><link href="https://ustb-806.github.io/news/2024/10/recruitment/" rel="alternate" type="text/html" title="806 实验室 2024 届招新" /><published>2024-10-08T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment/"><![CDATA[<p>806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为<strong>北京时间 2024 年 10 月 25 日 23:59</strong>。</p>
-  <h2 id="报名方式">报名方式</h2>
-  <p>按照以下格式发送邮件到 <a href="/wiki/806/contact/">806 官方邮箱</a>：</p>
-  <ul>
-    <li>主题：<code class="language-plaintext highlighter-rouge">2024招新-&lt;报名的部门&gt;-&lt;学号&gt;-&lt;姓名&gt;</code>；（报名人工智能部仅需填写<code class="language-plaintext highlighter-rouge">人工智能部</code>）
-      <ul>
-        <li>举例：<code class="language-plaintext highlighter-rouge">2024招新-系统部-U1234567-张三</code>；</li>
-        <li><strong>注意：请严格按照格式填写主题，否则我们可能无法收到邮件</strong>；</li>
-      </ul>
-    </li>
-    <li>正文：若报名人工智能部，请在此告知报名的小组；</li>
-    <li>附件：个人简历（必须，<strong>pdf 格式</strong>，内容任意），其他能够证明个人能力的内容（可选）。</li>
-  </ul>
-  <p>我们会不定期查看邮件。若我们成功收到了你的邮件，并且你通过了简历筛选，我们会回复一封邮件以告知面试地点和时间。</p>
-  <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-  <p>若对本次招新有任何疑问，请邮件询问 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>。</p>
-  <h2 id="各部门招新介绍">各部门招新介绍</h2>
-  <h3 id="系统部">系统部</h3>
-  <p>系统部是 806 实验室历史最为悠久的部门，专注于计算机系统能力的培养，鼓励督促成员参加高水平系统能力竞赛，如龙芯杯、系统能力大赛等，部内多届成员均参与竞赛，超过一半人在系统能力大赛中获得国家级奖项。</p>
-  <p>系统部的成果丰富，曾多次在操作系统赛、编译系统赛、ICPC 等计算机顶级赛事获国家级奖项，今年还首次在龙芯杯获得国二，为我校实现了从零到一的突破。毕业学长学姐均前往北京大学、北京航空航天大学、南京大学、中科院计算所、中科院软件所等顶级高校深造，或是前往百度、腾讯等大厂工作。</p>
-  <p>系统部根据传统 CS 的主要方向，分为 OS 组、CPU 组、编译组、数据库组，每个方向均由相关学长学姐指导，积累了丰富的学习资料和比赛经验，欢迎在对应领域有兴趣、有研究的同学加入。</p>
-  <p>我们希望你：</p>
-  <ul>
-    <li>基础扎实：对 C/C++、Rust 或是 Verilog 语言有扎实的基础；</li>
-    <li>目标明确：对于传统 CS 中的领域有强烈的兴趣，希望提升系统能力；</li>
-    <li>吃苦耐劳，脚踏实地：参与系统能力大赛需要至少 6 个月的持续投入和努力，牺牲大部分假期时间（寒暑假），且短期没有正反馈；</li>
-    <li>自我审视：对于自己的所感兴趣的方向有一定的了解，自己不会在探索中半途而废；</li>
-    <li>不卷加权：加权成绩固然重要，但是对于第一名和第二名的固执没有意义。</li>
-  </ul>
-  <p>拟招 5 人左右。</p>
-  <h3 id="人工智能部">人工智能部</h3>
-  <p>人工智能部致力于聚集热爱 AI 的同学，打造优质的 AI 技术学习和开发社群，一起探索 AI 算法竞赛，开发构建好玩的 AIGC 应用。</p>
-  <p>为了更好的推进和管理人工智能部的学习和项目开发，下设算法组、AIGC 组和网络组。</p>
-  <h4 id="算法组">算法组</h4>
-  <p>算法组的目标是：</p>
-  <ul>
-    <li>一起交流和探索 AI 算法竞赛，如 Kaggle 奖金池 $60000 的竞赛；</li>
-    <li>一起提升算法设计能力，推荐加入本外校的实习项目组；</li>
-    <li>论文产出。</li>
-  </ul>
-  <p>我们希望你：</p>
-  <ul>
-    <li>有较好的编程基础和逻辑能力；</li>
-    <li>对 AI 算法的探究有浓厚的兴趣；</li>
-    <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
-  </ul>
-  <p>加分项：</p>
-  <ul>
-    <li>熟悉 Python 编程；</li>
-    <li>对传统的 CNN，RNN，transformer 模型等有了解；</li>
-    <li>有深度学习相关的项目开发经验；</li>
-    <li>有输出技术博客的习惯。</li>
-  </ul>
-  <p>拟招 4 人左右。</p>
-  <h4 id="aigc-组">AIGC 组</h4>
-  <p>AIGC 组的目标是：</p>
-  <ul>
-    <li>学习开发和维护 AI 应用的传统项目，并产出和维护工程文档，申请软著等；</li>
-    <li>了解最新 AI 行业动态，学习大模型、Stable Diffusion、Midjourney 等成熟的 AIGC 项目的迁移和开发；</li>
-    <li>参与一些热门 github 项目的开发和维护。</li>
-  </ul>
-  <p>我们希望你：</p>
-  <ul>
-    <li>对 AIGC 应用有了解；</li>
-    <li>使用过常见的 AIGC 应用，例如各类生成式模型软件，图片生成、音视频生成等；</li>
-    <li>对 AIGC 应用部署和开发有浓厚的兴趣；</li>
-    <li>每周投入时间进行学习、交流，愿意参加定期的组会汇报。</li>
-  </ul>
-  <p>加分项：</p>
-  <ul>
-    <li>熟悉 Python 编程；</li>
-    <li>有 AI 应用插件的开发经验；</li>
-    <li>有 AI 应用相关的项目和比赛经验；</li>
-  </ul>
-  <p>拟招 3 人左右。</p>
-  <h4 id="网络组">网络组</h4>
-  <p>网络组的目标是：针对新一代网络架构（如软件定义网络 SDN、知识定义网络 KDN 等），通过图神经网络（GNN）、深度强化学习（DRL）、迁移学习（Transfer Learning）等方法，预测网络性能指标、改进网络路由算法、对网络传输进行建模。</p>
-  <p>要求：</p>
-  <ul>
-    <li>大一或大二同学，时间能够保证，能按要求完成实验任务；</li>
-    <li>熟练掌握 Python、C++ 编程语言，能够阅读并修改代码；</li>
-    <li>有 Linux 基础，完成各种环境搭建；</li>
-    <li>对网络仿真有一定了解；</li>
-    <li>有一定的英文阅读能力，能阅读全英论文；</li>
-    <li>有责任心，愿意参与科研项目，对网络研究方向有极大的兴趣。</li>
-  </ul>
-  <p>拟招 5 人左右。</p>
-  <h3 id="游戏部">游戏部</h3>
-  <blockquote>
-    <p>本座乃游戏之神，以电子游戏入道成为三界第一强者，无奈遭人暗算被关进昊天塔三万年，为了拿到赤地女子的元神解封我族十万将士，准备假意与她成婚，没想到本座的小尾巴兰花仙子跟过来了，各种拈酸吃醋差点坏我大事，只能想个计策稳住她，来个人类加入 806 游戏组，做个游戏给她玩，共谋本座游戏复兴大业！</p>
-  </blockquote>
-  <p>你能学到什么：Unity，C#。</p>
-  <p>你需要做什么：能认真学习 Unity，能按时参与工作室每周的组会，能每个月<strong>与团队一起从零开始完成一个游戏 DEMO</strong>。</p>
-  <p>你能得到什么：与团队一起参与竞赛，获取相关经历、经验，获取一些实习机会。</p>
-  <p>我们对你的需求是：有基本的编程能力、学习能力。</p>
-  <p>加分项：</p>
-  <ul>
-    <li>具有游戏开发相关经验，如使用过 Unity，UE，Godot 或其它游戏引擎；</li>
-    <li>了解游戏设计，如知悉各类游戏的基本特征、游戏机制及如何实现等；</li>
-    <li>具有电子绘画能力，如绘制角色帧动画、立绘，游戏内场景、UI 的能力；</li>
-  </ul>
-  <p>拟招 5 人左右。</p>
-  <h3 id="开发部">开发部</h3>
-  <p>806 开发部欢迎对 Android、iOS 客户端、前后端开发、嵌入式开发、AIGC 等应用层领域感兴趣的同学加入。</p>
-  <p>我们提供出色和领先的硬件和空间资源。在这里，你将有机会释放你的想象力，设计并实现一个或多个有趣且实用的项目。这些项目可以成为实验室、学校或开源社区的宝贵贡献，并且你还可以将它们用于参加创新和创业竞赛。</p>
-  <p>开发部的目标是：</p>
-  <ul>
-    <li>学习开发和维护传统项目，并产出和维护工程文档，申请软著等；</li>
-    <li>参与一些热门 GitHub 项目的开发和维护；</li>
-  </ul>
-  <p>我们希望你：</p>
-  <ul>
-    <li>对上述领域任一项或多项感兴趣；</li>
-    <li>有 Python/Java/GoLang/JS 或其他语言中的一个或多个的开发经验。</li>
-  </ul>
-  <p>加分项：</p>
-  <ul>
-    <li>有开源项目，对开源感兴趣；</li>
-    <li>接触过一个或多个常见的前后端框架，如 Gin、Flask、FastAPI、SpringBoot、Vue、React；</li>
-    <li>有嵌入式开发经验，如 Arduino、树莓派、ESP32 等；</li>
-    <li>有技术博客输出的习惯；</li>
-    <li>设计过一个或多个项目。</li>
-  </ul>
-  <p>拟招 5 人左右。</p>
-  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[806 实验室从即日起开始 2024 届招新，共四个部门：系统部、人工智能部、游戏部、开发部。报名截止时间为北京时间 2024 年 10 月 25 日 23:59。]]></summary></entry></feed>
+  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry></feed>
