@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-11-26T12:31:31+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺！806 成员开发的开源项目 AstrBot 获 GitHub 1.3w+ Star 并引领 Agent 开发新范式</title><link href="https://ustb-806.github.io/news/2025/11/astrbot/" rel="alternate" type="text/html" title="祝贺！806 成员开发的开源项目 AstrBot 获 GitHub 1.3w+ Star 并引领 Agent 开发新范式" /><published>2025-11-26T00:00:00+08:00</published><updated>2025-11-26T12:29:58+08:00</updated><id>https://ustb-806.github.io/news/2025/11/astrbot</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/astrbot/"><![CDATA[<p>近日，806 成员开发的开源大模型应用 AstrBot 在开源社区取得重大影响力突破。截至目前，该项目在 GitHub 上已获得超过 13,600 颗 Star，Forks 数突破 1,000，Docker 拉取次数超过 193,000 次，成为了连接大语言模型（LLM）与即时通讯（IM）平台领域的标杆性基础设施。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://ustb-806.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ustb-806.github.io/" rel="alternate" type="text/html" /><updated>2025-11-26T14:02:52+08:00</updated><id>https://ustb-806.github.io/feed.xml</id><title type="html">806 @ USTB</title><subtitle>北京科技大学「勤敏轩」学生创新实验室</subtitle><author><name>USTB-806</name></author><entry><title type="html">祝贺！806 成员开发的开源项目 AstrBot 获 GitHub 1.3w+ Star 并引领 Agent 开发新范式</title><link href="https://ustb-806.github.io/news/2025/11/astrbot/" rel="alternate" type="text/html" title="祝贺！806 成员开发的开源项目 AstrBot 获 GitHub 1.3w+ Star 并引领 Agent 开发新范式" /><published>2025-11-26T00:00:00+08:00</published><updated>2025-11-26T12:29:58+08:00</updated><id>https://ustb-806.github.io/news/2025/11/astrbot</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/astrbot/"><![CDATA[<p>近日，806 成员开发的开源大模型应用 AstrBot 在开源社区取得重大影响力突破。截至目前，该项目在 GitHub 上已获得超过 13,600 颗 Star，Forks 数突破 1,000，Docker 拉取次数超过 193,000 次，成为了连接大语言模型（LLM）与即时通讯（IM）平台领域的标杆性基础设施。
         <img src="https://blog-s3.806.group/post/2025-11-25-AstrBot/01.png" alt="" /></p>
       <p><strong>项目介绍</strong>
         AstrBot (Agentic IM ChatBot Infrastructure) 是一个功能强大的多平台大模型机器人基础设施。该项目旨在为开发者和研究人员提供一个高可扩展的 Agent 开发框架，支持将 OpenAI、Gemini、DeepSeek 等前沿大模型无缝接入到 QQ、企业微信、Telegram、Discord、飞书、钉钉等主流即时通讯软件中。
@@ -14,17 +14,38 @@
         • 项目主页：https://astrbot.app/
         • 代码仓库：https://github.com/AstrBotDevs/AstrBot
         再次祝贺 Soulter 同学取得的优异成绩！希望实验室全体成员继续秉持开源精神，在人工智能与软件工程领域探索更多可能。</p>
-      ]]></content><author><name>USTB-806</name></author><category term="开源项目" /><category term="开发部" /><category term="AstrBot" /><summary type="html"><![CDATA[近日，806 成员开发的开源大模型应用 AstrBot 在开源社区取得重大影响力突破。截至目前，该项目在 GitHub 上已获得超过 13,600 颗 Star，Forks 数突破 1,000，Docker 拉取次数超过 193,000 次，成为了连接大语言模型（LLM）与即时通讯（IM）平台领域的标杆性基础设施。]]></summary></entry><entry><title type="html">祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告</title><link href="https://ustb-806.github.io/news/2025/11/ACMMM/" rel="alternate" type="text/html" title="祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告" /><published>2025-11-03T00:00:00+08:00</published><updated>2025-11-03T20:21:45+08:00</updated><id>https://ustb-806.github.io/news/2025/11/ACMMM</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/ACMMM/"><![CDATA[<p>近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 <strong>ACM Multimedia 2025</strong>上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。</p>
-    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/03.png" alt="" />
-      论文首页 (全文详见 https://doi.org/10.1145/3746027.3755572)</p>
-    <p>ACMMM（ACM International Conference on Multimedia）是计算机科学领域最重要、最负盛名的多媒体旗舰会议，今年迎来了第 33 届盛会。该会议由国际计算机协会（ACM）主办，属于中国计算机学会（CCF）推荐的 A 类国际学术会议，在全球多媒体、计算机视觉、人机交互等研究领域具有极高的学术地位和影响力。ACMMM 2025 已于 2025 年 10 月 27 日 -10 月 31 日 在爱尔兰都柏林的<strong>皇家都柏林会议中心（Royal Dublin Convention Centre）</strong>成功举办。本次大会致力于整合和交流跨模态信息，重点关注人工智能、3D 与元宇宙、医疗保健、教育和娱乐等领域的创新应用，吸引了来自世界各地的顶尖学者、研究人员和行业精英，分享最新的研究成果和技术进展。</p>
-    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/02.jpg" alt="" />
-      陈铎友在 ACMMM2025 会议现场</p>
-    <p>陈铎友的论文聚焦于稀疏视角 CT 重建这一重要的医学影像技术难题。他指出，计算机断层扫描（CT）虽然是临床广泛使用的影像模态，但传统的密集采集方式存在扫描时间长和辐射暴露量大的挑战，而稀疏视角 CT 重建技术旨在利用少量 X 射线投影图像高效准确地恢复三维 CT 图像，从而降低成本和风险。研究团队发现，现有基于扩散模型（如 Latent Diffusion Model, LDM）的重建方法，在处理 2D X 射线投影的潜在表示与 3D CT 图像的潜在表示时，难以有效对齐这两种模态的潜在空间。针对该问题，论文提出了一致性潜在空间扩散模型（Consistent Latent Space Diffusion Model, CLS-DM），并创新性地引入了<strong>跨模态特征对比学习（cross-modal feature contrastive learning）</strong>机制，成功解决了 2D 和 3D 潜在空间的不一致性问题，显著提升了稀疏视角下 CT 图像三维重建的质量和效率。</p>
-    <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/01.jpg" alt="" />
-      陈铎友在进行现场汇报（爱尔兰都柏林皇家会议中心）</p>
-    <p>陈铎友已成功参加了 ACMMM 2025 线下会议，并在国际同行面前展示和解读了其研究成果。现场报告是对研究工作的专业认可，也是与全球多媒体领域专家学者进行深入交流、拓展学术视野的绝佳平台。附图中，我们看到陈铎友同学在会议宣传板前的合影，以及他在会议现场进行报告的精彩瞬间。本次论文的成功发表和现场汇报，是团队在多媒体研究领域的重要一步。</p>
-    ]]></content><author><name>USTB-806</name></author><category term="学术会议" /><category term="人工智能部" /><category term="ACMMM" /><summary type="html"><![CDATA[近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 ACM Multimedia 2025上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。]]></summary></entry><entry><title type="html">祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩</title><link href="https://ustb-806.github.io/news/2025/05/asc/" rel="alternate" type="text/html" title="祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩" /><published>2025-05-27T00:00:00+08:00</published><updated>2025-05-27T21:46:01+08:00</updated><id>https://ustb-806.github.io/news/2025/05/asc</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/05/asc/"><![CDATA[<p>ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。</p>
+      ]]></content><author><name>USTB-806</name></author><category term="开源项目" /><category term="开发部" /><category term="AstrBot" /><summary type="html"><![CDATA[近日，806 成员开发的开源大模型应用 AstrBot 在开源社区取得重大影响力突破。截至目前，该项目在 GitHub 上已获得超过 13,600 颗 Star，Forks 数突破 1,000，Docker 拉取次数超过 193,000 次，成为了连接大语言模型（LLM）与即时通讯（IM）平台领域的标杆性基础设施。]]></summary></entry><entry><title type="html">**勤敏轩 2025**：智创未来，风华正茂</title><link href="https://ustb-806.github.io/news/2025/11/annual-review/" rel="alternate" type="text/html" title="**勤敏轩 2025**：智创未来，风华正茂" /><published>2025-11-25T00:00:00+08:00</published><updated>2025-11-26T14:01:27+08:00</updated><id>https://ustb-806.github.io/news/2025/11/annual-review</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/annual-review/"><![CDATA[<p>2025 年，勤敏轩学生创新实验室（806 实验室）在技术探索与创新实践的道路上步履不停，以坚实的成果与蓬勃的朝气，书写了一页页属于集体的荣耀篇章。实验室继续以学科竞赛与创新创业为核心，依托系统部、人工智能部、开发部、网络组等多部门协同发力，在国家级竞赛、学术研究、技术转化与人才培养等方面取得全面突破。</p>
+    <h2 id="一竞赛赛场锋芒尽显">一、竞赛赛场，锋芒尽显</h2>
+    <p>2025 年，实验室成员在国内外多项高水平赛事中屡创佳绩，共获国家级奖项 17 项、省部级奖项 29 项，覆盖人工智能、程序设计、系统设计、数学建模、创新创业等多个领域，展现出全面的技术实力与创新活力。
+      • 人工智能部在“挑战杯”青聚 AI 专项赛中包揽特等、一等、二等奖，张灿同学荣获美国大学生数学建模大赛 M 奖，陈铎友、张灿等在中国大学生计算机设计大赛、中国国际大学生创新大赛中屡获省部级荣誉；
+      • 系统部在计算机系统能力大赛、集成电路设计赛、OceanBase 数据库大赛中表现突出，刘畅、代宏利、吴函霖等同学斩获多项国家级与省部级奖项；
+      • 开发部在华北五省计算机应用大赛、计算机设计大赛、挑战杯社会治理专项赛中均有亮眼表现，黄钰腾、方正、唐志星等同学协作攻坚，屡获省市级奖励；
+      • 网络组唐学彬同学在第十届网络技术挑战赛总决赛中荣获国家级三等奖，并在多项通信与工程类赛事中稳扎稳打，积累实战经验。</p>
+    <h2 id="二学术科研立足前沿">二、学术科研，立足前沿</h2>
+    <p>在学术研究方面，实验室成员持续深耕，成果丰硕。本年度共发表论文 3 篇，其中 A 类国际会议论文 2 篇（ACMMM 2025、CVPR 2025），《工程科学学报》论文 1 篇，研究方向涵盖稀疏视图 CT 重建、小样本脑血管分割、视觉 - 语言模型空间感知等前沿领域。此外，还有 2 篇论文在投，展现出持续的科研生命力。在技术转化方面，申请发明专利“一种 QoS 路由优化方法、系统、计算机及可读存储介质”，体现了实验室从理论到实践的闭环能力。</p>
+    <h2 id="三保研捷报星光璀璨">三、保研捷报，星光璀璨</h2>
+    <p>在学业发展方面，806 实验室 2025 届毕业生再传喜讯。同学们凭借扎实的专业基础、丰富的项目经历与竞赛成果，成功保研至多所国内顶尖高校，其中包括：
+      • 清华大学（1 人）
+      • 中国科学院大学（5 人）
+      • 北京科技大学（2 人）
+      • 北京邮电大学（1 人）
+      这一成绩不仅是对同学们个人能力的认可，也是实验室人才培养机制成效的有力证明。</p>
+    <h2 id="四团队协作共筑生态">四、团队协作，共筑生态</h2>
+    <p>806 实验室始终注重团队文化与技术生态的构建。各部门之间在项目开发、竞赛备战、论文写作中紧密协作，形成了“以老带新、跨组融合”的良好机制。官方网站（ustb-806.github.io）持续维护，成为对外展示与内部交流的重要窗口。</p>
+    <h2 id="五展望未来步履不停">五、展望未来，步履不停</h2>
+    <p>回首 2025，806 实验室以实干为笔，以创新为墨，写下了充满收获的一年；展望未来，实验室将继续秉持“勤于思，敏于行”的精神，在人工智能、系统架构、网络技术、交叉学科等领域持续深耕，为每一位成员搭建成长与突破的舞台。
+      我们相信，在所有人的共同努力下，806 实验室必将——智创未来，风华正茂！</p>
+    ]]></content><author><name>cxl</name></author><category term="总结" /><category term="年终总结" /><summary type="html"><![CDATA[2025 年，勤敏轩学生创新实验室（806 实验室）在技术探索与创新实践的道路上步履不停，以坚实的成果与蓬勃的朝气，书写了一页页属于集体的荣耀篇章。实验室继续以学科竞赛与创新创业为核心，依托系统部、人工智能部、开发部、网络组等多部门协同发力，在国家级竞赛、学术研究、技术转化与人才培养等方面取得全面突破。]]></summary></entry><entry><title type="html">祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告</title><link href="https://ustb-806.github.io/news/2025/11/ACMMM/" rel="alternate" type="text/html" title="祝贺！陈铎友在顶级多媒体会议 ACMMM2025 发表论文并进行现场报告" /><published>2025-11-03T00:00:00+08:00</published><updated>2025-11-03T20:21:45+08:00</updated><id>https://ustb-806.github.io/news/2025/11/ACMMM</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/11/ACMMM/"><![CDATA[<p>近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 <strong>ACM Multimedia 2025</strong>上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。</p>
+  <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/03.png" alt="" />
+    论文首页 (全文详见 https://doi.org/10.1145/3746027.3755572)</p>
+  <p>ACMMM（ACM International Conference on Multimedia）是计算机科学领域最重要、最负盛名的多媒体旗舰会议，今年迎来了第 33 届盛会。该会议由国际计算机协会（ACM）主办，属于中国计算机学会（CCF）推荐的 A 类国际学术会议，在全球多媒体、计算机视觉、人机交互等研究领域具有极高的学术地位和影响力。ACMMM 2025 已于 2025 年 10 月 27 日 -10 月 31 日 在爱尔兰都柏林的<strong>皇家都柏林会议中心（Royal Dublin Convention Centre）</strong>成功举办。本次大会致力于整合和交流跨模态信息，重点关注人工智能、3D 与元宇宙、医疗保健、教育和娱乐等领域的创新应用，吸引了来自世界各地的顶尖学者、研究人员和行业精英，分享最新的研究成果和技术进展。</p>
+  <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/02.jpg" alt="" />
+    陈铎友在 ACMMM2025 会议现场</p>
+  <p>陈铎友的论文聚焦于稀疏视角 CT 重建这一重要的医学影像技术难题。他指出，计算机断层扫描（CT）虽然是临床广泛使用的影像模态，但传统的密集采集方式存在扫描时间长和辐射暴露量大的挑战，而稀疏视角 CT 重建技术旨在利用少量 X 射线投影图像高效准确地恢复三维 CT 图像，从而降低成本和风险。研究团队发现，现有基于扩散模型（如 Latent Diffusion Model, LDM）的重建方法，在处理 2D X 射线投影的潜在表示与 3D CT 图像的潜在表示时，难以有效对齐这两种模态的潜在空间。针对该问题，论文提出了一致性潜在空间扩散模型（Consistent Latent Space Diffusion Model, CLS-DM），并创新性地引入了<strong>跨模态特征对比学习（cross-modal feature contrastive learning）</strong>机制，成功解决了 2D 和 3D 潜在空间的不一致性问题，显著提升了稀疏视角下 CT 图像三维重建的质量和效率。</p>
+  <p class="text-center"><img src="https://blog-s3.806.group/post/2025-11-03-ACMMM/01.jpg" alt="" />
+    陈铎友在进行现场汇报（爱尔兰都柏林皇家会议中心）</p>
+  <p>陈铎友已成功参加了 ACMMM 2025 线下会议，并在国际同行面前展示和解读了其研究成果。现场报告是对研究工作的专业认可，也是与全球多媒体领域专家学者进行深入交流、拓展学术视野的绝佳平台。附图中，我们看到陈铎友同学在会议宣传板前的合影，以及他在会议现场进行报告的精彩瞬间。本次论文的成功发表和现场汇报，是团队在多媒体研究领域的重要一步。</p>
+  ]]></content><author><name>USTB-806</name></author><category term="学术会议" /><category term="人工智能部" /><category term="ACMMM" /><summary type="html"><![CDATA[近日，陈铎友（第一作者）及其合作者（其中张灿，王周同为 806 人工智能部成员）撰写的学术论文《Latent Space Consistency For Sparse-View CT Reconstruction》（稀疏视角 CT 重建中的潜在空间一致性）已于第 33 届国际顶级多媒体会议 ACM Multimedia 2025上成功发表，并在会议期间进行了现场报告。这一成果的取得，标志着陈铎友在三维医学图像重建研究领域取得了重要突破。论文首页如附图所示。]]></summary></entry><entry><title type="html">祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩</title><link href="https://ustb-806.github.io/news/2025/05/asc/" rel="alternate" type="text/html" title="祝贺刁明轩、唐学彬、刘彦甫、刘畅在“2025ASC 世界大学生超级计算机竞赛”取得佳绩" /><published>2025-05-27T00:00:00+08:00</published><updated>2025-05-27T21:46:01+08:00</updated><id>https://ustb-806.github.io/news/2025/05/asc</id><content type="html" xml:base="https://ustb-806.github.io/news/2025/05/asc/"><![CDATA[<p>ASC 世界大学生超级计算机竞赛（ASC Student Supercomputer Challenge）由中国发起组织，并得到亚洲及欧美相关专家和机构支持，旨在推动国际超算青年人才培养与技术创新，现已成为全球规模最大的大学生超算赛事，累计吸引六大洲上万名学生参与。</p>
   <p>近日，2025ASC 世界大学生超级计算机竞赛（ASC25）顺利结束，本届赛事聚焦”AI for Science”前沿领域，首创性将 AlphaFold3 蛋白质预测（2024 诺贝尔化学奖）与 mRNA 疫苗 RNA 修饰技术（2023 诺贝尔医学奖）转化为核心赛题，构建”计算生物学 - 人工智能 - 超算系统”融合竞技平台。</p>
   <p>在为期两个月的预赛中，我校团队在 4000 瓦功耗约束下自行设计超级计算机系统，完成了 HPL、HPCG 基准测试优化、AlphaFold3 蛋白质结构预测推理加速及 RNA m5C 修饰位点检测等核心任务。来自全球的 300 余支队伍经过激烈角逐，最终，浙江大学、北京大学、清华大学等 25 支队伍脱颖而出获得一等奖。我校 ASC889 队、ASC1172 队、ASC888 队分别以第 28 名、第 31 名、第 78 名的成绩荣获二等奖，与我校代表队同获二等奖的还有来自电子科技大学等高校代表队。</p>
   <p>ASC1172 队刁明轩在 RNA m5C 检测赛题中，完成了从原始测序数据到高置信度 m5C 位点检测的全流程复现与优化。通过整合 Snakemake 工作流，基于 Conda 封装 hisat3n、samtools 等工具链，解决了参考基因组 C→T 索引构建、多步骤并行参数配置等关键问题，成功复现流程并验证初始结果。</p>
@@ -1388,212 +1409,4 @@ scoreboard objectives setdisplay sidebar deathCount
   </table>
   <h2 id="决赛oceanbase">决赛（OceanBase）</h2>
   <p>信息汇总中……</p>
-  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="计算机系统能力大赛" /><category term="OceanBase" /><summary type="html"><![CDATA[全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。]]></summary></entry><entry><title type="html">806 实验室 2024 届招新面试安排</title><link href="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/" rel="alternate" type="text/html" title="806 实验室 2024 届招新面试安排" /><published>2024-10-22T00:00:00+08:00</published><updated>2024-12-10T00:04:26+08:00</updated><id>https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule</id><content type="html" xml:base="https://ustb-806.github.io/news/2024/10/recruitment-iterview-schedule/"><![CDATA[<p>面试地点为「机电楼 806 室」，时间安排如下：</p>
-  <table>
-    <thead>
-      <tr>
-        <th>部门</th>
-        <th>学号</th>
-        <th>日期</th>
-        <th>时间</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>系统部</td>
-        <td>U202442544</td>
-        <td>10/26 Sat.</td>
-        <td>19:00</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202341236</td>
-        <td> </td>
-        <td>19:10</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202241800</td>
-        <td> </td>
-        <td>19:30</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202442610</td>
-        <td> </td>
-        <td>19:40</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202341615</td>
-        <td> </td>
-        <td>19:50</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342599</td>
-        <td> </td>
-        <td>20:00</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202340562</td>
-        <td> </td>
-        <td>20:10</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202340533</td>
-        <td> </td>
-        <td>20:20</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342109</td>
-        <td> </td>
-        <td>20:30</td>
-      </tr>
-      <tr>
-        <td>人工智能部</td>
-        <td>U202342602</td>
-        <td> </td>
-        <td>20:40</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342494</td>
-        <td> </td>
-        <td>20:50</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342147</td>
-        <td> </td>
-        <td>21:00</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202442591</td>
-        <td> </td>
-        <td>21:10</td>
-      </tr>
-      <tr>
-        <td>开发部</td>
-        <td>U202342473</td>
-        <td> </td>
-        <td>21:20</td>
-      </tr>
-      <tr>
-        <td>人工智能部</td>
-        <td>U202241805</td>
-        <td>10/27 Sun.</td>
-        <td>19:00</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202243298</td>
-        <td> </td>
-        <td>19:10</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202341609</td>
-        <td> </td>
-        <td>19:20</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202341621</td>
-        <td> </td>
-        <td>19:30</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342459</td>
-        <td> </td>
-        <td>19:40</td>
-      </tr>
-      <tr>
-        <td>开发部</td>
-        <td>U202342409</td>
-        <td> </td>
-        <td>19:50</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342490</td>
-        <td> </td>
-        <td>20:00</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342623</td>
-        <td> </td>
-        <td>20:10</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202340683</td>
-        <td> </td>
-        <td>20:20</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342665</td>
-        <td> </td>
-        <td>20:30</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202343406</td>
-        <td> </td>
-        <td>20:40</td>
-      </tr>
-      <tr>
-        <td>游戏部</td>
-        <td>U202342449</td>
-        <td> </td>
-        <td>20:50</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342472</td>
-        <td> </td>
-        <td>21:00</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342892</td>
-        <td> </td>
-        <td>21:10</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202340122</td>
-        <td> </td>
-        <td>21:20</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202442567</td>
-        <td> </td>
-        <td>21:30</td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td>U202342439</td>
-        <td> </td>
-        <td>21:40</td>
-      </tr>
-      <tr>
-        <td>人工智能部</td>
-        <td>U202342615</td>
-        <td> </td>
-        <td>21:50</td>
-      </tr>
-    </tbody>
-  </table>
-  <p><strong>注意：</strong>名单会随各种情况动态更新，请在面试当天再次确认面试时间点。最近更新时间为 2024/10/25 16:00。</p>
-  <p>面试时，请携带至少三张打印好的个人简历和电脑（用以展示项目）。</p>
-  <p>如有时间冲突需要调整，或有其他任何问题，请在 <strong>10 月 25 日 23:59</strong> 前邮件联系 <a href="mailto:wnx@xs.ustb.edu.cn">wnx@xs.ustb.edu.cn</a>，过期不候，名单锁定。</p>
-  ]]></content><author><name>USTB-806</name></author><category term="其他" /><summary type="html"><![CDATA[面试地点为「机电楼 806 室」，时间安排如下：]]></summary></entry></feed>
+  ]]></content><author><name>USTB-806</name></author><category term="竞赛" /><category term="计算机系统能力大赛" /><category term="OceanBase" /><summary type="html"><![CDATA[全国大学生计算机系统能力大赛（OceanBase 数据库大赛）于 2024/10/18 正式开始。下面汇总了比赛的各种资源、赛后总结以供大家参考。]]></summary></entry></feed>
