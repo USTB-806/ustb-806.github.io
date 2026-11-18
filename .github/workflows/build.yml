@@ -15,14 +15,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      LSI: "true"
+      # Match lsi: false in _config.yml; avoid unused GSL native extensions.
+      LSI: "false"
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "3.4"
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -50,7 +51,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get install -y libgsl-dev
           bundle config set --local path vendor/bundle
           bundle config set without 'development'
           bundle install --jobs=4 --retry=3
