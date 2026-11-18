@@ -1,11 +1,12 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.27.3 by Michael Rose
-  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="zh-CN" class="no-js">
+<html lang="zh-CN" class="no-js" dir="ltr">
   <head>
     <meta charset="utf-8">
     <!-- begin _includes/seo.html -->
@@ -46,15 +47,15 @@
     <!-- 不蒜子页面统计 -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- For all browsers -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=d0b2fb5">
+    <link rel="stylesheet" href="/assets/css/main.css?v=af60796">
     <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="invalid" onload="this.media='all'">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" media="invalid" onload="this.media='all'">
     <!-- start custom head snippets -->
     <!-- insert favicons. use https://realfavicongenerator.net/ -->
     <!-- end custom head snippets -->
   </head>
-  <body class="layout--single" dir="ltr">
-    <nav class="skip-links">
+  <body class="layout--single">
+    <nav class="skip-links" aria-label="Skip links">
       <ul>
         <li><a href="#site-nav" class="screen-reader-shortcut">转到主导航栏</a></li>
         <li><a href="#main" class="screen-reader-shortcut">转到内容</a></li>
@@ -64,7 +65,7 @@
     <div class="masthead">
       <div class="masthead__inner-wrap">
         <div class="masthead__menu">
-          <nav id="site-nav" class="greedy-nav">
+          <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
             <a class="site-logo" href="/"><img src="https://blog-s3.806.group/static/806-logo.jpg" alt="806 @ USTB"></a>
             <a class="site-title" href="/">
               806 @ USTB
@@ -110,19 +111,19 @@
     </div>
     <div class="initial-content">
       <div id="main" role="main">
-        <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+        <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
           <meta itemprop="headline" content="Status">
           <meta itemprop="dateModified" content="2024-10-08T16:39:14+08:00">
           <div class="page__inner-wrap">
             <header>
-              <h1 id="page-title" class="page__title" itemprop="headline">
+              <h1 id="page-title" class="page__title p-name" itemprop="headline">
                 <a href="https://ustb-806.github.io/status/" itemprop="url">Status
                 </a>
               </h1>
             </header>
-            <section class="page__content" itemprop="text">
+            <section class="page__content e-content" itemprop="text">
               <aside class="sidebar__right sticky">
-                <nav class="toc">
+                <nav class="toc" aria-label="Table of contents">
                   <header>
                     <h4 class="nav__title"><i class="fas fa-file-alt"></i> 目录</h4>
                   </header>
@@ -130,15 +131,15 @@
               </aside>
               <dl>
                 <dt>Build time</dt>
-                <dd><time id="build-time" datetime="2025-11-26 15:57:26">2025-11-26 15:57:26</time></dd>
+                <dd><time id="build-time" datetime="2026-11-18 18:57:45">2026-11-18 18:57:45</time></dd>
                 <dt>Current time</dt>
                 <dd id="current-time">Loading...</dd>
                 <dt>Source Git revision</dt>
                 <dd>
-                  <a href="/commit/d0b2fb5fb8226bb4969bb65d692f5d37c06be35b">
-                    <code class="git-sha">d0b2fb5</code>
-                    <span class="git-author">Fridemn</span>:
-                    <span class="git-message">update</span>
+                  <a href="/commit/af607966e578d2369567eda34d11323e02feeeba">
+                    <code class="git-sha">af60796</code>
+                    <span class="git-author">wdlin233</span>:
+                    <span class="git-message">fix: close ci lsi feature, staying the same with _config.yml</span>
                   </a>
                 </dd>
                 <dt>
@@ -147,10 +148,10 @@
                   <!--a href="https://circleci.com/gh/ustb-806/ustb-806.github.io"><img src="https://circleci.com/gh/ustb-806/ustb-806.github.io.svg?style=shield" alt="CircleCI" /></a-->
                   <a href="https://github.com/ustb-806/ustb-806.github.io/actions"><img src="https://github.com/ustb-806/ustb-806.github.io/workflows/build/badge.svg" alt="GitHub Actions" /></a>
                 </dt>
-                <dd>This site is deployed from <a href="https://github.com/ustb-806/ustb-806.github.io/actions/runs/19696493163">GitHub Actions build 87</a></dd>
+                <dd>This site is deployed from <a href="https://github.com/ustb-806/ustb-806.github.io/actions/runs/44290149577">GitHub Actions build 89</a></dd>
               </dl>
               <script>
-                document.getElementById("build-time").innerText = new Date("2025-11-26T15:57:26+08:00");
+                document.getElementById("build-time").innerText = new Date("2026-11-18T18:57:45+08:00");
                 function zeropad(n) {
                   return n > 9 ? String(n) : "0" + String(n);
                 }
